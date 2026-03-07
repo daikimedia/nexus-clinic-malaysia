@@ -1,0 +1,93 @@
+// app/[locale]/regenerative/[slug]/page.tsx
+
+import { languages } from "@/src/i18n/settings";
+import { regenerativeTreatmentsMetadata } from "@/src/config/regenerativeTreatments";
+import type { Metadata } from "next";
+
+// Import all components
+import Testosterone from "@/src/views/regenerative/Testosterone";
+import EDTreatment from "@/src/views/regenerative/EDTreatment";
+import HormoneReplacement from "@/src/views/regenerative/HormoneReplacement";
+import PCOSTreatment from "@/src/views/regenerative/PCOSTreatment";
+import Hypothyroidism from "@/src/views/regenerative/Hypothyroidism";
+import StemCell from "@/src/views/regenerative/StemCell";
+import AntiAging from "@/src/views/regenerative/AntiAging";
+import HormoneTest from "@/src/views/regenerative/HormoneTest";
+import Monopause from "@/src/views/regenerative/Monopause";
+import PShotMalaysia from "@/src/views/regenerative/PShotMalaysia";
+import OShotMalaysia from "@/src/views/regenerative/OShotMalaysia";
+import ShockwaveTheraphy from "@/src/views/regenerative/ShockwaveTheraphy";
+import Default from "@/src/views/regenerative/Default";
+
+const components: Record<string, React.ComponentType<{ locale: string }>> = {
+  Testosterone,
+  EDTreatment,
+  HormoneReplacement,
+  PCOSTreatment,
+  Hypothyroidism,
+  StemCell,
+  AntiAging,
+  HormoneTest,
+  Monopause,
+  PShotMalaysia,
+  OShotMalaysia,
+  ShockwaveTheraphy,
+};
+
+export async function generateStaticParams() {
+  const paths = [];
+  for (const locale of languages) {
+    for (const treatment of regenerativeTreatmentsMetadata) {
+      paths.push({ locale, slug: treatment.slug });
+    }
+  }
+  return paths;
+}
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string; slug: string }> 
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const treatment = regenerativeTreatmentsMetadata.find(t => t.slug === slug);
+  
+  if (!treatment) return {};
+  
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://nexusclinic.my';
+  const url = locale === 'en' 
+    ? `${baseUrl}/regenerative/${slug}` 
+    : `${baseUrl}/${locale}/regenerative/${slug}`;
+
+  return {
+    title: treatment.title,
+    description: treatment.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: treatment.title,
+      description: treatment.description,
+      url,
+      siteName: 'Nexus Clinic',
+      type: 'website',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+export default async function RegenerativeTreatmentPage({ 
+  params 
+}: { 
+  params: Promise<{ locale: string; slug: string }> 
+}) {
+  const { locale, slug } = await params;
+  
+  const treatment = regenerativeTreatmentsMetadata.find(t => t.slug === slug);
+  if (!treatment) return <Default locale={locale} />;
+  
+  const Component = components[treatment.component] || Default;
+  
+  return <Component locale={locale} />;
+}
