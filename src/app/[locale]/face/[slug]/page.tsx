@@ -1,10 +1,7 @@
-// app/[locale]/face/[slug]/page.tsx
-
 import { languages } from "@/src/i18n/settings";
 import { faceTreatmentsMetadata } from "@/src/config/faceTreatments";
 import type { Metadata } from "next";
 
-// Import all components
 import DermalFiller from "@/src/views/faceTreatment/DermalFiller";
 import LipFiller from "@/src/views/faceTreatment/LipFiller";
 import ChinFiller from "@/src/views/faceTreatment/ChinFiller";
@@ -17,7 +14,6 @@ import CheekFiller from "@/src/views/faceTreatment/CheekFiller";
 import TearTroughFiller from "@/src/views/faceTreatment/TearTroughFiller";
 import UnderEyeFiller from "@/src/views/faceTreatment/UnderEyeFiller";
 
-// Component map
 const components = {
   DermalFiller,
   LipFiller,

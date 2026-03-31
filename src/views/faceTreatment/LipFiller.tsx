@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Droplets,
   Sparkles,
@@ -16,9 +17,6 @@ import {
   Clock,
   Star,
   ChevronRight,
-  DollarSign,
-  Building2,
-  Search,
 } from "lucide-react";
 
 import {
@@ -32,80 +30,58 @@ import FAQ from "../../components/FAQ";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 
-const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "lipFiller");
+// Import icon mapping for dynamic icons
+const iconMap: Record<string, any> = {
+  Shield,
+  Award,
+  Syringe,
+  Heart,
+  Droplets,
+  Sparkles,
+  CheckCircle2,
+  AlertCircle,
+  XCircle,
+  Clock,
+  FileText,
+  Users,
+};
 
-  const faqs = [
-    {
-      q: "How long do lip fillers last?",
-      a: "Most lip fillers last about 6 to 12 months, depending on filler type, metabolism, and how much is injected.",
-    },
-    {
-      q: "Do lip fillers hurt?",
-      a: "Most people describe it as uncomfortable but manageable. Numbing methods and lidocaine-containing fillers help reduce pain.",
-    },
-    {
-      q: "How long does lip filler swelling last?",
-      a: "Swelling often improves within 24 to 48 hours, but it may take up to a week to settle fully.",
-    },
-    {
-      q: "When will I see the final lip filler result?",
-      a: "You see changes immediately, but your true “settled” look is clearer after swelling reduces. For big events, it is smart to treat at least two weeks early.",
-    },
-    {
-      q: "How much is lip filler in Malaysia?",
-      a: "Ranges vary. Many clinics quote around RM 1,000 to RM 2,500 per syringe, while others cite RM 1,200 to RM 3,500+ per 1 ml depending on brand and expertise.",
-    },
-    {
-      q: "How much does Juvederm lip filler cost in Malaysia?",
-      a: "Some clinics list ranges like RM 2,200 to RM 2,800 per syringe, and some product guides show certain lip-focused options around RM 1,500 to RM 2,200 depending on formulation.",
-    },
-    {
-      q: "Can lip filler be dissolved?",
-      a: "Most HA fillers can be dissolved using an enzyme called hyaluronidase when medically indicated.",
-    },
-    {
-      q: "Will lip filler make me look fake?",
-      a: "Not if the plan is conservative and suited to your lips. A natural look usually comes from small, well-placed amounts and not chasing extreme volume.",
-    },
-    {
-      q: "What should I avoid after lip fillers?",
-      a: "Avoid eating until numbness wears off so you do not bite your lips. Some guidance recommends avoiding straws and smoking for at least 24 hours.",
-    },
-    {
-      q: "Can I do lip filler before a wedding or photoshoot?",
-      a: "Yes, but plan ahead. Cleveland Clinic suggests booking at least two weeks before a big event.",
-    },
-    {
-      q: "Is bruising normal after lip filler?",
-      a: "Yes, bruising can happen. It often settles over several days.",
-    },
-    {
-      q: "How do I know if I need 0.5 ml or 1 ml?",
-      a: "If you want subtle change or you are new to filler, 0.5 ml is often a gentle start. If you want more visible volume, 1 ml may be used. Your doctor should assess your lip structure first.",
-    },
-    {
-      q: "Can men get lip filler?",
-      a: "Yes. The plan is usually different, focusing on hydration, symmetry, and subtle balance rather than visible plumping.",
-    },
-    {
-      q: "What is the difference between lip augmentation and lip filler?",
-      a: "Lip filler is a common non-surgical method of lip augmentation. Lip augmentation can also include surgery or implants, but fillers are the most popular modern option.",
-    },
-    {
-      q: "How do I choose the best lip filler clinic in Kuala Lumpur?",
-      a: "Prioritize doctor-performed treatment, clear product discussion, safety standards, and natural planning. Directory listings can help compare options, but your consultation matters most",
-    },
-  ];
+const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
+  const { t } = useTranslation(locale, "face/lipFiller");
+
+  // Helper to get icon component
+  const getIcon = (iconName: string) => {
+    return iconMap[iconName] || Shield;
+  };
+
+  // Get data from translation with fallbacks
+  const heroData = t("hero", { returnObjects: true }) as any;
+  const treatmentOverview = t("treatmentOverview", { returnObjects: true }) as any;
+  const whatIsLipFiller = t("whatIsLipFiller", { returnObjects: true }) as any;
+  const lipEnhancementStyles = t("lipEnhancementStyles", { returnObjects: true }) as any;
+  const lipFillerVsLipFlip = t("lipFillerVsLipFlip", { returnObjects: true }) as any;
+  const whoIsItFor = t("whoIsItFor", { returnObjects: true }) as any;
+  const commonMistakes = t("commonMistakes", { returnObjects: true }) as any;
+  const notSuitableFor = t("notSuitableFor", { returnObjects: true }) as any;
+  const whyNexus = t("whyNexus", { returnObjects: true }) as any;
+  const procedure = t("procedure", { returnObjects: true }) as any;
+  const pricing = t("pricing", { returnObjects: true }) as any;
+  const sideEffectsAndAftercare = t("sideEffectsAndAftercare", { returnObjects: true }) as any;
+  const faqData = t("faq", { returnObjects: true }) as any;
+  const finalCta = t("finalCta", { returnObjects: true }) as any;
+
+  // Format FAQs for FAQ component
+  const faqs = faqData?.items?.map((item: any) => ({
+    q: item.question,
+    a: item.answer,
+  })) || [];
 
   return (
     <main className="w-full overflow-hidden bg-light">
-      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
-        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-rose rounded-full blur-3xl opacity-20" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-wine rounded-full blur-3xl opacity-20" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-rose rounded-full blur-3xl opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-wine rounded-full blur-3xl opacity-20"></div>
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
@@ -118,54 +94,28 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div variants={fadeInUp} className="space-y-6">
               <div className="inline-flex items-center px-4 py-2 bg-cream rounded-full">
                 <Shield className="w-4 h-4 text-wine mr-2" />
-                <span className="text-sm text-brown">
-                  Nexus Clinic Kuala Lumpur
-                </span>
+                <span className="text-sm text-brown">{heroData?.badge}</span>
               </div>
 
-              <h2 className="font-georgia text-5xl md:text-5xl lg:text-6xl leading-tight text-brown">
-                Lip Filler in Kuala Lumpur That Still Looks Like{" "}
-                <span className="text-wine">Your Lips</span>
-              </h2>
+              <h1 className="font-georgia text-5xl md:text-5xl lg:text-6xl leading-tight text-brown">
+                {heroData?.title}
+              </h1>
 
               <p className="text-lg text-taupe max-w-lg font-inter">
-                Soft volume. Better shape. Cleaner borders. No "duck lips" and
-                no heavy, obvious filler look.
+                {heroData?.description}
               </p>
 
-              {/* Trust at a glance */}
-              <motion.div
-                variants={fadeInUp}
-                className="grid grid-cols-2 gap-4 pt-6"
-              >
-                {[
-                  { icon: Award, text: "Doctor-performed in clinical setting" },
-                  {
-                    icon: Syringe,
-                    text: "High-quality, approved hyaluronic acid fillers",
-                  },
-                  {
-                    icon: Heart,
-                    text: "Natural planning based on your lip shape and face balance",
-                  },
-                  { icon: Shield, text: "Clear aftercare & safety protocols" },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start space-x-2">
-                    <item.icon className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                    <span className="text-sm text-brown">{item.text}</span>
-                  </div>
-                ))}
-              </motion.div>
             </motion.div>
-
             <motion.div variants={scaleIn} className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <Image
                   src="/images/skin/acne-treatment.webp"
-                  alt="Natural lip filler result at Nexus Clinic KL"
+                  alt={heroData?.imageAlt}
                   className="w-full h-auto object-cover"
+                  width={600}
+                  height={400}
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent"> </div>
               </div>
 
               {/* Glass card */}
@@ -173,18 +123,120 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 variants={fadeInUp}
                 className="absolute -bottom-6 -left-6 bg-light/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/50"
               >
-                <p className="text-brown font-medium">Trusted by clients in</p>
+                <p className="text-brown font-medium">{heroData?.floatingCard?.text}</p>
                 <p className="text-xl font-bold text-wine">
-                  Kuala Lumpur, Malaysia
+                  {heroData?.floatingCard?.location}
                 </p>
               </motion.div>
             </motion.div>
           </motion.div>
         </div>
       </section>
-
-      {/* What is lip filler Section with Image */}
+    <section className="relative px-4 py-12 overflow-hidden">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+      >
+        {heroData?.trustItems?.map((item: any, index: number) => {
+          const IconComponent = getIcon(item.icon);
+          return (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="group bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-cream hover:border-rose/20"
+            >
+              <div className="flex flex-col items-center text-center space-y-3">
+                <div className="w-14 h-14 bg-rose/10 rounded-full flex items-center justify-center group-hover:bg-rose group-hover:scale-110 transition-all duration-300">
+                  <IconComponent className="w-7 h-7 text-rose group-hover:text-white transition-colors" />
+                </div>
+                <p className="text-brown font-medium text-sm leading-relaxed">
+                  {item.text}
+                </p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </section>
+      {/* Treatment Overview Section */}
       <section className="py-20 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="space-y-12"
+          >
+            <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto">
+              <h2 className="font-georgia text-4xl text-brown mb-6">
+                {treatmentOverview?.title}
+              </h2>
+              <p className="text-taupe text-lg">
+                {treatmentOverview?.description}
+              </p>
+            </motion.div>
+
+            {/* Stats Cards */}
+            <motion.div
+              variants={staggerContainer}
+              className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+            >
+              {treatmentOverview?.stats && (
+                <>
+                  <motion.div
+                    variants={scaleIn}
+                    className="bg-cream p-6 rounded-xl text-center"
+                  >
+                    <div className="text-4xl font-bold text-wine mb-2">
+                      {treatmentOverview.stats.procedures}
+                    </div>
+                    <p className="text-brown">{treatmentOverview.stats.proceduresLabel}</p>
+                  </motion.div>
+                  <motion.div
+                    variants={scaleIn}
+                    className="bg-cream p-6 rounded-xl text-center"
+                  >
+                    <div className="text-4xl font-bold text-wine mb-2">
+                      {treatmentOverview.stats.experience}
+                    </div>
+                    <p className="text-brown">{treatmentOverview.stats.experienceLabel}</p>
+                  </motion.div>
+                </>
+              )}
+            </motion.div>
+
+            {/* Overview Table */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-cream"
+            >
+              <div className="divide-y divide-cream">
+                {Object.entries(treatmentOverview?.overviewTable || {}).map(([key, value]: [string, any]) => (
+                  <div key={key} className="grid grid-cols-2 gap-4 p-4 hover:bg-cream/30 transition-colors">
+                    <div className="font-semibold text-brown">{value.label}</div>
+                    <div className="text-taupe">{value.value}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {treatmentOverview?.cta && (
+              <motion.div variants={fadeInUp} className="text-center">
+                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                  {treatmentOverview.cta.text}
+                </button>
+                <p className="text-sm text-taupe mt-2">{treatmentOverview.cta.subtext}</p>
+              </motion.div>
+            )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What is Lip Filler Section */}
+      <section className="py-20 px-4 bg-light">
         <div className="container mx-auto max-w-7xl">
           <motion.div
             variants={staggerContainer}
@@ -194,59 +246,32 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           >
             <motion.div variants={fadeInLeft} className="space-y-6">
               <h2 className="font-georgia text-4xl text-brown">
-                Lip Filler Face Treatment in Malaysia
+                {whatIsLipFiller?.title}
               </h2>
-              <p className="text-xl text-taupe">
-                Lip filler is popular in Kuala Lumpur for one main reason. It
-                can make a big difference with a small change.
+              <p className="text-taupe">
+                {whatIsLipFiller?.description}
               </p>
               <p className="text-brown">
-                Some people want fuller lips. Others want better shape. Many
-                just want their lips to look smoother and less tired.
+                {whatIsLipFiller?.process}
               </p>
-              <p className="text-brown font-medium">
-                At Nexus Clinic Kuala Lumpur, lip filler is planned around your
-                natural lip structure. We focus on balance, softness, and a
-                result that still feels like you.
+              <p className="text-brown">
+                {whatIsLipFiller?.products}
               </p>
-
-              <div className="bg-cream p-6 rounded-xl">
-                <h3 className="text-xl font-bold text-wine mb-4">
-                  What is lip filler, in simple words?
-                </h3>
-                <p className="text-brown mb-4">
-                  Lip filler is a gel injection placed into specific parts of
-                  the lips to improve:
-                </p>
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    "volume",
-                    "shape",
-                    "symmetry",
-                    "hydration",
-                    "smoothness",
-                    "lip border",
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <Droplets className="w-4 h-4 text-rose" />
-                      <span className="text-sm">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-sm text-taupe">
-                  Most lip fillers today are made of hyaluronic acid (HA). HA
-                  already exists in the body. It holds water, so lips can look
-                  softer and more hydrated after treatment.
-                </p>
-              </div>
+              {whatIsLipFiller?.cta && (
+                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                  {whatIsLipFiller.cta.text}
+                </button>
+              )}
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <img
+                <Image
                   src="/images/skin/acne-treatment.webp"
-                  alt="Lip filler treatment at Nexus Clinic Kuala Lumpur"
+                  alt={whatIsLipFiller?.imageAlt || "Lip filler injection procedure at Nexus Clinic KL"}
                   className="w-full h-auto object-cover"
+                  width={600}
+                  height={400}
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-brown/40 to-transparent" />
               </div>
@@ -256,15 +281,20 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 variants={scaleIn}
                 className="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg"
               >
-                <p className="text-brown font-semibold">Hyaluronic Acid</p>
-                <p className="text-sm text-taupe">Naturally exists in body</p>
+                <p className="text-brown font-semibold">
+                  {whatIsLipFiller?.floatingCard?.title}
+                </p>
+                <p className="text-sm text-taupe">
+                  {whatIsLipFiller?.floatingCard?.subtitle}
+                </p>
               </motion.div>
             </motion.div>
           </motion.div>
         </div>
       </section>
-      {/* Why People Get Lip Filler */}
-      <section className="py-20 px-4 bg-light">
+
+      {/* Lip Enhancement Styles Section */}
+      <section className="py-20 px-4">
         <div className="container mx-auto max-w-7xl">
           <motion.div
             variants={staggerContainer}
@@ -272,632 +302,47 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             whileInView="visible"
             className="space-y-12"
           >
-            <motion.div
-              variants={fadeInUp}
-              className="text-center max-w-2xl mx-auto"
-            >
+            <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto">
               <h2 className="font-georgia text-4xl text-brown mb-6">
-                Why people in Kuala Lumpur get lip filler
+                {lipEnhancementStyles?.title}
               </h2>
-              <p className="text-taupe">
-                People rarely say, "I want big lips." They usually say things
-                like:
+              <p className="text-taupe mb-4">
+                {lipEnhancementStyles?.description}
+              </p>
+              <p className="text-sm text-wine">
+                {lipEnhancementStyles?.note}
               </p>
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              className="grid md:grid-cols-3 gap-6"
-            >
-              {[
-                "My upper lip disappears when I smile",
-                "My lips look dry even with balm",
-                "My lips are uneven",
-                "I want a nicer shape, not a dramatic change",
-                "I want my lipstick to sit better",
-              ].map((quote, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {lipEnhancementStyles?.styles?.map((style: any, index: number) => (
                 <motion.div
                   key={index}
                   variants={scaleIn}
-                  className="bg-white p-6 rounded-xl shadow-lg border border-cream"
+                  className="bg-white p-6 rounded-xl shadow-lg border border-cream hover:shadow-xl transition-shadow"
                 >
-                  <div className="text-wine text-3xl mb-2">"</div>
-                  <p className="text-brown italic">{quote}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-center text-brown">
-              Lip filler can help with all of these, when it is done carefully.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-      {/* Results Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="space-y-12"
-          >
-            <motion.div variants={fadeInUp} className="text-center">
-              <h2 className="font-georgia text-4xl text-brown mb-4">
-                Lip filler results you can expect
-              </h2>
-              <p className="text-taupe">
-                Most results are visible right away. Then the lips settle.
-              </p>
-              <p className="text-sm text-wine mt-2">
-                Swelling is normal at the start. According to Cleveland Clinic,
-                swelling often improves in 24 to 48 hours, but it can take up to
-                a week for swelling to fully settle. They also suggest booking
-                at least two weeks before a big event. That is why we always ask
-                about your schedule. If you have a wedding, shoot, or
-                engagement, timing matters.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                {
-                  title: "Hydrated lips",
-                  desc: "This is for people who want softness and smooth texture more than volume.",
-                  icon: Droplets,
-                },
-                {
-                  title: "Defined borders",
-                  desc: "This is for people who want a cleaner outline, a clearer cupid’s bow, and better lipstick edges.",
-                  icon: Sparkles,
-                },
-                {
-                  title: "Soft volume",
-                  desc: "This is a gentle plump look that still fits your face.",
-                  icon: Heart,
-                },
-                {
-                  title: "Shape correction",
-                  desc: "This is for asymmetry, uneven corners, or an upper lip that disappears when smiling.",
-                  icon: CheckCircle2,
-                },
-              ].map((result, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  whileHover={{ y: -10 }}
-                  className="bg-cream p-6 rounded-xl text-center group cursor-pointer"
-                >
-                  <div className="w-16 h-16 bg-rose/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-rose group-hover:text-white transition-colors">
-                    <result.icon className="w-8 h-8 text-rose group-hover:text-white" />
+                  <h3 className="text-xl font-bold text-wine mb-3">{style.name}</h3>
+                  <div className="space-y-2 text-sm">
+                    <p><span className="font-semibold text-brown">Best for:</span> <span className="text-taupe">{style.bestFor}</span></p>
+                    <p><span className="font-semibold text-brown">Volume:</span> <span className="text-taupe">{style.volumeNeeded}</span></p>
+                    <p><span className="font-semibold text-brown">Technique:</span> <span className="text-taupe">{style.technique}</span></p>
                   </div>
-                  <h3 className="text-xl font-bold text-brown mb-2">
-                    {result.title}
-                  </h3>
-                  <p className="text-sm text-taupe">{result.desc}</p>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
-      {/* Who is lip filler for */}
-      <section className="py-20 px-4 bg-cream">
-        <div className="container mx-auto max-w-7xl">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="grid md:grid-cols-2 gap-12"
-          >
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <h2 className="font-georgia text-4xl text-brown">
-                Who is lip filler for?
-              </h2>
-              <div className="space-y-4">
-                {[
-                  "have naturally thin lips",
-                  "lost lip volume with age",
-                  "want more balance between top and bottom lip",
-                  "want better definition without surgery",
-                  "want a treatment with minimal downtime",
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-wine" />
-                    <span className="text-brown">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 text-sm text-taupe">
-                Many clinics describe lip filler as a quick, minimally invasive
-                treatment with a short recovery time.
-              </p>
-            </motion.div>
 
-            <motion.div
-              variants={fadeInRight}
-              className="bg-wine p-8 rounded-2xl text-white"
-            >
-              <h3 className="text-2xl font-bold mb-6">
-                Who should postpone lip filler
-              </h3>
-              <div className="space-y-4">
-                {[
-                  "are pregnant or breastfeeding",
-                  "have an active cold sore or skin infection",
-                  "have a major dental infection or planned surgery",
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 text-sm opacity-90">
-                A doctor consultation is the right place to confirm suitability.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-      {/* Appointment Process */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="space-y-12"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown text-center"
-            >
-              What happens during a lip filler appointment at Nexus Clinic KL?
-            </motion.h2>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  step: "Step 1",
-                  title: "Lip assessment and goal setting",
-                  desc: "We look at: your natural lip shape how your lips move when you talk and smile your face proportions what looks “off” to you in photos We also discuss what you do not want. That matters.",
-                },
-                {
-                  step: "Step 2",
-                  title: "Comfort and numbing",
-                  desc: "Most HA fillers contain lidocaine. Many clinics also use numbing methods to reduce discomfort.",
-                },
-                {
-                  step: "Step 3",
-                  title: "Injection placement",
-                  desc: "The goal is not to “fill everywhere.” It is to place small amounts where they create the best shape.",
-                },
-                {
-                  step: "Step 4",
-                  title: "Review and aftercare plan",
-                  desc: "You leave with clear aftercare and what is normal versus what needs a call.",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="relative p-6 bg-white rounded-xl shadow-lg border border-cream"
-                >
-                  <div className="absolute -top-3 left-6 bg-wine text-white px-4 py-1 rounded-full text-sm">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-bold text-brown mt-4 mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-taupe">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      {/* Longevity & Timeline Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-7xl">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="space-y-16"
-          >
-            {/* How Long Does Lip Filler Last */}
-            <motion.div
-              variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <h2 className="font-georgia text-4xl text-brown mb-6">
-                How long does lip filler last?
-              </h2>
-              <p className="text-xl text-taupe mb-4">
-                A common expectation is 6 to 12 months, depending on your
-                metabolism, filler type, and how much product is used.
-              </p>
-              <p className="text-brown">
-                Some people do a small top-up earlier, especially if they want a
-                consistent look.
-              </p>
-            </motion.div>
-
-            {/* Swelling and Bruising Timeline */}
-            <motion.div
-              variants={fadeInUp}
-              className="grid md:grid-cols-2 gap-8"
-            >
-              <div className="bg-cream p-8 rounded-2xl">
-                <h3 className="font-georgia text-2xl text-wine mb-4">
-                  Lip filler swelling and bruising timeline
-                </h3>
-                <p className="text-brown mb-4">
-                  Swelling is part of the process. It can look dramatic on day
-                  one.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <Clock className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                    <p className="text-brown">
-                      <span className="font-semibold">
-                        Cleveland Clinic notes
-                      </span>{" "}
-                      swelling often improves within 24 to 48 hours, but can
-                      take up to a week.
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                    <p className="text-brown">
-                      Bruising can happen too, especially if you bruise easily.
-                    </p>
-                  </div>
-                  <div className="bg-white p-4 rounded-xl mt-4">
-                    <p className="text-wine font-medium">
-                      If you want to look your best for an event, plan early.{" "}
-                      <span className="font-bold">
-                        Two weeks is a safe buffer.
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Aftercare Section */}
-              <div className="bg-wine p-8 rounded-2xl text-white">
-                <h3 className="font-georgia text-2xl mb-4">
-                  Lip filler aftercare (easy and realistic)
-                </h3>
-                <p className="mb-4 opacity-90">
-                  After lip filler, your lips may feel tender and tight at
-                  first.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
-                    <p>
-                      Cleveland Clinic recommends waiting to eat until numbness
-                      wears off so you do not accidentally bite your lips.
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
-                    <p>Avoid straws or smoking for at least 24 hours.</p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
-                    <p>
-                      Avoid heavy pressure, intense exercise, and alcohol if you
-                      bruise easily.
-                    </p>
-                  </div>
-                  <p className="mt-4 text-sm italic">
-                    Always follow your injector's instructions first.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-      {/* Pros and Cons Section */}
-      <section className="py-20 px-4 bg-light">
-        <div className="container mx-auto max-w-7xl">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="space-y-12"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown text-center"
-            >
-              Pros and Cons of Lip Filler
-            </motion.h2>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Pros */}
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-white p-8 rounded-2xl shadow-lg border border-cream"
-              >
-                <h3 className="text-2xl font-bold text-wine mb-6 flex items-center">
-                  <Heart className="w-6 h-6 mr-2" />
-                  Pros
-                </h3>
-                <div className="space-y-4">
-                  {[
-                    "quick treatment",
-                    "immediate improvement",
-                    "customizable results",
-                    "minimal downtime for most people",
-                    "HA fillers can be dissolved if medically indicated (reassuring for many patients)",
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                      <span className="text-brown">{item}</span>
-                    </div>
-                  ))}
-                </div>
+            {lipEnhancementStyles?.cta && (
+              <motion.div variants={fadeInUp} className="text-center">
+                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                  {lipEnhancementStyles.cta.text}
+                </button>
+                <p className="text-sm text-taupe mt-2">{lipEnhancementStyles.cta.subtext}</p>
               </motion.div>
-
-              {/* Cons */}
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-8 rounded-2xl shadow-lg border border-cream"
-              >
-                <h3 className="text-2xl font-bold text-wine mb-6 flex items-center">
-                  <XCircle className="w-6 h-6 mr-2" />
-                  Cons
-                </h3>
-                <div className="space-y-4">
-                  {[
-                    "swelling and bruising can happen",
-                    "results are not permanent",
-                    "poor technique can look unnatural",
-                    "rare complications exist, so clinic choice matters",
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <XCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
-                      <span className="text-brown">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
+            )}
           </motion.div>
         </div>
       </section>
-      {/* Side Effects and Risks Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="space-y-12"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown text-center"
-            >
-              Side effects and risks (honest and clear)
-            </motion.h2>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Common Side Effects */}
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-cream p-8 rounded-2xl"
-              >
-                <h3 className="text-2xl font-bold text-wine mb-6">
-                  Common side effects
-                </h3>
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  {["swelling", "redness", "tenderness", "bruising"].map(
-                    (item, index) => (
-                      <div
-                        key={index}
-                        className="bg-white p-3 rounded-lg text-center"
-                      >
-                        <span className="text-brown font-medium">{item}</span>
-                      </div>
-                    ),
-                  )}
-                </div>
-                <p className="text-brown">
-                  These usually settle as healing progresses.
-                </p>
-              </motion.div>
-
-              {/* Rare but Serious Risks */}
-              <motion.div
-                variants={fadeInRight}
-                className="bg-wine p-8 rounded-2xl text-white"
-              >
-                <h3 className="text-2xl font-bold mb-6">
-                  Rare but serious risks
-                </h3>
-                <p className="mb-4">
-                  All injectable fillers carry rare risks, including vascular
-                  issues. That is why doctor skill, anatomy knowledge, and safe
-                  clinical standards are important.
-                </p>
-                <div className="bg-white/20 p-4 rounded-xl">
-                  <p className="text-sm">
-                    <span className="font-bold">
-                      ⚠️ If you ever have severe pain, unusual skin color
-                      changes, or vision symptoms, seek urgent medical care.
-                    </span>
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      {/* Cost Section */}
-      <section className="py-20 px-4 bg-cream">
-        <div className="container mx-auto max-w-7xl">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="space-y-12"
-          >
-            <motion.div
-              variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <h2 className="font-georgia text-4xl text-brown mb-6">
-                Lip filler cost in Kuala Lumpur, Malaysia
-              </h2>
-              <p className="text-taupe mb-4">Prices vary by:</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                {[
-                  "filler brand",
-                  "amount used (0.5 ml vs 1 ml)",
-                  "complexity of shaping",
-                  "injector expertise",
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="bg-white p-3 rounded-lg text-sm text-brown"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid md:grid-cols-3 gap-6"
-            >
-              {/* Price Range 1 */}
-              <div className="bg-white p-6 rounded-xl shadow-lg">
-                <h3 className="text-xl font-bold text-wine mb-4">
-                  General Range
-                </h3>
-                <p className="text-3xl font-bold text-brown mb-2">
-                  RM 1,000 - 2,500
-                </p>
-                <p className="text-sm text-taupe">per syringe</p>
-              </div>
-
-              {/* Price Range 2 */}
-              <div className="bg-white p-6 rounded-xl shadow-lg">
-                <h3 className="text-xl font-bold text-wine mb-4">
-                  Premium Range
-                </h3>
-                <p className="text-3xl font-bold text-brown mb-2">
-                  RM 1,200 - 3,500+
-                </p>
-                <p className="text-sm text-taupe">per 1 ml syringe</p>
-              </div>
-
-              {/* Juvederm Range */}
-              <div className="bg-white p-6 rounded-xl shadow-lg">
-                <h3 className="text-xl font-bold text-wine mb-4">Juvederm</h3>
-                <p className="text-lg font-bold text-brown">RM 1,500 - 2,200</p>
-                <p className="text-sm text-taupe mb-2">
-                  subtle lip filler types
-                </p>
-                <p className="text-lg font-bold text-brown">RM 2,200 - 2,800</p>
-                <p className="text-sm text-taupe">per syringe average</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-wine p-6 rounded-xl text-white text-center max-w-3xl mx-auto"
-            >
-              <p className="text-lg">
-                At Nexus Clinic Kuala Lumpur, the right price is the one based
-                on your lip goals and what you truly need, not a random package.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-      {/* How Much Do I Need Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="space-y-12"
-          >
-            <motion.div variants={fadeInUp} className="text-center">
-              <h2 className="font-georgia text-4xl text-brown mb-4">
-                How much lip filler do I need?
-              </h2>
-              <p className="text-taupe mb-8">
-                This is one of the biggest questions in Kuala Lumpur.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* 0.5 ml */}
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-cream p-8 rounded-2xl text-center"
-              >
-                <div className="w-20 h-20 bg-rose rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-white">0.5</span>
-                </div>
-                <h3 className="text-xl font-bold text-brown mb-3">0.5 ml</h3>
-                <p className="text-taupe">
-                  Great for first-timers who want hydration or light definition
-                </p>
-              </motion.div>
-
-              {/* 1 ml */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-wine p-8 rounded-2xl text-white text-center"
-              >
-                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold">1</span>
-                </div>
-                <h3 className="text-xl font-bold mb-3">1 ml</h3>
-                <p className="opacity-90">
-                  More visible volume and shape changes
-                </p>
-              </motion.div>
-
-              {/* More than 1 ml */}
-              <motion.div
-                variants={fadeInRight}
-                className="bg-cream p-8 rounded-2xl text-center"
-              >
-                <div className="w-20 h-20 bg-rose rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-white">1+</span>
-                </div>
-                <h3 className="text-xl font-bold text-brown mb-3">
-                  More than 1 ml
-                </h3>
-                <p className="text-taupe">
-                  Usually better done gradually across sessions to avoid a heavy
-                  look
-                </p>
-              </motion.div>
-            </div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-center text-brown font-medium max-w-2xl mx-auto"
-            >
-              A natural result is often about patience, not pushing too much
-              product in one day.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
       {/* Lip Filler vs Lip Flip Section */}
       <section className="py-20 px-4 bg-light">
         <div className="container mx-auto max-w-7xl">
@@ -907,71 +352,220 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             whileInView="visible"
             className="space-y-12"
           >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown text-center"
-            >
-              Lip filler vs lip flip (Botox)
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-center text-taupe">
-              People often confuse these.
-            </motion.p>
+            <motion.div variants={fadeInUp} className="text-center">
+              <h2 className="font-georgia text-4xl text-brown mb-6">
+                {lipFillerVsLipFlip?.title}
+              </h2>
+              <p className="text-taupe">
+                {lipFillerVsLipFlip?.description}
+              </p>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Lip Filler */}
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-white p-8 rounded-2xl shadow-lg"
-              >
-                <h3 className="text-2xl font-bold text-wine mb-4">
-                  Lip filler
-                </h3>
-                <p className="text-brown mb-4">
-                  Adds volume and shape using HA gel.
-                </p>
-                <div className="bg-cream p-4 rounded-xl">
-                  <p className="text-sm text-brown">
-                    <span className="font-semibold">Best for:</span> Shape and
-                    fullness
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Lip Flip */}
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-8 rounded-2xl shadow-lg"
-              >
-                <h3 className="text-2xl font-bold text-wine mb-4">Lip flip</h3>
-                <p className="text-brown mb-4">
-                  Uses a small amount of botulinum toxin to relax the upper lip
-                  muscle so the lip may "roll out" slightly. It does not add
-                  true volume.
-                </p>
-                <div className="bg-cream p-4 rounded-xl">
-                  <p className="text-sm text-brown">
-                    <span className="font-semibold">Best for:</span> "My lip
-                    disappears when I smile"
-                  </p>
-                </div>
-              </motion.div>
+            <div className="overflow-x-auto">
+              <table className="w-full bg-white rounded-2xl shadow-lg border border-cream">
+                <thead className="bg-cream">
+                  <tr>
+                    <th className="p-4 text-left text-brown font-semibold">{lipFillerVsLipFlip?.comparisonTable?.factor}</th>
+                    <th className="p-4 text-left text-wine font-semibold">{lipFillerVsLipFlip?.comparisonTable?.lipFiller}</th>
+                    <th className="p-4 text-left text-wine font-semibold">{lipFillerVsLipFlip?.comparisonTable?.lipFlip}</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-cream">
+                  {lipFillerVsLipFlip?.comparisonTable?.rows?.map((row: any, index: number) => (
+                    <tr key={index} className="hover:bg-cream/30 transition-colors">
+                      <td className="p-4 text-brown font-medium">{row.factor}</td>
+                      <td className="p-4 text-taupe">{row.lipFiller}</td>
+                      <td className="p-4 text-taupe">{row.lipFlip}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
             <motion.div
               variants={fadeInUp}
-              className="bg-wine p-6 rounded-xl text-white text-center max-w-3xl mx-auto"
+              className="bg-wine/10 p-6 rounded-xl text-center max-w-3xl mx-auto"
             >
-              <p>
-                If your main issue is "my lip disappears when I smile," a lip
-                flip may help. If your goal is shape and fullness, filler is
-                usually the better option.{" "}
-                <span className="font-bold">Many people combine both.</span>
+              <p className="text-brown">{lipFillerVsLipFlip?.conclusion}</p>
+            </motion.div>
+
+            {lipFillerVsLipFlip?.cta && (
+              <motion.div variants={fadeInUp} className="text-center">
+                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                  {lipFillerVsLipFlip.cta.text}
+                </button>
+                <p className="text-sm text-taupe mt-2">{lipFillerVsLipFlip.cta.subtext}</p>
+              </motion.div>
+            )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Who Is It For Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="grid lg:grid-cols-2 gap-12"
+          >
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <h2 className="font-georgia text-4xl text-brown">
+                {whoIsItFor?.title}
+              </h2>
+              <p className="text-taupe">
+                {whoIsItFor?.description}
+              </p>
+              <div className="space-y-3">
+                {whoIsItFor?.items?.map((item: string, index: number) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-rose shrink-0 mt-0.5" />
+                    <span className="text-brown">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm text-taupe">
+                {whoIsItFor?.suitability}
+              </p>
+              <p className="text-sm text-wine">
+                {whoIsItFor?.combinationNote}
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="bg-wine p-8 rounded-2xl text-white">
+              <h3 className="text-2xl font-bold mb-6">{notSuitableFor?.title}</h3>
+              <div className="space-y-4">
+                {notSuitableFor?.items?.map((item: string, index: number) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-sm opacity-90">
+                {notSuitableFor?.description}
               </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
-      {/* How to Choose the Right Clinic Section */}
+
+      {/* Common Mistakes Section */}
+      <section className="py-20 px-4 bg-cream">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="space-y-12"
+          >
+            <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto">
+              <h2 className="font-georgia text-4xl text-brown mb-6">
+                {commonMistakes?.title}
+              </h2>
+              <p className="text-taupe">
+                {commonMistakes?.disclaimer}
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {commonMistakes?.mistakes?.map((mistake: any, index: number) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  className="bg-white p-6 rounded-xl shadow-lg"
+                >
+                  <div className="flex items-start space-x-3">
+                    <XCircle className="w-6 h-6 text-rose shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="text-xl font-bold text-brown mb-2">{mistake.title}</h3>
+                      <p className="text-taupe">{mistake.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div variants={fadeInUp} className="bg-wine p-6 rounded-xl text-white text-center">
+              <p className="text-lg">{commonMistakes?.conclusion}</p>
+            </motion.div>
+
+            {commonMistakes?.cta && (
+              <motion.div variants={fadeInUp} className="text-center">
+                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                  {commonMistakes.cta.text}
+                </button>
+                <p className="text-sm text-taupe mt-2">{commonMistakes.cta.subtext}</p>
+              </motion.div>
+            )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Why Nexus Section */}
+      <section className="py-20 px-4 bg-light">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="space-y-12"
+          >
+            <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto">
+              <h2 className="font-georgia text-4xl text-brown mb-6">
+                {whyNexus?.title}
+              </h2>
+              <p className="text-taupe">
+                {whyNexus?.description}
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {whyNexus?.stats?.map((stat: any, index: number) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  className="bg-white p-6 rounded-xl text-center shadow-lg"
+                >
+                  <div className="text-4xl font-bold text-wine mb-2">{stat.value}</div>
+                  <p className="text-brown">{stat.label}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {whyNexus?.features?.map((feature: string, index: number) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  className="bg-cream p-4 rounded-xl flex items-start space-x-2"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-rose shrink-0 mt-0.5" />
+                  <span className="text-brown text-sm">{feature}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-wine/10 p-6 rounded-xl"
+            >
+              <p className="text-brown italic">{whyNexus?.citation}</p>
+              <p className="text-sm text-taupe mt-2">— {whyNexus?.citationSource}</p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="text-center">
+              <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                {whyNexus?.cta?.text}
+              </button>
+              <p className="text-sm text-taupe mt-2">{whyNexus?.cta?.subtext}</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Procedure Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-7xl">
           <motion.div
@@ -980,90 +574,198 @@ const LipFillerLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             whileInView="visible"
             className="space-y-12"
           >
-            <motion.div
+            <motion.h2
               variants={fadeInUp}
-              className="text-center max-w-3xl mx-auto"
+              className="font-georgia text-4xl text-brown text-center"
             >
-              <h2 className="font-georgia text-4xl text-brown mb-6">
-                How to choose the right lip filler clinic in Kuala Lumpur
-              </h2>
-              <p className="text-taupe mb-4">
-                Directory sites rank well because they list many options and
-                reviews. But your decision should come down to safety and
-                planning.
-              </p>
-            </motion.div>
+              {procedure?.title}
+            </motion.h2>
 
-            <motion.div
-              variants={fadeInUp}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {[
-                {
-                  icon: Syringe,
-                  title: "Doctor-performed injections",
-                  desc: "Ensure your treatment is performed by a qualified doctor",
-                },
-                {
-                  icon: FileText,
-                  title: "Clear explanation",
-                  desc: "Of filler type and plan, no rushed selling",
-                },
-                {
-                  icon: Heart,
-                  title: "Natural-looking portfolio",
-                  desc: "Look for realistic results, not dramatic transformations",
-                },
-                {
-                  icon: Users,
-                  title: "Proper consultation",
-                  desc: "Not rushed selling, takes time to understand your goals",
-                },
-                {
-                  icon: Shield,
-                  title: "Aftercare discussion",
-                  desc: "Clinic that discusses aftercare and risks clearly",
-                },
-              ].map((item, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {procedure?.steps?.map((step: any, index: number) => (
                 <motion.div
                   key={index}
                   variants={scaleIn}
-                  className="bg-cream p-6 rounded-xl hover:shadow-lg transition-shadow"
+                  className="relative p-6 bg-white rounded-xl shadow-lg border border-cream"
                 >
-                  <div className="w-12 h-12 bg-rose rounded-full flex items-center justify-center mb-4">
-                    <item.icon className="w-6 h-6 text-white" />
+                  <div className="absolute -top-3 left-6 bg-wine text-white px-4 py-1 rounded-full text-sm">
+                    {step.step}
                   </div>
-                  <h3 className="text-lg font-bold text-brown mb-2">
-                    {item.title}
+                  <h3 className="text-xl font-bold text-brown mt-4 mb-3">
+                    {step.title}
                   </h3>
-                  <p className="text-sm text-taupe">{item.desc}</p>
+                  <p className="text-taupe text-sm">{step.description}</p>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={fadeInUp}
-              className="bg-wine p-8 rounded-2xl text-white text-center max-w-4xl mx-auto"
-            >
-              <h3 className="text-2xl font-bold mb-4">
-                Why choose Nexus Clinic Kuala Lumpur?
-              </h3>
-              <p className="mb-6">
-                People come to us for lip filler because they want a soft,
-                natural look, shape that matches their face, honest guidance on
-                what suits them, careful technique and safety-first standards.
-              </p>
-              <p className="text-lg font-medium">
-                We plan lip filler to fit your features. Not a trend. Not a
-                template.
-              </p>
-            </motion.div>
+            {procedure?.cta && (
+              <motion.div variants={fadeInUp} className="text-center">
+                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                  {procedure.cta.text}
+                </button>
+                <p className="text-sm text-taupe mt-2">{procedure.cta.subtext}</p>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </section>
 
-      {/* FAQ Section - People Also Ask */}
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="space-y-12"
+          >
+            <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto">
+              <h2 className="font-georgia text-4xl text-brown mb-6">
+                {pricing?.title}
+              </h2>
+              <p className="text-taupe">
+                {pricing?.description}
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {pricing?.priceTable?.map((item: any, index: number) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  className="bg-white p-6 rounded-xl shadow-lg text-center"
+                >
+                  <h3 className="text-xl font-bold text-wine mb-2">{item.treatmentType}</h3>
+                  <p className="text-2xl font-bold text-brown mb-2">{item.priceRange}</p>
+                  <p className="text-sm text-taupe">{item.typicalVolume}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div variants={fadeInUp} className="bg-white p-6 rounded-xl">
+              <h3 className="text-xl font-bold text-wine mb-4">{pricing?.factors?.title}</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {pricing?.factors?.items?.map((factor: any, index: number) => (
+                  <div key={index}>
+                    <p className="font-semibold text-brown">{factor.title}</p>
+                    <p className="text-sm text-taupe">{factor.description}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-wine/10 p-6 rounded-xl text-center"
+            >
+              <p className="text-brown italic">{pricing?.citation}</p>
+              <p className="text-sm text-taupe mt-2">— {pricing?.citationSource}</p>
+            </motion.div>
+
+            {pricing?.cta && (
+              <motion.div variants={fadeInUp} className="text-center">
+                <button className="bg-wine text-white px-8 py-3 rounded-full font-medium hover:bg-wine/90 transition-colors">
+                  {pricing.cta.text}
+                </button>
+                <p className="text-sm text-taupe mt-2">{pricing.cta.subtext}</p>
+              </motion.div>
+            )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Side Effects and Aftercare Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="space-y-12"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown text-center"
+            >
+              {sideEffectsAndAftercare?.title}
+            </motion.h2>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div variants={fadeInLeft} className="bg-cream p-8 rounded-2xl">
+                <h3 className="text-2xl font-bold text-wine mb-4">
+                  {sideEffectsAndAftercare?.commonSideEffects?.title}
+                </h3>
+                <p className="text-brown">
+                  {sideEffectsAndAftercare?.commonSideEffects?.description}
+                </p>
+              </motion.div>
+
+              <motion.div variants={fadeInRight} className="bg-wine p-8 rounded-2xl text-white">
+                <h3 className="text-2xl font-bold mb-4">
+                  {sideEffectsAndAftercare?.seriousRisks?.title}
+                </h3>
+                <p>{sideEffectsAndAftercare?.seriousRisks?.description}</p>
+              </motion.div>
+            </div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white p-8 rounded-2xl shadow-lg border border-cream"
+            >
+              <h3 className="text-2xl font-bold text-wine mb-4">
+                {sideEffectsAndAftercare?.aftercareInstructions?.title}
+              </h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {sideEffectsAndAftercare?.aftercareInstructions?.items?.map((item: string, index: number) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-rose shrink-0 mt-0.5" />
+                    <span className="text-brown">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.p variants={fadeInUp} className="text-center text-taupe">
+              {sideEffectsAndAftercare?.combinationNote}
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
       <FAQ data={faqs} />
+
+      {/* Final CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <div className="container mx-auto max-w-4xl text-center">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="space-y-6"
+          >
+            <motion.h2 variants={fadeInUp} className="font-georgia text-4xl text-white">
+              {finalCta?.title}
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="text-white/90 text-lg">
+              {finalCta?.description}
+            </motion.p>
+            <motion.p variants={fadeInUp} className="text-white font-medium">
+              {finalCta?.stats}
+            </motion.p>
+            <motion.div variants={fadeInUp}>
+              <button className="bg-white text-wine px-8 py-3 rounded-full font-medium hover:bg-cream transition-colors">
+                {finalCta?.cta?.text}
+              </button>
+              <p className="text-white/80 text-sm mt-2">{finalCta?.cta?.subtext}</p>
+            </motion.div>
+            <motion.p variants={fadeInUp} className="text-white/70 text-sm">
+              {finalCta?.exploreMore}
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 };

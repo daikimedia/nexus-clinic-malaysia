@@ -1,1 +1,437 @@
-{}
+{
+  "hero": {
+    "badge": "Nexus Clinic Kuala Lumpur",
+    "title": "Pakar Lip Filler di Malaysia untuk Volume Semula Jadi dan Bibir yang Cantik dan Terdefinisi",
+    "description": "Bibir yang kelihatan nipis di kamera. Bibir atas yang hilang apabila anda tersenyum. Cupid's bow yang kehilangan definisinya dari masa ke masa. Ini adalah kebimbangan sebenar dan mereka mempunyai penyelesaian klinikal yang tepat.",
+    "trustItems": [
+      { "icon": "Award", "text": "Penginjeksi dan doktor estetik pemenang anugerah" },
+      { "icon": "Syringe", "text": "Teknik filler dermal asid hyaluronik terkini" },
+      { "icon": "Heart", "text": "Hasil semula jadi dan lembut yang melengkapi ciri wajah unik anda" },
+      { "icon": "Shield", "text": "Lebih 5,000 prosedur filler telah dilakukan" }
+    ],
+    "imageAlt": "Rawatan lip filler pakar di Nexus Clinic KL menunjukkan volume semula jadi dan bibir yang terdefinisi",
+    "floatingCard": {
+      "text": "Dipercayai oleh pelanggan di",
+      "location": "Kuala Lumpur, Malaysia"
+    }
+  },
+  "treatmentOverview": {
+    "title": "Gambaran Keseluruhan Rawatan Lip Filler",
+    "description": "Di Nexus Clinic Kuala Lumpur, pendekatan kami untuk peningkatan bibir dibina berdasarkan anatomi, keseimbangan dan kawalan, bukan mengejar trend atau volume maksimum. Tiada yang berlebihan. Tiada yang mencolok. Hanya bibir yang kelihatan seperti milik anda, hanya lebih baik.",
+    "stats": {
+      "procedures": "5,000+",
+      "proceduresLabel": "Prosedur Filler Dilakukan",
+      "experience": "15+",
+      "experienceLabel": "Tahun Pengalaman Bergabung"
+    },
+    "overviewTable": {
+      "treatment": {
+        "label": "Rawatan",
+        "value": "Suntikan filler asid hyaluronik untuk volume, bentuk dan definisi"
+      },
+      "sessionTime": {
+        "label": "Masa Sesi",
+        "value": "20 hingga 30 minit"
+      },
+      "downtime": {
+        "label": "Masa Pemulihan",
+        "value": "Minimum. Kebanyakan pesakit kembali ke aktiviti harian dengan segera"
+      },
+      "results": {
+        "label": "Keputusan",
+        "value": "Kelihatan pada hari yang sama. Stabil sepenuhnya dalam 7 hingga 14 hari"
+      },
+      "longevity": {
+        "label": "Jangka Hayat",
+        "value": "6 hingga 12 bulan bergantung pada produk dan metabolisme individu"
+      },
+      "reversible": {
+        "label": "Boleh Dibalikkan",
+        "value": "Ya. Filler HA boleh larut sepenuhnya dengan hyaluronidase"
+      },
+      "anaesthesia": {
+        "label": "Anestesia",
+        "value": "Krim kebas topikal plus lidokain terbina dalam kebanyakan produk"
+      },
+      "suitableFor": {
+        "label": "Sesuai Untuk",
+        "value": "Bibir nipis, asimetri, kehilangan volume, definisi cupid's bow, peningkatan pout"
+      }
+    },
+    "cta": {
+      "text": "Bercakap dengan Doktor Tentang Matlamat Bibir Anda",
+      "subtext": "Penilaian Percuma di Nexus Clinic KL"
+    }
+  },
+  "whatIsLipFiller": {
+    "title": "Suntikan Lip Filler | Volume, Bentuk dan Pergerakan Semula Jadi dalam Satu Rawatan",
+    "description": "Lip filler adalah rawatan suntikan yang direka untuk meningkatkan saiz, bentuk dan hidrasi bibir menggunakan asid hyaluronik, bahan yang secara semula jadi terdapat dalam badan. Filler HA mengandungi gel yang menarik dan mengekalkan kelembapan, berintegrasi dengan lancar dengan tisu bibir untuk menambah volume sambil mengekalkan pergerakan dan ekspresi semula jadi, meningkatkan kecantikan semula jadi anda.",
+    "process": "Proses suntikan mengambil masa 20 hingga 30 minit. Keputusan kelihatan pada hari yang sama. Dalam tempoh 7 hingga 14 hari berikutnya, filler stabil sepenuhnya apabila sebarang bengkak ringan atau lebam dari prosedur pulih. Apa yang paling diperhatikan oleh pesakit bukan sahaja volume tetapi betapa lembut dan semula jadi bibir dirasai setelah filler berintegrasi. Tiada kekerasan. Tiada kekakuan yang tidak semula jadi. Bibir masih bergerak, merasa dan berfungsi sama seperti sebelumnya.",
+    "products": "Banyak filler dirumuskan khusus untuk tisu bibir. Produk seperti Restylane Kysse dan Juvedenz Volbella direkayasa untuk fleksibiliti, regangan dan keceriaan warna, menangani tuntutan spesifik kawasan pergerakan tinggi seperti bibir. Jenis filler yang digunakan sangat penting, dan ia adalah salah satu perkara pertama yang akan disahkan oleh doktor anda semasa konsultasi.",
+    "cta": {
+      "text": "Cari Filler yang Tepat untuk Bibir Anda",
+      "subtext": "Tempah Konsultasi di Nexus Clinic"
+    },
+    "imageAlt": "Prosedur suntikan lip filler di Nexus Clinic KL",
+    "floatingCard": {
+      "title": "Asid Hyaluronik",
+      "subtitle": "Secara semula jadi terdapat dalam badan"
+    }
+  },
+  "lipEnhancementStyles": {
+    "title": "Gaya Peningkatan Bibir | Memilih Penampilan yang Tepat untuk Wajah Anda",
+    "description": "Salah satu soalan yang paling biasa semasa konsultasi adalah keputusan apa yang boleh dicapai. Jawapannya bergantung pada bentuk bibir semula jadi anda, struktur wajah anda dan jumlah filler yang digunakan. Di bawah adalah gaya peningkatan bibir utama yang dilakukan di Nexus Clinic KL.",
+    "note": "Gaya yang anda pilih tidak kekal. Jika anda mencuba pendekatan volume semula jadi dengan lip filler dan mahukan lebih banyak definisi pada temu janji kemudian, pelan rawatan anda boleh berkembang untuk mencapai bibir yang terdefinisi. Doktor anda akan mengesyorkan titik permulaan yang paling sesuai berdasarkan anatomi anda semasa konsultasi.",
+    "styles": [
+      {
+        "name": "Pout Semula Jadi Klasik",
+        "bestFor": "Pesakit pertama kali, peningkatan halus",
+        "volumeNeeded": "0.5 hingga 1ml",
+        "technique": "Pengagihan sekata di kedua-dua bibir"
+      },
+      {
+        "name": "Definisi Cupid's Bow",
+        "bestFor": "Bibir atas terdefinisi, lengkungan berbentuk baik",
+        "volumeNeeded": "0.5 hingga 1ml",
+        "technique": "Suntikan disasarkan ke tiang philtrum"
+      },
+      {
+        "name": "Bibir Rusia",
+        "bestFor": "Penampilan terangkat dan berstruktur dengan ketinggian melebihi volume",
+        "volumeNeeded": "1 hingga 1.5ml",
+        "technique": "Teknik tenting menegak"
+      },
+      {
+        "name": "Bibir Berbentuk Hati",
+        "bestFor": "Volume di tengah, penampilan muda yang comel",
+        "volumeNeeded": "0.5 hingga 1ml",
+        "technique": "Fokus pusat dengan tepi meruncing"
+      },
+      {
+        "name": "Hidrasi dan Pembetulan Garis",
+        "bestFor": "Garis perokok, kedutan perioral, tekstur kering",
+        "volumeNeeded": "0.5ml",
+        "technique": "Suntikan mikro dangkal di sepanjang sempadan bibir"
+      },
+      {
+        "name": "Volumisasi Penuh",
+        "bestFor": "Peningkatan volume yang signifikan, penampilan lebih penuh",
+        "volumeNeeded": "1 hingga 1.5ml",
+        "technique": "Suntikan berlapis di seluruh badan dan sempadan bibir"
+      }
+    ],
+    "cta": {
+      "text": "Tidak Pasti Gaya Bibir Mana yang Sesuai untuk Anda",
+      "subtext": "Tempah Penilaian Percuma Hari Ini"
+    }
+  },
+  "lipFillerVsLipFlip": {
+    "title": "Lip Filler Dibandingkan dengan Lip Flip | Dua Keputusan Berbeza Dijelaskan",
+    "description": "Lip filler dan lip flip adalah dua rawatan suntikan yang sangat berbeza yang sering dikelirukan kerana kedua-duanya mempengaruhi bibir atas. Memahami perbezaannya membantu anda menempah rawatan yang tepat untuk kebimbangan sebenar anda.",
+    "comparisonTable": {
+      "factor": "Faktor",
+      "lipFiller": "Lip Filler",
+      "lipFlip": "Lip Flip (Botox)",
+      "rows": [
+        {
+          "factor": "Apa yang dilakukannya",
+          "lipFiller": "Menambah volume, bentuk dan definisi pada bibir",
+          "lipFlip": "Melegakan otot bibir atas untuk melengkungkan bibir ke luar"
+        },
+        {
+          "factor": "Perubahan volume",
+          "lipFiller": "Ya. Volume dan kontur signifikan mungkin",
+          "lipFlip": "Tidak. Mencipta penampilan bibir lebih besar tanpa menambah volume"
+        },
+        {
+          "factor": "Tempoh",
+          "lipFiller": "6 hingga 12 bulan",
+          "lipFlip": "8 hingga 12 minggu"
+        },
+        {
+          "factor": "Boleh dibalikkan",
+          "lipFiller": "Ya. Boleh larut dengan hyaluronidase",
+          "lipFlip": "Ya. Hilang secara semula jadi dari masa ke masa"
+        },
+        {
+          "factor": "Masa pemulihan",
+          "lipFiller": "Minimum. Bengkak ringan pulih dalam beberapa hari",
+          "lipFlip": "Tiada. Suntikan kecil, tiada bengkak"
+        },
+        {
+          "factor": "Terbaik untuk",
+          "lipFiller": "Bibir nipis, asimetri, kehilangan volume, definisi",
+          "lipFlip": "Senyuman gusi, lengkungan bibir atas ringan, hasil halus"
+        },
+        {
+          "factor": "Kos (2026)",
+          "lipFiller": "RM 1,800 hingga RM 3,000+ setiap sesi",
+          "lipFlip": "RM 300 hingga RM 600 setiap sesi"
+        },
+        {
+          "factor": "Ketidakselesaan",
+          "lipFiller": "Ringan dengan krim kebas yang digunakan terlebih dahulu",
+          "lipFlip": "Minimum, sangat cepat"
+        },
+        {
+          "factor": "Boleh digabungkan",
+          "lipFiller": "Ya, dengan lip flip untuk bentuk bibir atas optimum",
+          "lipFlip": "Ya, dengan filler untuk hasil lengkap"
+        }
+      ]
+    },
+    "conclusion": "Di Nexus Clinic KL, kedua-dua rawatan tersedia. Ramai pesakit dengan bibir atas nipis mendapat manfaat daripada menggabungkan filler dalam jumlah kecil dengan lip flip untuk mencapai hasil yang lebih penuh dan lebih terangkat. Doktor anda akan menasihati kombinasi mana yang paling sesuai dengan bentuk bibir spesifik dan matlamat estetik anda semasa konsultasi.",
+    "cta": {
+      "text": "Tanya Doktor Tentang Lip Filler atau Lip Flip",
+      "subtext": "Tempah Konsultasi Percuma"
+    }
+  },
+  "whoIsItFor": {
+    "title": "Pesakit yang Mendapat Keputusan Terbaik dari Lip Filler",
+    "description": "Lip filler telah muncul sebagai salah satu rawatan filler paling serba guna di Malaysia kerana pelbagai kebimbangan yang ditanganinya lebih luas daripada yang disedari kebanyakan pesakit.",
+    "items": [
+      "Bibir nipis semula jadi yang kekurangan volume atau kepenuhan",
+      "Bibir atas yang bergulung ke dalam atau hilang apabila tersenyum",
+      "Kehilangan volume bibir akibat penuaan, yang menipis dan meratakan bibir dari masa ke masa",
+      "Asimetri antara bibir atas dan bawah",
+      "Cupid's bow yang tidak terdefinisi atau sempadan bibir atas yang rata",
+      "Garis halus perioral di sekitar kawasan bibir yang menjadikan bibir kelihatan lebih tua",
+      "Pout yang kelihatan rata atau tidak terdefinisi dalam gambar",
+      "Pesakit yang mahukan peningkatan halus daripada perubahan dramatik"
+    ],
+    "suitability": "Lip filler secara amnya selamat untuk orang dewasa yang sihat yang tidak hamil atau menyusukan anak. Penilaian perubatan penuh semasa konsultasi menentukan kesesuaian untuk setiap pesakit secara individu.",
+    "combinationNote": "Pesakit yang menggabungkan lip filler dengan chin filler di Nexus Clinic KL sering melaporkan peningkatan harmoni dan proporsi wajah secara keseluruhan yang signifikan.",
+    "cta": {
+      "text": "Tempah Konsultasi Anda di Nexus Clinic KL",
+      "subtext": "Penilaian Bibir Percuma Tersedia"
+    }
+  },
+    "notSuitableFor": {
+    "title": "Tidak Sesuai Untuk",
+    "description": "Penilaian perubatan penuh semasa konsultasi menentukan kesesuaian.",
+    "items": [
+        "Wanita hamil atau menyusukan anak",
+        "Luka sejuk aktif atau jangkitan mulut",
+        "Alahan kepada asid hyaluronik atau lidokain",
+        "Keadaan autoimun tertentu"
+    ]
+    },
+  "commonMistakes": {
+    "title": "Kesalahan Lip Filler Paling Biasa di Klinik Lain di Malaysia",
+    "disclaimer": "Bahagian ini wujud kerana kami percaya pesakit berhak memahami apa yang perlu dicari ketika memilih klinik, tanpa mengira sama ada mereka memilih Nexus Clinic KL atau tidak.",
+    "mistakes": [
+      {
+        "title": "Menggunakan produk yang salah untuk tisu bibir",
+        "description": "Tidak semua filler dermal sesuai untuk bibir. Sesetengah klinik menggunakan filler struktur yang direka untuk pipi atau dagu di kawasan bibir. Produk ini terlalu kaku untuk tisu pergerakan tinggi dan menghasilkan hasil yang keras dan tidak semula jadi. Filler HA khusus bibir seperti Restylane Kysse dan Juvedenz Volbella dirumuskan untuk fleksibel dan bergerak dengan bibir sepanjang hari."
+      },
+      {
+        "title": "Pengisian berlebihan untuk memenuhi jangkaan pesakit",
+        "description": "Lebih banyak filler tidak bermakna hasil yang lebih baik. Ia bermakna lebih banyak bengkak, lebih banyak risiko dan hasil yang sering kelihatan tidak seimbang. Memulihkan volume yang hilang sambil mengekalkan pergerakan semula jadi adalah piawaian. Jumlah filler harus selalu sesuai dengan wajah, bukan trend."
+      },
+      {
+        "title": "Mengabaikan proporsi wajah semasa konsultasi",
+        "description": "Hasil lip filler yang baik bukan hanya mengenai bibir. Ia mengenai bagaimana bibir duduk dalam konteks seluruh wajah. Hidung, dagu, rahang dan struktur wajah keseluruhan semuanya mempengaruhi apa yang menjadikan bibir kelihatan seimbang berbanding berlebihan. Klinik lip filler yang melangkau penilaian wajah penuh sebelum menyuntik kehilangan langkah paling penting dalam proses."
+      },
+      {
+        "title": "Tiada rancangan untuk asimetri",
+        "description": "Kebanyakan orang mempunyai asimetri bibir semula jadi. Bibir atas dan bawah berbeza saiz. Satu sudut sedikit lebih tinggi daripada yang lain. Penginjeksi mahir merancang untuk ini dan menggunakan penempatan dan volume untuk membetulkan atau meneutralkannya. Klinik yang menyuntik volume yang sama secara simetri ke wajah asimetri sering menjadikan asimetri lebih kelihatan, bukan kurang."
+      }
+    ],
+    "conclusion": "Di Nexus Clinic KL, setiap rawatan lip filler bermula dengan penilaian wajah penuh untuk meningkatkan kecantikan semula jadi anda. Pemilihan produk, volume, penempatan dan teknik semuanya disesuaikan dengan anatomi anda sebelum suntikan tunggal dibuat.",
+    "cta": {
+      "text": "Pilih Klinik Estetik yang Merancang Sebelum Menyuntik",
+      "subtext": "Tempah di Nexus Clinic KL"
+    }
+  },
+  "whyNexus": {
+    "title": "Nexus Clinic KL | Lip Filler Pemenang Anugerah di Kuala Lumpur",
+    "description": "Terdapat lebih 69 klinik lip filler yang disenaraikan di seluruh Kuala Lumpur. Kebanyakan menawarkan produk yang serupa pada harga yang serupa. Perbezaan antara hasil yang kelihatan semula jadi dan yang tidak sepenuhnya bergantung pada latihan, pengalaman dan penilaian penginjeksi.",
+    "stats": [
+      {
+        "value": "5,000+",
+        "label": "Prosedur filler wajah diselesaikan oleh doktor estetik berlesen"
+      },
+      {
+        "value": "15+",
+        "label": "Tahun pengalaman perubatan estetik bergabung di seluruh pasukan klinikal kami"
+      }
+    ],
+    "features": [
+      "Latihan khusus dalam anatomi bibir, termasuk proporsi bibir Asia Tenggara dan corak pergerakan",
+      "Penginjeksi pemenang anugerah yang diiktiraf untuk hasil semula jadi, tepat dan selamat",
+      "Konsultasi penuh sebelum setiap rawatan termasuk penilaian proporsi wajah",
+      "Pendekatan jujur: jika kebimbangan anda lebih baik ditangani oleh lip flip atau kombinasi, anda akan diberitahu dengan jelas",
+      "Filler HA yang diluluskan KKM digunakan untuk setiap rawatan tanpa terkecuali",
+      "Sokongan selepas rawatan penuh dan susulan berstruktur termasuk sebagai standard"
+    ],
+    "citation": "Menurut Laporan Pasaran Galderma Malaysia 2023, Restylane Kysse adalah produk lip filler yang paling cepat berkembang di Malaysia pada tahun tersebut, dengan peningkatan 41% dalam jumlah preskripsi di kalangan klinik estetik. Matriks HA yang fleksibel menjadikannya sangat sesuai untuk anatomi bibir Asia Tenggara di mana mengekalkan pergerakan semula jadi adalah keutamaan.",
+    "citationSource": "Ringkasan Pasaran Galderma Malaysia, 2023",
+    "combinationNote": "Pesakit yang ingin menangani bahagian bawah wajah yang lebih luas bersama dengan bibir mereka sering meneroka jawline filler di Nexus Clinic KL untuk hasil bahagian bawah wajah yang lengkap.",
+    "cta": {
+      "text": "Tempah Temujanji Lip Filler Anda",
+      "subtext": "Penginjeksi Pemenang Anugerah di Nexus Clinic KL"
+    }
+  },
+  "procedure": {
+    "title": "Prosedur Lip Filler di Nexus Clinic KL | Langkah demi Langkah",
+    "steps": [
+      {
+        "step": "Langkah 1",
+        "title": "Penilaian Bibir dan Wajah Penuh",
+        "description": "Doktor anda meninjau bibir anda dalam konteks seluruh wajah anda. Bentuk bibir, nisbah bibir atas ke bawah, panjang philtrum, simetri wajah dan sempadan bibir semula jadi anda semuanya dicatat sebelum pelan rawatan disediakan."
+      },
+      {
+        "step": "Langkah 2",
+        "title": "Pelan Rawatan dan Pengesahan Produk",
+        "description": "Doktor mengesahkan jumlah filler, teknik yang akan digunakan dan produk yang dipilih sebelum apa-apa bermula. Anda akan tahu dengan tepat apa yang disuntik dan mengapa. Untuk kebanyakan rawatan peningkatan bibir semula jadi, 0.5 hingga 1ml mencapai hasil yang seimbang. Doktor akan mengesahkan jumlah yang tepat untuk bibir anda pada peringkat ini."
+      },
+      {
+        "step": "Langkah 3",
+        "title": "Kebas dan Suntikan",
+        "description": "Krim kebas topikal digunakan sebelum prosedur, biasanya selama 15 hingga 20 minit. Kebanyakan produk lip filler yang digunakan di Nexus Clinic KL juga mengandungi lidokain terbina untuk keselesaan tambahan. Suntikan mengambil masa 15 hingga 20 minit. Pesakit dinasihatkan untuk mengelakkan senaman berat untuk 24 jam pertama dan mengikuti arahan selepas rawatan khusus untuk hasil terbaik."
+      },
+      {
+        "step": "Langkah 4",
+        "title": "Tinjauan dan Selepas Rawatan",
+        "description": "Keputusan ditinjau sejurus selepas suntikan lip filler. Doktor anda menerangkan apa yang dijangka dalam 7 hingga 14 hari akan datang apabila filler stabil dan sebarang bengkak ringan atau lebam berkurangan. Susulan disertakan sebagai standard untuk memeriksa hasil akhir."
+      }
+    ],
+    "cta": {
+      "text": "Sedia untuk Tempah",
+      "subtext": "Dapatkan Temujanji Lip Filler Anda di Nexus Clinic KL"
+    }
+  },
+  "pricing": {
+    "title": "Harga Lip Filler di Malaysia | Harga Telus 2026 di Nexus Clinic KL",
+    "description": "Harga lip filler di Malaysia berbeza-beza bergantung pada produk yang digunakan, volume yang diperlukan dan hasil yang diinginkan. Di Nexus Clinic KL, kami menggunakan filler asid hyaluronik yang diluluskan secara klinikal seperti Juvederm, Belotero dan pilihan gred perubatan lain.",
+    "priceTable": [
+      {
+        "treatmentType": "Peningkatan halus",
+        "typicalVolume": "0.5 ml",
+        "priceRange": "RM 1,800 hingga RM 2,200"
+      },
+      {
+        "treatmentType": "Volume bibir semula jadi",
+        "typicalVolume": "1 ml",
+        "priceRange": "RM 2,200 hingga RM 2,600"
+      },
+      {
+        "treatmentType": "Augmentasi bibir penuh",
+        "typicalVolume": "1 hingga 1.5 ml",
+        "priceRange": "RM 2,500 hingga RM 3,000+"
+      },
+      {
+        "treatmentType": "Bibir + pengimbangan wajah",
+        "typicalVolume": "Disesuaikan",
+        "priceRange": "RM 3,000 hingga RM 5,000+"
+      }
+    ],
+    "note": "Semua rawatan disesuaikan berdasarkan struktur bibir dan matlamat anda. Harga akhir disahkan semasa konsultasi untuk memastikan produk dan teknik yang paling sesuai digunakan.",
+    "factors": {
+      "title": "Apa yang Mempengaruhi Kos Lip Filler di Malaysia",
+      "items": [
+        {
+          "title": "Jenama produk",
+          "description": "Restylane Kysse dan Juvedenz Volbella lebih mahal daripada pilihan HA peringkat permulaan. Perbezaan harga mencerminkan fleksibiliti, jangka hayat dan prestasi klinikal di kawasan pergerakan tinggi seperti bibir."
+        },
+        {
+          "title": "Volume yang digunakan",
+          "description": "Peningkatan halus pada 0.5ml dihargai lebih rendah daripada augmentasi penuh pada 1 hingga 1.5ml. Jumlah filler yang digunakan disahkan semasa konsultasi berdasarkan bibir dan matlamat anda."
+        },
+        {
+          "title": "Teknik",
+          "description": "Rawatan bibir Rusia dan cupid's bow memerlukan teknik dan perancangan yang lebih tepat daripada suntikan volume standard."
+        },
+        {
+          "title": "Rawatan kombinasi",
+          "description": "Menggabungkan lip filler dengan augmentasi dagu atau jawline filler ditawarkan pada kadar gabungan yang lebih cekap kos daripada temu janji berasingan."
+        }
+      ]
+    },
+    "pricingNote": "Semua harga di Nexus Clinic KL disahkan selepas konsultasi. Tiada yuran tersembunyi dan tiada tekanan untuk meneruskan dengan apa-apa yang dibincangkan semasa penilaian anda.",
+    "citation": "Menurut Laporan Statistik Global ISAPS 2024, augmentasi bibir melalui filler suntikan menduduki ranking lima teratas prosedur bukan pembedahan yang dilakukan di Asia Tenggara, dengan pesakit di Malaysia menyebut hasil semula jadi dan masa pemulihan minimum sebagai dua sebab utama memilih filler berbanding pilihan pembedahan.",
+    "citationSource": "Laporan Statistik Global ISAPS 2024",
+    "cta": {
+      "text": "Dapatkan Sebut Harga Lip Filler Peribadi Anda",
+      "subtext": "Konsultasi Percuma di Nexus Clinic KL"
+    }
+  },
+  "sideEffectsAndAftercare": {
+    "title": "Kesan Sampingan, Pemulihan dan Selepas Rawatan untuk Lip Filler di Malaysia",
+    "commonSideEffects": {
+      "title": "Kesan Sampingan Biasa",
+      "description": "Kesan sampingan biasa termasuk bengkak ringan, kemerahan dan kadang-kadang lebam di tempat suntikan. Ini adalah tindak balas normal terhadap sebarang suntikan lip filler dan biasanya berkurangan dalam beberapa hari. Kebanyakan pesakit mengalami bengkak ringan atau lebam yang pulih dalam 3 hingga 5 hari dan selesa kembali ke aktiviti normal sejurus selepas rawatan."
+    },
+    "seriousRisks": {
+      "title": "Komplikasi Serius",
+      "description": "Komplikasi serius jarang berlaku apabila prosedur dilakukan oleh doktor perubatan terlatih menggunakan produk yang diluluskan KKM. Risiko paling signifikan, oklusi vaskular, memerlukan pengurusan segera dan merupakan sebab utama pengetahuan tapak suntikan dan protokol kecemasan tidak boleh dirunding di Nexus Clinic KL."
+    },
+    "aftercareInstructions": {
+      "title": "Arahan Selepas Rawatan",
+      "items": [
+        "Elakkan menekan atau mengurut bibir sekurang-kurangnya 48 jam selepas prosedur kosmetik anda",
+        "Jauhi haba melampau termasuk sauna, bilik wap dan makanan atau minuman yang sangat panas selama 48 jam",
+        "Elakkan alkohol untuk 24 jam pertama untuk mengurangkan risiko lebam",
+        "Langkau senaman berat untuk 24 jam pertama",
+        "Jangan tempah temu janji pergigian atau rawatan muka sekurang-kurangnya dua minggu selepas lip filler",
+        "Nilai hasil akhir anda selepas 14 hari apabila bengkak telah pulih sepenuhnya"
+      ]
+    },
+    "combinationNote": "Pesakit yang mengalami kekosongan bawah mata bersama dengan kebimbangan bibir sering menggabungkan rawatan bibir mereka dengan tear trough filler di Nexus Clinic KL untuk penampilan keseluruhan yang lebih segar dan segar."
+  },
+  "faq": {
+    "title": "Soalan Lazim Mengenai Lip Filler di Malaysia",
+    "items": [
+      {
+        "question": "Berapa lama lip filler bertahan di Malaysia?",
+        "answer": "Lip filler biasanya bertahan 6 hingga 12 bulan di Malaysia. Tempoh tepat bergantung pada jenis filler yang digunakan, volume yang disuntik, metabolisme individu dan gaya hidup anda. Bibir adalah kawasan pergerakan tinggi, jadi filler cenderung dimetabolismekan sedikit lebih cepat di sini berbanding kawasan seperti pipi atau dagu. Kebanyakan pesakit menjadualkan top-up antara 6 dan 9 bulan untuk mengekalkan keputusan mereka."
+      },
+      {
+        "question": "Berapa kos lip filler di Malaysia pada tahun 2026?",
+        "answer": "Rawatan lip filler di Nexus Clinic KL biasanya bermula dari sekitar RM 1,800 untuk peningkatan halus menggunakan filler gred perubatan. Kebanyakan rawatan berkisar antara RM 2,200 hingga RM 3,000+ bergantung pada produk dan volume yang digunakan. Rawatan kombinasi dengan dagu atau pengimbangan wajah biasanya bermula dari RM 3,000 ke atas. Harga akhir disahkan semasa konsultasi berdasarkan matlamat anda dan pelan rawatan yang paling sesuai."
+      },
+      {
+        "question": "Adakah lip filler menyakitkan?",
+        "answer": "Kebanyakan pesakit menggambarkan pengalaman sebagai tekanan ringan atau sengatan kecil, bukan kesakitan yang signifikan. Krim kebas digunakan sebelum prosedur dan kebanyakan produk lip filler yang digunakan di Nexus Clinic KL mengandungi lidokain terbina untuk keselesaan tambahan. Suntikan itu sendiri mengambil masa 15 hingga 20 minit. Majoriti pesakit mendapati proses ini sangat terkawal."
+      },
+      {
+        "question": "Bolehkah keputusan lip filler dibalikkan?",
+        "answer": "Ya. Lip filler asid hyaluronik boleh larut sepenuhnya dengan hyaluronidase. Jika anda tidak berpuas hati dengan keputusan atau ingin kembali ke volume bibir semula jadi anda, filler boleh dikeluarkan sepenuhnya. Ini adalah salah satu sebab utama mengapa filler HA adalah pilihan pilihan untuk pesakit kali pertama di klinik lip filler di Malaysia."
+      },
+      {
+        "question": "Berapa jumlah filler yang tepat untuk bibir berpenampilan semula jadi?",
+        "answer": "Bagi kebanyakan pesakit yang menginginkan hasil yang halus dan berpenampilan semula jadi, 0.5 hingga 1ml lip filler mencukupi untuk meningkatkan kecantikan semula jadi anda. Peningkatan penuh biasanya memerlukan 1 hingga 1.5ml. Lebih daripada 2ml dalam satu sesi jarang diperlukan dan sering menjadi titik di mana hasil mula kelihatan tidak seimbang. Doktor anda mengesahkan jumlah yang tepat berdasarkan saiz bibir, struktur wajah dan matlamat estetik anda."
+      },
+      {
+        "question": "Berapa lama bengkak bertahan selepas lip filler?",
+        "answer": "Bengkak ringan adalah normal selepas sebarang suntikan lip filler dan biasanya berkurangan dalam 3 hingga 5 hari. Bengkak yang signifikan pulih pada hari ke-7. Keputusan akhir kelihatan sepenuhnya dalam 7 hingga 14 hari. Lebam, apabila berlaku, biasanya pudar dalam 5 hingga 7 hari. Mampatan sejuk dalam beberapa jam pertama boleh membantu mengurangkan kedua-duanya."
+      },
+      {
+        "question": "Bolehkah lip filler membetulkan asimetri dan meningkatkan bentuk bibir atas?",
+        "answer": "Ya, dalam kebanyakan kes. Asimetri bibir ringan hingga sederhana yang disebabkan oleh perkembangan semula jadi atau perubahan berkaitan usia boleh diperbaiki dengan ketara dengan penempatan filler yang tepat. Doktor menilai tahap dan corak asimetri semasa konsultasi dan menyesuaikan volume dan penempatan dengan sewajarnya. Asimetri struktur yang teruk mungkin memerlukan perancangan rawatan tambahan."
+      },
+      {
+        "question": "Bolehkah lip filler digabungkan dengan rawatan lain?",
+        "answer": "Lip filler menawarkan fleksibiliti yang signifikan apabila digabungkan dengan rawatan filler lain. Kombinasi yang paling biasa adalah lip filler dengan augmentasi dagu untuk keseimbangan wajah bawah, lip filler dengan lip flip Botox untuk bentuk bibir atas yang dipertingkatkan, dan lip filler dengan filler dermal untuk lipatan nasolabial. Doktor anda akan mengesyorkan kombinasi mana yang paling sesuai dengan matlamat anda."
+      },
+      {
+        "question": "Siapa yang tidak sesuai untuk lip filler?",
+        "answer": "Lip filler tidak sesuai untuk pesakit yang hamil atau menyusukan anak, mempunyai luka sejuk aktif atau jangkitan di sekitar mulut, mempunyai alahan yang diketahui terhadap asid hyaluronik atau lidokain, atau mempunyai keadaan autoimun tertentu. Jika anda mempunyai sejarah luka sejuk, maklumkan kepada doktor anda sebelum rawatan kerana filler kadang-kadang boleh mencetuskan suar. Ubat antivirus boleh ditetapkan sebagai langkah pencegahan."
+      },
+      {
+        "question": "Adakah lip filler mempengaruhi mencium atau makan?",
+        "answer": "Setelah filler stabil sepenuhnya selepas 7 hingga 14 hari, bibir terasa lembut dan semula jadi. Tiada kekakuan, kekerasan atau perubahan sensasi yang mempengaruhi fungsi harian. Lip filler mengandungi asid hyaluronik yang berintegrasi dengan tisu bibir dan bergerak secara semula jadi dengannya. Mencium, makan dan bercakap semuanya tidak terjejas setelah bengkak awal pulih."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Tempah Lip Filler Pakar di Kuala Lumpur di Nexus Clinic KL",
+    "description": "Satu konsultasi sudah cukup untuk memahami dengan tepat apa yang boleh dilakukan oleh lip filler untuk bibir anda, gaya mana yang sesuai dengan wajah anda dan hasil apa yang realistik untuk anatomi anda. Tiada tekanan. Tiada upselling. Hanya penilaian klinikal yang jujur, pelan yang jelas dan harga telus sebelum anda komited pada apa-apa.",
+    "stats": "Lebih 5,000 prosedur filler. Penginjeksi pemenang anugerah. Keputusan cantik yang menjadikan anda kelihatan seperti pada hari terbaik anda.",
+    "cta": {
+      "text": "Tempah Konsultasi Percuma Anda Sekarang",
+      "subtext": "Slot Terhad Tersedia Minggu Ini"
+    },
+    "exploreMore": "Terokai rangkaian penuh rawatan filler kami di Malaysia termasuk cheek filler, nose filler dan pelan filler wajah penuh di Nexus Clinic KL."
+  }
+}

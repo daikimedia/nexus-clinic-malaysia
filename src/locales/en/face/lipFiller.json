@@ -1,1 +1,437 @@
-{}
+{
+  "hero": {
+    "badge": "Nexus Clinic Kuala Lumpur",
+    "title": "Expert Lip Filler in Malaysia for Natural Volume and a Beautiful, Defined Pout",
+    "description": "Lips that look thin on camera. An upper lip that disappears when you smile. A cupid's bow that has lost its definition over time. These are real concerns and they have a precise, clinical solution.",
+    "trustItems": [
+      { "icon": "Award", "text": "Award-winning injectors and aesthetic doctors" },
+      { "icon": "Syringe", "text": "Latest hyaluronic acid dermal filler techniques" },
+      { "icon": "Heart", "text": "Natural, soft result that complements your unique facial features" },
+      { "icon": "Shield", "text": "Over 5,000 filler procedures performed" }
+    ],
+    "imageAlt": "Expert lip filler treatment at Nexus Clinic KL showing natural volume and defined pout",
+    "floatingCard": {
+      "text": "Trusted by clients in",
+      "location": "Kuala Lumpur, Malaysia"
+    }
+  },
+  "treatmentOverview": {
+    "title": "Lip Filler Treatment Overview",
+    "description": "At Nexus Clinic Kuala Lumpur, our approach to lip enhancement is built around anatomy, balance and restraint, not trend-chasing or maximum volume. Nothing overdone. Nothing that announces itself. Just lips that look like yours, only better.",
+    "stats": {
+      "procedures": "5,000+",
+      "proceduresLabel": "Filler Procedures Performed",
+      "experience": "15+",
+      "experienceLabel": "Years Combined Experience"
+    },
+    "overviewTable": {
+      "treatment": {
+        "label": "Treatment",
+        "value": "Hyaluronic acid lip filler injection for volume, shape and definition"
+      },
+      "sessionTime": {
+        "label": "Session Time",
+        "value": "20 to 30 minutes"
+      },
+      "downtime": {
+        "label": "Downtime",
+        "value": "Minimal. Most patients return to daily activities immediately"
+      },
+      "results": {
+        "label": "Results",
+        "value": "Visible same day. Fully settled within 7 to 14 days"
+      },
+      "longevity": {
+        "label": "Longevity",
+        "value": "6 to 12 months depending on product and individual metabolism"
+      },
+      "reversible": {
+        "label": "Reversible",
+        "value": "Yes. HA lip fillers are fully dissolvable with hyaluronidase"
+      },
+      "anaesthesia": {
+        "label": "Anaesthesia",
+        "value": "Topical numbing cream plus built-in lidocaine in most products"
+      },
+      "suitableFor": {
+        "label": "Suitable For",
+        "value": "Thin lips, asymmetry, volume loss, Cupid's bow definition, pout enhancement"
+      }
+    },
+    "cta": {
+      "text": "Speak to a Doctor About Your Lip Goals",
+      "subtext": "Free Assessment at Nexus Clinic KL"
+    }
+  },
+  "whatIsLipFiller": {
+    "title": "Lip Filler Injection | Volume, Shape and Natural Movement in One Treatment",
+    "description": "Lip filler is an injectable treatment designed to enhance lip size, shape and hydration using hyaluronic acid, a substance naturally found in the body. HA fillers contain a gel that attracts and retains moisture, integrating smoothly with lip tissue to add volume while maintaining natural movement and expression, enhancing your natural beauty.",
+    "process": "The injection process takes 20 to 30 minutes. Results are visible the same day. Over the following 7 to 14 days, the filler settles fully as any mild swelling or bruising from the procedure resolves. What most patients notice first is not just the volume but how soft and natural the lips feel once the filler has integrated. There is no hardness. No unnatural stiffness. The lips still move, feel and function exactly as before.",
+    "products": "Many fillers are specifically formulated for lip tissue. Products like Restylane Kysse and Juvedenz Volbella are engineered for flexibility, stretch and colour vibrancy, addressing the specific demands of a high-movement area like the lips. The type of filler used matters significantly, and it is one of the first things your doctor will confirm during your consultation.",
+    "cta": {
+      "text": "Find Out the Right Filler for Your Lips",
+      "subtext": "Book a Consultation at Nexus Clinic"
+    },
+    "imageAlt": "Lip filler injection procedure at Nexus Clinic KL",
+    "floatingCard": {
+      "title": "Hyaluronic Acid",
+      "subtitle": "Naturally found in the body"
+    }
+  },
+  "lipEnhancementStyles": {
+    "title": "Lip Enhancement Styles | Choosing the Right Look for Your Face",
+    "description": "One of the most common questions at consultation is what kind of result is achievable. The answer depends on your natural lip shape, your facial structure and the amount of filler used. Below are the main lip enhancement styles performed at Nexus Clinic KL.",
+    "note": "The style you choose is not permanent. If you try a natural volume approach with lip fillers and want more definition at a later appointment, your treatment plan can evolve to achieve defined lips. Your doctor will recommend the most appropriate starting point based on your anatomy at consultation.",
+    "styles": [
+      {
+        "name": "Classic Natural Pout",
+        "bestFor": "First-time patients, subtle enhancement",
+        "volumeNeeded": "0.5 to 1ml",
+        "technique": "Even distribution across both lips"
+      },
+      {
+        "name": "Cupid's Bow Definition",
+        "bestFor": "Defined upper lip, well-shaped arch",
+        "volumeNeeded": "0.5 to 1ml",
+        "technique": "Targeted injection to the philtrum columns"
+      },
+      {
+        "name": "Russian Lips",
+        "bestFor": "Lifted, structured look with height over volume",
+        "volumeNeeded": "1 to 1.5ml",
+        "technique": "Vertical tenting technique"
+      },
+      {
+        "name": "Heart-Shaped Lips",
+        "bestFor": "Volume at the centre, cute youthful appearance",
+        "volumeNeeded": "0.5 to 1ml",
+        "technique": "Central focus with tapered edges"
+      },
+      {
+        "name": "Hydration and Line Fix",
+        "bestFor": "Smokers lines, perioral wrinkles, dry texture",
+        "volumeNeeded": "0.5ml",
+        "technique": "Superficial micro-injection along lip border"
+      },
+      {
+        "name": "Full Volumising",
+        "bestFor": "Significant volume increase, fuller appearance",
+        "volumeNeeded": "1 to 1.5ml",
+        "technique": "Layered injection across lip body and border"
+      }
+    ],
+    "cta": {
+      "text": "Not Sure Which Lip Style Suits You",
+      "subtext": "Book a Free Assessment Today"
+    }
+  },
+  "lipFillerVsLipFlip": {
+    "title": "Lip Filler Compared to a Lip Flip | Two Different Outcomes Explained",
+    "description": "Lip filler and a lip flip are two completely different injectable treatments that are often confused because both affect the upper lip. Understanding the difference helps you book the right treatment for your actual concern.",
+    "comparisonTable": {
+      "factor": "Factor",
+      "lipFiller": "Lip Filler",
+      "lipFlip": "Lip Flip (Botox)",
+      "rows": [
+        {
+          "factor": "What it does",
+          "lipFiller": "Adds volume, shape and definition to the lips",
+          "lipFlip": "Relaxes the upper lip muscle to curl the lip outward"
+        },
+        {
+          "factor": "Volume change",
+          "lipFiller": "Yes. Significant volume and contouring possible",
+          "lipFlip": "No. Creates the appearance of more lip without adding volume"
+        },
+        {
+          "factor": "Duration",
+          "lipFiller": "6 to 12 months",
+          "lipFlip": "8 to 12 weeks"
+        },
+        {
+          "factor": "Reversible",
+          "lipFiller": "Yes. Dissolvable with hyaluronidase",
+          "lipFlip": "Yes. Naturally wears off over time"
+        },
+        {
+          "factor": "Downtime",
+          "lipFiller": "Minimal. Mild swelling resolves in a few days",
+          "lipFlip": "None. Tiny injection, no swelling"
+        },
+        {
+          "factor": "Best for",
+          "lipFiller": "Thin lips, asymmetry, volume loss, definition",
+          "lipFlip": "Gummy smile, slight upper lip curl, subtle result"
+        },
+        {
+          "factor": "Cost (2026)",
+          "lipFiller": "RM 1,800 to RM 3,000+ per session",
+          "lipFlip": "RM 300 to RM 600 per session"
+        },
+        {
+          "factor": "Discomfort",
+          "lipFiller": "Mild with numbing cream applied beforehand",
+          "lipFlip": "Minimal, very quick"
+        },
+        {
+          "factor": "Can be combined",
+          "lipFiller": "Yes, with lip flip for optimal upper lip shape",
+          "lipFlip": "Yes, with filler for a complete result"
+        }
+      ]
+    },
+    "conclusion": "At Nexus Clinic KL, both treatments are available. Many patients with a thin upper lip benefit from combining a small amount of filler with a lip flip to achieve a fuller, more lifted result. Your doctor will advise which combination best addresses your specific lip shape and aesthetic goals at consultation.",
+    "cta": {
+      "text": "Ask a Doctor About Lip Filler or Lip Flip",
+      "subtext": "Book a Free Consultation"
+    }
+  },
+  "whoIsItFor": {
+    "title": "Patients Who Get the Best Results from Lip Filler",
+    "description": "Lip fillers have emerged as one of the most versatile filler treatments in Malaysia because the range of concerns they address is wider than most patients realise.",
+    "items": [
+      "Naturally thin lips that lack volume or fullness",
+      "Upper lip that rolls inward or disappears when smiling",
+      "Loss of lip volume due to aging, which thins and flattens the lips over time",
+      "Asymmetry between the upper and lower lip",
+      "An undefined cupid's bow or flat upper lip border",
+      "Perioral fine lines around the lip area that make lips look older",
+      "A pout that appears flat or undefined in photographs",
+      "Patients wanting a subtle enhancement rather than a dramatic change"
+    ],
+    "suitability": "Lip fillers are generally safe for adults in good health who are not pregnant or breastfeeding. A full medical assessment at consultation determines suitability for each patient individually.",
+    "combinationNote": "Patients who combine lip filler with chin filler at Nexus Clinic KL often report significantly improved overall facial harmony and proportion.",
+    "cta": {
+      "text": "Book Your Consultation at Nexus Clinic KL",
+      "subtext": "Free Lip Assessment Available"
+    }
+  },
+  "notSuitableFor": {
+    "title": "Not Suitable For",
+    "description": "A full medical assessment at consultation determines suitability.",
+    "items": [
+      "Pregnant or breastfeeding women",
+      "Active cold sores or mouth infections",
+      "Allergy to hyaluronic acid or lidocaine",
+      "Certain autoimmune conditions"
+    ]
+  },
+  "commonMistakes": {
+    "title": "The Most Common Lip Filler Mistakes at Other Clinics in Malaysia",
+    "disclaimer": "This section exists because we believe patients deserve to understand what to look for when choosing a clinic, regardless of whether they choose Nexus Clinic KL or not.",
+    "mistakes": [
+      {
+        "title": "Using the wrong product for lip tissue",
+        "description": "Not all dermal fillers are suitable for lips. Some clinics use structural fillers designed for cheeks or chins in the lip area. These products are too firm for high-movement tissue and produce a hard, unnatural result. Lip-specific HA fillers like Restylane Kysse and Juvedenz Volbella are formulated to flex and move with the lips throughout the day."
+      },
+      {
+        "title": "Overfilling to meet patient expectations",
+        "description": "More filler does not mean a better result. It means more swelling, more risk and a result that often reads as disproportionate. Restoring lost volume while maintaining natural movement is the standard. The amount of filler should always match the face, not a trend."
+      },
+      {
+        "title": "Ignoring facial proportion during the consultation",
+        "description": "A good lip filler result is not just about the lips. It is about how the lips sit within the context of the whole face. The nose, chin, jawline and overall facial structure all affect what makes lips look proportioned versus overdone. Lip filler clinics that skip a full facial assessment before injecting are missing the most important step in the process."
+      },
+      {
+        "title": "No plan for asymmetry",
+        "description": "Most people have a natural lip asymmetry. The upper and lower lip differ in size. One corner sits slightly higher than the other. A skilled injector plans for this and uses placement and volume to correct or neutralise it. Clinics that inject the same volume symmetrically into an asymmetric face often make the asymmetry more visible, not less."
+      }
+    ],
+    "conclusion": "At Nexus Clinic KL, every lip filler treatment begins with a full facial assessment to enhance your natural beauty. Product selection, volume, placement and technique are all tailored to your anatomy before a single injection is made.",
+    "cta": {
+      "text": "Choose an Aesthetic Clinic That Plans Before It Injects",
+      "subtext": "Book at Nexus Clinic KL"
+    }
+  },
+  "whyNexus": {
+    "title": "Nexus Clinic KL | Award-Winning Lip Filler in Kuala Lumpur",
+    "description": "There are over 69 lip filler clinics listed across Kuala Lumpur. Most offer similar products at similar price points. The difference between a result that looks natural and one that does not comes down entirely to the injector's training, experience and judgment.",
+    "stats": [
+      {
+        "value": "5,000+",
+        "label": "Facial filler procedures completed by licensed aesthetic doctors"
+      },
+      {
+        "value": "15+",
+        "label": "Years of combined aesthetic medicine experience across our clinical team"
+      }
+    ],
+    "features": [
+      "Specialist training in lip anatomy, including Southeast Asian lip proportions and movement patterns",
+      "Award-winning injectors recognised for natural, precise and safe outcomes",
+      "Full consultation before every treatment including facial proportion assessment",
+      "Honest approach: if your concern is better addressed by a lip flip or a combination, you will be told clearly",
+      "MOH-approved HA fillers used for every treatment without exception",
+      "Full aftercare support and structured follow-up included as standard"
+    ],
+    "citation": "According to Galderma Malaysia's 2023 Market Report, Restylane Kysse was the fastest-growing lip filler product in Malaysia that year, with a 41% increase in prescription volume among aesthetic clinics. Its flexible HA matrix makes it particularly suited for Southeast Asian lip anatomy where maintaining natural movement is a priority.",
+    "citationSource": "Galderma Malaysia Market Summary, 2023",
+    "combinationNote": "Patients who want to address the broader lower face alongside their lips often explore jawline filler at Nexus Clinic KL for a complete lower face result.",
+    "cta": {
+      "text": "Book Your Lip Filler Appointment",
+      "subtext": "Award-Winning Injectors at Nexus Clinic KL"
+    }
+  },
+  "procedure": {
+    "title": "The Lip Filler Procedure at Nexus Clinic KL | Step by Step",
+    "steps": [
+      {
+        "step": "Step 1",
+        "title": "Full Lip and Facial Assessment",
+        "description": "Your doctor reviews your lips within the context of your whole face. Lip shape, upper lip to lower lip ratio, philtrum length, facial symmetry and your natural lip border are all noted before the treatment plan is drawn up."
+      },
+      {
+        "step": "Step 2",
+        "title": "Treatment Plan and Product Confirmation",
+        "description": "The doctor confirms the amount of filler, the technique to be used and the product selected before anything begins. You will know exactly what is being injected and why. For most natural lip enhancement treatments, 0.5 to 1ml achieves a balanced result. The doctor will confirm the right amount for your lips at this stage."
+      },
+      {
+        "step": "Step 3",
+        "title": "Numbing and Injection",
+        "description": "Topical numbing cream is applied prior to the procedure, typically for 15 to 20 minutes. Most lip filler products used at Nexus Clinic KL also contain built-in lidocaine for additional comfort. The injection takes 15 to 20 minutes. Patients are advised to avoid strenuous exercise for the first 24 hours and to follow specific aftercare instructions for the best result."
+      },
+      {
+        "step": "Step 4",
+        "title": "Review and Aftercare",
+        "description": "Results are reviewed immediately after the lip filler injection. Your doctor explains what to expect over the next 7 to 14 days as the filler settles and any mild swelling or bruising subsides. A follow-up is included as standard to check on the final result."
+      }
+    ],
+    "cta": {
+      "text": "Ready to Book",
+      "subtext": "Secure Your Lip Filler Appointment at Nexus Clinic KL"
+    }
+  },
+  "pricing": {
+    "title": "Lip Filler Prices in Malaysia | Transparent 2026 Pricing at Nexus Clinic KL",
+    "description": "Lip filler pricing in Malaysia varies depending on the product used, volume required and the desired outcome. At Nexus Clinic KL, we use clinically approved hyaluronic acid fillers such as Juvederm, Belotero and other medical-grade options.",
+    "priceTable": [
+      {
+        "treatmentType": "Subtle enhancement",
+        "typicalVolume": "0.5 ml",
+        "priceRange": "RM 1,800 to RM 2,200"
+      },
+      {
+        "treatmentType": "Natural lip volume",
+        "typicalVolume": "1 ml",
+        "priceRange": "RM 2,200 to RM 2,600"
+      },
+      {
+        "treatmentType": "Full lip augmentation",
+        "typicalVolume": "1 to 1.5 ml",
+        "priceRange": "RM 2,500 to RM 3,000+"
+      },
+      {
+        "treatmentType": "Lip + facial balancing",
+        "typicalVolume": "Customised",
+        "priceRange": "RM 3,000 to RM 5,000+"
+      }
+    ],
+    "note": "All treatments are customised based on your lip structure and goals. Final pricing is confirmed during consultation to ensure the most suitable product and technique is used.",
+    "factors": {
+      "title": "What Affects the Cost of Lip Filler in Malaysia",
+      "items": [
+        {
+          "title": "Product brand",
+          "description": "Restylane Kysse and Juvedenz Volbella cost more than entry-level HA options. The price difference reflects flexibility, longevity and clinical performance in a high-movement area like the lips."
+        },
+        {
+          "title": "Volume used",
+          "description": "Subtle enhancement at 0.5ml is priced lower than a full augmentation at 1 to 1.5ml. The amount of filler used is confirmed at consultation based on your lips and your goal."
+        },
+        {
+          "title": "Technique",
+          "description": "Russian lips and Cupid's bow treatments require more precise technique and planning than a standard volume injection."
+        },
+        {
+          "title": "Combination treatments",
+          "description": "Combining lip filler with chin augmentation or jawline filler is offered at a combined rate that is more cost-efficient than separate appointments."
+        }
+      ]
+    },
+    "pricingNote": "All pricing at Nexus Clinic KL is confirmed after consultation. There are no hidden fees and no pressure to proceed with anything discussed during your assessment.",
+    "citation": "According to the ISAPS 2024 Global Statistics Report, lip augmentation via injectable filler ranked among the top five non-surgical procedures performed in Southeast Asia, with patients in Malaysia citing natural-looking results and minimal downtime as the top two reasons for choosing filler over surgical options.",
+    "citationSource": "ISAPS Global Statistics Report 2024",
+    "cta": {
+      "text": "Get Your Personalised Lip Filler Quote",
+      "subtext": "Free Consultation at Nexus Clinic KL"
+    }
+  },
+  "sideEffectsAndAftercare": {
+    "title": "Side Effects, Recovery and Aftercare for Lip Filler in Malaysia",
+    "commonSideEffects": {
+      "title": "Common Side Effects",
+      "description": "Common side effects include mild swelling, redness and occasionally bruising at the injection site. These are normal responses to any lip filler injection and typically subside within a few days. Most patients experience mild swelling or bruising that resolves within 3 to 5 days and are comfortable returning to normal activities immediately after treatment."
+    },
+    "seriousRisks": {
+      "title": "Serious Complications",
+      "description": "Serious complications are rare when the procedure is performed by a trained medical doctor using MOH-approved products. The most significant risk, vascular occlusion, requires immediate management and is the primary reason injection site knowledge and emergency protocols are non-negotiable at Nexus Clinic KL."
+    },
+    "aftercareInstructions": {
+      "title": "Aftercare Instructions",
+      "items": [
+        "Avoid pressing or massaging the lips for at least 48 hours after your cosmetic procedure to enhance your natural beauty.",
+        "Stay away from extreme heat including saunas, steam rooms and very hot food or drinks for 48 hours",
+        "Avoid alcohol for the first 24 hours to reduce bruising risk",
+        "Skip strenuous exercise for the first 24 hours",
+        "Do not book dental appointments or facial treatments for at least two weeks after lip filler",
+        "Assess your final result after 14 days when swelling has fully resolved"
+      ]
+    },
+    "combinationNote": "Patients who experience under-eye hollowing alongside lip concerns often combine their lip treatment with tear trough filler at Nexus Clinic KL for a more rested, refreshed overall appearance."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions About Lip Filler in Malaysia",
+    "items": [
+      {
+        "question": "How long does lip filler last in Malaysia?",
+        "answer": "Lip filler typically lasts 6 to 12 months in Malaysia. The exact duration depends on the type of filler used, the volume injected, your individual metabolism and your lifestyle. The lips are a high-movement area, so filler tends to metabolise slightly faster here than in areas like the cheeks or chin. Most patients schedule a top-up between 6 and 9 months to maintain their result."
+      },
+      {
+        "question": "How much does lip filler cost in Malaysia in 2026?",
+        "answer": "Lip filler treatments at Nexus Clinic KL typically start from around RM 1,800 for subtle enhancement using medical-grade fillers. Most treatments range between RM 2,200 to RM 3,000+ depending on the product and volume used. Combination treatments with chin or facial balancing generally start from RM 3,000 and above. Final pricing is confirmed during consultation based on your goals and the most suitable treatment plan."
+      },
+      {
+        "question": "Is lip filler painful?",
+        "answer": "Most patients describe the experience as mild pressure or a slight sting, not significant pain. Numbing cream is applied before the procedure and most lip filler products used at Nexus Clinic KL contain built-in lidocaine for additional comfort. The injection itself takes 15 to 20 minutes. The majority of patients find the process very manageable."
+      },
+      {
+        "question": "Can lip filler results be reversed?",
+        "answer": "Yes. Hyaluronic acid lip fillers are fully dissolvable with hyaluronidase. If you are unhappy with the result or want to return to your natural lip volume, the filler can be completely removed. This is one of the key reasons HA fillers are the preferred choice for first-time patients across lip filler clinics in Malaysia."
+      },
+      {
+        "question": "How much filler is the right amount for natural-looking lips?",
+        "answer": "For most patients wanting a subtle, natural-looking result, 0.5 to 1ml of lip filler is sufficient to enhance your natural beauty. Fuller enhancement typically requires 1 to 1.5ml. More than 2ml in a single session is rarely needed and often the point where results start to look disproportionate. Your doctor confirms the right amount based on your lip size, facial structure and aesthetic goals."
+      },
+      {
+        "question": "How long does the swelling last after lip filler?",
+        "answer": "Mild swelling is normal after any lip filler injection and typically subsides within 3 to 5 days. Significant swelling resolves by day 7. The final result is fully visible within 7 to 14 days. Bruising, when it occurs, usually fades within 5 to 7 days. Cold compress in the first few hours can help reduce both."
+      },
+      {
+        "question": "Can lip fillers fix asymmetry and enhance the shape of the upper lip?",
+        "answer": "Yes, in most cases. Mild to moderate lip asymmetry caused by natural development or age-related changes can be significantly improved with precise filler placement. The doctor assesses the degree and pattern of asymmetry at consultation and adjusts volume and placement accordingly. Severe structural asymmetry may require additional treatment planning."
+      },
+      {
+        "question": "Can lip filler be combined with other treatments?",
+        "answer": "Lip fillers offer significant flexibility when combined with other filler treatments. The most common combinations are lip filler with chin augmentation for lower face balance, lip filler with a Botox lip flip for enhanced upper lip shape, and lip filler with dermal filler for nasolabial folds. Your doctor will recommend which combination best serves your goals."
+      },
+      {
+        "question": "Who is not suitable for lip filler?",
+        "answer": "Lip filler is not suitable for patients who are pregnant or breastfeeding, have an active cold sore or infection around the mouth, have a known allergy to hyaluronic acid or lidocaine, or have certain autoimmune conditions. If you have a history of cold sores, inform your doctor before treatment as filler can occasionally trigger a flare-up. Antiviral medication can be prescribed as a preventative measure."
+      },
+      {
+        "question": "Do lip fillers affect kissing or eating?",
+        "answer": "Once the filler has fully settled after 7 to 14 days, the lips feel soft and natural. There is no stiffness, hardness or change in sensation that affects everyday function. Lip fillers contain hyaluronic acid that integrates with the lip tissue and moves naturally with it. Kissing, eating and speaking are all unaffected once the initial swelling has resolved."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Book Expert Lip Filler in Kuala Lumpur at Nexus Clinic KL",
+    "description": "A single consultation is all it takes to understand exactly what lip filler can do for your lips, which style suits your face and what result is realistic for your anatomy. No pressure. No upselling. Just an honest clinical assessment, a clear plan and transparent pricing before you commit to anything.",
+    "stats": "Over 5,000 filler procedures. Award-winning injectors. Beautiful results that look like you on your best day.",
+    "cta": {
+      "text": "Book Your Free Consultation Now",
+      "subtext": "Limited Slots Available This Week"
+    },
+    "exploreMore": "Explore our full range of filler treatments in Malaysia including cheek filler, nose filler and full facial filler plans at Nexus Clinic KL."
+  }
+}

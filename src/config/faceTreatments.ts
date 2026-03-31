@@ -9,14 +9,14 @@ export const faceTreatmentsMetadata: TreatmentMetadata[] = [
   {
     slug: 'dermal-filler-malaysia',
     component: 'DermalFiller',
-    title: 'Dermal Filler Malaysia | Face & Lip Fillers KL | Nexus Clinic',
-    description: 'Premium dermal filler treatment in Kuala Lumpur for lips, chin, jawline & under eyes. Safe, natural-looking results by experienced aesthetic doctors. Book now.',
+    title: 'Best Dermal Fillers Malaysia | Effective Treatment With Award Winning Doctors at Nexus Clinic Kuala Lumpur',
+    description: 'Trusted results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver expert dermal filler in Kuala Lumpur. Natural volume, sharper contours, zero surgery. Book your free consultation today.',
   },
   {
     slug: 'lip-filler-malaysia',
     component: 'LipFiller',
-    title: 'Lip Filler Malaysia | Natural Lip Enhancement KL | Nexus Clinic',
-    description: 'Enhance volume & shape with premium lip filler in Kuala Lumpur. Safe, natural results by experienced aesthetic doctors. Book your consultation today.',
+    title: 'Expert Lip Filler in Malaysia for Fuller, Defined Lips | Nexus Clinic KL',
+    description: 'Instant, beautiful results. Award-winning injectors and aesthetic doctors at Nexus Clinic KL deliver natural lip filler in Malaysia. Fuller lips, defined pout, zero surgery. Book your free consultation in Kuala Lumpur today.',
   },
   {
     slug: 'chin-filler-malaysia',
