@@ -143,6 +143,13 @@ const categoryLabels: Record<string, { key: string; fallback: string }> = {
 
 type SearchResult = { label: string; href: string; category: string };
 
+const getCategoryPath = (category: string): string => {
+  const mapping: Record<string, string> = {
+    weightLoss: 'weight-loss',
+  };
+  return mapping[category] || category;
+};
+
 const buildSearchIndex = (getText: (key: string, fallback: string) => string): SearchResult[] => {
   const results: SearchResult[] = [];
   navItems.forEach((item) => {
@@ -151,7 +158,7 @@ const buildSearchIndex = (getText: (key: string, fallback: string) => string): S
         categoryData.items.forEach((subItem: { key: string; fallback: string }) => {
           results.push({
             label: getText(subItem.key, subItem.fallback),
-            href: `/${category}/${subItem.fallback}/`,
+            href: `/${getCategoryPath(category)}/${subItem.fallback}/`,
             category: category,
           });
         });
@@ -777,7 +784,7 @@ const Navbar = ({ locale }: { locale?: string }) => {
                                         (subItem: { key: string; fallback: string }, idx: number) => (
                                           <li key={idx}>
                                             <motion.a
-                                              href={getNavHref(`/${category}/${subItem.fallback}/`)}
+                                              href={getNavHref(`/${getCategoryPath(category)}/${subItem.fallback}/`)}
                                               whileHover={{ x: 4 }}
                                               className="group/item flex items-center gap-2 text-taupe hover:text-wine text-sm py-1.5 transition-all duration-200"
                                             >
@@ -1088,7 +1095,7 @@ const Navbar = ({ locale }: { locale?: string }) => {
                                             (subItem: { key: string; fallback: string }, idx: number) => (
                                               <motion.a
                                                 key={idx}
-                                                href={getNavHref(`/${category}/${subItem.fallback}/`)}
+                                                href={getNavHref(`/${getCategoryPath(category)}/${subItem.fallback}/`)}
                                                 initial={{ opacity: 0, x: -10 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{
