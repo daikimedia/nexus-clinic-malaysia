@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import {
   Shield,
-  Droplets,
-  Thermometer,
   AlertCircle,
   CheckCircle2,
   XCircle,
@@ -13,33 +11,15 @@ import {
   Brain,
   Activity,
   ChevronRight,
-  Salad,
   Phone,
-  Search,
-  Scale as ScaleIcon,
-  Apple as AppleIcon,
-  Stethoscope as StethoscopeIcon,
-  Sparkles as SparklesIcon,
-  FileText as FileTextIcon,
-  Info as InfoIcon,
-  AlertCircle as AlertCircleIcon,
-  XCircle as XCircleIcon,
-  HelpCircle as HelpCircleIcon,
-  Phone as PhoneIcon,
-  Mail as MailIcon,
-  MessageCircle as MessageCircleIcon,
-  Send as SendIcon,
   Heart as HeartIcon,
-  Bookmark as BookmarkIcon,
-  Users as UsersIcon,
-  CreditCard as CreditCardIcon,
-  Wallet as WalletIcon,
-  Receipt as ReceiptIcon,
-  ShoppingBag as ShoppingBagIcon,
-  Package as PackageIcon,
-  FileText as FileTextIcon2,
   Pill,
   Award,
+  MapPin,
+  Clock,
+  Syringe,
+  Stethoscope,
+  Scale as ScaleIcon,
 } from "lucide-react";
 import {
   staggerContainer,
@@ -73,9 +53,53 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
       after: "/images/B&A-w/B&A-GLP3.webp",
     },
   ];
+
+  const faqs = [
+    {
+      q: "How does GLP-1 therapy actually reduce appetite and support weight loss?",
+      a: "GLP-1 therapy amplifies the body's fullness signals, slows stomach emptying, supports insulin release when glucose is high, and reduces the constant food noise that makes calorie control difficult. Patients usually feel satisfied with smaller meals and experience fewer cravings between meals.",
+    },
+    {
+      q: "How long does it take to see results on a GLP-1 programme?",
+      a: "Most patients notice reduced appetite and early weight change within the first few weeks. Clinically meaningful loss of more than 5% of body weight is often seen within 3 to 6 months at therapeutic doses, while full programme benefits usually build over 12 months.",
+    },
+    {
+      q: "Ozempic vs Wegovy: what is the difference?",
+      a: "Both contain semaglutide, but Ozempic is mainly positioned for type 2 diabetes at doses up to 1mg weekly, while Wegovy is specifically designed for chronic weight management at doses up to 2.4mg weekly and usually produces stronger appetite suppression and greater weight loss.",
+    },
+    {
+      q: "Are GLP-1 injections safe for long-term use?",
+      a: "Yes, long-term GLP-1 use is generally appropriate under medical supervision with regular blood tests, blood pressure monitoring, review of side effects, and treatment-plan adjustments when needed.",
+    },
+    {
+      q: "GLP-1 or Duromine: which is right for my situation?",
+      a: "Duromine is a short-term appetite suppressant that works quickly but is limited to fixed cycles. GLP-1 programmes are longer-term, produce greater overall metabolic benefit, and are often better for patients with diabetes, obesity, or cardiovascular risk factors.",
+    },
+    {
+      q: "Can I take GLP-1 injections if I have type 2 diabetes alongside obesity?",
+      a: "Yes. This is one of the strongest indications for GLP-1 prescribing. Semaglutide and tirzepatide can improve blood sugar control and support weight loss at the same time, although insulin or sulphonylurea doses may need adjustment during treatment.",
+    },
+    {
+      q: "What are the main contraindications for GLP-1 prescribing in Malaysia?",
+      a: "Patients with a personal or family history of medullary thyroid carcinoma or MEN2 should not use GLP-1 therapy. Pregnancy and breastfeeding are absolute contraindications, and patients with pancreatitis history, severe renal impairment, major gastrointestinal conditions, or active eating disorders need careful assessment.",
+    },
+    {
+      q: "How is the injection administered and is it painful?",
+      a: "GLP-1 injections are subcutaneous injections given under the skin, usually in the abdomen, thigh, or upper arm. They use fine-gauge pre-filled pens and most patients describe them as only a small pinch. Injection training is provided before self-administration at home.",
+    },
+    {
+      q: "Saxenda vs Ozempic vs Mounjaro: which should I start with?",
+      a: "That depends on your clinical profile, your weight goal, your diabetes status, convenience preference, and budget. Saxenda is daily, while Ozempic and Mounjaro are weekly. Tirzepatide usually delivers the strongest average weight loss, while semaglutide remains a highly established entry point.",
+    },
+    {
+      q: "How much does a GLP-1 programme cost in Malaysia?",
+      a: "Pricing depends on the medication, dose, and level of clinical support. At Nexus Clinic KL, indicative 2026 monthly ranges run from around RM 600 to RM 1,800 depending on the specific programme, with comprehensive supported packages going higher.",
+    },
+  ];
+
   return (
     <div className="bg-light font-inter overflow-x-hidden">
-      {/* Hero Section - All content preserved exactly */}
+      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-cream via-light to-rose/10" />
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
@@ -88,20 +112,25 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                   whileInView="visible"
                   className="bg-wine/10 text-wine px-4 py-2 rounded-full text-sm font-medium"
                 >
-                  Nexus Clinic Kuala Lumpur
+                  Doctor-Led GLP-1 Injection Programme at Nexus Clinic KL
                 </motion.span>
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-brown leading-tight">
-                Quiet the cravings,{" "}
-                <span className="text-wine">not your lifestyle</span>
+                GLP-1 Injection Programme
+                <span className="text-wine block mt-2">in Malaysia</span>
               </h1>
 
               <p className="text-xl text-taupe leading-relaxed max-w-xl">
-                A doctor-monitored GLP-1 weight loss programme in Kuala Lumpur
-                that helps you feel fuller, eat less, and lose weight steadily.
-                Built around real medical screening, safe dosing, and habits you
-                can keep.
+                A personalised GLP-1 weight loss and appetite-control programme
+                in Kuala Lumpur using clinically proven injectable therapy with
+                proper doctor screening, dose titration, and monthly follow-up.
+              </p>
+
+              <p className="text-brown/80 max-w-xl">
+                At Nexus Clinic KL, this is not a one-off prescription. It is a
+                structured medical programme built around your metabolic health,
+                diabetes status if relevant, weight history, and real lifestyle.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-4">
@@ -111,9 +140,10 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                   whileInView="visible"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-medium hover:bg-rose transition-colors shadow-lg hover:shadow-xl"
+                  className="bg-wine text-light px-8 py-4 rounded-full font-medium hover:bg-rose transition-colors shadow-lg hover:shadow-xl inline-flex items-center gap-2"
                 >
-                  Book Your Assessment
+                  Book Free Consultation
+                  <ArrowRight className="w-4 h-4" />
                 </motion.button>
                 <motion.button
                   variants={scaleIn}
@@ -123,7 +153,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                   whileTap={{ scale: 0.95 }}
                   className="border-2 border-wine text-wine px-8 py-4 rounded-full font-medium hover:bg-wine/5 transition-colors"
                 >
-                  Learn More
+                  View Programme Guide
                 </motion.button>
               </div>
             </motion.div>
@@ -143,8 +173,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                   >
                     <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
                     <span className="text-brown/80">
-                      Doctor-led weight management with medical monitoring and
-                      follow-ups
+                      Doctor-led weight management with real screening, monthly monitoring and follow-up
                     </span>
                   </motion.li>
                   <motion.li
@@ -156,8 +185,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                   >
                     <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
                     <span className="text-brown/80">
-                      Genuine GLP-1 medicines used as part of a supervised
-                      programme
+                      Medication selection across Ozempic, Wegovy, Mounjaro, Zepbound and Saxenda
                     </span>
                   </motion.li>
                   <motion.li
@@ -169,8 +197,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                   >
                     <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
                     <span className="text-brown/80">
-                      Safety-first approach, including side effect support and
-                      check-ins (not a one-time jab)
+                      Safety-first dose titration with side-effect support, blood tests and review appointments
                     </span>
                   </motion.li>
                   <motion.li
@@ -182,8 +209,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                   >
                     <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
                     <span className="text-brown/80">
-                      Evidence-based treatment options used in modern obesity
-                      care
+                      Structured long-term weight and metabolic health care, not a one-time jab
                     </span>
                   </motion.li>
                 </ul>
@@ -193,124 +219,85 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </section>
 
-      {/* Market Context Section - All content preserved exactly */}
-      {/* <section className="py-20 bg-cream">
+      {/* Programme At a Glance */}
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <motion.div
             variants={fadeInUp}
-            className="max-w-3xl mx-auto text-center mb-16"
+            className="max-w-4xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-              A quick look at what's ranking in Malaysia right now (and what you
-              should notice)
+              GLP-1 Programme at a Glance
             </h2>
             <p className="text-xl text-taupe">
-              When people search GLP-1 weight loss Malaysia, Wegovy Malaysia,
-              Ozempic weight loss KL, or Mounjaro Malaysia, top pages commonly
-              push a few angles:
+              A clinically grounded, doctor-guided programme built around weight,
+              appetite and metabolic control.
             </p>
           </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 gap-6 mb-12"
-          >
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.1 }}
-              className="bg-light p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-rose/10"
-            >
-              <div className="flex items-start gap-3">
-                <Search className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <p className="text-brown/80">
-                  Medication menus and "options lists" (Ozempic, Wegovy,
-                  Saxenda) with clinic assessment messaging
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.2 }}
-              className="bg-light p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-rose/10"
-            >
-              <div className="flex items-start gap-3">
-                <Search className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <p className="text-brown/80">
-                  "Weight loss injection" education hubs that explain how GLP-1
-                  works and who is eligible
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.3 }}
-              className="bg-light p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-rose/10"
-            >
-              <div className="flex items-start gap-3">
-                <Search className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <p className="text-brown/80">
-                  Authenticity and supply warnings (cold-chain, counterfeit
-                  pens, batch verification)
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.4 }}
-              className="bg-light p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-rose/10"
-            >
-              <div className="flex items-start gap-3">
-                <Search className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <p className="text-brown/80">
-                  Online consult plus delivery positioning for GLP-1 brands
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.5 }}
-              className="bg-light p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-rose/10 md:col-span-2"
-            >
-              <div className="flex items-start gap-3">
-                <Search className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <p className="text-brown/80">
-                  Tirzepatide focused pages that highlight dual-hormone action
-                  and bigger trial outcomes
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 bg-rose/10 p-8 rounded-2xl border-l-4 border-wine"
-          >
-            <p className="text-lg text-brown font-medium">
-              What that means for Nexus Clinic Kuala Lumpur content: the page
-              that wins is not the one that "talks medicine". It is the one that
-              makes people feel safe, guided, and supported weekly. That's
-              exactly where a GLP-1 programme stands out when it is clearly
-              structured as doctor-led care, not just an injection.
-            </p>
-          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: <Syringe className="w-8 h-8 text-wine" />,
+                title: "Available Medications",
+                text: "Ozempic, Wegovy, Mounjaro, Zepbound, Saxenda",
+              },
+              {
+                icon: <Clock className="w-8 h-8 text-wine" />,
+                title: "Administration",
+                text: "Mostly once-weekly injections; Saxenda is daily",
+              },
+              {
+                icon: <Target className="w-8 h-8 text-wine" />,
+                title: "Average Weight Loss",
+                text: "10 to 22.5% of body weight over 6 to 12 months",
+              },
+              {
+                icon: <Stethoscope className="w-8 h-8 text-wine" />,
+                title: "Monitoring",
+                text: "Monthly reviews, blood panel, blood pressure, progress tracking",
+              },
+              {
+                icon: <ScaleIcon className="w-8 h-8 text-wine" />,
+                title: "Suitable For",
+                text: "BMI 27+ with comorbidity or BMI 30+ without",
+              },
+              {
+                icon: <HeartIcon className="w-8 h-8 text-wine" />,
+                title: "Diabetes Support",
+                text: "Type 2 diabetes patients may benefit from one integrated plan",
+              },
+              {
+                icon: <Award className="w-8 h-8 text-wine" />,
+                title: "Programme Duration",
+                text: "Long-term ongoing, based on goals and health profile",
+              },
+              {
+                icon: <MapPin className="w-8 h-8 text-wine" />,
+                title: "Location",
+                text: "Wisma UOA II, Jalan Pinang, Kuala Lumpur",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                initial="hidden"
+                whileInView="visible"
+                transition={{ delay: index * 0.05 }}
+                className="bg-light p-6 rounded-3xl shadow-md"
+              >
+                <div className="mb-4">{item.icon}</div>
+                <h3 className="text-xl font-serif text-brown mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-brown/80 text-sm">{item.text}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* What is GLP-1 Section - All content preserved exactly with image */}
+      {/* What is GLP-1 */}
       <section className="py-20 bg-light">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -321,21 +308,19 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
               <div className="space-y-4 text-brown/80 text-lg leading-relaxed">
                 <p>
-                  A GLP-1 weight loss programme is a medically supervised plan
-                  that may use GLP-1 based medication to help with appetite
-                  control and weight management, plus lifestyle support so
-                  results can last.
+                  GLP-1 is a naturally occurring hormone that signals fullness,
+                  slows stomach emptying, and supports insulin release when blood sugar rises.
                 </p>
                 <p>
-                  GLP-1 is a natural gut hormone. These medicines work on the
-                  same pathway. They help your brain register fullness more
-                  strongly, slow stomach emptying, and reduce hunger signals.
+                  GLP-1 receptor agonist medications are synthetic versions that
+                  activate this pathway more strongly and for longer, helping patients
+                  feel satisfied with smaller portions and reducing the constant appetite
+                  drive that makes ordinary dieting fail.
                 </p>
                 <p className="font-medium text-wine">
-                  At Nexus Clinic Kuala Lumpur, the key idea is simple: you do
-                  not "white-knuckle" your way through cravings. You work with
-                  your doctor to reduce the noise around food, then build steady
-                  habits while your appetite is calmer.
+                  At Nexus Clinic Kuala Lumpur, the goal is simple: reduce food
+                  noise, improve appetite control, and build sustainable habits
+                  while your biology is actually helping you.
                 </p>
               </div>
             </motion.div>
@@ -359,407 +344,257 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </section>
 
-      {/* GLP-1 vs Quick Fixes - All content preserved exactly */}
+      {/* Medication Selection */}
       <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <motion.div
             variants={fadeInUp}
-            className="max-w-3xl mx-auto text-center mb-16"
+            className="max-w-4xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-              GLP-1 vs "quick fixes" you've probably tried
+              GLP-1 Injections Available in Malaysia
             </h2>
             <p className="text-xl text-taupe">
-              Most people who book a consult have already done at least two of
-              these:
+              The right medication is selected based on your profile, not simply on popularity.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.1 }}
-              className="bg-light p-6 rounded-xl text-center shadow-md"
-            >
-              <XCircle className="w-12 h-12 text-rose/60 mx-auto mb-4" />
-              <p className="text-brown font-medium">
-                Hard calorie cuts that rebound fast
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.2 }}
-              className="bg-light p-6 rounded-xl text-center shadow-md"
-            >
-              <XCircle className="w-12 h-12 text-rose/60 mx-auto mb-4" />
-              <p className="text-brown font-medium">On- and- off gym bursts</p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.3 }}
-              className="bg-light p-6 rounded-xl text-center shadow-md"
-            >
-              <XCircle className="w-12 h-12 text-rose/60 mx-auto mb-4" />
-              <p className="text-brown font-medium">
-                Skipping meals and "starting Monday"
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.4 }}
-              className="bg-light p-6 rounded-xl text-center shadow-md"
-            >
-              <XCircle className="w-12 h-12 text-rose/60 mx-auto mb-4" />
-              <p className="text-brown font-medium">
-                Supplements that barely move the scale
-              </p>
-            </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              {
+                name: "Ozempic",
+                text: "Semaglutide, weekly, type 2 diabetes with off-label weight loss use",
+              },
+              {
+                name: "Wegovy",
+                text: "Semaglutide 2.4mg, weekly, chronic weight management",
+              },
+              {
+                name: "Mounjaro",
+                text: "Tirzepatide, weekly, dual GIP + GLP-1, type 2 diabetes with off-label weight loss use",
+              },
+              {
+                name: "Zepbound",
+                text: "Tirzepatide, weekly, chronic weight management",
+              },
+              {
+                name: "Saxenda",
+                text: "Liraglutide 3.0mg, daily, chronic weight management",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                initial="hidden"
+                whileInView="visible"
+                transition={{ delay: index * 0.05 }}
+                className="bg-light p-5 rounded-2xl shadow-sm"
+              >
+                <h3 className="text-xl font-serif text-wine mb-3">{item.name}</h3>
+                <p className="text-brown/80 text-sm">{item.text}</p>
+              </motion.div>
+            ))}
           </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-wine text-light p-8 rounded-2xl text-center"
-          >
-            <p className="text-xl mb-4">
-              GLP-1 treatment is not magic. But it can change one big thing: how
-              hard it feels to stay consistent.
-            </p>
-            <p className="text-lg opacity-90">
-              In trials, people using semaglutide 2.4 mg with lifestyle support
-              lost significantly more weight than placebo.
-            </p>
-            <p className="text-lg opacity-90 mt-2">
-              Tirtzepatide trials show even larger average reductions at higher
-              doses (still with medical supervision and lifestyle changes).
-            </p>
-          </motion.div>
         </div>
       </section>
 
-      {/* How GLP-1 Works - All content preserved exactly */}
+      {/* Dual GIP vs GLP-1 */}
       <section className="py-20 bg-light">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeInLeft}>
               <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-                How GLP-1 medicines help with weight loss (simple explanation)
+                GLP-1 vs Dual GIP and GLP-1
               </h2>
-              <p className="text-2xl text-wine font-serif mb-8">
-                Think of it like turning down the volume on hunger.
+              <p className="text-lg text-brown/80 mb-6">
+                The newest step forward in this space is tirzepatide, which activates
+                both the GLP-1 receptor and the GIP receptor. That dual pathway produces
+                stronger average weight loss and broader metabolic impact in many patients.
               </p>
-
-              <p className="text-lg text-brown/80 mb-6">GLP-1 medicines can:</p>
-
-              <div className="space-y-4 mb-8">
-                <motion.div
-                  variants={fadeInRight}
-                  transition={{ delay: 0.1 }}
-                  className="flex items-center gap-3 p-4 bg-cream rounded-xl"
-                >
-                  <CheckCircle2 className="w-6 h-6 text-wine shrink-0" />
-                  <span className="text-brown text-lg">
-                    Help you feel full sooner
-                  </span>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  transition={{ delay: 0.2 }}
-                  className="flex items-center gap-3 p-4 bg-cream rounded-xl"
-                >
-                  <CheckCircle2 className="w-6 h-6 text-wine shrink-0" />
-                  <span className="text-brown text-lg">
-                    Keep you satisfied longer
-                  </span>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  transition={{ delay: 0.3 }}
-                  className="flex items-center gap-3 p-4 bg-cream rounded-xl"
-                >
-                  <CheckCircle2 className="w-6 h-6 text-wine shrink-0" />
-                  <span className="text-brown text-lg">
-                    Reduce cravings and "snack thinking"
-                  </span>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  transition={{ delay: 0.4 }}
-                  className="flex items-center gap-3 p-4 bg-cream rounded-xl"
-                >
-                  <CheckCircle2 className="w-6 h-6 text-wine shrink-0" />
-                  <span className="text-brown text-lg">
-                    Support better blood sugar control (important for some
-                    people)
-                  </span>
-                </motion.div>
-              </div>
-
-              <motion.div
-                variants={scaleIn}
-                initial="hidden"
-                whileInView="visible"
-                className="mt-8 p-6 bg-rose/10 rounded-xl border border-rose/20"
-              >
-                <p className="text-brown/80">
-                  <span className="font-medium text-wine">
-                    The most common side effects are stomach-related, like
-                    nausea, diarrhoea, vomiting, constipation.
-                  </span>{" "}
-                  Many are mild to moderate and improve as your body adjusts.
-                </p>
-              </motion.div>
+              <p className="text-lg text-brown/80">
+                In simplified terms, semaglutide is powerful. Tirzepatide is often stronger.
+                The right choice still depends on your diabetes status, budget, target,
+                tolerability and clinical profile.
+              </p>
             </motion.div>
 
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="bg-linear-to-br from-wine/10 to-rose/10 p-8 rounded-3xl">
-                <Brain className="w-24 h-24 text-wine/30 mx-auto mb-6" />
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-brown font-medium">
-                      Hunger Volume
-                    </span>
-                    <span className="text-2xl font-bold text-wine">
-                      ↓ Significantly
-                    </span>
-                  </div>
-                  <div className="h-3 bg-cream rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "35%" }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className="h-full bg-wine rounded-full"
-                    />
-                  </div>
-                  <p className="text-taupe text-sm">
-                    With GLP-1 medication, hunger signals are reduced
-                  </p>
-                  <p className="text-brown/70 text-sm mt-4">
-                    Think of it like turning down the volume on hunger.
-                  </p>
-                </div>
-              </div>
+            <motion.div variants={fadeInRight} className="bg-rose/10 p-8 rounded-2xl border border-wine/20">
+              <h3 className="text-2xl font-serif text-wine mb-6">
+                Trial-level difference in outcomes
+              </h3>
+              <ul className="space-y-4 text-brown">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span>GLP-1 only agents: around 10 to 16% body-weight reduction over 12 months</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span>Dual GIP + GLP-1 agents: around 15 to 22.5% over 12 months</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <span>Dual agonists also tend to show stronger blood sugar and metabolic benefits</span>
+                </li>
+              </ul>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Who is a Good Fit - All content preserved exactly */}
+      {/* Diabetes management */}
       <section className="py-20 bg-cream">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <motion.div
+            variants={fadeInUp}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
+              GLP-1 Weight Loss and Diabetes Management
+            </h2>
+            <p className="text-lg text-brown/80 mb-6">
+              GLP-1 medicines were originally developed for type 2 diabetes,
+              and this remains one of their most important strengths. For the
+              right patient, one programme can address both blood sugar and body weight.
+            </p>
+            <div className="bg-light p-8 rounded-2xl shadow-sm">
+              <p className="text-brown/80">
+                Semaglutide and tirzepatide can lower HbA1c, improve fasting glucose,
+                reduce post-meal spikes, and in some patients reduce the need for additional
+                diabetes medication as weight and insulin resistance improve.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Eligibility and BMI */}
+      <section className="py-20 bg-light">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <motion.div
             variants={fadeInUp}
             className="max-w-3xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-              Who is a good fit for a GLP-1 programme in Malaysia?
+              Eligibility and BMI
             </h2>
-            <p className="text-xl text-taupe">A programme makes sense when:</p>
+            <p className="text-xl text-taupe">
+              BMI matters, but the full clinical picture matters more.
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             <motion.div
               variants={fadeInLeft}
-              transition={{ delay: 0.1 }}
-              className="bg-light p-6 rounded-xl shadow-md flex items-start gap-4"
+              className="bg-cream p-6 rounded-xl shadow-md flex items-start gap-4"
             >
               <div className="w-10 h-10 bg-wine/10 rounded-full flex items-center justify-center shrink-0">
                 <CheckCircle2 className="w-5 h-5 text-wine" />
               </div>
               <p className="text-brown text-lg">
-                You have tried diet and exercise but your weight keeps returning
+                Adults with BMI 30 or above
               </p>
             </motion.div>
 
             <motion.div
               variants={fadeInLeft}
-              transition={{ delay: 0.2 }}
-              className="bg-light p-6 rounded-xl shadow-md flex items-start gap-4"
+              className="bg-cream p-6 rounded-xl shadow-md flex items-start gap-4"
             >
               <div className="w-10 h-10 bg-wine/10 rounded-full flex items-center justify-center shrink-0">
                 <CheckCircle2 className="w-5 h-5 text-wine" />
               </div>
               <p className="text-brown text-lg">
-                You feel strong cravings or constant hunger
+                Adults with BMI 27 or above plus at least one weight-related condition
               </p>
             </motion.div>
 
             <motion.div
               variants={fadeInLeft}
-              transition={{ delay: 0.3 }}
-              className="bg-light p-6 rounded-xl shadow-md flex items-start gap-4"
+              className="bg-cream p-6 rounded-xl shadow-md flex items-start gap-4"
             >
               <div className="w-10 h-10 bg-wine/10 rounded-full flex items-center justify-center shrink-0">
                 <CheckCircle2 className="w-5 h-5 text-wine" />
               </div>
               <p className="text-brown text-lg">
-                You want a medical plan with monitoring, not guesswork
+                Patients with diabetes, hypertension, dyslipidaemia or sleep apnoea may benefit strongly
               </p>
             </motion.div>
 
             <motion.div
               variants={fadeInLeft}
-              transition={{ delay: 0.4 }}
-              className="bg-light p-6 rounded-xl shadow-md flex items-start gap-4"
+              className="bg-cream p-6 rounded-xl shadow-md flex items-start gap-4"
             >
               <div className="w-10 h-10 bg-wine/10 rounded-full flex items-center justify-center shrink-0">
                 <CheckCircle2 className="w-5 h-5 text-wine" />
               </div>
               <p className="text-brown text-lg">
-                You have weight-related risks (like blood sugar issues, blood
-                pressure, cholesterol, sleep problems)
+                Final prescribing decisions are based on history, medications, thyroid, cardiovascular and metabolic review
               </p>
             </motion.div>
           </div>
 
-          {/* BMI Guidance - All content preserved exactly */}
           <motion.div
-            variants={scaleIn}
-            initial="hidden"
-            whileInView="visible"
+            variants={fadeInUp}
             className="bg-wine text-light p-8 rounded-2xl mb-12"
           >
             <h3 className="text-2xl font-serif mb-6">
-              BMI guidance that is commonly used in Malaysia
+              This is not a one-size-fits-all prescription
             </h3>
-            <p className="mb-4">
-              Malaysia's obesity guidance uses Asian BMI cut-offs:
-            </p>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white/10 p-6 rounded-xl">
-                <p className="text-3xl font-bold mb-2">23.0 to 27.4</p>
-                <p className="text-light/80">Overweight (pre-obesity)</p>
-              </div>
-              <div className="bg-white/10 p-6 rounded-xl">
-                <p className="text-3xl font-bold mb-2">Above 27.5</p>
-                <p className="text-light/80">Obesity</p>
-              </div>
-            </div>
-            <p className="mt-4 text-light/80 text-sm">
-              Pharmacotherapy is generally positioned as an add-on to lifestyle
-              change, not a standalone solution.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-rose/10 p-8 rounded-2xl border-l-4 border-wine"
-          >
-            <p className="text-brown">
-              <span className="font-semibold text-wine">
-                Important: suitability is individual.
-              </span>{" "}
-              Your doctor should review your history, current meds, risks, and
-              goals first.
+            <p>
+              Nexus Clinic KL reviews your health history, current medications,
+              cardiovascular status, thyroid risk, diabetes treatment if relevant,
+              and your broader metabolic profile before recommending any medication.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Who Should Avoid - All content preserved exactly */}
-      <section className="py-20 bg-light">
+      {/* Contraindications and safety */}
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             <motion.div variants={fadeInLeft}>
               <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-                Who should avoid GLP-1 medicines or be extra careful?
+                Who should avoid GLP-1 medicines or be assessed carefully?
               </h2>
-              <p className="text-lg text-wine mb-8">This part matters.</p>
 
-              <div className="space-y-6">
-                <p className="text-brown/80">
-                  Some GLP-1 medicines have key warnings and contraindications.
-                  For example, semaglutide and tirzepatide labels include
-                  warnings about thyroid C-cell tumours in animals and
-                  contraindications related to medullary thyroid carcinoma (MTC)
-                  or MEN 2.
-                </p>
-
-                <h3 className="text-xl font-serif text-brown mt-8 mb-4">
-                  You should also tell your doctor if you:
-                </h3>
-
-                <motion.div
-                  variants={fadeInRight}
-                  transition={{ delay: 0.1 }}
-                  className="flex items-start gap-3 p-3 bg-cream rounded-lg"
-                >
-                  <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Are pregnant, trying to conceive, or breastfeeding
-                  </span>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  transition={{ delay: 0.2 }}
-                  className="flex items-start gap-3 p-3 bg-cream rounded-lg"
-                >
-                  <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Have a history of pancreatitis or gallbladder disease
-                  </span>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  transition={{ delay: 0.3 }}
-                  className="flex items-start gap-3 p-3 bg-cream rounded-lg"
-                >
-                  <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Have severe reflux or frequent vomiting
-                  </span>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  transition={{ delay: 0.4 }}
-                  className="flex items-start gap-3 p-3 bg-cream rounded-lg"
-                >
-                  <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Are taking other medications that affect blood sugar
-                  </span>
-                </motion.div>
+              <div className="space-y-4">
+                {[
+                  "Personal or family history of medullary thyroid carcinoma or MEN2",
+                  "Pregnancy, trying to conceive, or breastfeeding",
+                  "History of pancreatitis",
+                  "Severe gastrointestinal disease or gastroparesis concerns",
+                  "Significant renal impairment",
+                  "Active eating disorder history requiring specialist review",
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInRight}
+                    className="flex items-start gap-3 p-4 bg-light rounded-xl"
+                  >
+                    <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
+                    <span className="text-brown">{item}</span>
+                  </motion.div>
+                ))}
               </div>
 
               <p className="mt-6 text-brown/80">
-                A proper clinic programme handles this with screening,
-                monitoring, and clear safety rules.
+                These exclusions exist to protect patients, not to make treatment harder.
               </p>
             </motion.div>
 
             <motion.div variants={fadeInRight}>
               <div className="bg-rose/10 p-8 rounded-2xl border-2 border-wine/20">
                 <h3 className="text-2xl font-serif text-wine mb-6">
-                  A Malaysia-specific safety note: surgery and sedation
+                  Malaysia-specific safety note: surgery and sedation
                 </h3>
                 <div className="space-y-4 text-brown">
                   <p>
-                    Malaysia's NPRA published an updated safety communication on
-                    GLP-1 medicines and the risk of aspiration during general
-                    anaesthesia or deep sedation, linked to delayed stomach
-                    emptying.
+                    GLP-1 therapy can delay stomach emptying. NPRA has issued a safety
+                    communication on aspiration risk during general anaesthesia or deep sedation.
                   </p>
                   <p className="font-medium bg-white p-4 rounded-lg">
-                    If you have any procedure planned, tell your treating doctor
-                    and anaesthetist that you are on GLP-1 medication. Do not
-                    self-stop or self-adjust. Get clinical advice for your
-                    situation.
+                    If you have a procedure planned, tell your doctor and anaesthetist that
+                    you are on GLP-1 therapy. Do not self-stop or self-adjust without advice.
                   </p>
                 </div>
               </div>
@@ -768,7 +603,58 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </section>
 
-      {/* Programme Details - All content preserved exactly */}
+      {/* Timeline */}
+      <section className="py-20 bg-light">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <motion.div
+            variants={fadeInUp}
+            className="max-w-3xl mx-auto text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
+              Month-by-Month GLP-1 Programme Timeline
+            </h2>
+            <p className="text-xl text-taupe">
+              Unlike HCG or Duromine, GLP-1 treatment builds over months.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-5 gap-6">
+            {[
+              {
+                title: "Month 1",
+                text: "Starting dose titration. Appetite control begins. Mild nausea possible. Most patients lose 2 to 4 kg.",
+              },
+              {
+                title: "Month 2 to 3",
+                text: "Dose escalation if tolerated. Appetite more stable. Cravings reduce. 4 to 8 kg total loss typical.",
+              },
+              {
+                title: "Month 4 to 6",
+                text: "Therapeutic level reached. Peak fat-loss rate in many patients. 8 to 14 kg total loss possible.",
+              },
+              {
+                title: "Month 7 to 12",
+                text: "Long-term metabolic benefits consolidate. Total 10 to 22.5% body-weight reduction achievable.",
+              },
+              {
+                title: "Ongoing",
+                text: "Annual review, dose adjustment, tapering or maintenance planning depending on results and goals.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="bg-cream p-6 rounded-2xl shadow-md"
+              >
+                <h3 className="text-xl font-serif text-wine mb-3">{item.title}</h3>
+                <p className="text-brown/80 text-sm">{item.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Programme structure */}
       <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <motion.div
@@ -776,17 +662,14 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             className="max-w-3xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-              What's inside a doctor-monitored GLP-1 programme at Nexus Clinic
-              Kuala Lumpur
+              What’s inside a doctor-monitored GLP-1 programme
             </h2>
             <p className="text-xl text-taupe">
-              A good programme should feel like a clear path, not a confusing
-              prescription.
+              A good programme feels like a clear medical path, not just a pen.
             </p>
           </motion.div>
 
           <div className="space-y-8">
-            {/* Step 1 - Medical assessment */}
             <motion.div
               variants={fadeInLeft}
               className="bg-light p-8 rounded-2xl shadow-lg"
@@ -797,47 +680,16 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-serif text-brown mb-4">
-                    Medical assessment (the "why" behind your weight)
+                    Medical assessment
                   </h3>
-                  <p className="text-brown/70 mb-4">Your doctor reviews:</p>
-                  <ul className="grid md:grid-cols-2 gap-3">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Weight history and past attempts
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Hunger patterns and cravings
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Sleep, stress, and daily routine
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Health risks and current meds
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2 md:col-span-2">
-                      <CheckCircle2 className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Baseline measurements (often weight, waist, BMI,
-                        sometimes labs)
-                      </span>
-                    </li>
-                  </ul>
+                  <p className="text-brown/70 mb-4">
+                    Your doctor reviews weight history, cravings, diabetes status,
+                    cardiovascular risk, current medicines, lifestyle patterns, and baseline measurements.
+                  </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Step 2 - Picking the right medication plan */}
             <motion.div
               variants={fadeInRight}
               className="bg-light p-8 rounded-2xl shadow-lg"
@@ -848,44 +700,16 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-serif text-brown mb-4">
-                    Picking the right medication plan
+                    Medication selection and titration plan
                   </h3>
                   <p className="text-brown/70 mb-4">
-                    Not everyone needs the same option. Some people do better
-                    with one pathway than another:
-                  </p>
-                  <ul className="space-y-3 mb-4">
-                    <li className="flex items-start gap-2">
-                      <Pill className="w-5 h-5 text-wine shrink-0 mt-1" />
-                      <span className="text-brown/80">
-                        Semaglutide has strong evidence in obesity treatment
-                        trials
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Pill className="w-5 h-5 text-wine shrink-0 mt-1" />
-                      <span className="text-brown/80">
-                        Liraglutide 3.0 mg also has trial support, with smaller
-                        average reductions than newer agents
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Pill className="w-5 h-5 text-wine shrink-0 mt-1" />
-                      <span className="text-brown/80">
-                        Tirzepatide (dual pathway) shows larger average results
-                        in major trials
-                      </span>
-                    </li>
-                  </ul>
-                  <p className="mt-4 text-wine font-medium">
-                    Your programme should focus on safe dose changes and
-                    tolerability, not rushing.
+                    The doctor chooses the right medication and starting dose based on
+                    your clinical profile, then titrates slowly to minimise side effects.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Step 3 - Food strategy */}
             <motion.div
               variants={fadeInLeft}
               className="bg-light p-8 rounded-2xl shadow-lg"
@@ -896,49 +720,16 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-serif text-brown mb-4">
-                    Food strategy that feels doable in KL
+                    Practical food and lifestyle support
                   </h3>
                   <p className="text-brown/70 mb-4">
-                    You do not need "perfect eating". You need repeatable
-                    eating.
-                  </p>
-                  <p className="mb-4">Most patients do best with:</p>
-                  <ul className="grid md:grid-cols-2 gap-3 mb-4">
-                    <li className="flex items-center gap-2">
-                      <Salad className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Protein at every main meal
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Salad className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Fibre daily (vegetables, fruit, legumes)
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Salad className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Smaller portions, slower pace
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Salad className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Less greasy food early in the programme (helps nausea)
-                      </span>
-                    </li>
-                  </ul>
-                  <p className="bg-cream p-4 rounded-lg text-brown/80">
-                    This works well with Malaysian food too. You can still enjoy
-                    nasi campur, noodles, and mamak meals. The trick is portion,
-                    protein, and timing.
+                    The programme supports protein-forward meals, fibre, realistic portions,
+                    slower eating, and a plan that works with Malaysian daily life rather than against it.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Step 4 - Follow-ups and progress tracking */}
             <motion.div
               variants={fadeInRight}
               className="bg-light p-8 rounded-2xl shadow-lg"
@@ -949,36 +740,11 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-serif text-brown mb-4">
-                    Follow-ups and progress tracking
+                    Monthly reviews and adjustment
                   </h3>
                   <p className="text-brown/70 mb-4">
-                    A programme works because you are not alone between visits.
-                    Adjustments happen based on:
-                  </p>
-                  <ul className="grid md:grid-cols-2 gap-3 mb-4">
-                    <li className="flex items-center gap-2">
-                      <Activity className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">Hunger control</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Activity className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">Side effects</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Activity className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Weight trend and waist trend
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Activity className="w-4 h-4 text-wine" />
-                      <span className="text-brown/80">
-                        Energy, sleep, and digestion
-                      </span>
-                    </li>
-                  </ul>
-                  <p className="mt-4 text-wine font-medium">
-                    This is how you reduce risk and protect your progress.
+                    Appetite response, weight trend, side effects, digestion, blood pressure,
+                    labs and treatment goals are reviewed regularly to keep the programme safe and effective.
                   </p>
                 </div>
               </div>
@@ -987,7 +753,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </section>
 
-      {/* Realistic Results - All content preserved exactly */}
+      {/* Realistic results */}
       <section className="py-20 bg-light">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <motion.div
@@ -998,62 +764,42 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               What results can you realistically expect?
             </h2>
             <p className="text-xl text-taupe">
-              Most people want a straight answer.
+              The scale usually follows appetite change, not the other way around.
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <motion.div
               variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.1 }}
               className="bg-cream p-6 rounded-xl text-center shadow-md"
             >
               <Target className="w-12 h-12 text-wine mx-auto mb-4" />
               <h3 className="text-xl font-serif text-brown mb-2">
-                Semaglutide 2.4 mg
+                Semaglutide
               </h3>
-              <p className="text-taupe">at 68 weeks in STEP 1</p>
-              <p className="text-wine font-medium mt-2">
-                Clinical trials show meaningful average weight loss
-              </p>
+              <p className="text-taupe">Around 10 to 15% over time, depending on protocol and dose</p>
             </motion.div>
 
             <motion.div
               variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.2 }}
+              className="bg-cream p-6 rounded-xl text-center shadow-md"
+            >
+              <Target className="w-12 h-12 text-wine mx-auto mb-4" />
+              <h3 className="text-xl font-serif text-brown mb-2">
+                Wegovy-level dosing
+              </h3>
+              <p className="text-taupe">Around 14.9% mean loss in STEP 1 at 68 weeks</p>
+            </motion.div>
+
+            <motion.div
+              variants={scaleIn}
               className="bg-cream p-6 rounded-xl text-center shadow-md"
             >
               <Target className="w-12 h-12 text-wine mx-auto mb-4" />
               <h3 className="text-xl font-serif text-brown mb-2">
                 Tirzepatide
               </h3>
-              <p className="text-taupe">
-                at 72 weeks in SURMOUNT-1, with dose-dependent outcomes
-              </p>
-              <p className="text-wine font-medium mt-2">
-                Clinical trials show meaningful average weight loss
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.3 }}
-              className="bg-cream p-6 rounded-xl text-center shadow-md"
-            >
-              <Target className="w-12 h-12 text-wine mx-auto mb-4" />
-              <h3 className="text-xl font-serif text-brown mb-2">
-                Liraglutide 3.0 mg
-              </h3>
-              <p className="text-taupe">at 56 weeks in trial data</p>
-              <p className="text-wine font-medium mt-2">
-                Clinical trials show meaningful average weight loss
-              </p>
+              <p className="text-taupe">Up to about 22.5% mean loss in SURMOUNT-1 at the highest dose</p>
             </motion.div>
           </div>
 
@@ -1061,19 +807,19 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             variants={fadeInUp}
             className="bg-wine text-light p-8 rounded-2xl"
           >
-            <p className="text-lg mb-4">But your result depends on:</p>
+            <p className="text-lg mb-4">Your result depends on:</p>
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-light/80" />
-                <span>Your starting weight and health</span>
+                <span>Starting weight and metabolic health</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-light/80" />
-                <span>Dose tolerance</span>
+                <span>Dose tolerance and titration pace</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-light/80" />
-                <span>Food routine and sleep</span>
+                <span>Food routine, protein intake and sleep</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-light/80" />
@@ -1081,8 +827,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               </div>
             </div>
             <p className="mt-4 text-light/80">
-              In real life, many people notice changes first in appetite and
-              portions. The scale follows after.
+              Most patients notice changes in appetite first, then meal size, then clothing fit, then the scale.
             </p>
           </motion.div>
         </div>
@@ -1090,262 +835,73 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
 
       <SectionBeforeAfter transformations={transformations} />
 
-      {/* Side Effects - All content preserved exactly */}
+      {/* Side effects */}
       <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             <motion.div variants={fadeInLeft}>
               <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-                Common side effects (and how clinics help you manage them)
+                Common side effects and how the clinic manages them
               </h2>
               <p className="text-lg text-brown/80 mb-8">
-                Most side effects are digestive:
+                Most side effects are gastrointestinal and are strongest during early treatment
+                or dose escalation.
               </p>
 
               <div className="grid grid-cols-2 gap-4 mb-8">
-                <motion.div
-                  variants={scaleIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  transition={{ delay: 0.1 }}
-                  className="bg-light p-4 rounded-lg text-center shadow-sm"
-                >
-                  <Thermometer className="w-6 h-6 text-wine mx-auto mb-2" />
-                  <span className="text-brown font-medium">Nausea</span>
-                </motion.div>
-
-                <motion.div
-                  variants={scaleIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  transition={{ delay: 0.2 }}
-                  className="bg-light p-4 rounded-lg text-center shadow-sm"
-                >
-                  <Thermometer className="w-6 h-6 text-wine mx-auto mb-2" />
-                  <span className="text-brown font-medium">Diarrhoea</span>
-                </motion.div>
-
-                <motion.div
-                  variants={scaleIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  transition={{ delay: 0.3 }}
-                  className="bg-light p-4 rounded-lg text-center shadow-sm"
-                >
-                  <Thermometer className="w-6 h-6 text-wine mx-auto mb-2" />
-                  <span className="text-brown font-medium">Vomiting</span>
-                </motion.div>
-
-                <motion.div
-                  variants={scaleIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  transition={{ delay: 0.4 }}
-                  className="bg-light p-4 rounded-lg text-center shadow-sm"
-                >
-                  <Thermometer className="w-6 h-6 text-wine mx-auto mb-2" />
-                  <span className="text-brown font-medium">Constipation</span>
-                </motion.div>
+                {[
+                  "Nausea",
+                  "Constipation",
+                  "Diarrhoea",
+                  "Fatigue",
+                  "Headache",
+                  "Mild vomiting",
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={scaleIn}
+                    className="bg-light p-4 rounded-lg text-center shadow-sm"
+                  >
+                    <span className="text-brown font-medium">{item}</span>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="bg-wine/5 p-6 rounded-xl">
-                <h3 className="text-xl font-serif text-wine mb-4">
-                  A doctor-monitored plan helps by:
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-wine" />
-                    <span className="text-brown/80">
-                      Starting low and increasing gradually
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-wine" />
-                    <span className="text-brown/80">
-                      Coaching on meal size and food choices
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-wine" />
-                    <span className="text-brown/80">Checking hydration</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-wine" />
-                    <span className="text-brown/80">Reviewing red flags</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight}>
-              <div className="bg-rose/10 p-8 rounded-2xl border-2 border-wine/20">
-                <h3 className="text-2xl font-serif text-wine mb-6">
-                  When to get urgent medical advice
-                </h3>
-                <div className="space-y-4">
-                  <p className="text-brown/80">
-                    Seek medical help if you have severe abdominal pain,
-                    persistent vomiting, dehydration symptoms, or anything that
-                    feels serious.
-                  </p>
-                  <div className="bg-light p-4 rounded-lg border-l-4 border-wine">
-                    <p className="font-medium text-wine">
-                      Use the clinic's guidance, not social media dosing tips.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Cost Section - All content preserved exactly */}
-      <section className="py-20 bg-light">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <motion.div variants={fadeInUp} className="max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6 text-center">
-              Cost of GLP-1 programmes in Malaysia (what affects pricing)
-            </h2>
-
-            <div className="bg-cream p-8 rounded-2xl shadow-lg">
-              <p className="text-lg text-brown/80 mb-6">
-                Pricing varies a lot in Kuala Lumpur because it depends on:
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3">
-                  <Droplets className="w-5 h-5 text-wine" />
-                  <span className="text-brown">Which medication is used</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Droplets className="w-5 h-5 text-wine" />
-                  <span className="text-brown">
-                    Dose level and how long you stay on it
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Droplets className="w-5 h-5 text-wine" />
-                  <span className="text-brown">Consult frequency</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Droplets className="w-5 h-5 text-wine" />
-                  <span className="text-brown">
-                    Any lab tests or add-on coaching
-                  </span>
-                </li>
-              </ul>
-              <p className="text-brown/70">
-                You will see some clinics advertise entry points (example: "as
-                low as RM300/month") while others list higher pen pricing ranges
-                for specific products.
-              </p>
-              <div className="mt-6 p-4 bg-wine/10 rounded-lg border border-wine/30">
-                <p className="text-brown font-medium">
-                  For Nexus Clinic Kuala Lumpur, the cleanest approach is: book
-                  an assessment so pricing matches your plan, not a generic
-                  estimate.
+              <div className="bg-light p-6 rounded-2xl">
+                <p className="text-brown/80">
+                  Most patients find that nausea improves significantly by week four of each dose tier.
+                  Constipation usually responds to hydration and fibre, and dose escalation is not rushed when tolerability is poor.
                 </p>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* GLP-1 vs Fat Freezing - All content preserved exactly */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <motion.div
-            variants={fadeInUp}
-            className="max-w-3xl mx-auto text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-              GLP-1 programme vs fat freezing (CoolSculpting style) in Malaysia
-            </h2>
-            <p className="text-xl text-taupe">
-              People mix these up, so let's make it clear.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-light p-8 rounded-2xl shadow-xl"
-            >
-              <h3 className="text-2xl font-serif text-wine mb-4">
-                GLP-1 programme
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown/80">
-                    Helps with overall body weight and appetite
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown/80">
-                    Works best when weight gain is driven by hunger and
-                    consistency challenges
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown/80">
-                    Changes eating patterns over time
-                  </span>
-                </li>
-              </ul>
             </motion.div>
 
-            <motion.div
-              variants={fadeInRight}
-              className="bg-light p-8 rounded-2xl shadow-xl"
-            >
-              <h3 className="text-2xl font-serif text-brown mb-4">
-                Fat freezing
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown/80">
-                    Targets local fat pockets
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown/80">
-                    Does not treat hunger, cravings, or overall weight drivers
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown/80">
-                    Often chosen for contouring after weight loss
-                  </span>
-                </li>
-              </ul>
+            <motion.div variants={fadeInRight} className="space-y-6">
+              <div className="bg-rose/10 p-6 rounded-2xl border-l-4 border-wine">
+                <h3 className="text-xl font-serif text-brown mb-3">
+                  Serious but uncommon risks
+                </h3>
+                <p className="text-brown/80">
+                  Pancreatitis, gallbladder disease, and thyroid-related risk discussions
+                  are part of informed consent. Any severe abdominal pain, persistent vomiting,
+                  or unusual symptoms should be reported promptly.
+                </p>
+              </div>
+
+              <div className="bg-light p-6 rounded-2xl">
+                <h3 className="text-xl font-serif text-brown mb-3">
+                  Why monitoring matters
+                </h3>
+                <p className="text-brown/80">
+                  At Nexus Clinic KL, the medical team adjusts the programme if side effects
+                  are disproportionate, persistent, or clinically inappropriate for continued escalation.
+                </p>
+              </div>
             </motion.div>
           </div>
-
-          <motion.div
-            variants={scaleIn}
-            initial="hidden"
-            whileInView="visible"
-            className="bg-wine text-light p-8 rounded-2xl text-center"
-          >
-            <p className="text-xl mb-4">
-              Many patients in Kuala Lumpur do both, but in the right order:
-            </p>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-4 text-2xl font-serif">
-              <span>1. Medical weight loss first</span>
-              <ArrowRight className="w-6 h-6" />
-              <span>2. Body contouring second</span>
-            </div>
-          </motion.div>
         </div>
       </section>
 
-      {/* Why Programme Matters - All content preserved exactly */}
+      {/* Pricing */}
       <section className="py-20 bg-light">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <motion.div
@@ -1353,322 +909,40 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             className="max-w-3xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-              Why a programme matters more than the brand name
+              GLP-1 Programme Price in Malaysia 2026
             </h2>
             <p className="text-xl text-taupe">
-              In Malaysia, many pages focus on "Wegovy vs Ozempic vs Mounjaro".
+              Pricing depends on medication, dose and level of support included.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.1 }}
-              className="bg-cream p-4 rounded-lg text-center"
-            >
-              <Award className="w-8 h-8 text-wine mx-auto mb-2" />
-              <p className="text-brown text-sm font-medium">
-                Correct patient selection
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.2 }}
-              className="bg-cream p-4 rounded-lg text-center"
-            >
-              <Award className="w-8 h-8 text-wine mx-auto mb-2" />
-              <p className="text-brown text-sm font-medium">
-                Safe dose changes
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.3 }}
-              className="bg-cream p-4 rounded-lg text-center"
-            >
-              <Award className="w-8 h-8 text-wine mx-auto mb-2" />
-              <p className="text-brown text-sm font-medium">
-                Side effect support
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.4 }}
-              className="bg-cream p-4 rounded-lg text-center"
-            >
-              <Award className="w-8 h-8 text-wine mx-auto mb-2" />
-              <p className="text-brown text-sm font-medium">
-                Habit building while appetite is reduced
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.5 }}
-              className="bg-cream p-4 rounded-lg text-center"
-            >
-              <Award className="w-8 h-8 text-wine mx-auto mb-2" />
-              <p className="text-brown text-sm font-medium">
-                Habit building while appetite is reduced
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-xl text-wine font-medium"
-          >
-            That is why a doctor-monitored weight loss programme is the real
-            product, not the pen.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* FAQ Section - All content preserved exactly with complete answers */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <motion.div
-            variants={fadeInUp}
-            className="max-w-3xl mx-auto text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-serif text-brown mb-6">
-              FAQs (People Also Ask style)
-            </h2>
-            <p className="text-xl text-taupe">
-              These are common questions people ask online before booking a
-              GLP-1 consult.
-            </p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto space-y-4">
-            {/* FAQ 1 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.05 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  1) How does a GLP-1 weight loss programme work?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                A GLP-1 programme uses medication that mimics gut hormones
-                involved in fullness. It can reduce appetite, slow stomach
-                emptying, and help you eat less without constant hunger. It
-                works best when paired with lifestyle support, follow-ups, and
-                medical monitoring. That is why doctor-led programmes tend to be
-                safer and more consistent than self-use.
-              </div>
-            </motion.details>
-
-            {/* FAQ 2 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.1 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  2) How much weight can you lose on GLP-1 medicines?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                It depends on the medication, dose, and how long you stay
-                consistent. In clinical trials, semaglutide 2.4 mg showed
-                significant average weight loss over 68 weeks. Tirzepatide
-                trials showed larger average reductions at higher doses over 72
-                weeks. Liraglutide 3.0 mg also has trial support, with smaller
-                average reductions than newer agents.
-              </div>
-            </motion.details>
-
-            {/* FAQ 3 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.15 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  3) How long does it take to see results?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                Many people notice appetite changes within the first few weeks.
-                Scale changes usually follow after that. It is normal for weight
-                loss to be faster early, then slow down. Good programmes track
-                more than weight, like waist size, energy, and eating patterns.
-                Consistency over months matters more than quick weekly drops.
-              </div>
-            </motion.details>
-
-            {/* FAQ 4 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.2 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  4) What are the most common side effects?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                The most common are stomach-related: nausea, diarrhoea,
-                vomiting, constipation. Many cases are mild to moderate and
-                improve as your body adjusts. Clinics manage this by gradual
-                dose increases and food strategies like smaller meals and less
-                greasy food at the start.
-              </div>
-            </motion.details>
-
-            {/* FAQ 5 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.25 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  5) Is GLP-1 safe for everyone?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                No. Some people should not use it, and others need closer
-                monitoring. Labels include important warnings and
-                contraindications, including specific thyroid cancer related
-                contraindications for semaglutide and tirzepatide products. This
-                is exactly why you should start with a doctor assessment, not a
-                shortcut.
-              </div>
-            </motion.details>
-
-            {/* FAQ 6 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.3 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  6) Do I need to diet and exercise on a GLP-1 programme?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                Yes, but it does not need to be extreme. GLP-1 medicines work
-                best with sustainable nutrition and activity changes. Even a
-                simple plan like higher protein meals, daily steps, and better
-                sleep can improve results. Think "repeatable", not "perfect".
-              </div>
-            </motion.details>
-
-            {/* FAQ 7 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.35 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  7) What happens if I stop GLP-1 medication?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                Many people notice appetite returning after stopping, and weight
-                regain can happen. That is why long-term planning matters. A
-                good clinic uses the appetite-controlled phase to build habits,
-                so you have a maintenance strategy even if you change treatment
-                later. Do not stop suddenly without medical advice.
-              </div>
-            </motion.details>
-
-            {/* FAQ 8 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.4 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  8) Can I do GLP-1 treatment in Malaysia if I'm worried about
-                  fake pens?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                Yes, but only through verified clinics with proper cold-chain
-                storage and batch verification. Nexus Clinic uses genuine GLP-1
-                medicines from regulated sources. Always verify your medication
-                through proper channels and never purchase from unverified
-                sources.
-              </div>
-            </motion.details>
-
-            {/* FAQ 9 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.45 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  9) Do I need to tell my doctor before surgery or sedation?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                Yes. Malaysia's NPRA has issued safety communications about
-                GLP-1 medicines and aspiration risk during general anaesthesia
-                or deep sedation. Tell your doctor and anaesthetist before any
-                procedure. Do not self-adjust your dose.
-              </div>
-            </motion.details>
-
-            {/* FAQ 10 */}
-            <motion.details
-              variants={fadeInUp}
-              transition={{ delay: 0.5 }}
-              className="group bg-light rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="text-lg font-medium text-brown pr-8">
-                  10) Is a GLP-1 programme the same as fat freezing?
-                </h3>
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 text-brown/70 leading-relaxed">
-                No. GLP-1 supports appetite control and overall weight loss. Fat
-                freezing is a body contouring treatment for local fat pockets.
-                Many people choose GLP-1 first to reduce overall fat, then
-                consider contouring later if needed.
-              </div>
-            </motion.details>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              ["Initial Consultation + Blood Panel", "Complimentary consultation; blood tests from RM 200"],
+              ["Saxenda Starter Programme", "RM 600 to RM 900 per month"],
+              ["Ozempic Programme", "RM 700 to RM 1,200 per month"],
+              ["Wegovy Programme", "RM 900 to RM 1,500 per month"],
+              ["Mounjaro Programme", "RM 900 to RM 1,800 per month"],
+              ["Zepbound Programme", "RM 900 to RM 1,800 per month"],
+              ["Comprehensive GLP-1 Package", "RM 1,200 to RM 2,500 per month"],
+            ].map(([title, price], index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                className="bg-cream p-6 rounded-2xl shadow-md"
+              >
+                <h3 className="text-xl font-serif text-wine mb-3">{title}</h3>
+                <p className="text-brown">{price}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section - All content preserved exactly */}
+      {/* FAQ */}
+      <FAQ data={faqs} />
+
+      {/* CTA Section */}
       <section className="py-20 bg-wine relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/clinic/interior.png')] opacity-10 bg-cover bg-center" />
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
@@ -1677,16 +951,15 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             className="max-w-3xl mx-auto text-center text-light"
           >
             <h2 className="text-4xl md:text-5xl font-serif mb-6">
-              Ready-to-use CTA section (keep it human, not salesy)
+              Ready to start a doctor-led GLP-1 programme?
             </h2>
             <p className="text-xl text-light/90 mb-8 leading-relaxed">
-              If you feel like your appetite is running the show, a
-              doctor-monitored GLP-1 weight loss programme in Kuala Lumpur can
-              give you structure and support.
+              If your appetite feels like it is running the show, a proper GLP-1 programme
+              in Kuala Lumpur can give you structure, medical safety, and a plan you can actually follow.
             </p>
             <p className="text-lg text-light/80 mb-12">
-              Start with a proper assessment at Nexus Clinic Kuala Lumpur so
-              your plan fits your body, your risks, and your lifestyle.
+              Start with a full assessment at Nexus Clinic Kuala Lumpur so your plan fits
+              your body, your risks, your medication profile and your goals.
             </p>
             <motion.button
               variants={scaleIn}
@@ -1694,9 +967,10 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               whileInView="visible"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-light text-wine px-12 py-4 rounded-full font-medium text-lg hover:bg-cream transition-colors shadow-xl"
+              className="bg-light text-wine px-12 py-4 rounded-full font-medium text-lg hover:bg-cream transition-colors shadow-xl inline-flex items-center gap-2"
             >
-              Book Your Assessment Today
+              Book Free Consultation
+              <ArrowRight className="w-5 h-5" />
             </motion.button>
           </motion.div>
         </div>

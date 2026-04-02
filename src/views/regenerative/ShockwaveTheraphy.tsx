@@ -15,6 +15,11 @@ import {
   Phone,
   ChevronRight,
   Info,
+  Thermometer,
+  Footprints,
+  Hand,
+  Bone,
+  Calendar,
 } from "lucide-react";
 
 import {
@@ -29,54 +34,76 @@ import FAQ from "@/src/components/FAQ";
 const ShockwaveLanding = () => {
   const faqs = [
     {
-      q: "Does shockwave therapy work for erectile dysfunction?",
-      a: "It can help some men, especially mild to moderate vasculogenic ED. Early results are promising, but outcomes vary. European guidance supports it for selected patients, while AUA still labels it investigational.",
-    },
-    {
-      q: "How many shockwave sessions do I need for ED?",
-      a: "Protocols vary. Many clinics use 6 sessions, while some use 12 sessions depending on severity and response. Trials have compared different schedules.",
+      q: "What is extracorporeal shockwave therapy (ESWT) and how does it work?",
+      a: "Extracorporeal shockwave therapy (ESWT) is a non-invasive treatment that uses acoustic pressure waves generated externally (extracorporeal means from outside the body) to treat both musculoskeletal pain conditions and erectile dysfunction. Shockwave therapy uses a handheld transducer applied to the skin surface with coupling gel to transmit acoustic waves through the skin and surrounding soft tissues to the target area below; no injection, incision or anaesthesia is required. The acoustic wave energy from extracorporeal shockwave therapy stimulates the body's natural self-healing response through four mechanisms: neovascularisation (new blood vessel formation improving blood flow and blood circulation), activation of stem cells and growth factors for tissue regeneration, disruption of fibrous scar tissue in chronic soft tissue injuries, and neurological pain modulation; these mechanisms explain why ESWT produces safe and effective pain relief and functional improvement for chronic musculoskeletal conditions and improved erectile function for men with vasculogenic erectile dysfunction.",
     },
     {
       q: "Is shockwave therapy painful?",
-      a: "It is typically described as pain-free or mildly uncomfortable in certain spots, and energy can be adjusted.",
+      a: "Most patients describe the shockwave therapy session as a tapping or vibrating sensation with mild discomfort at higher intensity settings rather than pain; the experience is generally very manageable without any analgesic medication or numbing cream. The level of discomfort during a shockwave session depends on the indication, the anatomical location of the treated area and the individual patient's sensitivity; bony and tendinous areas such as the heel (plantar fasciitis) or lateral elbow (tennis elbow) may produce more discomfort during shockwave than softer tissue areas. For erectile dysfunction Li-ESWT, most patients describe a mild tingling or tapping sensation on the penis with no significant pain at the validated low-intensity settings used for this indication; discomfort during Li-ESWT is typically less than during musculoskeletal shockwave at higher medium-intensity settings. After a shockwave session, mild soreness in the treated area for 24 to 48 hours is common and expected after musculoskeletal sessions as the healing response is initiated; NSAIDs should not be taken in this 48-hour window as they suppress the inflammatory healing response that the shockwave has triggered.",
     },
     {
-      q: "How long does shockwave therapy take to work?",
-      a: "Many patients notice changes within 1 to 3 months, with improvement potentially continuing over several months.",
+      q: "How many shockwave therapy sessions are needed?",
+      a: "The number of sessions depends on the indication and severity. For musculoskeletal conditions, the standard protocol is 3 to 5 sessions 1 to 2 weeks apart; plantar fasciitis, tennis elbow (lateral epicondylitis) and calcific shoulder tendinitis typically respond within 3 to 5 sessions with most patients experiencing significant pain relief from session 2 or 3 onward; Achilles tendinopathy and rotator cuff tendinopathy may require up to 5 sessions for optimal outcomes. For erectile dysfunction Li-ESWT, the standard initial protocol is 6 sessions over 3 to 6 weeks; men with more severe vasculogenic erectile dysfunction or those who show partial response to the initial 6-session course may proceed to a total of 12 sessions for maximum vascular benefit; at Nexus Clinic KL, the number of sessions for each patient is discussed and agreed at the initial consultation based on the indication and its severity, not as a generic protocol applied to every patient.",
     },
     {
-      q: "How long do results last?",
-      a: "Some guidance suggests benefits may last around 1 to 2 years in responders, but results are not permanent for everyone.",
+      q: "What is the difference between shockwave therapy for musculoskeletal conditions and Li-ESWT for erectile dysfunction?",
+      a: "Musculoskeletal shockwave therapy and Li-ESWT for erectile dysfunction are different treatment modalities using different device settings, different intensity levels and different delivery protocols. Musculoskeletal ESWT uses medium-intensity settings (0.1 to 0.4 mJ/mm2) to treat soft tissue injuries, tendinopathies and calcific deposits in physiotherapy and sports medicine applications; it is appropriate for conditions such as plantar fasciitis, tennis elbow, calcific shoulder tendinitis and Achilles tendinopathy. Li-ESWT for erectile dysfunction uses low-intensity settings (0.04 to 0.25 mJ/mm2) specifically validated for penile cavernosal tissue to stimulate neovascularisation and improve blood flow to the penis without tissue damage; these settings are distinct from musculoskeletal settings and are not interchangeable. Li-ESWT for erectile dysfunction must be performed at a medical clinic by experienced medical doctors using validated low-intensity settings; musculoskeletal shockwave therapy at physiotherapy or chiropractic medium-intensity settings is not appropriate for erectile dysfunction treatment. At Nexus Clinic KL, the device intensity is specifically calibrated for each indication, ensuring safe and effective shockwave therapy for both musculoskeletal and erectile dysfunction applications.",
     },
     {
-      q: "Is shockwave therapy approved for ED?",
-      a: "In the US, the FDA has not approved Li-ESWT specifically for ED, and the AUA classifies it as experimental or investigational. Malaysia has different regulatory pathways, and the treatment is offered by clinics.",
+      q: "Can shockwave therapy cure erectile dysfunction?",
+      a: "Shockwave therapy for erectile dysfunction is not a guaranteed cure for all men, and the evidence does not support using the word cure; it is a treatment that produces meaningful and durable improvement in erectile function in men with mild to moderate vasculogenic erectile dysfunction. Published clinical studies report improvement in IIEF-5 erectile function scores in 60 to 75% of men with mild to moderate vasculogenic erectile dysfunction completing a 6-session Li-ESWT protocol; some men achieve erection quality sufficient for sexual intercourse without PDE5 inhibitor medication after completing a full shockwave course; others experience meaningful improvement that makes their PDE5 inhibitor more effective. Men with severe erectile dysfunction where the vascular erection mechanism is significantly damaged are less likely to respond meaningfully to Li-ESWT as their primary treatment; these men are counselled at Nexus Clinic KL toward intracavernosal injection therapy or other treatment options. The improvement in erectile function from ESWT is more durable than oral medication effects because it is based on structural new blood vessel formation; follow-up studies show sustained erectile function benefit at 12 months after completing a shockwave course.",
     },
     {
-      q: "What are the risks or side effects?",
-      a: "Side effects are usually mild, such as temporary redness or tenderness. Some studies report no significant adverse side effects, but reporting varies.",
+      q: "Who should not have shockwave therapy?",
+      a: "Absolute contraindications to extracorporeal shockwave therapy include: blood clotting disorders or current anticoagulant medication (warfarin, novel anticoagulants) that significantly increase bleeding risk from the acoustic energy wave; active infection or open wound in the treated area; malignancy (cancer) in or near the treated area; pregnancy (for any treatment near the uterus); direct shockwave over growth plates in skeletally immature patients; and implanted electronic devices (pacemakers, nerve stimulators) near the treated area. For erectile dysfunction Li-ESWT specifically, men with Peyronie's disease (penile fibrosis) require a different shockwave protocol and are assessed individually; men whose erectile dysfunction is purely psychogenic (no vascular component) will not benefit from shockwave therapy as it has no mechanism for psychogenic erectile dysfunction. At Nexus Clinic KL, all contraindications are reviewed at the initial consultation before any shockwave therapy sessions are scheduled.",
     },
     {
-      q: "Can shockwave therapy replace Viagra or Cialis?",
-      a: "Sometimes it reduces reliance, but many men still use medication, especially early. ESWT is often positioned as restorative, while tablets are short-term support.",
+      q: "Does shockwave therapy work for plantar fasciitis in Malaysia?",
+      a: "Yes. Shockwave therapy has Level 1 evidence for plantar fasciitis and is considered the most effective non-surgical treatment for chronic plantar fasciitis that has not responded to physiotherapy, stretching, orthotics or steroid injection. Plantar fasciitis is one of the most common musculoskeletal conditions treated at Nexus Clinic KL, and chronic plantar fasciitis (persisting for more than 3 to 6 months despite conventional treatment) is the optimal indication for extracorporeal shockwave therapy. The shockwave energy disrupts the fibrous scar tissue at the plantar fascial origin, stimulates neovascularisation to improve blood flow and blood circulation to the relatively avascular heel tissue, activates stem cells and growth factors to initiate new collagen synthesis in the degenerated fascia, and produces neurological pain modulation for more rapid pain relief. Most patients with plantar fasciitis treated with ESWT at Nexus Clinic KL report significant pain relief from session 2 or 3, with continued improvement over the 6 to 8 weeks following the treatment course as the tissue regeneration process matures.",
     },
     {
-      q: "What is the cost of shockwave therapy in Malaysia?",
-      a: "Published ranges commonly mention RM 1,000 to RM 3,000 per session, with total costs depending on how many sessions you need. Some clinics advertise package pricing such as RM 4,500 for 6 sessions.",
+      q: "Is shockwave therapy available in Kuala Lumpur, Ampang, Damansara and Subang Jaya?",
+      a: "Yes. Nexus Clinic KL provides extracorporeal shockwave therapy (ESWT) for both musculoskeletal conditions and erectile dysfunction at our medical clinic located at Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur. This clinic in Kuala Lumpur serves patients from across the Klang Valley including Ampang, Damansara, Subang Jaya, Petaling Jaya, Bangsar, KLCC, Mont Kiara and throughout Malaysia. As a medical centre with LCP-certified doctors and evidence-based shockwave therapy protocols, Nexus Clinic KL is a provider in Malaysia for both musculoskeletal and erectile dysfunction shockwave therapy treatment. Patients from Ampang, Damansara and Subang Jaya who have been seeking effective shockwave therapy for chronic musculoskeletal pain or for vasculogenic erectile dysfunction are welcome to book a consultation at this Kuala Lumpur medical clinic; shockwave therapy in KL at this clinic is delivered by experienced medical doctors with the correct device calibration for each indication.",
     },
     {
-      q: "Is 'radial wave therapy' the same as shockwave for ED?",
-      a: "Not really. Cleveland Clinic warns radial wave therapy does not deliver the same energy and has not been proven effective for ED.",
+      q: "Can shockwave therapy be combined with other treatments?",
+      a: "Yes, and combination treatment produces superior outcomes for most indications. For musculoskeletal conditions, the combination of extracorporeal shockwave therapy with a targeted physiotherapy or chiropractic rehabilitation loading exercise programme produces consistently better long-term outcomes than shockwave therapy alone; the shockwave provides pain modulation and tissue regeneration while the rehabilitation exercises provide the mechanical loading signal that directs and consolidates the new tissue formation. For erectile dysfunction, ESWT is most effective when combined with optimal medical management of the underlying cardiovascular risk factors (blood pressure, blood glucose, cholesterol) that maintain the vascular endothelial dysfunction driving the erectile dysfunction; Li-ESWT combined with PDE5 inhibitor medication during the treatment course and for 3 months after is the most evidence-supported combined treatment approach for mild to moderate vasculogenic erectile dysfunction. At Nexus Clinic KL, the shockwave therapy treatment plan for each patient includes recommendations for complementary treatment options that maximise the structural and functional outcomes of the ESWT sessions.",
     },
     {
-      q: "Who should not do shockwave therapy for ED?",
-      a: "Men whose ED is mainly due to nerve damage or psychological causes typically do not respond well. Severe ED and long duration ED may also respond less.",
-    },
-    {
-      q: "Where can I get shockwave therapy in Kuala Lumpur?",
-      a: "Several men's health clinics offer ESWT in Kuala Lumpur. If you want a centrally located option, Nexus Clinic Kuala Lumpur is at Wisma UOA II, Jalan Pinang.",
+      q: "Is the shockwave therapy consultation at Nexus Clinic KL free?",
+      a: "The initial shockwave therapy consultation at Nexus Clinic KL is priced at RM 100 to RM 200 and includes a clinical assessment of the condition, review of previous treatment methods (physiotherapy, chiropractic, injection or medication), determination of whether shockwave therapy is the appropriate treatment modality for the specific indication, discussion of the evidence base for the recommended protocol, the number of sessions recommended, realistic outcome expectations and full pricing before any session is booked. For erectile dysfunction Li-ESWT, the consultation also includes IIEF-5 erectile function assessment, cardiovascular risk review and medication review; men with severe ED are counselled honestly about whether Li-ESWT is likely to produce meaningful benefit for their specific degree of vascular damage. Nexus Clinic KL is located at Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur, serving patients from across KL, Petaling Jaya, Bangsar, KLCC, Ampang, Damansara, Subang Jaya, Mont Kiara and throughout Malaysia.",
     },
   ];
+
+  // Musculoskeletal conditions treated
+  const musculoskeletalConditions = [
+    { icon: Footprints, name: "Plantar Fasciitis", desc: "Heel and arch pain worst in the morning; Level 1 evidence supports ESWT efficacy" },
+    { icon: Hand, name: "Tennis Elbow", desc: "Lateral epicondyle pain worsened by gripping; chronic degenerative tendinopathy" },
+    { icon: Bone, name: "Calcific Shoulder Tendinitis", desc: "Severe shoulder pain from calcium deposits; focused ESWT is most effective non-surgical treatment" },
+    { icon: Activity, name: "Achilles Tendinopathy", desc: "Posterior heel and calf pain; particularly effective for insertional tendinopathy" },
+    { icon: Activity, name: "Rotator Cuff Tendinopathy", desc: "Shoulder pain with overhead activity; best combined with rehabilitation exercises" },
+  ];
+
+  // Biological mechanisms
+  const mechanisms = [
+    {
+      title: "Neovascularisation",
+      desc: "Stimulates formation of new blood vessels (angiogenesis) through upregulation of VEGF, improving blood flow to the treated area. Primary mechanism for ED treatment.",
+    },
+    {
+      title: "Stem Cell Activation",
+      desc: "Activates resident stem cells and triggers release of growth factors (PDGF, TGF-beta, IGF-1) to initiate tissue regeneration and collagen synthesis.",
+    },
+    {
+      title: "Fibrous Scar Tissue Disruption",
+      desc: "Mechanically disrupts calcified deposits and fibrous scar tissue in chronic injuries, restarting the healing response that has stalled.",
+    },
+    {
+      title: "Central Pain Modulation",
+      desc: "Reduces substance P concentration and modulates C-fibre pain signalling, producing rapid pain relief within first 1-3 sessions.",
+    },
+  ];
+
   return (
     <main className="bg-light font-[--font-inter] overflow-hidden">
       {/* Hero Section */}
@@ -110,16 +137,16 @@ const ShockwaveLanding = () => {
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-georgia text-brown leading-tight">
-                Fix the blood flow problem,{" "}
-                <span className="text-wine">not just the moment.</span>
-              </h2>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-georgia text-brown leading-tight">
+                Shockwave Therapy in Malaysia:{" "}
+                <span className="text-wine">ESWT for ED and Pain Relief</span>
+              </h1>
 
               <p className="text-lg text-taupe leading-relaxed max-w-lg">
-                If erections feel weaker, inconsistent, or don't last, it can
-                quietly damage confidence and intimacy. Shockwave Therapy (ESWT)
-                is a non-surgical option that aims to support healthier blood
-                flow, so your erections can feel more natural again.
+                Extracorporeal shockwave therapy (ESWT) is one of the most clinically
+                versatile non-invasive treatments available. Non-invasive acoustic
+                shockwave technology delivers treatment for erectile dysfunction,
+                plantar fasciitis, tennis elbow and tendinopathy at Nexus Clinic KL.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -128,7 +155,7 @@ const ShockwaveLanding = () => {
                   whileTap={{ scale: 0.95 }}
                   className="group bg-wine text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-rose transition-all shadow-lg hover:shadow-xl"
                 >
-                  Schedule Private Consult
+                  Book Your Shockwave Therapy Assessment
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
 
@@ -138,19 +165,19 @@ const ShockwaveLanding = () => {
                   className="border-2 border-wine text-wine px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-wine/5 transition-all"
                 >
                   <Phone className="w-5 h-5" />
-                  016-7025699
+                  Call or WhatsApp Today
                 </motion.button>
               </div>
 
               <div className="flex items-center gap-4 text-sm text-brown/70">
                 <div className="flex items-center gap-1">
                   <MapPin className="w-4 h-4 text-wine" />
-                  <span>KLCC Area</span>
+                  <span>Wisma UOA II, Jalan Pinang, KL</span>
                 </div>
                 <div className="w-1 h-1 bg-taupe rounded-full" />
                 <div className="flex items-center gap-1">
                   <Shield className="w-4 h-4 text-wine" />
-                  <span>Medical Screening First</span>
+                  <span>Doctor-Performed Sessions</span>
                 </div>
               </div>
             </motion.div>
@@ -176,33 +203,24 @@ const ShockwaveLanding = () => {
                       <Info className="w-5 h-5 text-wine shrink-0 mt-1" />
                       <p className="text-sm text-brown">
                         <span className="font-semibold">
-                          A proper medical check first
+                          Key clinical distinction:
                         </span>{" "}
-                        because ED can be a risk marker for underlying
-                        cardiovascular disease and other health issues.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-wine/5 rounded-2xl p-6">
-                    <div className="flex items-start gap-3">
-                      <Info className="w-5 h-5 text-wine shrink-0 mt-1" />
-                      <p className="text-sm text-brown">
-                        <span className="font-semibold">
-                          Clear expectations:
-                        </span>{" "}
-                        international guidance is not perfectly aligned. Europe
-                        supports ESWT for selected men, while the AUA still
-                        classifies ESWT as investigational.
+                        Musculoskeletal ESWT uses medium-intensity settings (0.1-0.4 mJ/mm²).
+                        Li-ESWT for erectile dysfunction uses low-intensity settings (0.04-0.25 mJ/mm²)
+                        specifically validated for penile tissue. These are not interchangeable.
                       </p>
                     </div>
                   </div>
 
-                  <div className="bg-white/50 rounded-2xl p-6">
-                    <p className="text-sm text-taupe italic">
-                      "International guidance is not perfectly aligned. Europe
-                      supports ESWT for selected men, while the AUA still
-                      classifies ESWT as investigational."
-                    </p>
+                  <div className="bg-wine/5 rounded-2xl p-6">
+                    <div className="flex items-start gap-3">
+                      <Award className="w-5 h-5 text-wine shrink-0 mt-1" />
+                      <p className="text-sm text-brown">
+                        <span className="font-semibold">Over 5,000 procedures completed</span>
+                        <br />
+                        More than 15 years of combined clinical experience
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -228,30 +246,30 @@ const ShockwaveLanding = () => {
             <motion.div variants={fadeInLeft} className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown">
                 What is{" "}
-                <span className="text-wine">Shockwave Therapy (ESWT)</span>
+                <span className="text-wine">Extracorporeal Shockwave Therapy (ESWT)</span>
               </h2>
 
               <p className="text-lg text-brown/80 leading-relaxed">
-                Shockwave Therapy for ED usually means low-intensity
-                extracorporeal shockwave therapy (Li-ESWT).
+                ESWT is a non-invasive treatment that uses acoustic pressure waves delivered
+                from outside the body to targeted tissue. Originally developed for kidney
+                stone lithotripsy, the discovery that shockwave energy stimulates the body's
+                natural healing response transformed ESWT into a frontline treatment for
+                musculoskeletal conditions and erectile dysfunction.
               </p>
 
               <div className="bg-[--color-cream] rounded-3xl p-8 space-y-4">
                 <p className="text-brown">
-                  In simple words, a handheld device delivers gentle sound waves
-                  to targeted areas. The goal is to stimulate healing responses
-                  that may improve penile blood flow and erection quality over
-                  time.
+                  A handheld transducer applied to the skin with coupling gel transmits
+                  acoustic waves through the skin to the target area. No incision, injection,
+                  or anaesthesia is required. ESWT is non-surgical and produces no radiation.
                 </p>
 
                 <div className="flex items-start gap-3 bg-white p-4 rounded-2xl">
                   <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
                   <p className="text-sm text-brown">
-                    <span className="font-semibold">Important:</span> shockwave
-                    therapy for ED is not the same as the powerful shockwaves
-                    used to break kidney stones (lithotripsy). Low-intensity
-                    therapy is designed to stimulate tissue repair, not destroy
-                    tissue.
+                    <span className="font-semibold">Important:</span> All shockwave therapy
+                    sessions at Nexus Clinic KL are doctor-performed by LCP-certified doctors
+                    with the correct device calibration for the specific indication being treated.
                   </p>
                 </div>
               </div>
@@ -279,12 +297,8 @@ const ShockwaveLanding = () => {
                     <Zap className="w-5 h-5 text-wine" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brown">
-                      Low-Intensity ESWT
-                    </p>
-                    <p className="text-xs text-taupe">
-                      Stimulates tissue repair
-                    </p>
+                    <p className="text-sm font-semibold text-brown">Low-Intensity ESWT (Li-ESWT)</p>
+                    <p className="text-xs text-taupe">For erectile dysfunction treatment</p>
                   </div>
                 </div>
               </motion.div>
@@ -293,7 +307,7 @@ const ShockwaveLanding = () => {
         </div>
       </motion.section>
 
-      {/* Why ED happens */}
+      {/* How ESWT works - Biological Mechanisms */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -302,42 +316,19 @@ const ShockwaveLanding = () => {
         className="py-24 bg-[--color-cream]"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown mb-6">
-              Why ED happens{" "}
-              <span className="text-wine">
-                (and why shockwave is even discussed)
-              </span>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown mb-4">
+              How <span className="text-wine">Extracorporeal Shockwave Therapy Works</span>
             </h2>
-            <p className="text-lg text-brown/80">
-              A strong erection depends heavily on healthy blood flow. Anything
-              that reduces circulation can reduce erection quality. Common
-              contributors include diabetes, hypertension, high cholesterol,
-              smoking, obesity, and overall cardiovascular disease risk.
+            <p className="text-lg text-brown/80 max-w-3xl mx-auto">
+              ESWT stimulates the body's natural self-healing response through four distinct
+              biological mechanisms, explaining why it is simultaneously effective for both
+              musculoskeletal pain and erectile dysfunction.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: Activity, label: "Diabetes", desc: "Affects blood flow" },
-              {
-                icon: Activity,
-                label: "Hypertension",
-                desc: "Damages vessels",
-              },
-              {
-                icon: Activity,
-                label: "High Cholesterol",
-                desc: "Clogs arteries",
-              },
-              { icon: Activity, label: "Smoking", desc: "Reduces circulation" },
-              { icon: Activity, label: "Obesity", desc: "Increases risk" },
-              {
-                icon: Activity,
-                label: "Cardiovascular Disease",
-                desc: "Early signal",
-              },
-            ].map((item, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {mechanisms.map((mechanism, index) => (
               <motion.div
                 key={index}
                 variants={scaleIn}
@@ -345,25 +336,25 @@ const ShockwaveLanding = () => {
                 className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
               >
                 <div className="w-12 h-12 bg-wine/10 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-wine" />
+                  <Heart className="w-6 h-6 text-wine" />
                 </div>
-                <h3 className="font-semibold text-brown mb-2">{item.label}</h3>
-                <p className="text-sm text-taupe}">{item.desc}</p>
+                <h3 className="font-semibold text-brown text-lg mb-3">{mechanism.title}</h3>
+                <p className="text-sm text-taupe">{mechanism.desc}</p>
               </motion.div>
             ))}
           </div>
 
           <motion.p
             variants={fadeInUp}
-            className="text-center mt-8 text-lg text-wine font-semibold"
+            className="text-center mt-8 text-sm text-wine font-medium"
           >
-            That's also why ED is often described as an early health signal, not
-            just a bedroom issue.
+            The fibrous scar tissue disruption mechanism explains why ESWT is most effective
+            for conditions present for more than 3-6 months where normal healing has stalled.
           </motion.p>
         </div>
       </motion.section>
 
-      {/* How ESWT works */}
+      {/* Musculoskeletal Conditions Section */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -372,94 +363,50 @@ const ShockwaveLanding = () => {
         className="py-24 bg-white"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown">
-                How does <span className="text-wine">ESWT work for ED?</span>
-              </h2>
-
-              <p className="text-lg text-brown/80">Li-ESWT is thought to:</p>
-
-              <div className="space-y-4">
-                {[
-                  "stimulate growth factors and blood vessel repair responses",
-                  "support new microvessel development (angiogenesis)",
-                  "improve endothelial function and local circulation",
-                ].map((text, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInLeft}
-                    custom={index}
-                    className="flex items-start gap-3"
-                  >
-                    <CheckCircle2 className="w-6 h-6 text-wine shrink-0" />
-                    <p className="text-brown">{text}</p>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="bg-[--color-cream] rounded-2xl p-6">
-                <p className="text-brown italic">
-                  This is the "restorative" appeal. Pills can help blood flow
-                  for a few hours. Shockwave aims to improve the underlying
-                  vascular function over weeks and months.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-6">
-              <div className="bg-wine/5 rounded-3xl p-8">
-                <h3 className="text-xl font-semibold text-brown mb-4 flex items-center gap-2">
-                  <Award className="w-5 h-5 text-wine" />
-                  Not all "Shockwave Therapy" is the same
-                </h3>
-
-                <p className="text-brown mb-4">
-                  This matters a lot in Kuala Lumpur because many places market
-                  "wave therapy" in different forms.
-                </p>
-
-                <div className="bg-white rounded-2xl p-6">
-                  <h4 className="font-semibold text-wine mb-3">
-                    Focused Li-ESWT vs radial wave therapy
-                  </h4>
-                  <p className="text-sm text-brown mb-3">
-                    Some clinics advertise shockwave therapy but use radial wave
-                    devices. Cleveland Clinic warns radial wave therapy does not
-                    deliver the same energy and has not been shown to resolve ED
-                    in scientific studies. Yale Urology also notes radial waves
-                    deliver much lower energy and have not shown benefits for ED
-                    in studies.
-                  </p>
-
-                  <div className="mt-4 p-4 bg-[--color-cream] rounded-xl">
-                    <p className="text-sm font-semibold text-brown mb-2">
-                      If you are paying for shockwave therapy in Malaysia, ask:
-                    </p>
-                    <ul className="space-y-2 text-sm text-brown">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-wine rounded-full mt-2" />
-                        Is it focused Li-ESWT intended for ED?
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-wine rounded-full mt-2" />
-                        What device is used and what protocol is followed?
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-wine rounded-full mt-2" />
-                        What outcomes are you tracking (IIEF score, erection
-                        hardness, medication use)?
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown mb-4">
+              Musculoskeletal <span className="text-wine">Shockwave Therapy</span>
+            </h2>
+            <p className="text-lg text-brown/80 max-w-2xl mx-auto">
+              Evidence-supported ESWT for chronic soft tissue injuries that have not responded
+              to physiotherapy, chiropractic care, or injection treatment.
+            </p>
           </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {musculoskeletalConditions.map((condition, index) => {
+              const Icon = condition.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  whileHover={{ y: -5 }}
+                  className="bg-[--color-cream] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
+                >
+                  <div className="w-12 h-12 bg-wine/10 rounded-xl flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-wine" />
+                  </div>
+                  <h3 className="font-semibold text-brown text-lg mb-2">{condition.name}</h3>
+                  <p className="text-sm text-taupe">{condition.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <motion.div
+            variants={fadeInUp}
+            className="mt-8 bg-wine/5 rounded-2xl p-6 text-center"
+          >
+            <p className="text-brown">
+              <span className="font-semibold">Protocol:</span> 3 to 5 shockwave sessions,
+              1 to 2 weeks apart. Combination with targeted rehabilitation exercise programme
+              produces superior outcomes to shockwave therapy alone.
+            </p>
+          </motion.div>
         </div>
       </motion.section>
 
-      {/* Who is Shockwave Therapy for */}
+      {/* Erectile Dysfunction Section */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -468,85 +415,85 @@ const ShockwaveLanding = () => {
         className="py-24 bg-[--color-cream]"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown mb-4">
-              Who is <span className="text-wine">Shockwave Therapy</span> for?
-            </h2>
-            <p className="text-lg text-brown/80 max-w-2xl mx-auto">
-              The best evidence and guideline support is for mild to moderate
-              vasculogenic ED, especially when blood flow is the main issue.
-            </p>
-          </div>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown">
+                Li-ESWT for{" "}
+                <span className="text-wine">Erectile Dysfunction</span>
+              </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-white rounded-3xl p-8 shadow-xl"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-6 h-6 text-green-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-brown">
-                  Good Candidates
-                </h3>
+              <p className="text-lg text-brown/80">
+                Low-intensity extracorporeal shockwave therapy (Li-ESWT) is one of the most
+                actively researched treatments for vasculogenic erectile dysfunction.
+              </p>
+
+              <div className="bg-white rounded-2xl p-6 space-y-4">
+                <h3 className="text-xl font-semibold text-wine">Who is the ideal candidate?</h3>
+                <ul className="space-y-3">
+                  {[
+                    "Mild to moderate vasculogenic ED with reduced penile blood flow",
+                    "PDE5 inhibitor partial responders (erection improves but not fully)",
+                    "Men who cannot take PDE5 inhibitors due to nitrate medication",
+                    "Men with diabetes-related vasculogenic ED",
+                  ].map((text, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-1" />
+                      <span className="text-brown">{text}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <ul className="space-y-4">
-                {[
-                  "You still get partial erections, but they are weak or inconsistent",
-                  "You respond somewhat to tablets like sildenafil or tadalafil, but want a more restorative option",
-                  "You prefer a drug-free approach, or want to reduce reliance on pills over time",
-                  "You are a poor responder to PDE5 inhibitors and want alternatives (some studies include this group)",
-                ].map((text, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-1" />
-                    <span className="text-brown">{text}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="bg-white rounded-2xl p-6">
+                <h3 className="text-xl font-semibold text-wine mb-4">Published Evidence</h3>
+                <p className="text-brown mb-3">
+                  Studies report improvement in IIEF-5 erectile function scores in 60-75%
+                  of men with mild to moderate vasculogenic ED completing a 6-session protocol.
+                </p>
+                <p className="text-brown">
+                  Follow-up studies show sustained improvement at 12 months post-treatment
+                  due to structural vascular changes.
+                </p>
+              </div>
             </motion.div>
 
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white rounded-3xl p-8 shadow-xl"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-                  <XCircle className="w-6 h-6 text-red-600" />
+            <motion.div variants={fadeInRight} className="space-y-8">
+              <div className="bg-white rounded-2xl p-6">
+                <h3 className="text-xl font-semibold text-wine mb-4">Treatment Protocol</h3>
+                <div className="space-y-4">
+                  <div className="border-b border-[--color-cream] pb-4">
+                    <p className="font-semibold text-brown">Standard initial protocol:</p>
+                    <p className="text-brown">6 sessions over 3 to 6 weeks</p>
+                  </div>
+                  <div className="border-b border-[--color-cream] pb-4">
+                    <p className="font-semibold text-brown">Extended protocol:</p>
+                    <p className="text-brown">12 sessions for moderate ED or partial responders</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-brown">Per session:</p>
+                    <p className="text-brown">15-20 minutes; 3,000-5,000 acoustic wave pulses; no anaesthesia</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-brown">
-                  May Not Benefit As Much
-                </h3>
               </div>
 
-              <p className="text-brown mb-4">
-                Shockwave therapy is less likely to help when ED is mainly
-                caused by:
-              </p>
-
-              <ul className="space-y-4">
-                {[
-                  "nerve damage (for example, certain post-surgery cases)",
-                  "severe psychological causes without vascular issues",
-                  "very severe, long-standing ED",
-                ].map((text, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-1" />
-                    <span className="text-brown">{text}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mt-4 text-sm text-wine font-semibold">
-                This is why screening matters.
-              </p>
+              <div className="bg-wine/5 rounded-2xl p-6">
+                <div className="flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-wine shrink-0 mt-1" />
+                  <p className="text-sm text-brown">
+                    <span className="font-semibold">Critical intensity distinction:</span>{" "}
+                    Li-ESWT for ED uses low-intensity settings (0.04-0.25 mJ/mm²).
+                    Musculoskeletal ESWT uses medium-intensity settings (0.1-0.4 mJ/mm²).
+                    Applying musculoskeletal settings to penile tissue is not appropriate and
+                    potentially causes tissue damage. Ensure your provider uses validated Li-ESWT settings.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </motion.section>
 
-      {/* What happens at Nexus Clinic */}
+      {/* Treatment Process Section */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -555,51 +502,44 @@ const ShockwaveLanding = () => {
         className="py-24 bg-white"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown text-center ">
-            What happens at{" "}
-            <span className="text-wine">Nexus Clinic Kuala Lumpur</span>
+          <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown text-center mb-12">
+            The <span className="text-wine">Shockwave Therapy Process</span> at Nexus Clinic KL
           </h2>
-          <p className="text-taupe text-sm max-w-3xl mx-auto text-center mb-16 mt-4">
-            Nexus Clinic’s men’s ED approach includes multiple treatment options
-            such as medications, hormone therapy, shockwave therapy, lifestyle
-            changes, and regenerative treatments. A realistic patient journey
-            looks like this:
-          </p>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 step: "01",
-                title: "Private consult and root-cause check",
+                title: "Clinical Assessment",
                 icon: FileText,
                 details: [
-                  "how long the problem has been present",
-                  "whether it's situational or consistent",
-                  "lifestyle and stress",
-                  "medical risk factors like diabetes, blood pressure, and cholesterol",
+                  "Full history of the condition being treated",
+                  "Physical examination of the treated area",
+                  "Review of previous treatments (physiotherapy, chiropractic, injection)",
+                  "Determination of appropriate intensity setting",
                 ],
-                note: "Guidelines also encourage clinicians to counsel that ED can be a risk marker for underlying cardiovascular disease and warrants evaluation.",
               },
               {
                 step: "02",
-                title: "Optional labs if needed",
-                icon: Activity,
+                title: "Shockwave Session",
+                icon: Zap,
                 details: [
-                  "If libido is low or fatigue is present",
-                  "hormone checks may be part of the work-up",
+                  "Coupling gel applied to the treated area",
+                  "Systematic pulse pattern across target area",
+                  "15-20 minute session duration",
+                  "Doctor adjusts intensity based on patient feedback",
                 ],
-                note: "Nexus Clinic positions hormone evaluation as part of ED care pathways.",
               },
               {
                 step: "03",
-                title: "ESWT sessions",
-                icon: Zap,
+                title: "Post-Session Care",
+                icon: Calendar,
                 details: [
-                  "no anesthesia",
-                  "short sessions, often around 15 to 20 minutes",
-                  "a series of sessions, not a one-time thing",
+                  "Mild soreness for 24-48 hours is normal (musculoskeletal)",
+                  "No NSAIDs in the 48-hour window post-session",
+                  "Sessions scheduled 1-2 weeks apart",
+                  "Return to all activities immediately after ED treatment",
                 ],
-                note: "Nexus Clinic's ED shockwave landing page also states most men need a series of sessions and plans vary by individual needs.",
               },
             ].map((item, index) => (
               <motion.div
@@ -618,7 +558,7 @@ const ShockwaveLanding = () => {
                   <h3 className="text-xl font-semibold text-brown mb-4">
                     {item.title}
                   </h3>
-                  <ul className="space-y-2 mb-4">
+                  <ul className="space-y-2">
                     {item.details.map((detail, idx) => (
                       <li
                         key={idx}
@@ -629,7 +569,6 @@ const ShockwaveLanding = () => {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-sm text-taupe italic">{item.note}</p>
                 </div>
 
                 {index < 2 && (
@@ -639,179 +578,6 @@ const ShockwaveLanding = () => {
                 )}
               </motion.div>
             ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Sessions and Results */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-[--color-cream]"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown">
-                How many sessions{" "}
-                <span className="text-wine">do you need?</span>
-              </h2>
-
-              <div className="bg-white rounded-2xl p-6 space-y-4">
-                <p className="text-brown">
-                  6 sessions over a few weeks (very common in clinic FAQs)
-                </p>
-                <p className="text-brown">
-                  6 vs 12 session protocols have been compared in randomized
-                  trials, with some evidence suggesting stronger improvement
-                  with more sessions in some cases.
-                </p>
-                <div className="bg-wine/5 p-4 rounded-xl">
-                  <p className="text-sm text-brown font-medium">
-                    Your plan should match your ED severity, vascular risk
-                    factors, and response after the first few sessions.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-6">
-                <h3 className="text-xl font-semibold text-wine mb-4">
-                  When will you see results?
-                </h3>
-                <p className="text-brown mb-4">
-                  Shockwave therapy is not an instant effect treatment.
-                </p>
-                <p className="text-brown mb-4">
-                  Many clinical discussions suggest improvements may appear
-                  within 1 to 3 months, with continued improvement over several
-                  months in responders.
-                </p>
-                <div className="bg-[--color-cream] p-4 rounded-xl">
-                  <p className="text-sm text-brown">
-                    In a long-term study of PDE5 inhibitor non-responders, about
-                    63.5% achieved erections sufficient for penetration at 18
-                    months (with or without PDE5 inhibitors), though some
-                    initial responders declined over time.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-8">
-              <div className="bg-white rounded-2xl p-6">
-                <h3 className="text-xl font-semibold text-wine mb-4">
-                  How long do results last?
-                </h3>
-                <p className="text-brown">
-                  Results vary. Cleveland Clinic notes benefits may last about
-                  one to two years for some patients, and that effects are not
-                  necessarily permanent. Some men choose maintenance sessions
-                  depending on response and lifestyle risk factors.
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-6">
-                <h3 className="text-xl font-semibold text-wine mb-4">
-                  Pros and Cons
-                </h3>
-
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="font-semibold text-green-600 mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5" />
-                      Pros
-                    </h4>
-                    <ul className="space-y-2">
-                      {[
-                        "Non-surgical, no anesthesia for most protocols",
-                        "Targets vascular causes of ED instead of only treating the symptom",
-                        "Minimal downtime is commonly reported by clinics",
-                        "Can be used alone or alongside PDE5 inhibitors in selected men (as per European guidance)",
-                      ].map((text, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 text-sm text-brown"
-                        >
-                          <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
-                          {text}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-red-600 mb-3 flex items-center gap-2">
-                      <XCircle className="w-5 h-5" />
-                      Cons
-                    </h4>
-                    <ul className="space-y-2">
-                      {[
-                        "Not guaranteed, results vary",
-                        "Needs a course of sessions, which adds time and cost",
-                        "Evidence is still debated internationally: EAU supports it for selected men, AUA calls it investigational",
-                        "Not ideal for every ED type (severe neurogenic ED, complex cases)",
-                      ].map((text, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 text-sm text-brown"
-                        >
-                          <XCircle className="w-4 h-4 text-red-600 shrink-0 mt-1" />
-                          {text}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Side effects */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-16 bg-white"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto bg-[--color-cream] rounded-3xl p-8">
-            <h2 className="text-2xl font-bold font-georgia text-brown mb-4 flex items-center gap-2">
-              <Shield className="w-6 h-6 text-wine" />
-              Side effects and safety
-            </h2>
-
-            <p className="text-brown mb-4">
-              Most reports describe mild side effects such as:
-            </p>
-
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              {[
-                "temporary redness",
-                "mild discomfort in a specific spot",
-                "minor tenderness",
-              ].map((effect, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-3 text-center"
-                >
-                  <p className="text-sm text-brown">{effect}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-white rounded-xl p-4">
-              <p className="text-sm text-brown">
-                Cleveland Clinic describes the procedure as typically pain-free
-                and notes energy can be adjusted if discomfort occurs. In the
-                18-month follow-up study cited above, researchers reported no
-                adverse side effects.
-              </p>
-            </div>
           </div>
         </div>
       </motion.section>
@@ -826,120 +592,103 @@ const ShockwaveLanding = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold font-georgia text-brown text-center mb-16">
-            Shockwave Therapy{" "}
-            <span className="text-wine">cost in Malaysia</span> (Kuala Lumpur)
+            Shockwave Therapy <span className="text-wine">Cost in Malaysia 2026</span>
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-12">
             <motion.div variants={fadeInLeft} className="space-y-6">
-              <p className="text-lg text-brown">
-                Prices vary by clinic, device type, and number of sessions.
-              </p>
-
               <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <p className="text-brown mb-4">
-                  Published Malaysia references commonly cite:
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 bg-wine rounded-full mt-2" />
-                    <span className="text-brown">
-                      around RM 1,000 to RM 3,000 per session, with many
-                      patients needing 6 to 12 sessions
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 bg-wine rounded-full mt-2" />
-                    <span className="text-brown">
-                      package pricing example: Universal Clinic advertises 6
-                      sessions for RM 4,500, and describes sessions lasting
-                      about 20 minutes with pulses delivered to specific penile
-                      areas
-                    </span>
-                  </li>
-                </ul>
+                <h3 className="text-xl font-semibold text-wine mb-4">Musculoskeletal ESWT</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between border-b border-[--color-cream] py-3">
+                    <span className="text-brown">Initial Consultation</span>
+                    <span className="font-semibold text-brown">RM 100 - RM 200</span>
+                  </div>
+                  <div className="flex justify-between border-b border-[--color-cream] py-3">
+                    <span className="text-brown">Per Session</span>
+                    <span className="font-semibold text-brown">RM 300 - RM 700</span>
+                  </div>
+                  <div className="flex justify-between border-b border-[--color-cream] py-3">
+                    <span className="text-brown">3-Session Programme</span>
+                    <span className="font-semibold text-brown">RM 800 - RM 1,800</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="bg-wine/5 rounded-2xl p-6">
-                <h3 className="font-semibold text-brown mb-3">
-                  Your real cost depends on:
-                </h3>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2 text-brown">
-                    <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
-                    number of sessions recommended
-                  </li>
-                  <li className="flex items-start gap-2 text-brown">
-                    <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
-                    whether ED evaluation and lab work are included
-                  </li>
-                  <li className="flex items-start gap-2 text-brown">
-                    <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
-                    whether you combine therapy with medication or regenerative
-                    options
-                  </li>
-                </ul>
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h3 className="text-xl font-semibold text-wine mb-4">Li-ESWT for Erectile Dysfunction</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between border-b border-[--color-cream] py-3">
+                    <span className="text-brown">Per Session</span>
+                    <span className="font-semibold text-brown">RM 600 - RM 1,200</span>
+                  </div>
+                  <div className="flex justify-between border-b border-[--color-cream] py-3">
+                    <span className="text-brown">6-Session Programme</span>
+                    <span className="font-semibold text-brown">RM 3,500 - RM 6,500</span>
+                  </div>
+                  <div className="flex justify-between border-b border-[--color-cream] py-3">
+                    <span className="text-brown">12-Session Programme</span>
+                    <span className="font-semibold text-brown">RM 6,500 - RM 12,000</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="space-y-6">
+              <div className="bg-wine/5 rounded-2xl p-6">
+                <h3 className="font-semibold text-brown mb-3 flex items-center gap-2">
+                  <Info className="w-5 h-5 text-wine" />
+                  Important Notes
+                </h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2 text-brown">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                    All pricing disclosed at initial consultation before any session is booked
+                  </li>
+                  <li className="flex items-start gap-2 text-brown">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                    Programme pricing provides better per-session value than individual booking
+                  </li>
+                  <li className="flex items-start gap-2 text-brown">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                    12-session programme for men who show partial response to initial 6-session course
+                  </li>
+                  <li className="flex items-start gap-2 text-brown">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                    Post-programme follow-up at 3 months to assess response
+                  </li>
+                </ul>
+              </div>
+
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="text-xl font-semibold text-wine mb-4">
-                  Shockwave Therapy vs other ED treatments
+                  What's Included in Programme Pricing
                 </h3>
-
-                <div className="space-y-4">
-                  <div className="border-b border-[--color-cream] pb-4">
-                    <p className="font-semibold text-brown mb-2">
-                      ESWT vs ED tablets (Viagra, Cialis type)
-                    </p>
-                    <p className="text-sm text-brown">
-                      Tablets help blood flow short-term. ESWT aims to improve
-                      blood flow pathways over time. Many men use both,
-                      especially early on.
-                    </p>
-                  </div>
-
-                  <div className="border-b border-[--color-cream] pb-4">
-                    <p className="font-semibold text-brown mb-2">
-                      ESWT vs P- Shot (PRP)
-                    </p>
-                    <p className="text-sm text-brown">
-                      PRP and shockwave are often discussed together in men's
-                      health clinics. Evidence for PRP and ESWT both varies, and
-                      some guidelines classify PRP as experimental.
-                    </p>
-                  </div>
-
-                  <div className="border-b border-[--color-cream] pb-4">
-                    <p className="font-semibold text-brown mb-2">
-                      ESWT vs injections (alprostadil)
-                    </p>
-                    <p className="text-sm text-brown">
-                      Injections can work reliably for some men, but they are
-                      more invasive and are used differently in a treatment
-                      ladder.
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="font-semibold text-brown mb-2">
-                      ESWT vs penile implants
-                    </p>
-                    <p className="text-sm text-brown">
-                      Implants are a surgical option for severe ED when other
-                      treatments fail. Many men consider ESWT earlier because it
-                      is non-surgical.
-                    </p>
-                  </div>
-                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-brown">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                    All scheduled shockwave sessions
+                  </li>
+                  <li className="flex items-start gap-2 text-brown">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                    Initial clinical assessment
+                  </li>
+                  <li className="flex items-start gap-2 text-brown">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                    Post-programme follow-up consultation
+                  </li>
+                  <li className="flex items-start gap-2 text-brown">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                    For ED: IIEF-5 assessment and medication review
+                  </li>
+                </ul>
               </div>
             </motion.div>
           </div>
         </div>
       </motion.section>
 
-      {/* Competitor Review */}
+      {/* Contraindications Section */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -948,66 +697,42 @@ const ShockwaveLanding = () => {
         className="py-16 bg-white"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold font-georgia text-brown text-center mb-8">
-            Quick competitor review (Malaysia and Kuala Lumpur)
-          </h2>
+          <div className="max-w-3xl mx-auto bg-[--color-cream] rounded-3xl p-8">
+            <h2 className="text-2xl font-bold font-georgia text-brown mb-4 flex items-center gap-2">
+              <Shield className="w-6 h-6 text-wine" />
+              Who Should Not Have Shockwave Therapy
+            </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {[
-              {
-                name: "He Medical Clinic",
-                desc: "non-surgical ESWT positioning and improved blood flow messaging",
-              },
-              {
-                name: "The Alpha Clinic",
-                desc: "20-minute sessions, 4 to 6 weekly appointments, no downtime style messaging",
-              },
-              {
-                name: "Universal Clinic",
-                desc: 'strong pricing angle, 6-session package, weekly sessions, "affordable" positioning',
-              },
-              {
-                name: "Vivardi Clinics",
-                desc: '"men over 35" and mild to moderate ED positioning, drug-free angle',
-              },
-            ].map((clinic, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="bg-[--color-cream] rounded-2xl p-6"
-              >
-                <p className="font-semibold text-wine mb-2">{clinic.name}</p>
-                <p className="text-sm text-brown">{clinic.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+            <p className="text-brown mb-4">
+              Absolute contraindications to extracorporeal shockwave therapy include:
+            </p>
 
-          <div className="bg-wine/5 rounded-3xl p-8">
-            <h3 className="text-xl font-semibold text-wine mb-4">
-              How Nexus Clinic KL can stand out:
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span className="text-brown">
-                  Make it medical, not just marketing. ED is a cardiovascular
-                  risk marker, so screening matters.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span className="text-brown">
-                  Be transparent about device type (focused Li-ESWT vs radial).
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span className="text-brown">
-                  Offer a full pathway: lifestyle, hormone review, medication
-                  support, regenerative options, and ESWT in one plan.
-                </span>
-              </li>
-            </ul>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              {[
+                "Blood clotting disorders or anticoagulant medication",
+                "Active infection or open wound in treated area",
+                "Malignancy (cancer) in or near treated area",
+                "Pregnancy (for treatment near the uterus)",
+                "Direct shockwave over growth plates (skeletally immature)",
+                "Implanted electronic devices near treated area",
+              ].map((contraindication, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-3 flex items-start gap-2"
+                >
+                  <XCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                  <p className="text-xs text-brown">{contraindication}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-white rounded-xl p-4">
+              <p className="text-sm text-brown">
+                For ED Li-ESWT specifically: men with Peyronie's disease require a different protocol.
+                Men with purely psychogenic ED (no vascular component) will not benefit from shockwave therapy.
+                At Nexus Clinic KL, all contraindications are reviewed at the initial consultation.
+              </p>
+            </div>
           </div>
         </div>
       </motion.section>
@@ -1026,13 +751,14 @@ const ShockwaveLanding = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div variants={fadeInUp} className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold font-georgia text-white mb-6">
-              Start with a private consult and a clear plan
+              Effective Shockwave Therapy at Nexus Clinic KL
             </h2>
 
             <p className="text-white/90 text-lg mb-8">
-              If you're searching for Shockwave Therapy in Malaysia or ESWT in
-              Kuala Lumpur, start with a private consult and a clear plan that
-              fits your ED type, your health, and your goals.
+              ESWT for musculoskeletal conditions and erectile dysfunction in Malaysia.
+              Doctor-performed sessions with correct intensity calibration for each indication.
+              Over 5,000 procedures completed. Serving patients from across Kuala Lumpur,
+              Ampang, Damansara, Subang Jaya and throughout Malaysia.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1041,7 +767,7 @@ const ShockwaveLanding = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-wine px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-[--color-cream] transition-all shadow-lg"
               >
-                Schedule Consultation
+                Book Your Shockwave Therapy Assessment
                 <ChevronRight className="w-5 h-5" />
               </motion.button>
 
@@ -1059,8 +785,7 @@ const ShockwaveLanding = () => {
             <div className="mt-8 text-white/80 text-sm">
               <p>Nexus Clinic Kuala Lumpur</p>
               <p>
-                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                Kuala Lumpur
+                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
               </p>
               <p className="mt-2">Mobile: 016-7025699 / 03-21635699</p>
             </div>

@@ -40,62 +40,63 @@ const CoolSculptingLanding = ({
   locale?: string;
 }) => {
   const { t } = useTranslation(locale, "weightLoss/coolsculpting");
+
   const benefits = [
     {
       icon: (
         <Scissors className="w-6 h-6" style={{ color: "var(--color-wine)" }} />
       ),
-      title: "Non-Surgical",
-      desc: "No needles, no incisions, no scars",
+      title: "Non-Surgical Fat Reduction",
+      desc: "No incision, no needles, no anaesthesia and no downtime.",
     },
     {
       icon: (
         <Clock className="w-6 h-6" style={{ color: "var(--color-wine)" }} />
       ),
-      title: "No Downtime",
-      desc: "Return to activities immediately",
+      title: "35 to 60 Minutes Per Area",
+      desc: "A practical treatment session that fits easily into a busy schedule.",
     },
     {
       icon: (
         <Target className="w-6 h-6" style={{ color: "var(--color-wine)" }} />
       ),
-      title: "Targeted Results",
-      desc: "Up to 25% fat reduction per session",
+      title: "Targeted Fat Reduction",
+      desc: "Reduces stubborn localised fat by 20 to 25 percent per treated area per session.",
     },
     {
       icon: (
         <Shield className="w-6 h-6" style={{ color: "var(--color-wine)" }} />
       ),
-      title: "FDA-Cleared",
-      desc: "Safe & clinically proven technology",
+      title: "FDA-Cleared Technology",
+      desc: "Clinically proven cryolipolysis for precise cooling of stubborn fat pockets.",
     },
   ];
 
   const treatmentAreas = [
     {
-      name: "Abdomen",
+      name: "Abdomen / Belly",
       icon: (
         <Activity className="w-6 h-6" style={{ color: "var(--color-wine)" }} />
       ),
     },
     {
-      name: "Love Handles",
+      name: "Love Handles / Flanks",
       icon: (
         <Heart className="w-6 h-6" style={{ color: "var(--color-wine)" }} />
       ),
     },
     {
-      name: "Thighs",
+      name: "Inner & Outer Thighs",
       icon: (
         <Dumbbell className="w-6 h-6" style={{ color: "var(--color-wine)" }} />
       ),
     },
     {
-      name: "Arms",
+      name: "Upper Arms",
       icon: <Pill className="w-6 h-6" style={{ color: "var(--color-wine)" }} />,
     },
     {
-      name: "Chin & Jawline",
+      name: "Double Chin",
       icon: (
         <MapPin className="w-6 h-6" style={{ color: "var(--color-wine)" }} />
       ),
@@ -111,21 +112,21 @@ const CoolSculptingLanding = ({
   const stats = [
     {
       value: "20-25%",
-      label: "Fat Reduction",
+      label: "Fat Reduction Per Area",
       icon: <TrendingUp className="w-5 h-5" />,
     },
     {
-      value: "30-60",
-      label: "Minute Sessions",
+      value: "35-60",
+      label: "Minutes Per Area",
       icon: <Clock className="w-5 h-5" />,
     },
     {
-      value: "4-12",
-      label: "Weeks to Results",
+      value: "8-12",
+      label: "Weeks To Full Results",
       icon: <Calendar className="w-5 h-5" />,
     },
     {
-      value: "1M+",
+      value: "17M+",
       label: "Treatments Worldwide",
       icon: <Users className="w-5 h-5" />,
     },
@@ -133,44 +134,44 @@ const CoolSculptingLanding = ({
 
   const faqs = [
     {
-      q: "Does CoolSculpting really work?",
-      a: "Yes. CoolSculpting permanently removes fat cells. Studies show up to 20 to 25 percent fat reduction in treated areas after one session.",
+      q: "Is CoolSculpting the same as fat freezing?",
+      a: "CoolSculpting is the original branded fat-freezing treatment based on cryolipolysis. Generic fat-freezing devices may use a similar principle, but they are not the same machine. At Nexus Clinic KL, the genuine Zeltiq CoolSculpting system is used.",
     },
     {
-      q: "How long does CoolSculpting last?",
-      a: "Results are long lasting. Fat cells removed during treatment do not return. Maintaining a healthy lifestyle helps preserve results.",
+      q: "How many sessions do I need?",
+      a: "Most patients need one or two sessions per treated area depending on the amount of fat present, the area treated, and the contouring goal discussed during consultation.",
     },
     {
-      q: "Is CoolSculpting painful?",
-      a: "Most patients feel cold and mild pressure. Discomfort is minimal and temporary.",
+      q: "Does CoolSculpting permanently remove fat cells?",
+      a: "Yes. The treated fat cells are destroyed through apoptosis and gradually cleared by the body. Those removed fat cells do not regenerate, although remaining fat cells can still enlarge with weight gain.",
     },
     {
-      q: "How many sessions are needed?",
-      a: "Most patients need 1 to 3 sessions depending on fat amount and goals.",
+      q: "Is CoolSculpting suitable for patients with higher BMI?",
+      a: "CoolSculpting is designed for patients who are at or near their target weight but have localised stubborn fat. It is not a weight loss treatment for obesity. Patients with higher BMI may benefit more from a medically supervised weight loss programme first.",
     },
     {
-      q: "Is CoolSculpting safe?",
-      a: "Yes. CoolSculpting is FDA-cleared and widely used worldwide.",
+      q: "Can CoolSculpting be done during a lunch break?",
+      a: "Yes. With CoolAdvantage applicators, many single-area sessions can be completed in about an hour including preparation and post-treatment massage, with no downtime afterward.",
     },
     {
-      q: "How much does CoolSculpting cost in Malaysia?",
-      a: "Average cost ranges from RM1,500 to RM4,000 per session depending on treatment area.",
+      q: "Does CoolSculpting hurt?",
+      a: "Most patients feel cold, suction and pulling at the start of treatment. The area then numbs naturally. The post-treatment massage may feel tender, but overall the treatment is generally well tolerated.",
     },
     {
-      q: "When will I see results?",
-      a: "Initial results appear in 4 weeks. Full results appear in 12 weeks.",
+      q: "Can CoolSculpting reduce belly fat after pregnancy?",
+      a: "It can reduce the pinchable subcutaneous fat layer in the lower abdomen, but it does not treat diastasis recti or loose skin. A consultation is needed to confirm whether fat freezing is the right option.",
     },
     {
-      q: "Can CoolSculpting reduce belly fat?",
-      a: "Yes. Abdomen is one of the most common treatment areas.",
+      q: "What is the difference between CoolSculpting and Ozempic?",
+      a: "CoolSculpting targets and removes specific localised fat pockets. Ozempic and other GLP-1 medicines help reduce appetite and overall body weight. They serve different patient needs and are not direct substitutes.",
     },
     {
       q: "Is there downtime after CoolSculpting?",
-      a: "No. Most patients return to normal activities immediately.",
+      a: "No. Patients can return to normal daily activity immediately after treatment. Temporary redness, swelling, firmness or numbness can happen, but recovery time is not required.",
     },
     {
-      q: "Is CoolSculpting better than liposuction?",
-      a: "CoolSculpting is safer and non-surgical. Liposuction removes more fat but requires surgery.",
+      q: "What can CoolSculpting not fix?",
+      a: "CoolSculpting cannot treat visceral fat, obesity, loose skin, stretch marks, cellulite texture or muscle separation. It works best on pinchable localised subcutaneous fat.",
     },
   ];
 
@@ -194,13 +195,25 @@ const CoolSculptingLanding = ({
 
   const competitors = [
     {
-      name: "Beverly Wilshire Clinic",
-      highlight: "Premium medical aesthetics",
+      name: "CoolSculpting",
+      highlight: "Best for localised stubborn fat near target weight",
     },
-    { name: "Clique Clinic KL", highlight: "Advanced technology focus" },
-    { name: "Premier Clinic", highlight: "Comprehensive care" },
-    { name: "CLEO Clinic", highlight: "Aesthetic expertise" },
-    { name: "Sliq Clinic", highlight: "Modern approaches" },
+    {
+      name: "Liposuction",
+      highlight: "Best for larger fat volume with surgery and downtime",
+    },
+    {
+      name: "GLP-1 Injections",
+      highlight: "Best for overall medical weight reduction",
+    },
+    {
+      name: "Combined Approach",
+      highlight: "Weight loss first, contouring refinement after",
+    },
+    {
+      name: "Doctor Assessment",
+      highlight: "Needed to choose the right pathway safely",
+    },
   ];
 
   return (
@@ -224,7 +237,6 @@ const CoolSculptingLanding = ({
               "linear-gradient(135deg, var(--color-cream) 0%, #FFFFFF 100%)",
           }}
         >
-          {/* Glass morphism background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div
               className="absolute -top-40 -right-40 w-80 h-80 rounded-full"
@@ -255,37 +267,38 @@ const CoolSculptingLanding = ({
                     className="text-sm"
                     style={{ color: "var(--color-brown)" }}
                   >
-                    Medical-Grade Fat Freezing
+                    FDA-Cleared CoolSculpting in Malaysia
                   </span>
                 </div>
 
-                <h2
+                <h1
                   className="text-4xl md:text-3xl lg:text-5xl xl:text-6xl font-bold leading-tight"
                   style={{
                     color: "var(--color-brown)",
                     fontFamily: "var(--font-georgia)",
                   }}
                 >
-                  Freeze Stubborn Fat,
+                  Proven CoolSculpting
                   <br />
                   <span style={{ color: "var(--color-wine)" }}>
-                    Reveal Your Contour
+                    for Permanent Fat Reduction
                   </span>
-                </h2>
+                </h1>
 
                 <p
                   className="text-md xl:text-lg"
                   style={{ color: "var(--color-taupe)" }}
                 >
-                  At Nexus Clinic Kuala Lumpur, advanced fat freezing technology
-                  helps reshape your body naturally. No needles. No downtime.
-                  Just gradual and visible fat reduction.
+                  Diet followed for months. Gym sessions done consistently. Yet
+                  the belly, love handles, inner thighs or bra fat refuse to
+                  shift.
                 </p>
 
                 <p className="text-md xl:text-lg text-taupe">
-                  Some fat stays no matter how clean you eat or how often you
-                  exercise. CoolSculpting offers a safe and modern way to remove
-                  these stubborn fat pockets without surgery.
+                  At Nexus Clinic KL, our doctors use precise controlled cooling
+                  to target stubborn fat pockets without surgery, needles or
+                  downtime, with results that develop naturally over 8 to 12
+                  weeks.
                 </p>
 
                 <div className="flex flex-wrap gap-4 pt-4">
@@ -295,7 +308,7 @@ const CoolSculptingLanding = ({
                     className="px-8 py-4 rounded-full text-white font-medium flex items-center gap-2"
                     style={{ backgroundColor: "var(--color-wine)" }}
                   >
-                    Schedule Consultation
+                    Book Free Assessment
                     <ChevronRight className="w-5 h-5" />
                   </motion.button>
 
@@ -310,11 +323,10 @@ const CoolSculptingLanding = ({
                       border: "1px solid var(--color-taupe)",
                     }}
                   >
-                    View Results
+                    View Treatment Overview
                   </motion.button>
                 </div>
 
-                {/* Stats */}
                 <motion.div
                   variants={scaleIn}
                   className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8"
@@ -356,7 +368,6 @@ const CoolSculptingLanding = ({
                   />
                 </div>
 
-                {/* Floating card */}
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ repeat: Infinity, duration: 3 }}
@@ -377,13 +388,13 @@ const CoolSculptingLanding = ({
                         className="font-semibold"
                         style={{ color: "var(--color-brown)" }}
                       >
-                        Trusted by 5000+
+                        5000+ Procedures
                       </div>
                       <div
                         className="text-sm"
                         style={{ color: "var(--color-taupe)" }}
                       >
-                        Patients in Malaysia
+                        Trusted aesthetic care at Nexus Clinic KL
                       </div>
                     </div>
                   </div>
@@ -414,16 +425,16 @@ const CoolSculptingLanding = ({
                   fontFamily: "var(--font-georgia)",
                 }}
               >
-                Why Kuala Lumpur Chooses
+                CoolSculpting at a Glance
                 <br />
                 <span style={{ color: "var(--color-wine)" }}>
-                  CoolSculpting
+                  Treatment Overview
                 </span>
               </h2>
               <p className="text-lg" style={{ color: "var(--color-taupe)" }}>
-                Body contouring demand has increased significantly in Kuala
-                Lumpur. People want visible results without surgery or long
-                recovery.
+                A clinically proven non-surgical fat reduction treatment for
+                adults at or near target weight who want to reduce stubborn
+                localised fat without downtime.
               </p>
             </motion.div>
 
@@ -453,12 +464,50 @@ const CoolSculptingLanding = ({
               ))}
             </div>
             <p className="text-lg text-taupe text-center mt-8">
-              CoolSculpting can reduce fat in treated areas by up to 20 to 25
-              percent after one session. This makes it ideal for people who are
-              close to their ideal weight but struggle with specific fat
-              pockets. At Nexus Clinic Kuala Lumpur, treatment plans are
-              designed around your body goals, lifestyle, and comfort.
+              Visible results usually begin from 3 to 6 weeks, with optimal
+              contour changes developing at 2 to 3 months. Fat cells removed
+              are gone permanently, provided weight is maintained.
             </p>
+          </div>
+        </motion.section>
+
+        {/* Follow-up Intro Section */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="py-20"
+          style={{ backgroundColor: "var(--color-cream)" }}
+        >
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div variants={fadeInUp} className="space-y-6 text-center">
+              <h2
+                className="text-3xl md:text-4xl font-bold"
+                style={{
+                  color: "var(--color-brown)",
+                  fontFamily: "var(--font-georgia)",
+                }}
+              >
+                Why Stubborn Fat
+                <br />
+                <span style={{ color: "var(--color-wine)" }}>
+                  Behaves Differently
+                </span>
+              </h2>
+              <p className="text-lg" style={{ color: "var(--color-taupe)" }}>
+                That is not a failure of discipline. It is how subcutaneous fat
+                works. Stored just beneath the skin, these fat deposits are
+                metabolically inactive and structurally resistant to caloric
+                restriction or exercise.
+              </p>
+              <p className="text-lg" style={{ color: "var(--color-taupe)" }}>
+                CoolSculpting changes that equation by delivering precise,
+                controlled cooling to targeted fat pockets, triggering
+                cryolipolysis so the body can gradually clear destroyed fat
+                cells while leaving surrounding tissue unharmed.
+              </p>
+            </motion.div>
           </div>
         </motion.section>
 
@@ -469,7 +518,7 @@ const CoolSculptingLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           className="py-20 relative overflow-hidden"
-          style={{ backgroundColor: "var(--color-cream)" }}
+          style={{ backgroundColor: "white" }}
         >
           <div className="absolute inset-0 opacity-5">
             <div
@@ -496,30 +545,30 @@ const CoolSculptingLanding = ({
               >
                 The Science of
                 <br />
-                <span style={{ color: "var(--color-wine)" }}>Fat Freezing</span>
+                <span style={{ color: "var(--color-wine)" }}>Cryolipolysis</span>
               </h2>
             </motion.div>
 
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div variants={fadeInLeft} className="space-y-6">
                 <p className="text-lg" style={{ color: "var(--color-taupe)" }}>
-                  CoolSculpting is a fat freezing treatment based on
-                  cryolipolysis - the scientific principle that fat cells are
-                  more sensitive to cold than surrounding tissues.
+                  CoolSculpting is based on the principle that fat cells are
+                  more sensitive to controlled cold exposure than surrounding
+                  skin, nerves and muscle tissue.
                 </p>
 
                 <div className="space-y-4">
                   {[
-                    "Controlled cooling targets fat cells without damaging skin",
-                    "Fat cells crystallize and break down naturally",
-                    "Body eliminates frozen fat cells through lymphatic system",
-                    "Results appear gradually over 4-12 weeks",
+                    "A protective gel pad is placed before the applicator is positioned precisely over the target area.",
+                    "Controlled cooling brings the fat tissue into the treatment range where fat cells crystallise and begin apoptosis.",
+                    "The body gradually clears the destroyed fat cells through the lymphatic system over the following weeks.",
+                    "Results appear naturally from 3 to 6 weeks and continue improving over 8 to 12 weeks.",
                   ].map((step, index) => (
                     <motion.div
                       key={index}
                       variants={fadeInLeft}
                       className="flex items-start gap-3 p-4 rounded-xl"
-                      style={{ backgroundColor: "var(--color-glass)" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <CheckCircle2
                         className="w-6 h-6 shrink-0"
@@ -538,7 +587,7 @@ const CoolSculptingLanding = ({
                   <div className="space-y-4">
                     <div
                       className="p-6 rounded-2xl text-center"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <ThermometerSnowflake
                         className="w-8 h-8 mx-auto mb-2"
@@ -548,12 +597,12 @@ const CoolSculptingLanding = ({
                         className="text-sm"
                         style={{ color: "var(--color-brown)" }}
                       >
-                        Freezing
+                        Controlled Cooling
                       </div>
                     </div>
                     <div
                       className="p-6 rounded-2xl text-center"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <Activity
                         className="w-8 h-8 mx-auto mb-2"
@@ -563,14 +612,14 @@ const CoolSculptingLanding = ({
                         className="text-sm"
                         style={{ color: "var(--color-brown)" }}
                       >
-                        Crystallization
+                        Crystallisation
                       </div>
                     </div>
                   </div>
                   <div className="space-y-4 mt-8">
                     <div
                       className="p-6 rounded-2xl text-center"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <Zap
                         className="w-8 h-8 mx-auto mb-2"
@@ -580,12 +629,12 @@ const CoolSculptingLanding = ({
                         className="text-sm"
                         style={{ color: "var(--color-brown)" }}
                       >
-                        Elimination
+                        Natural Clearance
                       </div>
                     </div>
                     <div
                       className="p-6 rounded-2xl text-center"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <Sparkles
                         className="w-8 h-8 mx-auto mb-2"
@@ -595,7 +644,7 @@ const CoolSculptingLanding = ({
                         className="text-sm"
                         style={{ color: "var(--color-brown)" }}
                       >
-                        Results
+                        Natural Contour
                       </div>
                     </div>
                   </div>
@@ -612,7 +661,7 @@ const CoolSculptingLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           className="py-20"
-          style={{ backgroundColor: "white" }}
+          style={{ backgroundColor: "var(--color-cream)" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -626,10 +675,17 @@ const CoolSculptingLanding = ({
                   fontFamily: "var(--font-georgia)",
                 }}
               >
-                Target Any
+                Treatment Areas Commonly
                 <br />
-                <span style={{ color: "var(--color-wine)" }}>Problem Area</span>
+                <span style={{ color: "var(--color-wine)" }}>
+                  Targeted in Malaysia
+                </span>
               </h2>
+              <p className="text-lg" style={{ color: "var(--color-taupe)" }}>
+                Malaysian patients often carry stubborn localised fat in the
+                abdomen, flanks, thighs, upper arms, bra fat and under the chin
+                even at lower BMI levels.
+              </p>
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -639,7 +695,7 @@ const CoolSculptingLanding = ({
                   variants={scaleIn}
                   whileHover={{ scale: 1.05 }}
                   className="p-6 rounded-2xl text-center cursor-pointer group"
-                  style={{ backgroundColor: "var(--color-cream)" }}
+                  style={{ backgroundColor: "white" }}
                 >
                   <div className="text-4xl flex justify-center mb-3 group-hover:scale-110 transition-transform">
                     {area.icon}
@@ -654,7 +710,7 @@ const CoolSculptingLanding = ({
                     className="text-sm mt-1"
                     style={{ color: "var(--color-taupe)" }}
                   >
-                    Book Consultation
+                    Ask About Suitability
                   </p>
                 </motion.div>
               ))}
@@ -666,10 +722,11 @@ const CoolSculptingLanding = ({
               style={{ backgroundColor: "var(--color-rose)", color: "white" }}
             >
               <h3 className="text-2xl font-bold mb-4">
-                Multiple Areas? We've Got You Covered
+                Applicator Selection Matters
               </h3>
               <p className="mb-6">
-                CoolSculpting can target multiple areas in one treatment plan
+                The right applicator, position and treatment plan matter more
+                than simply having the machine.
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -677,7 +734,7 @@ const CoolSculptingLanding = ({
                 className="px-8 py-3 rounded-full bg-white font-semibold"
                 style={{ color: "var(--color-wine)" }}
               >
-                Design Your Plan
+                Check Your Concern Area
               </motion.button>
             </motion.div>
           </div>
@@ -690,7 +747,7 @@ const CoolSculptingLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           className="py-20 relative"
-          style={{ backgroundColor: "var(--color-cream)" }}
+          style={{ backgroundColor: "white" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -714,29 +771,29 @@ const CoolSculptingLanding = ({
                     {
                       icon: <Heart className="w-5 h-5" />,
                       title: "Doctor-Led Assessment",
-                      desc: "Every plan starts with professional medical consultation",
+                      desc: "Every treatment begins with a proper medical consultation and body mapping by an aesthetic doctor.",
                     },
                     {
                       icon: <Target className="w-5 h-5" />,
-                      title: "Customized Treatment Plan",
-                      desc: "Designed around your body goals and lifestyle",
+                      title: "Precise Applicator Planning",
+                      desc: "Applicators are selected according to body geometry, fat layer and treatment objective for smoother contour outcomes.",
                     },
                     {
                       icon: <Sparkles className="w-5 h-5" />,
-                      title: "Advanced Technology",
-                      desc: "Modern applicators for even cooling and better results",
+                      title: "Original Zeltiq CoolSculpting System",
+                      desc: "The FDA-cleared cryolipolysis platform with extensive clinical research and global treatment history.",
                     },
                     {
                       icon: <Users className="w-5 h-5" />,
-                      title: "Trusted Aesthetic Experts",
-                      desc: "Professional care designed to enhance confidence safely",
+                      title: "Transparent Suitability Advice",
+                      desc: "Patients who are not suitable candidates are told honestly and guided toward the right body contouring pathway.",
                     },
                   ].map((item, index) => (
                     <motion.div
                       key={index}
                       variants={fadeInLeft}
                       className="flex items-start gap-4 p-4 rounded-xl"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <div
                         className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
@@ -768,7 +825,7 @@ const CoolSculptingLanding = ({
                   <div className="space-y-4">
                     <div
                       className="p-6 rounded-2xl text-center"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <div
                         className="text-3xl font-bold"
@@ -777,51 +834,51 @@ const CoolSculptingLanding = ({
                         5000+
                       </div>
                       <div style={{ color: "var(--color-taupe)" }}>
-                        Happy Patients
+                        Aesthetic Procedures
                       </div>
                     </div>
                     <div
                       className="p-6 rounded-2xl text-center"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <div
                         className="text-3xl font-bold"
                         style={{ color: "var(--color-wine)" }}
                       >
-                        15+
+                        35 min
                       </div>
                       <div style={{ color: "var(--color-taupe)" }}>
-                        Years Experience
+                        CoolAdvantage Cycles
                       </div>
                     </div>
                   </div>
                   <div className="space-y-4 mt-8">
                     <div
                       className="p-6 rounded-2xl text-center"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <div
                         className="text-3xl font-bold"
                         style={{ color: "var(--color-wine)" }}
                       >
-                        100%
+                        17M+
                       </div>
                       <div style={{ color: "var(--color-taupe)" }}>
-                        Safe Protocols
+                        Global Treatments
                       </div>
                     </div>
                     <div
                       className="p-6 rounded-2xl text-center"
-                      style={{ backgroundColor: "white" }}
+                      style={{ backgroundColor: "var(--color-cream)" }}
                     >
                       <div
                         className="text-3xl font-bold"
                         style={{ color: "var(--color-wine)" }}
                       >
-                        24/7
+                        0
                       </div>
                       <div style={{ color: "var(--color-taupe)" }}>
-                        Patient Support
+                        Downtime Required
                       </div>
                     </div>
                   </div>
@@ -833,6 +890,7 @@ const CoolSculptingLanding = ({
 
         {/* Before & After  */}
         <SectionBeforeAfter transformations={transformations} />
+
         {/* Process Timeline */}
         <motion.section
           variants={staggerContainer}
@@ -840,7 +898,7 @@ const CoolSculptingLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           className="py-20"
-          style={{ backgroundColor: "white" }}
+          style={{ backgroundColor: "var(--color-cream)" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -854,9 +912,11 @@ const CoolSculptingLanding = ({
                   fontFamily: "var(--font-georgia)",
                 }}
               >
-                Your Journey to
+                Your CoolSculpting Session
                 <br />
-                <span style={{ color: "var(--color-wine)" }}>a New You</span>
+                <span style={{ color: "var(--color-wine)" }}>
+                  Step by Step
+                </span>
               </h2>
             </motion.div>
 
@@ -865,29 +925,29 @@ const CoolSculptingLanding = ({
                 {
                   step: "01",
                   title: "Consultation",
-                  desc: "Doctor identifies treatment areas",
+                  desc: "Medical history review, body mapping and suitability assessment by a doctor.",
                 },
                 {
                   step: "02",
-                  title: "Treatment",
-                  desc: "30-60 minute cooling session",
+                  title: "Applicator Placement",
+                  desc: "Gel pad applied and the selected applicator positioned precisely over the target zone.",
                 },
                 {
                   step: "03",
-                  title: "Natural Process",
-                  desc: "Body eliminates fat cells",
+                  title: "Cryolipolysis Cycle",
+                  desc: "Controlled cooling runs for 35 to 60 minutes depending on the applicator and area.",
                 },
                 {
                   step: "04",
-                  title: "Results",
-                  desc: "Visible changes in 4-12 weeks",
+                  title: "Massage & Review",
+                  desc: "Post-treatment massage is performed, then results are monitored over the following weeks.",
                 },
               ].map((item, index) => (
                 <motion.div
                   key={index}
                   variants={fadeInUp}
                   className="relative p-6 rounded-2xl"
-                  style={{ backgroundColor: "var(--color-cream)" }}
+                  style={{ backgroundColor: "white" }}
                 >
                   <div
                     className="text-4xl font-bold mb-4"
@@ -923,7 +983,7 @@ const CoolSculptingLanding = ({
           whileInView="visible"
           viewport={{ once: true }}
           className="py-20"
-          style={{ backgroundColor: "var(--color-cream)" }}
+          style={{ backgroundColor: "white" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -935,35 +995,35 @@ const CoolSculptingLanding = ({
                     fontFamily: "var(--font-georgia)",
                   }}
                 >
-                  Investment in
+                  CoolSculpting Malaysia
                   <br />
                   <span style={{ color: "var(--color-wine)" }}>
-                    Your Confidence
+                    Pricing Guide
                   </span>
                 </h2>
 
                 <div className="space-y-4">
                   <div
                     className="p-6 rounded-2xl"
-                    style={{ backgroundColor: "white" }}
+                    style={{ backgroundColor: "var(--color-cream)" }}
                   >
                     <div className="flex justify-between items-center mb-2">
                       <span style={{ color: "var(--color-brown)" }}>
-                        Per Treatment Area
+                        Abdomen / Single Area
                       </span>
                       <span
                         className="text-2xl font-bold"
                         style={{ color: "var(--color-wine)" }}
                       >
-                        RM1,500 - RM3,000
+                        RM1,500 - RM2,200
                       </span>
                     </div>
                     <div
                       className="w-full h-2 rounded-full"
-                      style={{ backgroundColor: "var(--color-cream)" }}
+                      style={{ backgroundColor: "white" }}
                     >
                       <div
-                        className="w-3/4 h-2 rounded-full"
+                        className="w-3/5 h-2 rounded-full"
                         style={{ backgroundColor: "var(--color-wine)" }}
                       />
                     </div>
@@ -971,25 +1031,25 @@ const CoolSculptingLanding = ({
 
                   <div
                     className="p-6 rounded-2xl"
-                    style={{ backgroundColor: "white" }}
+                    style={{ backgroundColor: "var(--color-cream)" }}
                   >
                     <div className="flex justify-between items-center mb-2">
                       <span style={{ color: "var(--color-brown)" }}>
-                        Average Session
+                        Love Handles / Inner Thighs
                       </span>
                       <span
                         className="text-2xl font-bold"
                         style={{ color: "var(--color-wine)" }}
                       >
-                        RM2,000 - RM4,000
+                        RM2,800 - RM4,000
                       </span>
                     </div>
                     <div
                       className="w-full h-2 rounded-full"
-                      style={{ backgroundColor: "var(--color-cream)" }}
+                      style={{ backgroundColor: "white" }}
                     >
                       <div
-                        className="w-3/4 h-2 rounded-full"
+                        className="w-4/5 h-2 rounded-full"
                         style={{ backgroundColor: "var(--color-wine)" }}
                       />
                     </div>
@@ -997,25 +1057,25 @@ const CoolSculptingLanding = ({
 
                   <div
                     className="p-6 rounded-2xl"
-                    style={{ backgroundColor: "white" }}
+                    style={{ backgroundColor: "var(--color-cream)" }}
                   >
                     <div className="flex justify-between items-center mb-2">
                       <span style={{ color: "var(--color-brown)" }}>
-                        Advanced Plans
+                        Full Body Package
                       </span>
                       <span
                         className="text-2xl font-bold"
                         style={{ color: "var(--color-wine)" }}
                       >
-                        RM2,500 - RM6,000
+                        From RM6,500
                       </span>
                     </div>
                     <div
                       className="w-full h-2 rounded-full"
-                      style={{ backgroundColor: "var(--color-cream)" }}
+                      style={{ backgroundColor: "white" }}
                     >
                       <div
-                        className="w-3/4 h-2 rounded-full"
+                        className="w-5/6 h-2 rounded-full"
                         style={{ backgroundColor: "var(--color-wine)" }}
                       />
                     </div>
@@ -1023,8 +1083,8 @@ const CoolSculptingLanding = ({
                 </div>
 
                 <p className="text-sm" style={{ color: "var(--color-taupe)" }}>
-                  *Customized plans available. Consultation helps determine
-                  exact cost.
+                  A precise quote is provided after consultation once the target
+                  areas, applicator selection and number of cycles are confirmed.
                 </p>
               </motion.div>
 
@@ -1036,19 +1096,21 @@ const CoolSculptingLanding = ({
                     color: "white",
                   }}
                 >
-                  <h3 className="text-2xl font-bold mb-4">Flexible Options</h3>
+                  <h3 className="text-2xl font-bold mb-4">
+                    Common Treatment Areas
+                  </h3>
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5" />
-                      <span>Interest-free payment plans</span>
+                      <span>Abdomen, flanks and thighs</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5" />
-                      <span>Package discounts available</span>
+                      <span>Upper arms, bra fat and back fat</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5" />
-                      <span>Credit card installment options</span>
+                      <span>Double chin and selected small pockets</span>
                     </li>
                   </ul>
                   <motion.button
@@ -1057,7 +1119,7 @@ const CoolSculptingLanding = ({
                     className="w-full py-3 rounded-full bg-white font-semibold"
                     style={{ color: "var(--color-wine)" }}
                   >
-                    Get Personalized Quote
+                    Get Personalised Quote
                   </motion.button>
                 </div>
               </motion.div>
@@ -1065,14 +1127,14 @@ const CoolSculptingLanding = ({
           </div>
         </motion.section>
 
-        {/* Competitor Analysis */}
+        {/* Comparison Section */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           className="py-20"
-          style={{ backgroundColor: "white" }}
+          style={{ backgroundColor: "var(--color-cream)" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -1086,9 +1148,11 @@ const CoolSculptingLanding = ({
                   fontFamily: "var(--font-georgia)",
                 }}
               >
-                Why Patients Choose
+                CoolSculpting Versus
                 <br />
-                <span style={{ color: "var(--color-wine)" }}>Nexus Clinic</span>
+                <span style={{ color: "var(--color-wine)" }}>
+                  Other Fat Reduction Options
+                </span>
               </h2>
             </motion.div>
 
@@ -1098,14 +1162,14 @@ const CoolSculptingLanding = ({
                   className="text-xl font-semibold mb-4"
                   style={{ color: "var(--color-brown)" }}
                 >
-                  Leading KL Clinics
+                  Treatment Pathways
                 </h3>
                 <div className="space-y-3">
                   {competitors.map((clinic, index) => (
                     <div
                       key={index}
                       className="p-4 rounded-xl flex items-center justify-between"
-                      style={{ backgroundColor: "var(--color-cream)" }}
+                      style={{ backgroundColor: "white" }}
                     >
                       <span style={{ color: "var(--color-brown)" }}>
                         {clinic.name}
@@ -1126,7 +1190,7 @@ const CoolSculptingLanding = ({
                   className="text-xl font-semibold mb-4"
                   style={{ color: "var(--color-brown)" }}
                 >
-                  Nexus Advantage
+                  How Nexus Clinic Guides You
                 </h3>
                 <div
                   className="p-8 rounded-3xl"
@@ -1139,27 +1203,30 @@ const CoolSculptingLanding = ({
                     <li className="flex items-start gap-3">
                       <Star className="w-5 h-5 shrink-0 mt-1" />
                       <div>
-                        <strong>Personalized Medical Assessment</strong>
+                        <strong>CoolSculpting</strong>
                         <p className="text-sm opacity-90">
-                          Doctor-led consultations for every patient
+                          Best for patients near target weight with stubborn
+                          localised fat that resists exercise.
                         </p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <Star className="w-5 h-5 shrink-0 mt-1" />
                       <div>
-                        <strong>Advanced Treatment Planning</strong>
+                        <strong>GLP-1 Weight Loss</strong>
                         <p className="text-sm opacity-90">
-                          Customized plans for natural results
+                          Better for patients who need medically supervised
+                          overall body weight reduction before contouring.
                         </p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <Star className="w-5 h-5 shrink-0 mt-1" />
                       <div>
-                        <strong>Trusted Aesthetic Expertise</strong>
+                        <strong>Liposuction</strong>
                         <p className="text-sm opacity-90">
-                          Years of experience in body contouring
+                          Suitable for larger volume fat reduction when surgery
+                          and recovery are acceptable.
                         </p>
                       </div>
                     </li>
@@ -1194,13 +1261,14 @@ const CoolSculptingLanding = ({
                 className="text-3xl md:text-4xl font-bold"
                 style={{ fontFamily: "var(--font-georgia)" }}
               >
-                Start Your CoolSculpting Journey
+                Book Your Free
                 <br />
-                at Nexus Clinic Kuala Lumpur
+                CoolSculpting Assessment
               </h2>
               <p className="text-lg opacity-90 max-w-2xl mx-auto">
-                Your transformation begins with a consultation. Discover how
-                CoolSculpting can reshape your body safely and effectively.
+                Speak to a doctor about your body contouring goals and find out
+                whether CoolSculpting is the right treatment for your concern
+                area.
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -1208,11 +1276,11 @@ const CoolSculptingLanding = ({
                 className="px-12 py-4 rounded-full bg-white font-semibold text-lg inline-flex items-center gap-2 mx-auto"
                 style={{ color: "var(--color-wine)" }}
               >
-                Book Your Consultation
+                Book Free Assessment
                 <ChevronRight className="w-5 h-5" />
               </motion.button>
               <p className="text-sm opacity-75">
-                No obligation. Just expert advice tailored to your goals.
+                No obligation. Just expert guidance tailored to your goals.
               </p>
             </motion.div>
           </div>

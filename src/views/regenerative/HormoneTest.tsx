@@ -40,115 +40,132 @@ export default function HormoneTestLanding({
 }) {
   const { t } = useTranslation(locale, "regenerative/hormoneTest");
 
+  // Updated FAQ content
   const faqs = [
-    { q: t("faq.q1"), a: t("faq.a1") },
-    { q: t("faq.q2"), a: t("faq.a2") },
-    { q: t("faq.q3"), a: t("faq.a3") },
-    { q: t("faq.q4"), a: t("faq.a4") },
-    { q: t("faq.q5"), a: t("faq.a5") },
-    { q: t("faq.q6"), a: t("faq.a6") },
-    { q: t("faq.q7"), a: t("faq.a7") },
-    { q: t("faq.q8"), a: t("faq.a8") },
-    { q: t("faq.q9"), a: t("faq.a9") },
-    { q: t("faq.q10"), a: t("faq.a10") },
-    { q: t("faq.q11"), a: t("faq.a11") },
-    { q: t("faq.q12"), a: t("faq.a12") },
+    { q: "What is a hormone test and what does it check?", a: "A hormone test is a blood test that measures the levels of specific hormones circulating in the body; a hormonal blood test panel provides a comprehensive hormonal profile that shows whether each hormone is within its normal reference range or is elevated or deficient; the result provides the diagnostic foundation for identifying hormonal imbalances that may be driving symptoms including fatigue, irregular periods, weight gain, low libido, acne, hair loss or mood disturbance; at Nexus Clinic KL, the hormone test is reviewed by a dr at the post-screening consultation to provide clinical interpretation, personalised advice, and a recommendation for treatment or monitoring; a blood test alone without medical interpretation is not a complete health screening service." },
+    { q: "Why is hormone screening important for women in Malaysia?", a: "Hormone screening is important for women in Malaysia because hormonal conditions including PCOS, thyroid dysfunction, perimenopause and premature ovarian insufficiency are common, significantly affect quality of life and are highly treatable when identified; many Malaysian women live with fatigue, irregular periods, acne, hair loss or menopausal symptoms for years without their hormonal health being properly assessed; a comprehensive female hormone screening profile including FSH, LH, oestradiol, testosterone and TSH identifies the specific hormonal imbalance driving the health issue and allows a tailored treatment plan to be developed; at this clinic, every female health screening package includes a post-result consultation with a dr who provides specific advice, recommendation and a management solution for identified hormonal findings." },
+    { q: "What is included in the female hormonal screening package at Nexus Clinic KL?", a: "The core female hormonal screening package at Nexus Clinic KL includes FSH, LH, oestradiol (E2), progesterone, prolactin, total testosterone, SHBG, TSH and FT4; the comprehensive female screening package adds AMH, DHEA-S, cortisol, fasting insulin, HbA1c, fasting glucose, lipid panel, CBC and liver function tests; both packages include a post-result consultation with a dr who reviews the complete hormonal profile result, provides tailored advice and recommendation, and issues any indicated treatment or referral; female patients receive specific guidance on cycle day timing for their blood test appointment to ensure the most accurate hormonal profile result; this comprehensive health service is available to women from across Malaysia including Penang and Melaka at this clinic in Kuala Lumpur." },
+    { q: "Can men get hormone screening at Nexus Clinic KL?", a: "Yes; the male hormonal screening package at Nexus Clinic KL includes total and free testosterone, SHBG, LH, FSH, prolactin, TSH, FT4 and oestradiol as a core male hormonal profile blood test; the comprehensive male screening package adds cortisol, DHEA-S, fasting insulin, HbA1c, fasting glucose, lipid panel, CBC, liver function and haematocrit for a complete hormonal and metabolic health assessment; all male hormone tests are performed as a fasting morning blood test for accurate testosterone measurement; the result is reviewed by a dr at the post-screening consultation with personalised advice and recommendation for any identified hormonal issue; testosterone, thyroid and adrenal hormone assessment together provide the holistic male health screening profile that distinguishes a specialist clinic's service from a standard health check." },
+    { q: "How do I know which hormone screening package is right for me?", a: "The right hormone screening package depends on your specific symptoms, age, medical history and health goals; women with irregular periods, PCOS symptoms or fertility concerns are best served by the female hormonal screening package; perimenopausal or menopausal women benefit from the comprehensive female package that includes metabolic health markers alongside the full hormonal profile; men with fatigue, reduced libido or suspected testosterone deficiency are well-served by the core male hormonal screening package; all adults with unexplained chronic disease symptoms or complex hormonal concerns benefit from the comprehensive health screening packages; the most efficient approach is to attend the initial consultation at Nexus Clinic KL where a healthcare professional assesses your specific symptoms and recommends the most appropriate package and blood test schedule for your situation." },
+    { q: "How should I prepare for my hormone blood test?", a: "For female patients: schedule the baseline hormonal profile blood test on day 2 to 5 of the menstrual cycle for the most accurate FSH, LH and oestradiol result; if progesterone is being tested for ovulation confirmation, this should be on day 21 of a 28-day cycle (or 7 days after estimated ovulation); all blood tests should be performed as a fasting morning blood test where possible; avoid vigorous exercise and stress on the day before and the morning of testing as these can affect cortisol and prolactin results; for male patients: all testosterone blood tests must be performed as a fasting morning blood test before 10am to capture the diurnal testosterone peak; a practitioner at Nexus Clinic KL provides every patient with a specific preparation guide and schedule for their blood test at the initial consultation." },
+    { q: "How long does it take to get hormone blood test results?", a: "Most hormone blood test results at Nexus Clinic KL are available within 2 to 5 working days depending on the specific tests in the screening package; standard hormonal profile tests including FSH, LH, oestradiol, testosterone and TSH are typically available within 2 to 3 working days; specialist tests including AMH, DHEA-S, cortisol and advanced metabolic markers may take 3 to 5 working days; a follow-up appointment is scheduled at the time of the blood test collection to review the complete result with the dr and receive advice and recommendation; patients from Penang, Melaka and other states who cannot return in person for their result review can receive their post-screening consultation by telemedicine." },
+    { q: "Do I need a referral to access hormone screening at Nexus Clinic KL?", a: "No referral is needed to access hormone screening at Nexus Clinic KL; any patient who wants to check their hormonal health and book a hormone blood test can contact this clinic directly and schedule an appointment; the initial consultation assesses which health screening package is most appropriate for the patient's specific symptoms and health goals; patients who have already had blood tests at another clinic, hospital or klinik are welcome to bring their previous results for review and comparison; the clinic provides a complete hormone health screening service from initial consultation through blood test collection, result review and treatment planning in a single clinical pathway." },
+    { q: "Can Nexus Clinic KL help me if my blood test results from another clinic show hormonal imbalance?", a: "Yes; patients who have already received hormone blood test results from another clinic, klinik or hospital and who want a dr's clinical interpretation, advice and recommendation are welcome at Nexus Clinic KL; the post-result consultation reviews the existing results in the context of the patient's symptoms, medical history and health goals and provides the clinical interpretation and treatment recommendation that may not have been offered at the collection facility; if the existing results are incomplete or if additional tests are needed to complete the hormonal profile, these can be ordered as targeted add-on tests rather than repeating the full panel; this consultation service is a specific and valued offering at this clinic in Kuala Lumpur for patients who have their test results but need medical guidance on what they mean." },
+    { q: "Is the hormone screening service at Nexus Clinic KL available to patients from Penang and Melaka?", a: "Yes; Nexus Clinic KL serves patients from across Malaysia including those from hospital Penang, hospital Kuala Lumpur, Melaka and other states who are seeking comprehensive hormone health screening not available at their local medical centre or klinik; for patients who travel from Penang or Melaka, the clinic schedules the initial consultation and blood test collection in a single visit where possible; post-result consultations can be conducted by telemedicine for patients who cannot return in person; the blood test package and price are the same for all patients regardless of location; Nexus Clinic KL is located at Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur, serving patients from across KL, Petaling Jaya, Bangsar, KLCC, Ampang, Mont Kiara, Penang, Melaka and throughout Malaysia." },
   ];
 
+  // Updated reasons for women
   const womenReasons = [
-    t("reasons.w1"),
-    t("reasons.w2"),
-    t("reasons.w3"),
-    t("reasons.w4"),
-    t("reasons.w5"),
+    "Irregular or absent periods",
+    "Difficulty conceiving or fertility concerns",
+    "PCOS symptoms (acne, hirsutism, hair loss, weight gain)",
+    "Perimenopause or menopause symptoms (hot flushes, night sweats, mood swings)",
+    "Unexplained fatigue, weight gain, or hair loss",
   ];
 
+  // Updated reasons for men
   const menReasons = [
-    t("reasons.m1"),
-    t("reasons.m2"),
-    t("reasons.m3"),
-    t("reasons.m4"),
+    "Fatigue, reduced libido, or erectile dysfunction",
+    "Mood changes, muscle loss, or central weight gain",
+    "Suspected testosterone deficiency",
+    "Diabetes, obesity, or metabolic syndrome",
   ];
 
-  const pantaiPrices = [
-    { name: t("cost.p1"), price: t("cost.p1Price") },
-    { name: t("cost.p2"), price: t("cost.p2Price") },
-    { name: t("cost.p3"), price: t("cost.p3Price") },
-    { name: t("cost.p4"), price: t("cost.p4Price") },
-    { name: t("cost.p5"), price: t("cost.p5Price") },
-    { name: t("cost.p6"), price: t("cost.p6Price") },
-    { name: t("cost.p7"), price: t("cost.p7Price") },
-  ];
-
+  // Updated tests
   const tests = [
     {
       icon: Thermometer,
-      name: t("tests.t1Name"),
-      sub: t("tests.t1Sub"),
-      desc: t("tests.t1Desc"),
+      name: "TSH (Thyroid Stimulating Hormone)",
+      sub: "Most sensitive thyroid function test",
+      desc: "Identifies hypothyroidism or hyperthyroidism; the single highest-yield test in any screening package, as thyroid dysfunction affects ~1 in 50 Malaysian adults and is significantly under-tested.",
     },
     {
       icon: Flower2,
-      name: t("tests.t2Name"),
-      sub: t("tests.t2Sub"),
-      desc: t("tests.t2Desc"),
+      name: "FSH & LH",
+      sub: "Pituitary & ovarian function",
+      desc: "FSH confirms menopause or ovarian decline; LH:FSH ratio is a key diagnostic criterion for PCOS; together they provide the complete pituitary-ovarian axis assessment.",
     },
     {
       icon: Flame,
-      name: t("tests.t3Name"),
-      sub: t("tests.t3Sub"),
-      desc: t("tests.t3Desc"),
+      name: "Total & Free Testosterone",
+      sub: "Male & female androgen status",
+      desc: "In men, low testosterone affects 25-40% over 40; in women, elevated free androgens drive PCOS symptoms including acne, hirsutism and hair loss.",
     },
     {
       icon: Activity,
-      name: t("tests.t4Name"),
-      sub: t("tests.t4Sub"),
-      desc: t("tests.t4Desc"),
+      name: "Oestradiol (E2) & Progesterone",
+      sub: "Primary female hormones",
+      desc: "Oestradiol decline drives menopausal symptoms; day 21 progesterone confirms ovulation; essential for fertility and perimenopause assessment.",
     },
     {
       icon: Brain,
-      name: t("tests.t5Name"),
-      sub: t("tests.t5Sub"),
-      desc: t("tests.t5Desc"),
+      name: "Cortisol & DHEA-S",
+      sub: "Adrenal & stress hormones",
+      desc: "Elevated chronic cortisol suppresses testosterone production and increases abdominal fat; low DHEA-S indicates adrenal ageing (adrenopause).",
     },
   ];
 
+  // Updated timing cards
   const timingCards = [
     {
       icon: Calendar,
-      title: t("bestTime.womenTimingTitle"),
-      desc: t("bestTime.womenTimingDesc"),
+      title: "Female Baseline: Day 2-5 of Cycle",
+      desc: "Schedule FSH, LH, oestradiol and prolactin on day 2 to 5 of your menstrual cycle (day 1 = first day of period) for the most accurate baseline hormonal assessment.",
     },
     {
       icon: Droplet,
-      title: t("bestTime.progesteroneTitle"),
-      desc: t("bestTime.progesteroneDesc"),
+      title: "Progesterone: Day 21 (or 7 days post-ovulation)",
+      desc: "Progesterone should be measured approximately 7 days after ovulation (day 21 of a 28-day cycle) to confirm whether ovulation has occurred.",
     },
     {
       icon: Sun,
-      title: t("bestTime.menTimingTitle"),
-      desc: t("bestTime.menTimingDesc"),
+      title: "Male Testosterone: Morning (before 10am)",
+      desc: "Testosterone is highest in the morning due to diurnal variation. All male hormone tests must be performed as a fasting morning blood test before 10am for accurate results.",
     },
   ];
 
+  // Updated result factors
   const resultFactors = [
-    t("results.f1"),
-    t("results.f2"),
-    t("results.f3"),
-    t("results.f4"),
-    t("results.f5"),
-    t("results.f6"),
+    "Symptoms",
+    "Age",
+    "Menstrual cycle day (for women)",
+    "Medications",
+    "Lifestyle factors (sleep, stress, exercise)",
+    "Time of day (for testosterone)",
   ];
 
+  // Updated tips
   const tips = [
-    t("preparation.tip1"),
-    t("preparation.tip2"),
-    t("preparation.tip3"),
+    "Fast for 8-12 hours before your blood test (water only)",
+    "Avoid biotin supplements for 3-5 days before testing",
+    "Avoid vigorous exercise and stress 24 hours before testing",
   ];
 
-  const budgetItems = [t("cost.b1"), t("cost.b2"), t("cost.b3"), t("cost.b4")];
+  // Updated Pantai prices
+  const pantaiPrices = [
+    { name: "Wellness (Basic Health Screening)", price: "RM 280" },
+    { name: "Wellness Plus", price: "RM 520" },
+    { name: "Executive Wellness", price: "RM 780" },
+    { name: "Wellness Diamond (Women)", price: "RM 1,180" },
+    { name: "Wellness Diamond (Men)", price: "RM 980" },
+    { name: "Premier Women (Comprehensive)", price: "RM 2,850" },
+    { name: "Premier Men (Comprehensive)", price: "RM 2,350" },
+  ];
 
-  const nexusStandout = [t("market.n1"), t("market.n2"), t("market.n3")];
+  // Updated budget items
+  const budgetItems = [
+    "Choose a core package first; add specialist tests (AMH, cortisol) only if clinically indicated",
+    "Check if your insurance covers preventive health screening (some corporate plans do)",
+    "Use your Employee Benefits / Panel Clinic access if Nexus Clinic KL is on your panel",
+    "Ask about package combinations if you need multiple family members tested",
+  ];
+
+  // Updated Nexus standout points
+  const nexusStandout = [
+    "Every screening package includes a post-test consultation with a doctor who reviews the full hormonal profile in the context of your symptoms, age, and health goals",
+    "We distinguish between a core hormonal profile and a comprehensive screening package, helping you choose based on your specific needs rather than offering a one-size-fits-all test",
+    "We provide specific guidance on cycle timing for female patients and morning fasting for male patients to ensure accurate, actionable results",
+  ];
 
   return (
     <>
@@ -190,7 +207,7 @@ export default function HormoneTestLanding({
                 <span className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
                   <Shield className="w-4 h-4 text-white mr-2" />
                   <span className="text-sm text-white font-medium">
-                    {t("hero.badge")}
+                    Hormone Test and Health Screening Malaysia
                   </span>
                 </span>
               </motion.div>
@@ -199,18 +216,21 @@ export default function HormoneTestLanding({
                 variants={fadeInUp}
                 className="font-['Georgia',serif] text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight"
               >
-                {t("hero.title1")}
+                Comprehensive Female
                 <br />
-                <span className="text-cream">{t("hero.title2")}</span>
+                <span className="text-cream">and Male Hormonal</span>
                 <br />
-                {t("hero.title3")}
+                Blood Test Packages
               </motion.h2>
 
               <motion.p
                 variants={fadeInUp}
                 className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto"
               >
-                {t("hero.desc")}
+                Hormone blood test and health screening in Malaysia. Comprehensive
+                female and male hormonal profiles including thyroid, reproductive
+                hormones and metabolic check. Medical result review and solution by
+                experienced healthcare professionals at Nexus Clinic KL in Kuala Lumpur.
               </motion.p>
 
               <motion.div
@@ -218,12 +238,12 @@ export default function HormoneTestLanding({
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
                 <button className="group bg-white text-wine px-8 py-4 rounded-full hover:bg-cream transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
-                  {t("hero.cta1")}
+                  Book Your Hormone Screening Appointment
                   <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full hover:bg-white/30 transition-all duration-300 border border-white/30 flex items-center justify-center">
                   <Phone className="w-5 h-5 mr-2" />
-                  {t("hero.cta2")}
+                  Call or WhatsApp Today
                 </button>
               </motion.div>
 
@@ -232,7 +252,7 @@ export default function HormoneTestLanding({
                 className="mt-12 flex items-center justify-center gap-4 text-sm text-white/80"
               >
                 <MapPin className="w-4 h-4" />
-                <span>{t("hero.address")}</span>
+                <span>Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur</span>
               </motion.div>
             </motion.div>
           </div>
@@ -249,10 +269,10 @@ export default function HormoneTestLanding({
               >
                 <motion.div variants={fadeInLeft} className="mb-6">
                   <span className="text-wine font-medium mb-2 block">
-                    {t("whatIs.badge")}
+                    What Hormone Screening Is
                   </span>
                   <h2 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-6">
-                    {t("whatIs.title")}
+                    Hormone Test and Health Screening Overview
                   </h2>
                   <div className="w-24 h-1 bg-linear-to-r from-wine to-rose mb-8" />
                 </motion.div>
@@ -261,7 +281,15 @@ export default function HormoneTestLanding({
                   variants={fadeInUp}
                   className="text-lg text-brown mb-8 leading-relaxed"
                 >
-                  {t("whatIs.desc")}
+                  Hormone screening is a blood test-based assessment that measures the levels
+                  of key hormones circulating in the body to identify hormonal imbalances,
+                  deficiencies or excesses that may be driving health issues including fatigue,
+                  weight gain, irregular periods, low libido, acne, hair loss, mood disturbance
+                  and fertility concerns. A hormone test provides the biological data that a
+                  medical practitioner needs to tailor a treatment plan or prevention strategy
+                  to the patient's specific hormonal profile. Health screening that includes
+                  hormone testing gives patients actionable insight into their hormonal health
+                  that general health checks often miss.
                 </motion.p>
 
                 <motion.div
@@ -270,7 +298,11 @@ export default function HormoneTestLanding({
                 >
                   <div className="flex items-start gap-4">
                     <AlertCircle className="w-6 h-6 text-wine shrink-0 mt-1" />
-                    <p className="text-brown">{t("whatIs.note")}</p>
+                    <p className="text-brown">
+                      Hormonal imbalances are significantly under-tested in Malaysian primary care.
+                      Many patients live with fatigue, weight changes, mood swings, irregular periods
+                      or reduced function for years without having their hormonal profile checked.
+                    </p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -305,7 +337,7 @@ export default function HormoneTestLanding({
                 variants={fadeInUp}
                 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-4"
               >
-                {t("reasons.title")}
+                Who Should Get Hormone Screening
               </motion.h2>
               <motion.div
                 variants={fadeInUp}
@@ -325,7 +357,7 @@ export default function HormoneTestLanding({
                     <Flower2 className="w-12 h-12 text-wine" />
                   </div>
                   <h3 className="font-['Georgia',serif] text-2xl text-brown mb-6">
-                    {t("reasons.womenTitle")}
+                    Female Patients
                   </h3>
                   <ul className="space-y-4">
                     {womenReasons.map((item, index) => (
@@ -353,7 +385,7 @@ export default function HormoneTestLanding({
                     <Activity className="w-12 h-12 text-wine" />
                   </div>
                   <h3 className="font-['Georgia',serif] text-2xl text-brown mb-6">
-                    {t("reasons.menTitle")}
+                    Male Patients
                   </h3>
                   <ul className="space-y-4">
                     {menReasons.map((item, index) => (
@@ -382,7 +414,13 @@ export default function HormoneTestLanding({
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover"
                   />
                   <div className="mt-6 bg-wine/5 p-6 rounded-2xl border border-wine/20">
-                    <p className="text-brown text-sm">{t("reasons.edNote")}</p>
+                    <p className="text-brown text-sm">
+                      <strong>Editor's Note:</strong> The most clinically impactful finding from
+                      the male hormone screening package is the LH and FSH result alongside
+                      testosterone. Every medical practitioner knows that testosterone can be low,
+                      but only LH and FSH tell you why it is low — distinguishing primary from
+                      secondary hypogonadism and determining appropriate treatment.
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -416,10 +454,12 @@ export default function HormoneTestLanding({
               >
                 <motion.div variants={fadeInRight}>
                   <h2 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-4">
-                    {t("tests.title")}
+                    What Each Blood Test Checks
                   </h2>
                   <p className="text-taupe text-lg mb-8">
-                    {t("tests.subtitle")}
+                    Every test in the hormone screening package serves a specific clinical purpose.
+                    Below is what each hormone measures, why it is included, and what an abnormal
+                    result indicates for your health.
                   </p>
                 </motion.div>
               </motion.div>
@@ -462,9 +502,13 @@ export default function HormoneTestLanding({
               >
                 <motion.div variants={fadeInLeft} className="mb-8">
                   <h2 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-4">
-                    {t("bestTime.title")}
+                    How to Get Accurate Hormone Blood Test Results
                   </h2>
-                  <p className="text-taupe text-lg">{t("bestTime.subtitle")}</p>
+                  <p className="text-taupe text-lg">
+                    Timing, fasting and patient preparation are critical for accurate hormonal
+                    blood test results. A female hormonal profile measured on day 14 produces
+                    completely different results from the same test on day 2 to 5.
+                  </p>
                 </motion.div>
 
                 <div className="space-y-6">
@@ -523,9 +567,11 @@ export default function HormoneTestLanding({
             >
               <motion.div variants={fadeInUp} className="text-center mb-12">
                 <h2 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-4">
-                  {t("preparation.title")}
+                  How to Prepare for Your Hormone Blood Test
                 </h2>
-                <p className="text-taupe">{t("preparation.subtitle")}</p>
+                <p className="text-taupe">
+                  Following these preparation guidelines ensures the most accurate hormonal profile results.
+                </p>
               </motion.div>
 
               <div className="space-y-6">
@@ -540,10 +586,12 @@ export default function HormoneTestLanding({
                     </div>
                     <div>
                       <h3 className="font-['Georgia',serif] text-lg text-brown mb-2">
-                        {t("preparation.fastingTitle")}
+                        Fasting Requirement
                       </h3>
                       <p className="text-brown">
-                        {t("preparation.fastingDesc")}
+                        All blood tests should be performed as a fasting morning blood test for
+                        consistency and accurate cortisol, glucose, and baseline hormonal measurements.
+                        Fast for 8-12 hours before your blood test (water only).
                       </p>
                     </div>
                   </div>
@@ -560,10 +608,12 @@ export default function HormoneTestLanding({
                     </div>
                     <div>
                       <h3 className="font-['Georgia',serif] text-lg text-brown mb-2">
-                        {t("preparation.biotinTitle")}
+                        Biotin (Vitamin B7) Interference
                       </h3>
                       <p className="text-brown">
-                        {t("preparation.biotinDesc")}
+                        Biotin supplements can interfere with hormone immunoassays and cause falsely
+                        high or low results for TSH, testosterone, and other hormones. Avoid biotin
+                        for 3-5 days before testing.
                       </p>
                     </div>
                   </div>
@@ -575,7 +625,7 @@ export default function HormoneTestLanding({
                   className="bg-cream p-6 rounded-2xl shadow-lg"
                 >
                   <h3 className="font-['Georgia',serif] text-lg text-brown mb-4">
-                    {t("preparation.tipsTitle")}
+                    Additional Preparation Tips
                   </h3>
                   <ul className="space-y-3">
                     {tips.map((item, index) => (
@@ -604,11 +654,13 @@ export default function HormoneTestLanding({
                 variants={fadeInUp}
                 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-6"
               >
-                {t("results.title")}
+                Understanding Your Hormone Test Results
               </motion.h2>
 
               <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
-                {t("results.desc")}
+                A hormone test result alone — a number on a page — is not a diagnosis.
+                The clinical significance of each result depends on multiple factors that
+                a doctor must consider before providing advice or treatment.
               </motion.p>
 
               <motion.div
@@ -621,7 +673,7 @@ export default function HormoneTestLanding({
                     variants={scaleIn}
                     className="bg-white p-4 rounded-xl shadow-md"
                   >
-                    <span className="text-brown capitalize">{item}</span>
+                    <span className="text-brown">{item}</span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -631,12 +683,15 @@ export default function HormoneTestLanding({
                 className="bg-wine/5 p-8 rounded-3xl"
               >
                 <p className="text-xl text-brown font-medium">
-                  {t("results.keyQuestion")}
+                  "A blood test alone without medical interpretation is not a complete health screening service."
                 </p>
               </motion.div>
 
               <motion.p variants={fadeInUp} className="mt-8 text-taupe">
-                {t("results.nexusApproach")}
+                At Nexus Clinic KL, every hormone screening package includes a post-test consultation
+                with a doctor who reviews the full hormonal profile result in the context of your
+                symptoms, age, cycle status and health goals, and provides personalised advice,
+                recommendation and a treatment plan where findings indicate action.
               </motion.p>
             </motion.div>
           </div>
@@ -653,25 +708,32 @@ export default function HormoneTestLanding({
             >
               <motion.div variants={fadeInUp} className="text-center mb-12">
                 <h2 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown mb-4">
-                  {t("cost.title")}
+                  Hormone Screening Package Price 2026
                 </h2>
-                <p className="text-taupe">{t("cost.subtitle")}</p>
+                <p className="text-taupe">
+                  Hormone health screening package price at Nexus Clinic KL is presented
+                  transparently before any blood test is performed. Prices reflect laboratory fees;
+                  consultation fees cover medical assessment, result interpretation and advice.
+                </p>
               </motion.div>
 
               <motion.div
                 variants={fadeInUp}
                 className="bg-cream p-8 rounded-3xl shadow-xl mb-8"
               >
-                <p className="text-brown mb-6">{t("cost.intro")}</p>
+                <p className="text-brown mb-6">
+                  Below is a comparison of standard health screening packages at major Malaysian
+                  hospitals versus specialised hormonal screening at Nexus Clinic KL:
+                </p>
 
                 <h3 className="font-['Georgia',serif] text-xl text-brown mb-4">
-                  {t("cost.pantaiTitle")}
+                  Pantai Hospital Kuala Lumpur — Health Screening Packages
                 </h3>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="font-medium text-wine mb-3">
-                      {t("cost.pantaiSubtitle")}
+                      Standard Health Screening Packages
                     </h4>
                     <ul className="space-y-2">
                       {pantaiPrices.map((item, index) => (
@@ -687,30 +749,27 @@ export default function HormoneTestLanding({
                   </div>
 
                   <div className="space-y-4">
-                    <div className="bg-white p-4 rounded-xl">
+                    <div className="bg-white p-4 rounded-xl border-l-4 border-wine">
                       <p className="text-brown">
-                        <span className="font-medium text-wine">
-                          {t("cost.pkg1Name")}
-                        </span>{" "}
-                        {t("cost.pkg1Desc")}
+                        <span className="font-medium text-wine">Core Female Hormonal Package</span> — RM 450 to RM 700
+                        <br />
+                        <span className="text-sm text-taupe">FSH, LH, E2, Progesterone, Prolactin, Testosterone, SHBG, TSH, FT4 + doctor consultation</span>
                       </p>
                     </div>
 
-                    <div className="bg-white p-4 rounded-xl">
+                    <div className="bg-white p-4 rounded-xl border-l-4 border-wine">
                       <p className="text-brown">
-                        <span className="font-medium text-wine">
-                          {t("cost.pkg2Name")}
-                        </span>{" "}
-                        {t("cost.pkg2Desc")}
+                        <span className="font-medium text-wine">Core Male Hormonal Package</span> — RM 400 to RM 650
+                        <br />
+                        <span className="text-sm text-taupe">Total/Free Testosterone, SHBG, LH, FSH, Prolactin, TSH, FT4, E2 + doctor consultation</span>
                       </p>
                     </div>
 
-                    <div className="bg-white p-4 rounded-xl">
+                    <div className="bg-white p-4 rounded-xl border-l-4 border-rose">
                       <p className="text-brown">
-                        <span className="font-medium text-wine">
-                          {t("cost.pkg3Name")}
-                        </span>{" "}
-                        {t("cost.pkg3Desc")}
+                        <span className="font-medium text-rose">Comprehensive Female/Male Advanced Package</span> — RM 900 to RM 1,400
+                        <br />
+                        <span className="text-sm text-taupe">Adds AMH, DHEA-S, Cortisol, Insulin, HbA1c, Lipid Panel, CBC, Liver Function</span>
                       </p>
                     </div>
                   </div>
@@ -722,9 +781,13 @@ export default function HormoneTestLanding({
                 className="bg-wine/5 p-6 rounded-2xl"
               >
                 <h3 className="font-['Georgia',serif] text-xl text-brown mb-3">
-                  {t("cost.budgetTitle")}
+                  How to Get the Best Value
                 </h3>
-                <p className="text-brown">{t("cost.budgetIntro")}</p>
+                <p className="text-brown">
+                  The most cost-effective approach to hormone screening for patients with complex
+                  hormonal symptoms is the comprehensive screening package, which provides all
+                  hormonal, metabolic and adrenal test results in a single blood draw.
+                </p>
                 <ol className="list-decimal list-inside mt-2 space-y-1 text-brown">
                   {budgetItems.map((item, index) => (
                     <li key={index}>{item}</li>
@@ -748,7 +811,7 @@ export default function HormoneTestLanding({
                 variants={fadeInUp}
                 className="font-['Georgia',serif] text-4xl md:text-5xl text-brown text-center mb-12"
               >
-                {t("market.title")}
+                Why Hormone Testing at Nexus Clinic KL?
               </motion.h2>
 
               <div className="grid md:grid-cols-3 gap-6">
@@ -758,9 +821,13 @@ export default function HormoneTestLanding({
                 >
                   <Search className="w-10 h-10 text-wine mb-4" />
                   <h3 className="font-['Georgia',serif] text-lg text-brown mb-2">
-                    {t("market.m1Title")}
+                    Hormone Testing is the Missing Component
                   </h3>
-                  <p className="text-brown text-sm">{t("market.m1Desc")}</p>
+                  <p className="text-brown text-sm">
+                    A standard health check measures metabolic and organ function; a hormone screening
+                    measures the biological control system that regulates how those organs work,
+                    how energy is produced, and how the body responds to stress and ageing.
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -769,9 +836,13 @@ export default function HormoneTestLanding({
                 >
                   <ClipboardList className="w-10 h-10 text-wine mb-4" />
                   <h3 className="font-['Georgia',serif] text-lg text-brown mb-2">
-                    {t("market.m2Title")}
+                    Not Just a Blood Test Collection Service
                   </h3>
-                  <p className="text-brown text-sm">{t("market.m2Desc")}</p>
+                  <p className="text-brown text-sm">
+                    At Nexus Clinic KL, every health screening package includes a post-test
+                    consultation with a doctor who reviews the full hormonal profile result
+                    in the context of the patient's symptoms, age, and health goals.
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -780,9 +851,13 @@ export default function HormoneTestLanding({
                 >
                   <Sparkles className="w-10 h-10 text-wine mb-4" />
                   <h3 className="font-['Georgia',serif] text-lg text-brown mb-2">
-                    {t("market.m3Title")}
+                    Specialist Clinic, Not a General Health Check
                   </h3>
-                  <p className="text-brown text-sm">{t("market.m3Desc")}</p>
+                  <p className="text-brown text-sm">
+                    Our licensed healthcare professionals bring over 15 years of combined clinical
+                    experience and have completed over 5,000 procedures. We specialise in hormonal
+                    health assessment, not just general wellness screening.
+                  </p>
                 </motion.div>
               </div>
 
@@ -792,7 +867,7 @@ export default function HormoneTestLanding({
                 className="mt-12 bg-linear-to-r from-wine to-rose p-8 rounded-3xl text-white"
               >
                 <h3 className="font-['Georgia',serif] text-2xl mb-4">
-                  {t("market.nexusTitle")}
+                  What Makes Nexus Clinic KL Different
                 </h3>
                 <ul className="space-y-3">
                   {nexusStandout.map((item, index) => (
@@ -823,29 +898,31 @@ export default function HormoneTestLanding({
                 variants={fadeInUp}
                 className="font-['Georgia',serif] text-4xl md:text-5xl mb-6"
               >
-                {t("cta.title")}
+                Book Your Hormone Screening Appointment Today
               </motion.h2>
 
               <motion.p
                 variants={fadeInUp}
                 className="text-lg mb-8 text-white/90"
               >
-                {t("cta.desc")}
+                Comprehensive hormone health screening at Nexus Clinic KL — female, male and thyroid
+                testing packages with medical result review and personalised treatment advice.
+                Serving patients from across Malaysia.
               </motion.p>
 
               <motion.div variants={fadeInUp} className="space-y-4">
                 <button className="bg-white text-wine px-8 py-4 rounded-full font-medium hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  {t("cta.button")}
+                  Call or WhatsApp to Schedule
                 </button>
 
                 <div className="pt-6 text-white/80">
                   <p className="flex items-center justify-center gap-2">
                     <MapPin className="w-4 h-4" />
-                    {t("cta.address")}
+                    Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
                   </p>
                   <p className="flex items-center justify-center gap-2 mt-2">
                     <Phone className="w-4 h-4" />
-                    {t("cta.phone")}
+                    Contact Us Today
                   </p>
                 </div>
               </motion.div>

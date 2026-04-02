@@ -30,62 +30,47 @@ import { fallbackLng } from "@/src/i18n/settings";
 
 const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/ozempic");
+
   const faqs = [
     {
-      q: "Is Ozempic approved for weight loss?",
-      a: "Ozempic is not a weight loss drug. It is mainly for type 2 diabetes, although weight loss may happen. For weight management, semaglutide is studied and marketed as Wegovy.",
+      q: "Is Ozempic legal in Malaysia for weight loss?",
+      a: "Ozempic is NPRA-registered in Malaysia for type 2 diabetes treatment. When prescribed for weight management in non-diabetic patients, it is used off-label. Off-label prescribing is legal in Malaysia and remains the prescribing doctor's clinical responsibility.",
     },
     {
-      q: "How much weight can you lose on Ozempic?",
-      a: "Results vary. In obesity trials using semaglutide 2.4 mg (Wegovy dosing), average weight loss was about 14.9% at 68 weeks with lifestyle support. Your doctor will explain what is realistic for your body and your plan.",
+      q: "How much weight can I lose with Ozempic in Malaysia?",
+      a: "Clinical trials using semaglutide have consistently shown average body weight reductions of 10 to 15% over 12 to 18 months when combined with lifestyle support. Individual results vary based on starting weight, dose achieved, adherence, and metabolic health.",
     },
     {
-      q: "How fast does Ozempic work for weight loss?",
-      a: "Many people notice appetite changes within the first month. Weight loss is often more visible by weeks 8 to 12, especially when food and activity habits improve alongside treatment.",
+      q: "How quickly does Ozempic start working?",
+      a: "Most patients notice reduced appetite and fewer food cravings within the first one to two weeks at the 0.25 mg starting dose. Visible weight loss commonly becomes more noticeable by weeks four to six, especially after titration to 0.5 mg.",
     },
     {
-      q: "What happens when you stop Ozempic?",
-      a: "Weight regain is common if you stop without a maintenance plan. Studies show many people regain a meaningful portion of lost weight after stopping semaglutide. That is why a long-term strategy matters.",
+      q: "What is the Ozempic price in Malaysia per month?",
+      a: "As of 2026, one Ozempic pen in Malaysia commonly costs between RM 900 and RM 1,400 depending on the dose and clinic. At Nexus Clinic KL, the total monthly programme cost including reviews and support usually ranges from around RM 1,100 to RM 1,600, with package pricing available.",
     },
     {
-      q: "Is Ozempic safe?",
-      a: "It can be safe for the right patient under medical supervision, but it has risks and contraindications. A doctor must screen you properly and monitor side effects.",
+      q: "Can I use Ozempic if I do not have diabetes?",
+      a: "Yes. Licensed doctors in Malaysia can prescribe Ozempic off-label for weight management in patients without type 2 diabetes who meet clinical criteria, such as BMI above 27.5 with weight-related comorbidities or BMI above 30.",
     },
     {
-      q: "What are the most common side effects?",
-      a: "Nausea, constipation, diarrhea, stomach upset, and reduced appetite are common, especially early on or after dose increases.",
+      q: "Will I regain weight after stopping Ozempic?",
+      a: "Weight regain is common if semaglutide is stopped without a structured exit plan. This is why the Nexus Clinic KL programme includes tapering, nutritional coaching, behavioural reinforcement, and a maintenance protocol.",
     },
     {
-      q: "Who should avoid Ozempic?",
-      a: "People with a personal or family history of medullary thyroid cancer or MEN2 should avoid it. Pregnancy planning also needs medical guidance. Your doctor will review all risks with you.",
+      q: "What is the difference between Ozempic and Mounjaro for weight loss?",
+      a: "Ozempic contains semaglutide and activates the GLP-1 receptor. Mounjaro contains tirzepatide and activates both GLP-1 and GIP receptors, which usually produces greater appetite suppression and higher average weight loss, but at a higher cost.",
     },
     {
-      q: "Can Ozempic cause “Ozempic face”?",
-      a: "Rapid weight loss can reduce facial volume in some people, with or without Ozempic. The best prevention is steady loss, good protein intake, and doctor-guided pacing.",
+      q: "Is Ozempic safe long-term?",
+      a: "Semaglutide has extensive real-world safety data globally. Long-term use can be appropriate for selected patients under medical supervision, but pancreatic, gallbladder, thyroid and metabolic monitoring may be required during treatment.",
     },
     {
-      q: "Can I take Ozempic if I have PCOS?",
-      a: "Some people with PCOS may benefit from GLP-1 based weight management, but it depends on your health profile and goals. A doctor should assess you, especially if you are trying to conceive.",
+      q: "Can Ozempic be combined with other weight loss treatments?",
+      a: "Yes. At Nexus Clinic KL, Ozempic may be combined with structured lifestyle support and later followed by non-invasive body contouring such as fat freezing or CoolSculpting if stubborn localised fat remains after overall weight reduction.",
     },
     {
-      q: "Can I drink alcohol while on Ozempic?",
-      a: "Moderation is important. Alcohol can worsen stomach side effects and affect blood sugar control. Discuss your habits honestly during consultation.",
-    },
-    {
-      q: "Is Ozempic available in Malaysia, and how do I avoid fake products?",
-      a: "Use licensed providers and check product registration status through NPRA tools and MOH guidance. Avoid unverified online sellers and suspicious “cheap pens.”",
-    },
-    {
-      q: "How much does Ozempic cost in Kuala Lumpur?",
-      a: "At Nexus Clinic KL, Ozempic is listed from RM1,800 per pen, with package options after consultation.",
-    },
-    {
-      q: "Ozempic or fat freezing, which is better?",
-      a: "If you want overall weight loss and appetite control, Ozempic may help. If you are already near your goal weight and want to reduce one stubborn area, fat freezing may fit better. Many patients choose based on body goals, budget, and timeline.",
-    },
-    {
-      q: "Do I need diet and exercise if I start Ozempic?",
-      a: "Yes. Ozempic helps appetite, but long-term success comes from food quality, protein, steps, sleep, and stress. Think “support tool,” not “magic fix.”",
+      q: "How do I get Ozempic in Malaysia legally and safely?",
+      a: "Ozempic must be obtained by prescription from a licensed medical practitioner in Malaysia. Patients should only buy from registered clinics or authorised pharmacies with proper cold-chain storage and should avoid unregulated online sellers.",
     },
   ];
 
@@ -122,20 +107,26 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-glass backdrop-blur-sm rounded-full border border-taupe/20">
                 <Shield className="w-4 h-4 text-wine" />
                 <span className="text-sm font-inter text-brown">
-                  Doctor-Led Weight Loss in Kuala Lumpur
+                  Medically Supervised GLP-1 Weight Loss in Kuala Lumpur
                 </span>
               </div>
 
-              <h2 className="font-georgia text-5xl md:text-6xl text-brown leading-tight">
-                Lose weight with
-                <span className="text-wine block">medical support,</span>
-                not guesswork
-              </h2>
+              <h1 className="font-georgia text-5xl md:text-6xl text-brown leading-tight">
+                Ozempic Weight Loss
+                <span className="text-wine block">Malaysia Programme</span>
+              </h1>
 
               <p className="text-lg text-taupe font-inter leading-relaxed max-w-xl">
-                Ozempic can reduce appetite and support steady weight loss for
-                suitable patients. At Nexus Clinic Kuala Lumpur, your plan stays
-                doctor led, safe, and realistic.
+                Ozempic is one of the most clinically validated GLP-1 injections
+                used in Malaysia for doctor-supervised weight management. At
+                Nexus Clinic KL, every programme is prescribed and monitored by
+                licensed doctors.
+              </p>
+
+              <p className="text-lg text-taupe font-inter leading-relaxed max-w-xl">
+                The goal is not guesswork. It is measurable, medically guided
+                weight reduction with a structured dosing plan, regular reviews,
+                and an exit strategy designed to reduce rebound risk.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -144,7 +135,7 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
                   whileTap={{ scale: 0.98 }}
                   className="px-8 py-4 bg-wine text-light font-inter rounded-full hover:bg-rose transition-colors flex items-center gap-2 group"
                 >
-                  Start Your Consultation
+                  Book Free Assessment
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
 
@@ -153,16 +144,16 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
                   whileTap={{ scale: 0.98 }}
                   className="px-8 py-4 border-2 border-wine/30 text-wine font-inter rounded-full hover:bg-wine/5 transition-colors"
                 >
-                  Learn More
+                  View Programme Guide
                 </motion.button>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
                 {[
-                  { icon: <TrendingDown />, text: "From RM1,800/pen" },
+                  { icon: <TrendingDown />, text: "10-15% Weight Loss" },
                   { icon: <Shield />, text: "Doctor Screening" },
-                  { icon: <Clock />, text: "Progress Tracking" },
-                  { icon: <Heart />, text: "Side-Effect Support" },
+                  { icon: <Clock />, text: "Weekly Injection Plan" },
+                  { icon: <Heart />, text: "Monthly Reviews" },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -188,7 +179,6 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
                 <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent"></div>
               </div>
 
-              {/* Trust Badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -196,9 +186,10 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
                 className="absolute -bottom-6 -left-6 bg-glass backdrop-blur-md p-6 rounded-2xl border border-light shadow-xl max-w-xs"
               >
                 <p className="text-sm font-inter text-brown">
-                  <span className="font-bold">Quick Facts:</span> Ozempic is
-                  primarily for type 2 diabetes. For weight management, Wegovy
-                  is specifically studied. Always verify MAL numbers.
+                  <span className="font-bold">Treatment at a glance:</span>{" "}
+                  Semaglutide 0.25 mg to 1 mg once weekly, prescription only,
+                  doctor-monitored, and commonly used off-label for weight
+                  management in suitable patients.
                 </p>
               </motion.div>
             </motion.div>
@@ -220,18 +211,18 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               {[
                 {
                   icon: <AlertCircle className="text-wine" />,
-                  title: "Ozempic vs Fat Freezing",
-                  text: "Ozempic affects overall weight through appetite, not spot reduction. Fat freezing targets specific areas.",
+                  title: "Prescription Only",
+                  text: "Ozempic requires doctor assessment, prescription, and monitoring. It should not be purchased from unregulated online sources.",
                 },
                 {
                   icon: <Shield className="text-wine" />,
-                  title: "Safe Sourcing",
-                  text: "Never buy from random sellers. All our medications have traceable supply chains and valid MAL numbers.",
+                  title: "NPRA-Registered",
+                  text: "Ozempic is NPRA-registered in Malaysia for type 2 diabetes and may be prescribed off-label for weight management in suitable patients.",
                 },
                 {
                   icon: <Info className="text-wine" />,
-                  title: "Medical Clarity",
-                  text: "Ozempic is approved for diabetes. Weight loss can occur, but proper medical screening is essential.",
+                  title: "Structured Programme",
+                  text: "The Nexus Clinic KL approach includes titration, bloodwork, monthly reviews, and taper planning instead of pen dispensing alone.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -264,37 +255,40 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
           >
             <motion.div variants={fadeInLeft} className="space-y-6">
               <h2 className="font-georgia text-4xl text-brown">
-                What is Ozempic, and why is everyone talking about it?
+                What is Ozempic, and how does semaglutide work?
               </h2>
 
               <p className="text-lg text-taupe font-inter leading-relaxed">
-                Ozempic is the brand name for semaglutide, a medicine in the
-                GLP-1 receptor agonist family. It was developed for type 2
-                diabetes, and it can also lead to weight loss in many patients.
+                Ozempic is the brand name for semaglutide, a synthetic analogue
+                of the GLP-1 hormone naturally produced by the gut after eating.
+                It works through the brain, pancreas and gut to reduce appetite,
+                slow gastric emptying and support better glucose control.
               </p>
 
               <div className="bg-cream p-8 rounded-3xl border border-taupe/10">
                 <p className="font-inter text-brown italic">
-                  <span className="font-bold text-wine">Important note:</span>{" "}
-                  Ozempic is not marketed as a weight loss drug in the way
-                  Wegovy is. Ozempic may support weight loss, but it is still a
-                  prescription medicine that needs proper screening and
-                  monitoring.
+                  <span className="font-bold text-wine">Why it matters:</span>{" "}
+                  Patients often eat less not because of stronger willpower, but
+                  because hunger signals and food cravings are chemically
+                  moderated at a biological level.
                 </p>
               </div>
 
               <div className="space-y-4 pt-4">
                 <h3 className="font-georgia text-2xl text-brown">
-                  How it works:
+                  How it supports weight loss:
                 </h3>
                 {[
-                  { icon: <Apple />, text: "You get full faster" },
-                  { icon: <Brain />, text: "Cravings feel quieter" },
+                  { icon: <Apple />, text: "Reduces appetite and food cravings" },
+                  { icon: <Brain />, text: "Activates satiety centres in the brain" },
                   {
                     icon: <Scale />,
-                    text: "Portions become easier to control",
+                    text: "Makes calorie control more sustainable",
                   },
-                  { icon: <Activity />, text: "Blood sugar swings may reduce" },
+                  {
+                    icon: <Activity />,
+                    text: "Slows gastric emptying so fullness lasts longer",
+                  },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -306,9 +300,9 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
                   </motion.div>
                 ))}
                 <p className="text-sm text-taupe mt-4 italic">
-                  This is why people describe it as "food noise goes down." It
-                  doesn't replace healthy eating, but it makes healthy choices
-                  feel less exhausting.
+                  This is why Ozempic can succeed where repeated dieting alone
+                  fails. It works against the hunger adaptation that often
+                  develops during long-term calorie restriction.
                 </p>
               </div>
             </motion.div>
@@ -338,21 +332,22 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="font-georgia text-4xl text-brown text-center mb-16"
             >
-              Who may be suitable for Ozempic weight loss in Malaysia?
+              Who may be suitable for Ozempic in Malaysia?
             </motion.h2>
 
             <div className="grid md:grid-cols-2 gap-12">
               <motion.div variants={fadeInLeft} className="space-y-6">
                 <p className="text-taupe font-inter">
-                  At Nexus Clinic Kuala Lumpur, suitability is not based on
-                  vibes or trends. It is based on health, risk, and goals.
+                  Ozempic is typically considered for adults with BMI 27.5+ with
+                  weight-related comorbidities, or BMI 30+ even without those
+                  comorbidities, depending on doctor assessment.
                 </p>
 
                 <div className="space-y-4">
                   {[
-                    "Adults with overweight or obesity who struggle despite consistent efforts",
-                    "People with insulin resistance, prediabetes, or type 2 diabetes",
-                    "People with weight-related issues like high BP, fatty liver risk, sleep problems, or PCOS symptoms",
+                    "Adults with BMI above 27.5 and weight-related conditions such as hypertension, pre-diabetes, dyslipidaemia or joint issues",
+                    "Adults with BMI above 30 who need medically supervised weight reduction",
+                    "Patients who need structured support with appetite control, dose titration and long-term maintenance planning",
                   ].map((text, index) => (
                     <motion.div
                       key={index}
@@ -372,16 +367,16 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               >
                 <h3 className="font-georgia text-2xl text-wine mb-6 flex items-center gap-2">
                   <XCircle className="w-6 h-6" />
-                  Who should NOT use Ozempic
+                  Who should not use Ozempic
                 </h3>
 
                 <div className="space-y-4">
                   {[
-                    "Personal or family history of medullary thyroid cancer or MEN2",
-                    "History of pancreatitis",
-                    "Pregnancy, trying to conceive, or breastfeeding",
-                    "Significant stomach or gut conditions",
-                    "Planning surgery or endoscopy soon",
+                    "Pregnant patients or those planning pregnancy",
+                    "Patients with a history of pancreatitis",
+                    "Patients with medullary thyroid carcinoma or MEN2",
+                    "Patients with certain diabetic eye complications or severe gastrointestinal concerns",
+                    "Patients who are unsuitable after medical history review or bloodwork",
                   ].map((text, index) => (
                     <motion.div
                       key={index}
@@ -396,14 +391,15 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
                   ))}
                 </div>
                 <p className="text-xs text-taupe mt-6">
-                  *Ozempic is not for everyone. A doctor must screen properly.
+                  *Suitability is confirmed only after consultation and a proper
+                  medical assessment.
                 </p>
               </motion.div>
             </div>
           </motion.div>
         </section>
 
-        {/* Timeline & Results */}
+        {/* Comparison Section */}
         <section className="py-24 px-4">
           <motion.div
             variants={staggerContainer}
@@ -415,33 +411,34 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="font-georgia text-4xl text-brown text-center mb-6"
             >
-              What results can you expect, and how fast?
+              Ozempic vs Wegovy vs Mounjaro vs Saxenda
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="text-center text-taupe font-inter max-w-2xl mx-auto mb-16"
+              className="text-center text-taupe font-inter max-w-3xl mx-auto mb-16"
             >
-              Real talk: results vary. Your dose, starting weight, sleep,
-              stress, food quality, and activity all matter.
+              These GLP-1 based treatments are not identical. They differ in
+              active ingredient, dose ceiling, convenience, expected weight loss
+              and monthly cost.
             </motion.p>
 
             <div className="grid md:grid-cols-4 gap-4 mb-16">
               {[
                 {
-                  period: "Weeks 1-4",
-                  desc: "Appetite changes start. Some nausea is common.",
+                  period: "Ozempic",
+                  desc: "Semaglutide, once weekly, 10 to 15% expected weight loss, cost-effective entry point",
                 },
                 {
-                  period: "Weeks 4-12",
-                  desc: "Weight loss becomes more noticeable.",
+                  period: "Wegovy",
+                  desc: "Semaglutide at higher weight-management dosing, once weekly, 12 to 17% expected loss",
                 },
                 {
-                  period: "3-6 months",
-                  desc: "Steadier momentum, better habit patterns.",
+                  period: "Mounjaro",
+                  desc: "Tirzepatide, dual GLP-1 + GIP action, once weekly, 15 to 22% expected loss",
                 },
                 {
-                  period: "6-12 months",
-                  desc: "Bigger health changes with consistency.",
+                  period: "Saxenda",
+                  desc: "Liraglutide, daily injection, 5 to 8% expected weight loss",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -462,22 +459,19 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               className="bg-wine/5 p-8 rounded-3xl max-w-3xl mx-auto"
             >
               <h3 className="font-georgia text-2xl text-wine mb-4">
-                What studies show
+                Choosing the right GLP-1 pathway
               </h3>
               <p className="font-inter text-brown">
-                In major clinical trials of semaglutide (2.4mg), average weight
-                loss was around 14.9% at 68 weeks when combined with lifestyle
-                changes. That doesn't mean everyone gets that result, but it
-                gives you a real-world "range" to discuss with a doctor.
+                Ozempic is often the most accessible and cost-effective entry
+                point in Malaysia. Wegovy is more weight-focused, Mounjaro has
+                the strongest average weight-loss performance, and Saxenda is a
+                daily-injection option for selected patients.
               </p>
             </motion.div>
           </motion.div>
         </section>
 
-        {/* Before & After */}
-        <SectionBeforeAfter transformations={transformations} />
-
-        {/* Pros & Cons */}
+        {/* Structured Programme */}
         <section className="py-24 px-4 bg-cream">
           <motion.div
             variants={staggerContainer}
@@ -489,7 +483,7 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="font-georgia text-4xl text-brown text-center mb-16"
             >
-              Pros and cons of Ozempic for weight loss (honest version)
+              Why the Nexus Clinic KL programme is structured differently
             </motion.h2>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -499,13 +493,14 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               >
                 <h3 className="font-georgia text-2xl text-green-700 mb-6 flex items-center gap-2">
                   <CheckCircle2 className="w-6 h-6" />
-                  Pros
+                  What the programme focuses on
                 </h3>
                 <ul className="space-y-4">
                   {[
-                    "Helps reduce appetite and portions without feeling constantly deprived",
-                    "Supports steady, progressive weight loss when combined with lifestyle changes",
-                    "Can improve metabolic markers in suitable patients (doctor monitored)",
+                    "Dose titration from 0.25 mg upward based on tolerability and progress",
+                    "Lifestyle coaching and habit reinforcement during the active weight-loss phase",
+                    "Consolidation and exit planning rather than abrupt stopping",
+                    "Weight maintenance strategy to reduce rebound risk after treatment",
                   ].map((text, index) => (
                     <motion.li
                       key={index}
@@ -525,14 +520,14 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               >
                 <h3 className="font-georgia text-2xl text-wine mb-6 flex items-center gap-2">
                   <XCircle className="w-6 h-6" />
-                  Cons
+                  What many patients worry about
                 </h3>
                 <ul className="space-y-4">
                   {[
-                    "Side effects can be uncomfortable at the start",
-                    "Cost can add up if you stay on it long term",
-                    "You may regain weight if you stop without a plan",
-                    "Not suitable for everyone, especially with certain thyroid cancer risks",
+                    "Rebound weight gain after stopping the medication",
+                    "Using the drug without a long-term lifestyle plan",
+                    "Taking pens without structured follow-up or blood monitoring",
+                    "Stopping treatment without tapering or maintenance support",
                   ].map((text, index) => (
                     <motion.li
                       key={index}
@@ -549,7 +544,7 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
           </motion.div>
         </section>
 
-        {/* Side Effects & Safety */}
+        {/* Starting Programme */}
         <section className="py-24 px-4">
           <motion.div
             variants={staggerContainer}
@@ -561,14 +556,86 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="font-georgia text-4xl text-brown text-center mb-6"
             >
-              Side effects and safety: what to expect
+              Starting your Ozempic programme at Nexus Clinic KL
             </motion.h2>
             <motion.p
               variants={fadeInUp}
               className="text-center text-taupe font-inter max-w-2xl mx-auto mb-16"
             >
-              Most side effects are digestive and often improve as your body
-              adapts.
+              The programme is built around assessment, safety, dose titration,
+              and long-term planning rather than simple medication dispensing.
+            </motion.p>
+
+            <div className="grid md:grid-cols-5 gap-4">
+              {[
+                {
+                  step: "1",
+                  title: "Medical consultation",
+                  desc: "Full health review, BMI, medications, goals and contraindications assessed",
+                },
+                {
+                  step: "2",
+                  title: "Blood panel",
+                  desc: "Baseline liver, kidney, HbA1c, lipid and metabolic screening before prescription",
+                },
+                {
+                  step: "3",
+                  title: "Treatment plan",
+                  desc: "Personalised dose schedule beginning at 0.25 mg weekly",
+                },
+                {
+                  step: "4",
+                  title: "Monthly reviews",
+                  desc: "Progress, side effects, titration and tolerability reviewed by doctor",
+                },
+                {
+                  step: "5",
+                  title: "Exit planning",
+                  desc: "Taper or long-term maintenance strategy introduced from later phases",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  className="p-6 bg-glass backdrop-blur-sm rounded-2xl border border-taupe/10 text-center"
+                >
+                  <div className="w-10 h-10 bg-wine text-light rounded-full flex items-center justify-center mx-auto mb-4 font-bold">
+                    {item.step}
+                  </div>
+                  <h4 className="font-georgia text-lg text-brown mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs font-inter text-taupe">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Before & After */}
+        <SectionBeforeAfter transformations={transformations} />
+
+        {/* Side Effects & Safety */}
+        <section className="py-24 px-4 bg-cream">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-7xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown text-center mb-6"
+            >
+              Side effects, contraindications and safety
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-center text-taupe font-inter max-w-2xl mx-auto mb-16"
+            >
+              Most side effects are gastrointestinal and are most noticeable
+              during early titration. Proper starting dose and monitoring help
+              reduce treatment interruption.
             </motion.p>
 
             <div className="grid md:grid-cols-2 gap-12">
@@ -579,12 +646,12 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
                 <div className="grid grid-cols-2 gap-4">
                   {[
                     "Nausea",
+                    "Vomiting",
+                    "Diarrhoea",
                     "Constipation",
-                    "Diarrhea",
-                    "Bloating",
-                    "Reflux",
-                    "Stomach discomfort",
+                    "Abdominal discomfort",
                     "Reduced appetite",
+                    "Temporary digestive upset",
                   ].map((effect, index) => (
                     <motion.div
                       key={index}
@@ -604,16 +671,18 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
                 className="bg-wine/5 p-8 rounded-3xl"
               >
                 <h3 className="font-georgia text-2xl text-wine mb-6">
-                  Serious side effects (rare, but important)
+                  Important safety points
                 </h3>
                 <p className="font-inter text-sm text-brown mb-4">
-                  Seek medical advice urgently if you have:
+                  Ozempic is not suitable for every patient. Doctor review is
+                  essential before treatment starts.
                 </p>
                 <ul className="space-y-4">
                   {[
-                    "Severe belly pain that does not go away",
-                    "Signs of gallbladder issues (upper right abdominal pain, fever, jaundice)",
-                    "Signs of dehydration or kidney strain after vomiting/diarrhea",
+                    "Patients with pancreatitis history require careful exclusion or review",
+                    "Patients with medullary thyroid carcinoma or MEN2 must not use semaglutide",
+                    "Pregnant patients or those planning pregnancy should not use Ozempic",
+                    "Patients on diabetes medication may need additional blood sugar monitoring",
                   ].map((text, index) => (
                     <motion.li
                       key={index}
@@ -630,9 +699,9 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
 
                 <div className="mt-8 p-4 bg-light rounded-xl border border-wine/20">
                   <p className="text-xs font-inter text-brown">
-                    <span className="font-bold">Surgery safety note:</span>{" "}
-                    Malaysia's NPRA has highlighted aspiration risk. If you have
-                    a procedure coming up, tell your anesthetist early.
+                    <span className="font-bold">Clinical principle:</span> no
+                    prescription refills without healthcare review. Monitoring is
+                    part of safe prescribing.
                   </p>
                 </div>
               </motion.div>
@@ -640,8 +709,8 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
           </motion.div>
         </section>
 
-        {/* Pricing & Comparison */}
-        <section className="py-24 px-4 bg-cream">
+        {/* Pricing */}
+        <section className="py-24 px-4">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -652,78 +721,65 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="font-georgia text-4xl text-brown text-center mb-16"
             >
-              Ozempic price in Malaysia (Kuala Lumpur)
+              Ozempic Malaysia price guide 2026
             </motion.h2>
 
             <div className="grid md:grid-cols-2 gap-12">
               <motion.div variants={fadeInLeft} className="space-y-6">
                 <div className="bg-light p-8 rounded-3xl border-2 border-wine/20">
                   <h3 className="font-georgia text-3xl text-wine mb-2">
-                    From RM1,800
+                    RM 900 - RM 1,400
                   </h3>
                   <p className="text-taupe font-inter mb-6">
-                    per pen at Nexus Clinic KL
+                    per pen depending on dose
                   </p>
                   <p className="text-sm font-inter text-brown">
-                    Multi-pen packages available subject to medical
-                    consultation. Price includes medical supervision, not just
-                    medication.
+                    Starter-dose pens are usually lower in monthly cost, while 1
+                    mg maintenance-phase pens typically cost more. Consultation,
+                    bloodwork and reviews are separate programme components.
                   </p>
                 </div>
 
                 <div className="bg-glass p-6 rounded-2xl">
                   <p className="text-sm font-inter text-brown">
-                    Other clinics may quote RM800-1,000/month. Always confirm
-                    what's included: consultation, follow-ups, education,
-                    sourcing, storage, and safety monitoring.
+                    Typical 2026 programme components include consultation,
+                    bloodwork, medication, and monthly doctor review. Package
+                    pricing may reduce total cost over three-month and six-month
+                    programmes.
                   </p>
                 </div>
               </motion.div>
 
-              <motion.div variants={fadeInRight} className="space-y-6">
-                <h3 className="font-georgia text-2xl text-brown">
-                  Ozempic vs Wegovy vs Mounjaro vs Saxenda
-                </h3>
-                <div className="space-y-4">
-                  {[
-                    {
-                      name: "Ozempic",
-                      desc: "Primarily for type 2 diabetes; weight loss can occur",
-                    },
-                    {
-                      name: "Wegovy",
-                      desc: "Developed for chronic weight management at higher dosing",
-                    },
-                    {
-                      name: "Mounjaro",
-                      desc: "Targets GLP-1 and GIP hormones",
-                    },
-                    {
-                      name: "Saxenda",
-                      desc: "Daily injection for weight management",
-                    },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex gap-4 p-4 bg-light rounded-xl"
-                    >
-                      <span className="font-bold text-wine min-w-24">
-                        {item.name}
-                      </span>
-                      <span className="text-sm font-inter text-brown">
-                        {item.desc}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
+              <motion.div variants={fadeInRight} className="space-y-4">
+                {[
+                  "Initial consultation: RM 150 to RM 300",
+                  "Pre-treatment blood panel: RM 200 to RM 400",
+                  "Starter pen: RM 900 to RM 1,100",
+                  "1 mg maintenance pen: RM 1,000 to RM 1,400",
+                  "Monthly doctor review: RM 100 to RM 200",
+                  "3-month package: from RM 3,200",
+                  "6-month package: from RM 6,000",
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="flex gap-4 p-4 bg-light rounded-xl"
+                  >
+                    <span className="font-bold text-wine min-w-24">
+                      {index + 1}
+                    </span>
+                    <span className="text-sm font-inter text-brown">
+                      {item}
+                    </span>
+                  </motion.div>
+                ))}
               </motion.div>
             </div>
           </motion.div>
         </section>
 
         {/* Nexus Approach */}
-        <section className="py-24 px-4">
+        <section className="py-24 px-4 bg-cream">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -734,41 +790,43 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="font-georgia text-4xl text-brown text-center mb-6"
             >
-              The Nexus Clinic Kuala Lumpur approach
+              The Nexus Clinic KL approach
             </motion.h2>
             <motion.p
               variants={fadeInUp}
               className="text-center text-taupe font-inter max-w-2xl mx-auto mb-16"
             >
-              People don't want a lecture. They want a plan that fits real life.
+              The aim is not only to help patients lose weight. It is also to
+              help them maintain that result with proper monitoring,
+              habit-building and transition planning.
             </motion.p>
 
             <div className="grid md:grid-cols-5 gap-4">
               {[
                 {
                   step: "1",
-                  title: "Suitability screening",
-                  desc: "Medical history, risk checks, goal setting",
+                  title: "Doctor screening",
+                  desc: "Clinical assessment before any prescription",
                 },
                 {
                   step: "2",
-                  title: "Gradual dose approach",
-                  desc: "Paced changes to reduce side effects",
+                  title: "Dose titration",
+                  desc: "Gradual increase from 0.25 mg to reduce side effects",
                 },
                 {
                   step: "3",
-                  title: "Food strategy",
-                  desc: "Protein, fibre, smart portions, Malaysian food friendly",
+                  title: "Bloodwork review",
+                  desc: "Baseline and follow-up metabolic monitoring",
                 },
                 {
                   step: "4",
-                  title: "Tracking & support",
-                  desc: "Quick guidance when side effects hit",
+                  title: "Lifestyle support",
+                  desc: "Nutrition and behaviour reinforcement during the programme",
                 },
                 {
                   step: "5",
-                  title: "Maintenance planning",
-                  desc: "Prevent regain with early next-step planning",
+                  title: "Maintenance plan",
+                  desc: "Tapering or continuation plan to reduce rebound risk",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -804,7 +862,7 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="font-georgia text-4xl text-brown mb-6"
             >
-              Ready for a doctor-led Ozempic consultation in Kuala Lumpur?
+              Book a doctor-led Ozempic assessment in Kuala Lumpur
             </motion.h2>
 
             <motion.p
@@ -812,9 +870,9 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               className="text-taupe font-inter text-lg mb-12 max-w-2xl mx-auto"
             >
               If you are considering Ozempic weight loss treatment in Malaysia,
-              start with a proper medical discussion. Nexus Clinic Kuala Lumpur
-              focuses on safe prescribing, transparent pricing, and a plan you
-              can actually follow.
+              start with a proper medical discussion. Nexus Clinic KL focuses on
+              safe prescribing, transparent programme structure and realistic
+              long-term planning.
             </motion.p>
 
             <motion.button
@@ -823,7 +881,7 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               whileTap={{ scale: 0.95 }}
               className="px-12 py-5 bg-wine text-light font-inter text-lg rounded-full hover:bg-rose transition-colors shadow-xl hover:shadow-2xl"
             >
-              Book Your Consultation
+              Book Free Assessment
             </motion.button>
           </motion.div>
         </section>

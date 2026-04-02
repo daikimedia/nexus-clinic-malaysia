@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import {
-  AlertCircle,
   Shield,
   MapPin,
   CheckCircle2,
@@ -13,12 +12,14 @@ import {
   Droplets,
   Pill,
   Ban,
-  Scale as ScaleIcon,
   Apple,
   Bone,
-  ThumbsUp,
-  ThumbsDown,
   ShieldAlert,
+  Clock,
+  Syringe,
+  Activity,
+  ArrowRight,
+  AlertCircle,
 } from "lucide-react";
 
 import {
@@ -39,6 +40,49 @@ const HCGWeightLossLanding = ({
 }) => {
   const { t } = useTranslation(locale, "weightLoss/hcg");
 
+  const faqs = [
+    {
+      q: "How does HCG work for weight loss when calorie intake is already so low?",
+      a: "The HCG programme is based on the claim that HCG helps mobilise stored fat during the very low-calorie phase, making patients feel less hungry than the calorie count suggests. At Nexus Clinic KL, the protocol is explained and monitored medically rather than sold as a supplement shortcut.",
+    },
+    {
+      q: "Is HCG safe for men as well as women?",
+      a: "Yes. The programme is used in both men and women under medical supervision. Male patients often respond slightly faster because of higher baseline muscle mass and metabolic rate.",
+    },
+    {
+      q: "What can I eat on the HCG diet in Malaysia?",
+      a: "During the active phase, meals are built around lean protein, approved non-starchy vegetables and limited low-sugar fruit. Patients receive a Malaysian food substitution guide so the plan is practical in local eating patterns.",
+    },
+    {
+      q: "Will I lose muscle mass on the HCG diet?",
+      a: "The protocol is intended to favour fat loss over muscle loss compared with plain caloric restriction, and Nexus Clinic KL monitors body composition trends during the programme to reduce that risk.",
+    },
+    {
+      q: "How much weight can I realistically lose on the HCG programme at Nexus Clinic KL?",
+      a: "Most patients on the 40-day programme lose between 5 and 13 kg, with many falling in the 7 to 10 kg range when the protocol is followed closely. Results vary with starting weight, adherence and metabolic profile.",
+    },
+    {
+      q: "Can I exercise while on the HCG diet?",
+      a: "Light activity such as walking, yoga and stretching is encouraged. High-intensity exercise and heavy resistance work are usually not recommended during the active 500 to 800 calorie phase.",
+    },
+    {
+      q: "What is the difference between injectable HCG and drops or sprays sold online?",
+      a: "The clinic uses medical-grade injectable HCG prescribed by a licensed doctor. Over-the-counter drops, sprays and pellets sold online are not treated as equivalent medical-grade hormone delivery in this programme.",
+    },
+    {
+      q: "How soon will I see results on the HCG programme?",
+      a: "Many patients notice visible change within the first 5 to 7 days of the active phase. The first week often produces the sharpest drop, followed by a steadier pace from week two onward.",
+    },
+    {
+      q: "What happens after I finish the HCG programme?",
+      a: "The programme moves into a three-week stabilisation phase and then long-term maintenance. Nexus Clinic KL provides structured post-programme guidance and may suggest transition to Duromine or GLP-1 support when appropriate.",
+    },
+    {
+      q: "Is the HCG diet programme at Nexus Clinic KL suitable for patients with existing medical conditions?",
+      a: "Patients with stable, well-controlled conditions may still be suitable, but full medical assessment and blood tests are required first. Some patients need closer monitoring or may be advised toward a different programme.",
+    },
+  ];
+
   return (
     <div className="bg-light font-inter">
       {/* Hero Section */}
@@ -52,12 +96,11 @@ const HCGWeightLossLanding = ({
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-5xl mx-auto text-center"
           >
             <motion.div variants={fadeInUp} className="mb-6">
               <span className="inline-block px-4 py-2 bg-wine/10 text-wine rounded-full text-sm font-medium">
-                The honest guide to what it is, what research says, and safer
-                doctor monitored options at Nexus Clinic KL
+                Doctor-Guided HCG Diet for Fast, Medically Supervised Fat Loss
               </span>
             </motion.div>
 
@@ -65,7 +108,7 @@ const HCGWeightLossLanding = ({
               variants={fadeInUp}
               className="font-georgia text-5xl md:text-6xl lg:text-7xl text-brown mb-6 leading-tight"
             >
-              HCG Weight Loss Treatment
+              HCG Weight Loss Program
               <span className="block text-rose mt-2">
                 in Kuala Lumpur, Malaysia
               </span>
@@ -73,22 +116,41 @@ const HCGWeightLossLanding = ({
 
             <motion.div variants={fadeInUp} className="mb-8">
               <h2 className="text-2xl md:text-3xl text-taupe font-light italic">
-                Thinking about the HCG diet in Malaysia? Read this before you
-                commit.
+                A structured, time-defined programme for rapid fat loss and metabolic reset.
               </h2>
             </motion.div>
 
             <motion.p
               variants={fadeInUp}
-              className="text-lg text-brown/80 max-w-2xl mx-auto mb-12"
+              className="text-lg text-brown/80 max-w-3xl mx-auto mb-12"
             >
-              If you have tried dieting and workouts but the scale barely moves,
-              it is normal to feel frustrated. At Nexus Clinic Kuala Lumpur, we
-              help you understand what is hype, what is evidence, and what is
-              actually safe.
+              The HCG weight loss programme at Nexus Clinic KL combines
+              medical-grade injectable HCG with a structured low-calorie phase,
+              weekly doctor monitoring, and a clear exit into stabilisation and
+              maintenance.
             </motion.p>
 
-            {/* Trust section (quick proof points) */}
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-wrap justify-center gap-4 mb-12"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-wine text-light px-8 py-4 rounded-full font-medium hover:bg-rose transition-colors shadow-lg"
+              >
+                Book Free Consultation
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-brown/20 text-brown px-8 py-4 rounded-full font-medium hover:border-wine hover:text-wine transition-colors"
+              >
+                View Programme Guide
+              </motion.button>
+            </motion.div>
+
+            {/* Trust section */}
             <motion.div
               variants={fadeInUp}
               className="grid md:grid-cols-3 gap-6 mt-12"
@@ -96,22 +158,19 @@ const HCGWeightLossLanding = ({
               <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream">
                 <Shield className="w-8 h-8 text-wine mb-3" />
                 <p className="text-brown font-medium">
-                  Doctor-led weight loss consult with medical screening and
-                  personalised plan
+                  Licensed doctor supervision with weekly check-ins and progress tracking
                 </p>
               </div>
               <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream">
                 <Award className="w-8 h-8 text-wine mb-3" />
                 <p className="text-brown font-medium">
-                  Safety-first approach with realistic targets and ongoing
-                  follow up
+                  Fixed-cycle programme with rapid results and structured maintenance
                 </p>
               </div>
               <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-cream">
                 <MapPin className="w-8 h-8 text-wine mb-3" />
                 <p className="text-brown font-medium">
-                  Located in Kuala Lumpur with discreet, clinic-based care and
-                  clear guidance
+                  Located in Kuala Lumpur with discreet clinic-based medical care
                 </p>
               </div>
             </motion.div>
@@ -119,47 +178,48 @@ const HCGWeightLossLanding = ({
         </div>
       </section>
 
-      {/* First, a quick truth (because you deserve it) */}
+      {/* Programme at a glance */}
       <section className="py-24 bg-cream">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            className="max-w-3xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
-            <motion.div variants={fadeInLeft} className="mb-8">
-              <span className="text-wine font-medium flex items-center gap-2">
-                <AlertCircle className="w-5 h-5" />
-                First, a quick truth (because you deserve it)
-              </span>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white rounded-3xl p-8 shadow-lg"
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-4xl text-brown mb-10 text-center"
             >
-              <p className="text-lg text-brown mb-4">
-                HCG is a real hormone with real medical uses. But most medical
-                sources agree that HCG is not approved for weight loss and the
-                classic "HCG diet" often involves a very low-calorie diet that
-                can be risky.
-              </p>
-              <p className="text-brown/80 mb-4">
-                So if you are searching "HCG weight loss Malaysia" or "HCG
-                injection for slimming in KL", the key question is not "can it
-                make me lose weight fast?" The better question is: is it safe,
-                and will it last?
-              </p>
-              <p className="text-rose font-medium">
-                This page explains it in plain language.
-              </p>
-            </motion.div>
+              HCG Weight Loss Programme at a Glance
+            </motion.h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                ["Programme Length", "15-day starter or 23-day to 40-day full cycle"],
+                ["Daily Calorie Phase", "500 to 800 calories during active fat-loss phase"],
+                ["HCG Delivery", "Daily injectable HCG at clinic or self-injected under guidance"],
+                ["Expected Results", "5 to 13 kg over a full 40-day cycle"],
+                ["Downtime", "None. Non-invasive programme"],
+                ["Supervision", "Weekly doctor check-ins and vital sign monitoring"],
+                ["Suitable For", "Adults wanting rapid fat loss or metabolic reset"],
+                ["Location", "Wisma UOA II, Jalan Pinang, Kuala Lumpur"],
+              ].map(([title, text], index) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  className="bg-white rounded-3xl p-6 shadow-sm"
+                >
+                  <h3 className="font-georgia text-lg text-wine mb-2">{title}</h3>
+                  <p className="text-brown/80 text-sm">{text}</p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* What is HCG? Section with Image */}
+      {/* What is HCG */}
       <section className="py-24 bg-light">
         <div className="container mx-auto px-4">
           <motion.div
@@ -172,20 +232,18 @@ const HCGWeightLossLanding = ({
               <h2 className="font-georgia text-4xl text-brown mb-6">
                 What is HCG?
               </h2>
-              <p className="text-brown/80 mb-3">
-                HCG stands for human chorionic gonadotropin. Your body makes it
-                during pregnancy. Doctors also use lab-made HCG for specific
-                medical reasons, mainly related to fertility and certain hormone
-                conditions.
+              <p className="text-brown/80 mb-4">
+                HCG stands for human chorionic gonadotropin, a hormone produced
+                naturally in the body during pregnancy. The HCG weight-loss
+                protocol is based on the idea that low-dose injections combined
+                with a structured low-calorie diet help mobilise stubborn fat
+                stores rather than relying only on food intake.
               </p>
               <div className="bg-rose/10 border-l-4 border-rose p-4 rounded">
                 <p className="text-brown text-sm">
-                  In Malaysia, the Ministry of Health formulary lists HCG
-                  injections for fertility-related indications such as ovulation
-                  induction and luteal support,{" "}
-                  <span className="font-semibold text-rose">
-                    not as a weight loss drug.
-                  </span>
+                  At Nexus Clinic KL, the HCG programme is presented as a
+                  medically guided, prescription-only protocol rather than a
+                  home supplement plan or over-the-counter quick fix.
                 </p>
               </div>
             </motion.div>
@@ -203,7 +261,7 @@ const HCGWeightLossLanding = ({
               <div className="absolute bottom-6 left-6 text-white">
                 <p className="font-georgia text-xl">Nexus Clinic KL</p>
                 <p className="text-sm opacity-90">
-                  Doctor-led medical weight management
+                  Doctor-guided HCG fat-loss protocol
                 </p>
               </div>
             </motion.div>
@@ -211,100 +269,185 @@ const HCGWeightLossLanding = ({
         </div>
       </section>
 
-      {/* What people mean by "HCG weight loss" (and why it got popular) */}
+      {/* HCG vs GLP-1 */}
       <section className="py-24 bg-cream">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
-            <motion.div variants={fadeInUp}>
-              <h2 className="font-georgia text-3xl text-brown mb-6">
-                What people mean by "HCG weight loss" (and why it got popular)
-              </h2>
-              <p className="text-brown/80 mb-4">
-                When people talk about the HCG weight loss program, they usually
-                mean a plan that combines:
-              </p>
-              <div className="space-y-3 text-brown/80 mb-4">
-                <p className="flex items-start gap-3">
-                  <span className="text-rose font-bold">1.</span>
-                  <span>HCG products (injections or "drops"), and</span>
-                </p>
-                <p className="flex items-start gap-3">
-                  <span className="text-rose font-bold">2.</span>
-                  <span>
-                    a very low-calorie diet (often around 500 to 800 calories a
-                    day in many versions).
-                  </span>
-                </p>
-              </div>
-              <p className="text-brown/80 mb-4">
-                This idea has been around for decades. It became popular because
-                it promised three things people really want:
-              </p>
-              <div className="grid grid-cols-3 gap-4 my-6">
-                <div className="bg-white p-4 rounded-xl text-center shadow-sm">
-                  <Flame className="w-6 h-6 text-rose mx-auto mb-2" />
-                  <p className="text-wine font-semibold">faster fat loss</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl text-center shadow-sm">
-                  <Droplets className="w-6 h-6 text-rose mx-auto mb-2" />
-                  <p className="text-wine font-semibold">less hunger</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl text-center shadow-sm">
-                  <Bone className="w-6 h-6 text-rose mx-auto mb-2" />
-                  <p className="text-wine font-semibold">
-                    keeping muscle while losing weight
-                  </p>
-                </div>
-              </div>
-              <p className="italic text-rose font-medium">
-                Sounds amazing. The problem is the evidence.
-              </p>
-            </motion.div>
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-8"
+            >
+              HCG vs GLP-1: choosing the right treatment for your goals
+            </motion.h2>
+
+            <motion.p variants={fadeInUp} className="text-brown/80 mb-8">
+              The HCG programme and GLP-1 programmes like Ozempic or Mounjaro
+              are both doctor-led weight-loss pathways, but they differ in
+              speed, structure, calorie demands and long-term use.
+            </motion.p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <motion.div
+                variants={fadeInLeft}
+                className="bg-white rounded-3xl p-8 shadow-sm"
+              >
+                <h3 className="font-georgia text-2xl text-wine mb-4">HCG Programme</h3>
+                <ul className="space-y-3 text-brown/80">
+                  <li className="flex gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>Fixed 23 to 40-day cycle with defined start and end</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>Rapid early results, sometimes 0.5 to 1 kg per day in active phase</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>Requires 500 to 800 calories daily during active phase</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>Best for patients wanting a fast, structured reset</span>
+                  </li>
+                </ul>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInRight}
+                className="bg-white rounded-3xl p-8 shadow-sm"
+              >
+                <h3 className="font-georgia text-2xl text-wine mb-4">GLP-1 Programme</h3>
+                <ul className="space-y-3 text-brown/80">
+                  <li className="flex gap-3">
+                    <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>Open-ended monthly programme with dose titration</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>Gradual fat loss, often 3 to 8 kg per month on average</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>No fixed calorie restriction required</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                    <span>Best for ongoing obesity, metabolic syndrome or diabetes-linked weight issues</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Does HCG actually cause weight loss? */}
+      {/* Suitability */}
       <section className="py-24 bg-light">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-8"
+            >
+              Is the HCG diet the right programme for you?
+            </motion.h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-2xl">
+                <h3 className="font-georgia text-xl text-wine mb-3">Likely suitable</h3>
+                <ul className="space-y-3 text-brown/80">
+                  <li>• 5 to 15 kg to lose without major comorbidities</li>
+                  <li>• Wants a fixed cycle with a defined end point</li>
+                  <li>• Plateaued after previous diet attempts</li>
+                  <li>• Wants weight loss without indefinite medication use</li>
+                </ul>
+              </motion.div>
+
+              <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-2xl">
+                <h3 className="font-georgia text-xl text-wine mb-3">Consider GLP-1 instead</h3>
+                <ul className="space-y-3 text-brown/80">
+                  <li>• More than 20 kg to lose with metabolic issues</li>
+                  <li>• Type 2 diabetes or hypertension needing ongoing management</li>
+                  <li>• Needs longer-term pharmacological support</li>
+                  <li>• HCG is unsuitable after medical assessment</li>
+                </ul>
+              </motion.div>
+            </div>
+
             <motion.div
               variants={fadeInUp}
-              className="bg-white rounded-3xl p-8 shadow-lg border border-taupe/10"
+              className="mt-8 bg-rose/10 p-6 rounded-2xl border border-rose/30"
             >
-              <h2 className="font-georgia text-3xl text-brown mb-4">
-                Does HCG actually cause weight loss?
-              </h2>
-              <p className="text-brown/80 mb-4">
-                Most high-quality reviews and medical sources say no.
-              </p>
-              <p className="text-brown/80 mb-4">
-                Here is the simple reason: If you cut calories to extremely low
-                levels, you will likely lose weight. But studies show HCG itself
-                does not add meaningful weight loss beyond the calorie
-                restriction.
-              </p>
-              <p className="text-brown/80">
-                Major medical references also warn that the HCG diet is not safe
-                and does not lead to long-term weight control.
+              <p className="text-brown font-medium">
+                Pregnant or breastfeeding patients are not suitable for the HCG
+                programme under any circumstances.
               </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Why the "HCG diet" can feel like it works at first */}
+      {/* Four phases */}
       <section className="py-24 bg-cream">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-5xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-8"
+            >
+              The HCG diet involves four distinct phases
+            </motion.h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                {
+                  title: "Phase 1: Loading",
+                  desc: "Days 1 to 2. HCG begins and patients eat high-fat, high-calorie foods to fill normal reserves before caloric restriction starts.",
+                },
+                {
+                  title: "Phase 2: Active Weight Loss",
+                  desc: "Days 3 to 23 or 3 to 40. Daily injectable HCG continues and intake drops to 500 to 800 calories from an approved food list.",
+                },
+                {
+                  title: "Phase 3: Stabilisation",
+                  desc: "Three weeks after the last injection. Calories rise gradually, but sugar and starch remain excluded while the body stabilises.",
+                },
+                {
+                  title: "Phase 4: Maintenance",
+                  desc: "Long-term maintenance uses lean protein, vegetables, healthy fats and low-glycaemic carbohydrates. No further HCG is needed.",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="bg-white p-6 rounded-2xl shadow-sm"
+                >
+                  <h3 className="font-georgia text-xl text-wine mb-3">{item.title}</h3>
+                  <p className="text-brown/80">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Injections */}
+      <section className="py-24 bg-light">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
@@ -316,31 +459,79 @@ const HCGWeightLossLanding = ({
               variants={fadeInUp}
               className="font-georgia text-3xl text-brown mb-6"
             >
-              Why the "HCG diet" can feel like it works at first
+              The HCG injection at Nexus Clinic KL
             </motion.h2>
 
             <motion.div
               variants={fadeInUp}
-              className="space-y-4 text-brown/80 text-lg"
+              className="bg-white p-8 rounded-3xl shadow-lg border border-taupe/10"
             >
-              <p>Because the diet is often extreme.</p>
-              <p>
-                Many programs pair HCG with a very low-calorie plan. When
-                calories drop that low, people often see fast scale changes
-                early. But fast loss is not always fat loss, and fast plans can
-                rebound hard.
+              <p className="text-brown/80 mb-4">
+                At Nexus Clinic KL, HCG is prescribed by a licensed doctor,
+                sourced from verified pharmaceutical suppliers, and used as a
+                subcutaneous injection with technique guidance and weekly review.
               </p>
-              <p>
-                Also, when a plan feels strict and structured, it can improve
-                short-term compliance. That structure is useful. The unsafe part
-                is pushing the body too far, too fast.
+              <p className="text-brown/80 mb-4">
+                Patients can be trained to self-administer daily doses after the
+                first clinic session, with written instructions and injection
+                support provided.
+              </p>
+              <p className="text-wine font-medium">
+                The programme is positioned as medical-grade injectable HCG
+                under supervision, not an online drop, spray or homeopathic
+                shortcut.
               </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Safety: the biggest concern with HCG weight loss programs */}
+      {/* Pricing */}
+      <section className="py-24 bg-cream">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-5xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="font-georgia text-3xl text-brown mb-6"
+            >
+              HCG diet price in Malaysia 2026
+            </motion.h2>
+
+            <motion.p variants={fadeInUp} className="text-brown/80 mb-8">
+              The HCG programme is priced as a fixed cycle rather than an
+              open-ended monthly medication plan. Initial consultation is
+              complimentary and pricing is transparent by cycle length.
+            </motion.p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                ["Initial Consultation + Medical Assessment", "RM 150 to RM 350"],
+                ["HCG Starter Programme (15-day)", "RM 800 to RM 1,400"],
+                ["HCG Standard Programme (23-day)", "RM 1,200 to RM 1,800"],
+                ["HCG Full Programme (40-day)", "RM 1,800 to RM 2,300"],
+                ["HCG Programme + Add-on Blood Panel", "RM 2,000 to RM 2,800"],
+                ["Second Cycle After Rest", "RM 1,000 to RM 2,000"],
+              ].map(([title, price], index) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  className="bg-white p-6 rounded-2xl shadow-sm"
+                >
+                  <h3 className="font-georgia text-lg text-wine mb-2">{title}</h3>
+                  <p className="text-brown font-medium">{price}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Safety */}
       <section className="py-24 bg-light">
         <div className="container mx-auto px-4">
           <motion.div
@@ -354,50 +545,41 @@ const HCGWeightLossLanding = ({
               className="font-georgia text-3xl text-brown mb-6 flex items-center gap-3"
             >
               <ShieldAlert className="text-rose w-8 h-8" />
-              Safety: the biggest concern with HCG weight loss programs
+              Medically supervised HCG: safety and oversight
             </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-brown/80 mb-6">
-              Two risks usually show up together:
-            </motion.p>
 
             <motion.div variants={fadeInUp} className="space-y-6">
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10">
-                <h3 className="font-bold text-wine text-xl mb-3 flex items-center gap-2">
-                  <Pill className="w-5 h-5" />
-                  1) The hormone problem
-                </h3>
                 <p className="text-brown/80">
-                  Using hormones without a strong medical reason can cause
-                  unpredictable effects. Even when HCG is used correctly for
-                  approved indications, it has known side effects (and it is not
-                  meant for slimming).
+                  The main risk in the HCG programme comes from the very
+                  low-calorie phase when it is unsupervised. Under close doctor
+                  monitoring, blood pressure, pulse, hydration status and
+                  symptoms are reviewed weekly.
                 </p>
               </div>
 
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10">
-                <h3 className="font-bold text-wine text-xl mb-3 flex items-center gap-2">
-                  <Apple className="w-5 h-5" />
-                  2) The very low-calorie diet problem
-                </h3>
-                <p className="text-brown/80 mb-3">
-                  The FDA has warned that "HCG diet" instructions tied to very
-                  low-calorie diets increase risk for serious side effects.
-                  These can include gallstones, electrolyte imbalance, and heart
-                  rhythm problems.
-                </p>
                 <p className="text-brown/80">
-                  Cleveland Clinic also highlights that extreme restriction can
-                  lead to issues like fatigue, dehydration, headaches,
-                  malnutrition, anemia, hypoglycemia, and more.
+                  Common early side effects can include mild headache, fatigue
+                  and irritability during the first week. These usually settle
+                  as the body adapts.
                 </p>
               </div>
 
-              <div className="mt-6 bg-rose/10 p-6 rounded-2xl border border-rose/30">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10">
+                <p className="text-brown/80">
+                  Patients with kidney stone history, gallbladder disease,
+                  arrhythmia, pregnancy or breastfeeding need extra caution or
+                  are excluded entirely depending on profile.
+                </p>
+              </div>
+
+              <div className="bg-rose/10 p-6 rounded-2xl border border-rose/30">
                 <p className="text-brown font-medium">
-                  If you already have a medical condition (thyroid issues,
-                  diabetes, heart concerns, PCOS, anemia, or a history of eating
-                  disorders), a crash-style plan can hit even harder.
+                  If the HCG protocol is not safe or appropriate for your
+                  profile, Nexus Clinic KL positions GLP-1 or other doctor-led
+                  pathways as the alternative rather than pushing the wrong
+                  programme.
                 </p>
               </div>
             </motion.div>
@@ -405,193 +587,7 @@ const HCGWeightLossLanding = ({
         </div>
       </section>
 
-      {/* "Drops", "pellets", "sprays": what you should know */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-3xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-3xl text-brown mb-6 flex items-center gap-2"
-            >
-              <Droplets className="text-rose w-7 h-7" />
-              "Drops", "pellets", "sprays": what you should know
-            </motion.h2>
-
-            <motion.div
-              variants={fadeInUp}
-              className="space-y-4 text-brown/80 bg-white p-8 rounded-3xl shadow-lg"
-            >
-              <p>
-                Many "homeopathic HCG" products are marketed online. The FDA
-                notes these products are sold as drops, pellets, and sprays, and
-                they are not evaluated for safety or effectiveness for weight
-                loss.
-              </p>
-              <p className="bg-rose/10 p-4 rounded-xl border-l-4 border-rose font-medium">
-                If you are in Malaysia and considering anything bought online,
-                be extra cautious. At minimum, ask a clinic doctor to review
-                exactly what it is and where it comes from before you use it.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Who is NOT a good candidate for HCG-type weight loss plans? */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-3xl text-brown mb-6"
-            >
-              Who is NOT a good candidate for HCG-type weight loss plans?
-            </motion.h2>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-3xl shadow-lg border border-taupe/10"
-            >
-              <p className="text-brown/80 mb-4">
-                Even clinics that market HCG often list exclusions. In general,
-                avoid HCG dieting approaches if you:
-              </p>
-
-              <ul className="space-y-4 text-brown/80 mb-6">
-                <li className="flex items-start gap-3">
-                  <Ban className="text-rose w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>
-                    are pregnant, trying to conceive, or breastfeeding
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Ban className="text-rose w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>have hormone-sensitive cancer risk or history</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Ban className="text-rose w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>have heart rhythm problems or clotting history</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Ban className="text-rose w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>
-                    have severe depression, active mental health instability, or
-                    eating disorder history
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Ban className="text-rose w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>want a "quick fix" without follow up care</span>
-                </li>
-              </ul>
-
-              <p className="text-rose font-medium italic border-t pt-4">
-                If you feel desperate enough to try extreme restriction, take
-                that as a sign to seek a safer medical plan with support.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* How Nexus Clinic Kuala Lumpur can position HCG questions the right way */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-3xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-3xl text-brown mb-8 text-center"
-            >
-              How Nexus Clinic Kuala Lumpur can position HCG questions the right
-              way
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-brown/80 mb-8 text-center"
-            >
-              At Nexus Clinic KL, you can keep this message clear:
-            </motion.p>
-
-            <motion.div variants={staggerContainer} className="space-y-4">
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-6 rounded-2xl shadow-md flex items-center gap-4 border-l-4 border-rose"
-              >
-                <div className="w-8 h-8 bg-rose rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
-                  1
-                </div>
-                <p className="text-brown">
-                  We listen first. Why weight has not moved, and what you have
-                  tried.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-6 rounded-2xl shadow-md flex items-center gap-4 border-l-4 border-rose"
-              >
-                <div className="w-8 h-8 bg-rose rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
-                  2
-                </div>
-                <p className="text-brown">
-                  We screen medically. Sleep, hormones, insulin resistance,
-                  medications, lifestyle, stress.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-6 rounded-2xl shadow-md flex items-center gap-4 border-l-4 border-rose"
-              >
-                <div className="w-8 h-8 bg-rose rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
-                  3
-                </div>
-                <p className="text-brown">
-                  We explain the HCG controversy clearly. No hype.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="bg-white p-6 rounded-2xl shadow-md flex items-center gap-4 border-l-4 border-rose"
-              >
-                <div className="w-8 h-8 bg-rose rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
-                  4
-                </div>
-                <p className="text-brown">
-                  We offer safer, evidence-based plans that patients can
-                  actually stick to.
-                </p>
-              </motion.div>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="mt-8 text-rose font-bold text-lg text-center"
-            >
-              This protects patients and builds long-term trust.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* What to consider instead (safer, doctor monitored weight loss in KL) */}
+      {/* Alternatives and maintenance */}
       <section className="py-24 bg-cream">
         <div className="container mx-auto px-4">
           <motion.div
@@ -604,13 +600,13 @@ const HCGWeightLossLanding = ({
               variants={fadeInUp}
               className="font-georgia text-3xl text-brown mb-8"
             >
-              What to consider instead (safer, doctor monitored weight loss in
-              KL)
+              What happens after the HCG programme?
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-brown/80 mb-6">
-              If your goal is real fat loss and better health, a doctor
-              monitored plan usually focuses on:
+              The programme does not end at the last injection. Stabilisation
+              and maintenance are treated as core parts of the result, not an
+              afterthought.
             </motion.p>
 
             <motion.div
@@ -620,30 +616,25 @@ const HCGWeightLossLanding = ({
               <div className="bg-white p-5 rounded-xl flex items-start gap-3 shadow-sm">
                 <CheckCircle2 className="text-green-600 w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span className="text-brown">
-                  realistic calorie deficit, not extreme starvation
+                  3-week stabilisation to support the new lower weight
                 </span>
               </div>
               <div className="bg-white p-5 rounded-xl flex items-start gap-3 shadow-sm">
                 <CheckCircle2 className="text-green-600 w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span className="text-brown">
-                  protein and strength training to protect muscle
+                  Maintenance plan built around lean protein, vegetables and controlled carbohydrate return
                 </span>
               </div>
               <div className="bg-white p-5 rounded-xl flex items-start gap-3 shadow-sm">
                 <CheckCircle2 className="text-green-600 w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span className="text-brown">sleep and stress support</span>
+                <span className="text-brown">
+                  Option to transition into Duromine or GLP-1 support if clinically appropriate
+                </span>
               </div>
               <div className="bg-white p-5 rounded-xl flex items-start gap-3 shadow-sm">
                 <CheckCircle2 className="text-green-600 w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span className="text-brown">
-                  medical options only when appropriate
-                </span>
-              </div>
-              <div className="bg-white p-5 rounded-xl flex items-start gap-3 shadow-sm md:col-span-2">
-                <CheckCircle2 className="text-green-600 w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span className="text-brown">
-                  follow up, because maintenance is where most people lose the
-                  battle
+                  Optional body contouring discussion for stubborn localised fat after programme completion
                 </span>
               </div>
             </motion.div>
@@ -653,294 +644,19 @@ const HCGWeightLossLanding = ({
               className="bg-rose/10 p-6 rounded-2xl border-2 border-rose/30"
             >
               <p className="text-brown text-center font-medium text-lg">
-                A common safe pace is about{" "}
-                <span className="text-rose font-bold">
-                  0.5 to 1 kg per week
-                </span>
-                , not "a kilo a day".
+                This page is strongest when it positions HCG as a structured,
+                finite medical protocol rather than a vague consumer slimming
+                product.
               </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Cost of HCG weight loss in Malaysia (what affects pricing) */}
-      <section className="py-24 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-3xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-3xl text-brown mb-6"
-            >
-              Cost of HCG weight loss in Malaysia (what affects pricing)
-            </motion.h2>
+      {/* FAQ */}
+      <FAQ data={faqs} />
 
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-3xl shadow-lg border border-taupe/10"
-            >
-              <p className="text-brown/80 mb-4">
-                Prices vary a lot in Kuala Lumpur. Instead of comparing "cheap
-                vs expensive", compare what is included:
-              </p>
-
-              <ul className="space-y-3 text-brown/80 mb-6">
-                <li className="flex items-center gap-3">
-                  <ChevronRight className="text-rose w-5 h-5" />
-                  <span>doctor consult and screening</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <ChevronRight className="text-rose w-5 h-5" />
-                  <span>body composition tracking (not just weight)</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <ChevronRight className="text-rose w-5 h-5" />
-                  <span>safety monitoring</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <ChevronRight className="text-rose w-5 h-5" />
-                  <span>nutrition support and behaviour coaching</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <ChevronRight className="text-rose w-5 h-5" />
-                  <span>
-                    what happens after the first month (maintenance plan)
-                  </span>
-                </li>
-              </ul>
-
-              <p className="text-rose font-medium border-t pt-4 italic">
-                If a program pushes extreme restriction without proper follow
-                up, the "cheap" option can become costly later.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQs (People Also Ask style) */}
-      <section className="py-24 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-3xl text-brown mb-12 text-center"
-            >
-              FAQs (People Also Ask style)
-            </motion.h2>
-
-            <motion.div variants={staggerContainer} className="space-y-4">
-              {/* Is the HCG diet safe? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Is the HCG diet safe?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  Most major medical sources say the HCG diet is not safe,
-                  mainly because it is usually tied to a very low-calorie diet
-                  and unapproved weight loss claims.
-                </p>
-              </motion.div>
-
-              {/* Does HCG help you lose weight without dieting? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Does HCG help you lose weight without dieting?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  There is no strong evidence that HCG causes weight loss by
-                  itself. Most weight change comes from calorie restriction.
-                </p>
-              </motion.div>
-
-              {/* Why do people lose weight on HCG programs? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Why do people lose weight on HCG programs?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  Because many programs cut calories extremely low. That can
-                  cause fast scale changes, but it can also cause medical risks
-                  and rebound weight regain.
-                </p>
-              </motion.div>
-
-              {/* Are HCG drops or sprays real? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Are HCG drops or sprays real?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  Many "homeopathic HCG" products are sold as drops, pellets, or
-                  sprays. The FDA warns these are unapproved for weight loss and
-                  not evaluated for safety or effectiveness for that purpose.
-                </p>
-              </motion.div>
-
-              {/* Is HCG approved for weight loss? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Is HCG approved for weight loss?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  The FDA states there are no FDA-approved HCG products for
-                  weight loss. In Malaysia, HCG is listed for fertility-related
-                  indications in the MOH formulary, not as a slimming drug.
-                </p>
-              </motion.div>
-
-              {/* What are the risks of very low-calorie diets used with HCG? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  What are the risks of very low-calorie diets used with HCG?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  Regulators warn VLCDs can raise risk of gallstones,
-                  electrolyte imbalance, and heart rhythm issues, and should
-                  only be used under proper medical supervision.
-                </p>
-              </motion.div>
-
-              {/* How long does it take to see results? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  How long does it take to see results?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  With any extreme calorie restriction, the scale can move
-                  quickly early. But a safer medical target is steady loss over
-                  time, often around 0.5 to 1 kg per week.
-                </p>
-              </motion.div>
-
-              {/* Will the weight come back after an HCG diet? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Will the weight come back after an HCG diet?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  Rapid, restrictive plans often lead to regain if there is no
-                  long-term food strategy and follow up. Cleveland Clinic
-                  highlights that extreme approaches are not effective long
-                  term.
-                </p>
-              </motion.div>
-
-              {/* Who should avoid HCG-based weight loss approaches? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Who should avoid HCG-based weight loss approaches?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  People with hormone-sensitive cancer risks, pregnancy, major
-                  heart risks, and those vulnerable to disordered eating should
-                  avoid these approaches and seek a safer medical plan.
-                </p>
-              </motion.div>
-
-              {/* Is HCG the same as fat freezing? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Is HCG the same as fat freezing?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  No. HCG dieting is a hormone plus diet concept. Fat freezing
-                  (cryolipolysis) targets local fat pockets and is body
-                  contouring, not a true weight loss solution.
-                </p>
-              </motion.div>
-
-              {/* What is a safer alternative to HCG for weight loss in Kuala Lumpur? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  What is a safer alternative to HCG for weight loss in Kuala
-                  Lumpur?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  A doctor monitored weight loss program that screens your
-                  health, sets realistic targets, supports nutrition and
-                  activity, and uses medication only when appropriate is usually
-                  safer and more sustainable.
-                </p>
-              </motion.div>
-
-              {/* Can a clinic combine HCG with other medications like appetite suppressants? */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-taupe/10"
-              >
-                <h3 className="text-wine font-semibold text-lg mb-2 flex items-start gap-2">
-                  <HelpCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                  Can a clinic combine HCG with other medications like appetite
-                  suppressants?
-                </h3>
-                <p className="text-brown/80 pl-7">
-                  Some clinics mention combinations like Duromine and HCG in
-                  "medical weight management" packages. If you are offered a
-                  combo, ask about indication, side effects, monitoring, and
-                  exit plan.
-                </p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Closing section (CTA) */}
+      {/* Closing CTA */}
       <section className="py-24 bg-wine relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 bg-cream rounded-full blur-3xl" />
@@ -957,31 +673,32 @@ const HCGWeightLossLanding = ({
             variants={fadeInUp}
             className="font-georgia text-4xl text-white mb-6"
           >
-            Ready for a Safer Path Forward?
+            Ready to find out if HCG is the right fit?
           </motion.h2>
 
           <motion.p
             variants={fadeInUp}
             className="text-xl text-white/90 max-w-2xl mx-auto mb-8 leading-relaxed"
           >
-            If you are considering HCG weight loss in Malaysia, do not guess
-            your way through it. Book a consultation at Nexus Clinic Kuala
-            Lumpur and let a doctor review your goals, your health, and your
-            safest path forward.
+            Book a consultation at Nexus Clinic Kuala Lumpur and let a doctor
+            assess whether the HCG programme, a GLP-1 pathway, or another
+            medical weight-loss plan is the safest and most effective option
+            for your goals.
           </motion.p>
 
           <motion.p
             variants={fadeInUp}
             className="text-2xl text-cream font-georgia italic mb-10"
           >
-            You will leave with a plan you can follow, not a quick fix you fear.
+            Structured. Supervised. Honest from the start.
           </motion.p>
 
           <motion.button
             variants={scaleIn}
-            className="bg-cream text-wine px-10 py-5 rounded-full font-bold text-lg hover:bg-rose hover:text-white transition-all duration-300 shadow-2xl hover:shadow-xl transform hover:-translate-y-1"
+            className="bg-cream text-wine px-10 py-5 rounded-full font-bold text-lg hover:bg-rose hover:text-white transition-all duration-300 shadow-2xl hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center gap-2"
           >
-            Book Your Consultation Today
+            Book Free Consultation
+            <ArrowRight className="w-5 h-5" />
           </motion.button>
         </motion.div>
       </section>

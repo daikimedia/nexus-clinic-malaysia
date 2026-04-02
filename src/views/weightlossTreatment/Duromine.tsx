@@ -22,6 +22,10 @@ import {
   Beer,
   Heart as HeartIcon,
   ChevronDown,
+  MapPin,
+  Pill,
+  Activity,
+  ArrowRight,
 } from "lucide-react";
 import FAQ from "../../components/FAQ";
 import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
@@ -30,6 +34,7 @@ import { fallbackLng } from "@/src/i18n/settings";
 
 const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/duromine");
+
   const transformations = [
     {
       id: 1,
@@ -47,6 +52,50 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
       after: "/images/B&A-w/B&A-duromine3.webp",
     },
   ];
+
+  const faqs = [
+    {
+      q: "Is Duromine legal in Malaysia and do I need a prescription?",
+      a: "Yes. Duromine is legal in Malaysia and regulated as a prescription-only controlled medicine. It cannot be purchased over the counter and should only be obtained after full medical assessment by a licensed doctor.",
+    },
+    {
+      q: "How much weight can I expect to lose on Duromine?",
+      a: "Most patients taking Duromine 30mg with diet and exercise support at Nexus Clinic KL lose around 5 to 10 kg over a 12-week cycle. Clinical outcomes vary by starting weight, adherence, physical activity and tolerance.",
+    },
+    {
+      q: "Can I take Duromine if I have high blood pressure?",
+      a: "Patients with controlled and stable hypertension may be eligible under closer monitoring, but uncontrolled hypertension is a contraindication because phentermine can raise blood pressure and heart rate.",
+    },
+    {
+      q: "What side effects are common with Duromine?",
+      a: "Common side effects include dry mouth, insomnia, mild increase in heart rate, restlessness and constipation. These are usually dose-related and often improve after the first one to two weeks.",
+    },
+    {
+      q: "How does Duromine compare to Ozempic for weight loss?",
+      a: "Duromine is a short-term stimulant appetite suppressant used in structured cycles, while Ozempic is a GLP-1 pathway used over longer timelines and often suits patients with metabolic syndrome or diabetes-related needs.",
+    },
+    {
+      q: "Can I take Duromine more than once, and how long should I wait between cycles?",
+      a: "Yes, some patients may be prescribed a second cycle after reassessment. A rest period of about four to six weeks is commonly recommended between cycles to reduce tolerance and dependency concerns.",
+    },
+    {
+      q: "Is Duromine available without a doctor's visit?",
+      a: "No. It is not appropriate or legal to obtain Duromine from unverified sources without prescription and medical screening.",
+    },
+    {
+      q: "Which Duromine dose is usually used first?",
+      a: "Dose selection depends on BMI, stimulant tolerance, cardiovascular health and prior phentermine exposure. Duromine 30mg is the most commonly prescribed standard dose, while 15mg and 40mg are selected for specific profiles.",
+    },
+    {
+      q: "How long can Duromine be taken?",
+      a: "At Nexus Clinic KL, Duromine is positioned as a short-term weight management medication used in cycles of up to 12 weeks under supervision.",
+    },
+    {
+      q: "What happens after the 12-week Duromine cycle ends?",
+      a: "The clinic builds a transition plan focused on maintaining results through lifestyle structure, continued monitoring, and where appropriate, a move into GLP-1 support or a later reassessed second cycle.",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-cream font-inter">
       {/* Hero Section */}
@@ -63,50 +112,90 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
           >
             <Shield className="w-4 h-4" />
             <span className="text-sm font-medium">
-              Doctor Monitored at Nexus Clinic KL
+              Doctor-Supervised Phentermine at Nexus Clinic KL
             </span>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <motion.div variants={fadeInLeft} className="space-y-6">
               <h1 className="font-georgia text-5xl lg:text-6xl text-brown leading-tight">
-                Duromine Weight Loss Treatment in Kuala Lumpur, Malaysia
+                Duromine Weight Loss in Kuala Lumpur, Malaysia
               </h1>
 
               <p className="text-2xl text-wine font-light">
-                Quiet the cravings. Take back control. Lose weight with a
-                doctor-led plan that fits real life.
+                Short-term appetite control with a doctor-led plan built for safe, structured progress.
               </p>
 
               <p className="text-lg text-taupe bg-rose/5 p-6 rounded-2xl border-l-4 border-rose">
-                Not everyone struggles with weight because of "willpower."
-                Sometimes hunger signals feel louder than your best intentions.
+                Hunger is not a character flaw. For many patients, appetite is the main reason every
+                diet collapses. Duromine is used to quiet appetite long enough to help you build real
+                momentum.
               </p>
 
-              <div className="bg-glass backdrop-blur-sm p-6 rounded-2xl border border-white/50">
-                <h2 className="font-georgia text-xl text-brown mb-4">
-                  Trust at Nexus Clinic Kuala Lumpur
-                </h2>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Doctor monitored weight loss plans, not guesswork
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Prescription-only support when appropriate
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-brown">
-                      Ongoing check-ins to help you stay safe and consistent
-                    </span>
-                  </li>
-                </ul>
+              <p className="text-brown/80">
+                At Nexus Clinic KL, Duromine is prescribed only after full medical history review,
+                BMI assessment, cardiovascular screening, and suitability confirmation. It is a
+                prescription medicine, and how it is prescribed matters.
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-medium hover:bg-rose transition-colors shadow-lg shadow-wine/20 inline-flex items-center gap-2"
+                >
+                  Book Free Consultation
+                  <ArrowRight className="w-4 h-4" />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="border-2 border-brown/20 text-brown px-8 py-4 rounded-full font-medium hover:border-wine hover:text-wine transition-colors"
+                >
+                  View Programme Guide
+                </motion.button>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
+                <motion.div variants={fadeInUp} className="text-center">
+                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
+                    <Shield className="w-6 h-6 text-wine mx-auto mb-2" />
+                    <div className="font-medium text-brown text-sm">
+                      Prescription-only
+                    </div>
+                    <div className="text-taupe text-xs">full doctor screening</div>
+                  </div>
+                </motion.div>
+
+                <motion.div variants={fadeInUp} className="text-center">
+                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
+                    <Pill className="w-6 h-6 text-wine mx-auto mb-2" />
+                    <div className="font-medium text-brown text-sm">
+                      15mg, 30mg, 40mg
+                    </div>
+                    <div className="text-taupe text-xs">individualised dosage</div>
+                  </div>
+                </motion.div>
+
+                <motion.div variants={fadeInUp} className="text-center">
+                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
+                    <Clock className="w-6 h-6 text-wine mx-auto mb-2" />
+                    <div className="font-medium text-brown text-sm">
+                      Up to 12 weeks
+                    </div>
+                    <div className="text-taupe text-xs">per supervised cycle</div>
+                  </div>
+                </motion.div>
+
+                <motion.div variants={fadeInUp} className="text-center">
+                  <div className="bg-glass backdrop-blur-sm rounded-2xl p-4 border border-white/50">
+                    <MapPin className="w-6 h-6 text-wine mx-auto mb-2" />
+                    <div className="font-medium text-brown text-sm">
+                      Kuala Lumpur clinic
+                    </div>
+                    <div className="text-taupe text-xs">Wisma UOA II</div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -115,35 +204,38 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               className="bg-white p-8 rounded-3xl shadow-xl"
             >
               <h2 className="font-georgia text-3xl text-brown mb-6">
-                Quick overview (for fast reading)
+                Duromine at a glance
               </h2>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div>
-                  <p className="font-bold text-wine mb-1">What it is:</p>
+                  <p className="font-bold text-wine mb-1">Treatment:</p>
                   <p className="text-brown">
-                    Duromine is a prescription appetite suppressant. It contains
-                    phentermine in a modified-release capsule.
+                    Duromine (Phentermine) Weight Loss Programme
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-wine mb-1">
-                    What it helps with:
-                  </p>
+                  <p className="font-bold text-wine mb-1">Dosages available:</p>
+                  <p className="text-brown">15mg, 30mg and 40mg once daily in the morning</p>
+                </div>
+
+                <div>
+                  <p className="font-bold text-wine mb-1">Expected weight loss:</p>
+                  <p className="text-brown">About 5 to 10 kg over 12 weeks with diet and exercise support</p>
+                </div>
+
+                <div>
+                  <p className="font-bold text-wine mb-1">Best for:</p>
                   <p className="text-brown">
-                    Strong hunger, constant snacking, and "food noise,"
-                    especially early in a plan.
+                    BMI 27+ with weight-related conditions, or BMI 30+ without comorbidities
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-wine mb-1">How it works:</p>
+                  <p className="font-bold text-wine mb-1">Monitoring:</p>
                   <p className="text-brown">
-                    It affects the appetite area of the brain and helps you feel
-                    less hungry. Important: It is meant to be used with a
-                    structured diet and activity plan, under medical
-                    supervision.
+                    Fortnightly or monthly doctor check-ins for blood pressure, pulse, side effects and progress
                   </p>
                 </div>
               </div>
@@ -152,7 +244,7 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </motion.section>
 
-      {/* What is Duromine Section with Image */}
+      {/* What is Duromine Section */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -163,28 +255,27 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeInLeft} className="space-y-4">
               <h2 className="font-georgia text-4xl text-brown">
-                What is Duromine, in simple words?
+                What is Duromine, in clinical terms?
               </h2>
 
               <p className="text-taupe text-lg">
-                Duromine is a weight loss medicine that helps reduce appetite.
+                Duromine is the brand name for phentermine combined with an ion-exchange resin
+                designed to release the medicine through the day.
               </p>
 
               <p className="text-taupe">
-                It contains phentermine, which is combined with a resin system
-                that releases the medicine gradually through the day. That "slow
-                release" is designed to support appetite control for longer
-                hours.
+                Phentermine is a central nervous system stimulant that suppresses appetite by
+                increasing norepinephrine activity and, to a lesser degree, dopamine and serotonin
+                signalling linked to hunger control.
               </p>
 
               <p className="text-rose font-medium bg-rose/5 p-4 rounded-xl border border-rose/20">
-                This is not a fat-melting pill. It does not "target belly fat"
-                overnight.
+                This is not a fat-melting shortcut. It is a short-term appetite suppressant that works
+                best when combined with a proper nutrition and activity plan.
               </p>
 
               <p className="text-taupe">
-                What it can do is help you eat less without feeling constantly
-                hungry, which makes a calorie-controlled plan feel more doable.
+                The capsule is usually taken once daily in the morning to reduce insomnia risk.
               </p>
             </motion.div>
 
@@ -202,7 +293,7 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         </div>
       </motion.section>
 
-      {/* Availability in Malaysia */}
+      {/* Dosage Guide */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -215,26 +306,33 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             className="bg-white p-8 rounded-3xl border border-wine/10"
           >
             <h2 className="font-georgia text-3xl text-brown mb-6">
-              Is Duromine available in Malaysia?
+              Duromine dosage guide: 15mg, 30mg and 40mg
             </h2>
 
-            <div className="space-y-4 text-taupe">
-              <p>
-                Yes, Duromine appears on Malaysia's NPRA comparator product list
-                with MAL registration numbers for 15mg and 30mg capsules.
-              </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-cream p-6 rounded-2xl">
+                <h3 className="font-georgia text-2xl text-wine mb-3">15mg</h3>
+                <p className="text-brown mb-2">Best for first-time users, lower BMI range, or stimulant-sensitive patients.</p>
+                <p className="text-taupe text-sm">Typical monthly loss: 2 to 3 kg with diet and exercise.</p>
+              </div>
 
-              <p>
-                Phentermine is also listed in Malaysia's official poisons list,
-                which is one reason it is handled with medical control.
-              </p>
+              <div className="bg-cream p-6 rounded-2xl">
+                <h3 className="font-georgia text-2xl text-wine mb-3">30mg</h3>
+                <p className="text-brown mb-2">The standard and most commonly prescribed dose in Malaysia.</p>
+                <p className="text-taupe text-sm">Typical monthly loss: 4 to 6 kg with diet and exercise.</p>
+              </div>
 
-              <p className="text-wine font-medium bg-wine/5 p-4 rounded-xl">
-                In plain terms: this is not an over-the-counter slimming
-                product. It is a prescription medicine, and it should be used
-                with proper screening and follow-up.
-              </p>
+              <div className="bg-cream p-6 rounded-2xl">
+                <h3 className="font-georgia text-2xl text-wine mb-3">40mg</h3>
+                <p className="text-brown mb-2">Reserved for patients not responding to 30mg after reassessment.</p>
+                <p className="text-taupe text-sm">Typical monthly loss: 5 to 8 kg with closer monitoring.</p>
+              </div>
             </div>
+
+            <p className="text-taupe mt-8">
+              Dose is never chosen as a blanket recommendation. It depends on BMI,
+              cardiovascular health, stimulant tolerance, and previous phentermine use.
+            </p>
           </motion.div>
         </div>
       </motion.section>
@@ -258,22 +356,21 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
               <Users className="w-10 h-10 text-wine mb-4" />
               <p className="text-brown">
-                Have obesity, or are significantly overweight
+                Patients with obesity or significant overweight who need short-term appetite control
               </p>
             </motion.div>
 
             <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
               <Target className="w-10 h-10 text-wine mb-4" />
               <p className="text-brown">
-                Have tried diet and activity changes but keep getting derailed
-                by cravings
+                Patients derailed mainly by persistent hunger, cravings and constant snacking
               </p>
             </motion.div>
 
             <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
               <Clock className="w-10 h-10 text-wine mb-4" />
               <p className="text-brown">
-                Need short-term appetite support to start losing weight safely
+                Patients needing a 12-week kickstart before moving into maintenance
               </p>
             </motion.div>
           </div>
@@ -283,13 +380,13 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             className="bg-rose/5 p-6 rounded-2xl border border-rose/20"
           >
             <p className="text-taupe">
-              Many clinics reference BMI-based suitability, often around BMI
-              30+, or BMI 27+ with weight-related health conditions, as part of
-              medical decision-making.
+              Clinically, Duromine is generally considered for adults with BMI 30+,
+              or BMI 27+ with at least one weight-related condition such as hypertension,
+              type 2 diabetes or metabolic syndrome.
             </p>
             <p className="text-wine font-medium mt-4">
-              At Nexus Clinic KL, the goal is not "skinny fast." The goal is a
-              safe drop in weight with habits you can keep.
+              At Nexus Clinic KL, the aim is controlled, safe progress rather than rapid,
+              unsustainable extremes.
             </p>
           </motion.div>
         </div>
@@ -306,28 +403,25 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
           <motion.div variants={fadeInUp} className="text-center mb-12">
             <AlertCircle className="w-12 h-12 text-rose mx-auto mb-4" />
             <h2 className="font-georgia text-4xl text-brown">
-              Who should NOT use Duromine
+              Who should not use Duromine
             </h2>
             <p className="text-taupe text-lg mt-2 font-medium">
-              (very important)
+              Contraindications matter
             </p>
             <p className="text-taupe mt-2">
-              Duromine is not suitable for everyone.
-            </p>
-            <p className="text-taupe">
-              Phentermine-type medicines are commonly avoided if you have:
+              Duromine is not suitable for everyone because it is a stimulant with cardiovascular impact.
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              "Severe heart disease, rhythm problems, or a history of stroke",
-              "Uncontrolled high blood pressure",
+              "History of heart disease, arrhythmia, coronary artery disease, or valve abnormalities",
+              "Uncontrolled or severe hypertension",
               "Hyperthyroidism",
-              "Glaucoma",
               "Pregnancy or breastfeeding",
-              "A history of drug misuse",
-              "Recent use of MAOI medicines (dangerous interaction risk)",
+              "Age below 18",
+              "History of drug misuse or dependency on controlled substances",
+              "Recent MAOI use within the last 14 days",
             ].map((condition, i) => (
               <motion.div
                 key={i}
@@ -344,20 +438,19 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <div className="flex items-start gap-3 bg-white p-4 rounded-xl">
               <Beer className="w-5 h-5 text-rose shrink-0 mt-0.5" />
               <p className="text-brown">
-                Also, alcohol can increase certain nervous system side effects
-                like dizziness and confusion, so it is commonly advised to avoid
-                combining them.
+                Alcohol, caffeine and other stimulants are commonly restricted or discouraged
+                because they can amplify side effects like insomnia, dizziness and palpitations.
               </p>
             </div>
 
             <p className="text-wine font-medium text-center text-lg">
-              This is exactly why doctor screening matters.
+              This is why proper medical screening is not optional.
             </p>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* How Duromine works */}
+      {/* Comparison Section */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -367,52 +460,38 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         <div className="container mx-auto max-w-6xl">
           <motion.h2
             variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
+            className="font-georgia text-4xl text-brown text-center mb-12"
           >
-            How Duromine works
-            <span className="block text-lg text-taupe font-normal mt-2">
-              (without the textbook tone)
-            </span>
+            Duromine vs Ozempic vs HCG vs Contrave
           </motion.h2>
 
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              variants={fadeInUp}
-              className="space-y-6 text-taupe text-lg"
-            >
-              <p>Think of appetite like a volume knob.</p>
-              <p>
-                For some people, that knob feels stuck on high. You eat, but you
-                still want more.
-              </p>
-              <p className="bg-rose/5 p-6 rounded-xl border-l-4 border-rose">
-                Duromine helps lower that "hunger volume" by acting on brain
-                signals tied to appetite and fullness.
-              </p>
-              <p>When appetite is calmer, these things become easier:</p>
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <motion.div variants={fadeInLeft} className="bg-cream p-6 rounded-2xl">
+              <h3 className="font-georgia text-xl text-wine mb-4">Duromine</h3>
+              <ul className="space-y-2 text-brown">
+                <li>• Daily oral capsule</li>
+                <li>• Fast visible response in 2 to 4 weeks</li>
+                <li>• 7 to 12% body weight reduction over 12 weeks</li>
+                <li>• Best for short-term appetite suppression</li>
+              </ul>
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              className="grid sm:grid-cols-2 gap-4 mt-8"
-            >
-              {[
-                "Saying no to random snacks",
-                "Stopping at a normal portion",
-                "Avoiding late-night overeating",
-                "Staying consistent long enough to see results",
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={scaleIn}
-                  className="flex items-start gap-2 bg-cream p-4 rounded-xl"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                  <p className="text-brown">{item}</p>
-                </motion.div>
-              ))}
+            <motion.div variants={fadeInRight} className="bg-cream p-6 rounded-2xl">
+              <h3 className="font-georgia text-xl text-wine mb-4">Other options</h3>
+              <ul className="space-y-2 text-brown">
+                <li>• Ozempic: GLP-1, longer-term metabolic control</li>
+                <li>• HCG: fixed-cycle, very low-calorie reset structure</li>
+                <li>• Contrave: reward-pathway support for cravings and binge patterns</li>
+                <li>• Choice depends on health profile, goals and risk tolerance</li>
+              </ul>
             </motion.div>
           </div>
+
+          <p className="text-taupe bg-rose/5 p-6 rounded-xl">
+            At Nexus Clinic KL, medication choice is positioned as a doctor decision,
+            not a marketing decision. The right option depends on your BMI, risk profile,
+            health conditions, side-effect tolerance and long-term plan.
+          </p>
         </div>
       </motion.section>
 
@@ -428,130 +507,56 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             variants={fadeInUp}
             className="font-georgia text-4xl text-brown text-center mb-4"
           >
-            What the Duromine journey looks like at Nexus Clinic Kuala Lumpur
+            What the Duromine programme looks like at Nexus Clinic KL
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-taupe text-center text-lg mb-12"
           >
-            A good program should feel structured, but not overwhelming.
+            Structured, monitored, and built around a safe exit plan.
           </motion.p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Step 1 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-lg"
-            >
-              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-xl">1</span>
-              </div>
-              <h3 className="font-georgia text-xl text-brown mb-4">
-                Medical assessment first
-              </h3>
-              <p className="text-taupe mb-3">
-                We start with basics that matter:
-              </p>
-              <ul className="space-y-2 text-sm text-taupe">
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Your weight history and past attempts</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Your health conditions and medications</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Blood pressure and heart-related risk checks</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>
-                    Lifestyle pattern review, sleep, stress, work routine
-                  </span>
-                </li>
-              </ul>
-              <p className="mt-4 text-rose font-medium">
-                If Duromine is not appropriate, we will not push it.
-              </p>
-            </motion.div>
-
-            {/* Step 2 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-lg"
-            >
-              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-xl">2</span>
-              </div>
-              <h3 className="font-georgia text-xl text-brown mb-4">
-                A plan you can actually follow
-              </h3>
-              <p className="text-taupe mb-3">
-                You get a clear path, not vague advice.
-              </p>
-              <p className="text-taupe mb-3">That includes:</p>
-              <ul className="space-y-2 text-sm text-taupe">
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Simple nutrition targets</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>A realistic activity plan</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Strategies for cravings, weekends, social meals</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Follow-up schedule so you are not doing it alone</span>
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Step 3 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-lg"
-            >
-              <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
-                <span className="text-wine font-bold text-xl">3</span>
-              </div>
-              <h3 className="font-georgia text-xl text-brown mb-4">
-                Monitoring and adjustments
-              </h3>
-              <p className="text-taupe mb-3">
-                Duromine is typically used short term in many clinical settings,
-                not as a forever solution.
-              </p>
-              <p className="text-taupe mb-3">
-                Your doctor may adjust the plan based on:
-              </p>
-              <ul className="space-y-2 text-sm text-taupe">
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Side effects</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Appetite response</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Sleep changes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1 h-1 bg-wine rounded-full mt-2"></div>
-                  <span>Blood pressure and pulse trends</span>
-                </li>
-              </ul>
-            </motion.div>
+          <div className="grid md:grid-cols-5 gap-6">
+            {[
+              {
+                title: "Initial consultation",
+                desc: "Medical history, blood pressure, pulse, BMI and prior weight-loss attempts reviewed.",
+              },
+              {
+                title: "Eligibility and dose selection",
+                desc: "Doctor determines whether 15mg, 30mg or 40mg is appropriate, or whether another programme is safer.",
+              },
+              {
+                title: "Prescription and programme briefing",
+                desc: "You receive clear guidance on capsule timing, nutrition, activity, caffeine and alcohol avoidance, and warning symptoms.",
+              },
+              {
+                title: "Fortnightly monitoring",
+                desc: "Weight, body composition, blood pressure, pulse and side effects are reviewed and adjusted.",
+              },
+              {
+                title: "Transition and maintenance",
+                desc: "A post-cycle plan is built to reduce regain risk and guide long-term weight management.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="bg-white p-6 rounded-2xl shadow-lg"
+              >
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mb-4">
+                  <span className="text-wine font-bold text-xl">{i + 1}</span>
+                </div>
+                <h3 className="font-georgia text-xl text-brown mb-4">{item.title}</h3>
+                <p className="text-taupe text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.section>
+
+      {/* Before After */}
+      <SectionBeforeAfter transformations={transformations} />
 
       {/* Results */}
       <motion.section
@@ -573,45 +578,21 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="text-taupe text-center text-lg mb-4"
             >
-              Results vary. Your body is your body.
+              Duromine works fastest in the early phase because appetite drops early and
+              adherence becomes easier for the right patient.
             </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe text-center text-lg mb-8"
-            >
-              But many people notice:
-            </motion.p>
-
-            <motion.div variants={staggerContainer} className="space-y-4">
-              {[
-                "Appetite drops in the first days to week",
-                "Cravings feel less aggressive",
-                "Portion control becomes easier",
-                "Weight starts trending down within a few weeks if the plan stays consistent",
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={scaleIn}
-                  className="flex items-start gap-3 bg-cream p-4 rounded-xl"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                  <p className="text-brown">{item}</p>
-                </motion.div>
-              ))}
-            </motion.div>
 
             <motion.div
               variants={fadeInUp}
               className="mt-8 p-6 bg-rose/5 rounded-xl border border-rose/20"
             >
               <p className="text-taupe">
-                A key point from patient guidance sources is that Duromine
-                should sit inside a full weight management plan that includes
-                diet and exercise.
+                Most patients on Duromine 30mg in a structured 12-week cycle lose around
+                5 to 10 kg, and published clinical expectations place phentermine-based
+                outcomes in the range of about 7 to 12% of body weight over three months.
               </p>
               <p className="text-wine font-medium mt-2">
-                That is where long-term results come from.
+                Results still depend on diet, activity, sleep, adherence and monitoring quality.
               </p>
             </motion.div>
           </div>
@@ -631,13 +612,9 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             className="font-georgia text-4xl text-brown text-center mb-4"
           >
             Pros and cons
-            <span className="block text-lg text-taupe font-normal mt-2">
-              (honest and clear)
-            </span>
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-8 mt-12">
-            {/* Benefits */}
             <motion.div
               variants={fadeInLeft}
               className="bg-white p-8 rounded-2xl"
@@ -646,30 +623,23 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Helps reduce hunger and cravings
-                  </span>
+                  <span className="text-brown">Fast appetite suppression and early visible momentum</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Can support early momentum when motivation is fragile
-                  </span>
+                  <span className="text-brown">Accessible first-line prescription option in Malaysia</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Simple to use within a doctor-led plan
-                  </span>
+                  <span className="text-brown">Simple daily capsule without injection burden</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">No procedures, no downtime</span>
+                  <span className="text-brown">Works well as a short-term kickstart inside a larger programme</span>
                 </li>
               </ul>
             </motion.div>
 
-            {/* Downsides */}
             <motion.div
               variants={fadeInRight}
               className="bg-white p-8 rounded-2xl"
@@ -680,25 +650,19 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Not suitable for everyone (medical screening is required)
-                  </span>
+                  <span className="text-brown">Not suitable for patients with many cardiovascular or stimulant-related risks</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown">Side effects can happen</span>
+                  <span className="text-brown">Dry mouth, insomnia, restlessness and constipation are common</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown">
-                    It is not a permanent fix on its own
-                  </span>
+                  <span className="text-brown">It is not a forever medication and needs structured exit planning</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Misuse risk exists if used without supervision
-                  </span>
+                  <span className="text-brown">Dependency risk means careless use is unsafe</span>
                 </li>
               </ul>
             </motion.div>
@@ -718,23 +682,15 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             variants={fadeInUp}
             className="font-georgia text-4xl text-brown text-center mb-4"
           >
-            Side effects: what people commonly feel
+            Side effects and what people commonly feel
           </motion.h2>
 
           <div className="max-w-3xl mx-auto">
             <motion.p
               variants={fadeInUp}
-              className="text-taupe text-center text-lg mb-2"
-            >
-              Some people feel fine. Others feel a bit "wired."
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
               className="text-taupe text-center mb-8"
             >
-              Commonly mentioned effects with phentermine-type medicines
-              include:
+              Most side effects are stimulant-related and dose-dependent.
             </motion.p>
 
             <motion.div
@@ -744,9 +700,10 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               {[
                 "Dry mouth",
                 "Trouble sleeping",
-                "Faster heartbeat or palpitations",
-                "Feeling restless or anxious",
-                "Constipation or stomach discomfort",
+                "Mild increase in heart rate",
+                "Restlessness",
+                "Constipation",
+                "Palpitations in higher-risk cases",
               ].map((effect, i) => (
                 <motion.div
                   key={i}
@@ -763,16 +720,15 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
               className="mt-8 p-6 bg-rose/5 rounded-2xl border-l-4 border-rose"
             >
               <h3 className="font-georgia text-xl text-rose mb-2">
-                Serious symptoms need urgent medical attention
+                When to stop and contact the clinic urgently
               </h3>
               <p className="text-taupe mb-2">
-                If you feel chest pain, severe shortness of breath, fainting, or
-                severe racing heartbeat, seek urgent care.
+                Significant chest pain, severe palpitations, marked blood pressure rise,
+                or troubling mood changes should be reported immediately and the capsule
+                paused until doctor review.
               </p>
               <p className="text-brown">
-                Rare but serious cardiovascular events have been reported with
-                anorectic agents, which is why medical supervision is not
-                optional.
+                At Nexus Clinic KL, monitor-and-adjust is part of the programme, not an afterthought.
               </p>
             </motion.div>
           </div>
@@ -790,43 +746,50 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
           <motion.div variants={fadeInUp} className="text-center mb-8">
             <DollarSign className="w-12 h-12 text-wine mx-auto mb-4" />
             <h2 className="font-georgia text-4xl text-brown">
-              How much does Duromine cost in Kuala Lumpur?
+              Duromine price in Malaysia 2026
             </h2>
           </motion.div>
 
           <motion.div
             variants={fadeInUp}
-            className="bg-white p-8 rounded-3xl shadow-xl max-w-3xl mx-auto"
+            className="bg-white p-8 rounded-3xl shadow-xl max-w-5xl mx-auto"
           >
-            <p className="text-taupe mb-4">Pricing depends on:</p>
-            <ul className="list-disc pl-5 space-y-2 text-brown mb-6">
-              <li>Your consultation and monitoring plan</li>
-              <li>The prescription decision (not everyone gets it)</li>
-              <li>Duration of treatment</li>
-              <li>Whether labs or follow-ups are needed</li>
-            </ul>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-cream p-5 rounded-xl">
+                <p className="font-bold text-wine mb-2">Consultation</p>
+                <p className="text-brown">Complimentary initial medical assessment</p>
+              </div>
+              <div className="bg-cream p-5 rounded-xl">
+                <p className="font-bold text-wine mb-2">Duromine 15mg</p>
+                <p className="text-brown">RM 300 to RM 450 per month</p>
+              </div>
+              <div className="bg-cream p-5 rounded-xl">
+                <p className="font-bold text-wine mb-2">Duromine 30mg</p>
+                <p className="text-brown">RM 450 to RM 650 per month</p>
+              </div>
+              <div className="bg-cream p-5 rounded-xl">
+                <p className="font-bold text-wine mb-2">Duromine 40mg</p>
+                <p className="text-brown">RM 550 to RM 750 per month</p>
+              </div>
+              <div className="bg-cream p-5 rounded-xl">
+                <p className="font-bold text-wine mb-2">Full 12-week programme</p>
+                <p className="text-brown">RM 1,200 to RM 1,800</p>
+              </div>
+              <div className="bg-cream p-5 rounded-xl">
+                <p className="font-bold text-wine mb-2">Lifestyle coaching add-on</p>
+                <p className="text-brown">RM 1,500 to RM 2,200</p>
+              </div>
+            </div>
 
-            <p className="text-taupe mb-4">
-              Some Malaysia clinic pages publicly quote ranges like RM300 to
-              RM600 per month for medically supervised Duromine-style programs.
-            </p>
-
-            <p className="text-taupe mb-4">
-              A Malaysia pharmacy listing also shows Duromine sold as a
-              prescription-required product and tagged under Poison B, with
-              pricing depending on pack size.
-            </p>
-
-            <p className="text-wine font-medium bg-wine/5 p-4 rounded-xl">
-              At Nexus Clinic KL, the best way is to treat price as a plan-based
-              quote, not a random number, because safety monitoring is part of
-              the value.
+            <p className="text-wine font-medium bg-wine/5 p-4 rounded-xl mt-6">
+              At Nexus Clinic KL, pricing is framed around programme quality, monitoring
+              and transition planning, not just the capsule alone.
             </p>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Comparison Section */}
+      {/* Post Duromine */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
@@ -836,481 +799,65 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         <div className="container mx-auto max-w-6xl">
           <motion.h2
             variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-12"
+            className="font-georgia text-4xl text-brown text-center mb-10"
           >
-            Duromine vs Other Treatments
+            What happens after Duromine?
           </motion.h2>
 
-          {/* vs Fat Freezing */}
-          <motion.div variants={fadeInUp} className="mb-16">
-            <h3 className="font-georgia text-2xl text-brown mb-6">
-              Duromine vs "fat freezing" and body contouring
-            </h3>
-            <p className="text-taupe mb-4">
-              This is where many people get confused.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-4">
-              <div className="bg-cream p-6 rounded-2xl">
-                <h4 className="font-bold text-wine mb-2">
-                  Duromine (medical weight loss)
-                </h4>
-                <p className="text-brown">
-                  Helps reduce appetite, supports overall weight reduction. Best
-                  when the main issue is hunger and overeating patterns.
-                </p>
-              </div>
-              <div className="bg-cream p-6 rounded-2xl">
-                <h4 className="font-bold text-rose mb-2">
-                  Fat freezing (cryolipolysis, body sculpting)
-                </h4>
-                <p className="text-brown">
-                  Targets local fat pockets, not overall weight. Better for
-                  people near a stable weight who want shaping.
-                </p>
-              </div>
-            </div>
-            <p className="text-taupe">
-              If your weight is still fluctuating, medical weight loss usually
-              comes first. Then body contouring can refine what remains.
-            </p>
-          </motion.div>
-
-          {/* vs GLP-1 */}
-          <motion.div variants={fadeInUp}>
-            <h3 className="font-georgia text-2xl text-brown mb-6">
-              Duromine vs Ozempic, Wegovy, Mounjaro (quick comparison)
-            </h3>
-            <p className="text-taupe mb-4">These are different categories.</p>
-            <p className="text-taupe mb-4">
-              Duromine is a stimulant-type appetite suppressant (phentermine).
-              GLP-1 medicines work through hormone pathways linked to appetite
-              and blood sugar.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-cream p-4 rounded-xl">
-                <p className="font-bold text-wine mb-2">Form:</p>
-                <p className="text-brown">
-                  Duromine is a capsule, many GLP-1s are injections
-                </p>
-              </div>
-              <div className="bg-cream p-4 rounded-xl">
-                <p className="font-bold text-wine mb-2">Use style:</p>
-                <p className="text-brown">
-                  Duromine is commonly short term, GLP-1s are often longer-term
-                  plans
-                </p>
-              </div>
-              <div className="bg-cream p-4 rounded-xl">
-                <p className="font-bold text-wine mb-2">
-                  Side effects profile:
-                </p>
-                <p className="text-brown">Different risks and tolerability</p>
-              </div>
-            </div>
-
-            <p className="text-taupe bg-rose/5 p-6 rounded-xl">
-              At Nexus Clinic KL, the "best" option is the one that matches:
-              Your health profile, Your goals, Your risk level, Your ability to
-              follow the plan consistently.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Competitor Analysis */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 px-4 bg-cream"
-      >
-        <div className="container mx-auto max-w-6xl">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            What top competitors in Malaysia are doing
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-taupe text-center mb-8">
-            (and how Nexus can do it better)
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {/* What competitors do well */}
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-white p-6 rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-4">
-                What competitors do well
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Clear structure with sections like "How it works,"
-                    "Benefits," and FAQs
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    They openly frame it as prescription-only and short term
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Some publish price ranges, which helps users decide faster
-                  </span>
-                </li>
-              </ul>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-2xl">
+              <p className="text-brown">
+                The most neglected part of phentermine programmes is the exit. At Nexus Clinic KL,
+                the end of the 12-week cycle is treated as seriously as the start.
+              </p>
             </motion.div>
 
-            {/* Where many pages feel weak or risky */}
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white p-6 rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-rose mb-4">
-                Where many pages feel weak or risky
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Some claims are messy or inaccurate, like mixing up medicine
-                    regulation with "medical devices" approval language
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Many pages do not explain Malaysia's controlled handling
-                    clearly, even though phentermine is listed in the poisons
-                    list
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                  <span className="text-brown">
-                    Safety details are often rushed, even though interaction
-                    warnings (like MAOIs and alcohol) matter
-                  </span>
-                </li>
-              </ul>
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-2xl">
+              <p className="text-brown">
+                Patients move into a transition plan focused on appetite management without the capsule,
+                exercise structure, craving triggers, caloric awareness and maintenance support.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-rose/5 p-6 rounded-2xl border border-rose/20">
+              <p className="text-brown">
+                Where needed, the doctor may discuss a GLP-1 pathway, a monitored rest period,
+                or a later reassessed second Duromine cycle after at least four weeks.
+              </p>
             </motion.div>
           </div>
-
-          {/* Nexus Differentiator */}
-          <motion.div
-            variants={fadeInUp}
-            className="bg-wine text-white p-8 rounded-3xl"
-          >
-            <h3 className="font-georgia text-2xl mb-6">
-              Nexus Clinic KL differentiator angle (strong SEO + trust)
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3">
-                <Sparkles className="w-5 h-5 text-cream shrink-0 mt-1" />
-                <span>Evidence-led explanation in simple words</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Sparkles className="w-5 h-5 text-cream shrink-0 mt-1" />
-                <span>Clear screening and monitoring steps</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Sparkles className="w-5 h-5 text-cream shrink-0 mt-1" />
-                <span>Transparent "who it is for and who it is not for"</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Sparkles className="w-5 h-5 text-cream shrink-0 mt-1" />
-                <span>
-                  A real lifestyle support plan so results last beyond the
-                  prescription
-                </span>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </motion.section>
 
       {/* FAQ Section */}
+      <FAQ data={faqs} />
+
+      {/* CTA Section */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        className="py-20 px-4 bg-white"
+        className="py-20 px-4 bg-wine"
       >
         <div className="container mx-auto max-w-4xl">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown text-center mb-4"
-          >
-            FAQs
-            <span className="block text-lg text-taupe font-normal mt-2">
-              (People Also Ask style)
-            </span>
-          </motion.h2>
+          <motion.div variants={fadeInUp} className="text-center">
+            <h2 className="font-georgia text-4xl text-light mb-6">
+              Ready to find out if Duromine is right for you?
+            </h2>
 
-          <div className="space-y-4 mt-12">
-            {/* FAQ 1 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Is Duromine safe for weight loss?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                It can be safe for the right person, when a doctor screens you
-                properly and monitors you. It is not suitable for everyone,
-                especially people with heart disease, uncontrolled high blood
-                pressure, pregnancy, or recent MAOI use.
-              </div>
-            </motion.details>
-
-            {/* FAQ 2 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Do I need a prescription for Duromine in Malaysia?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                Yes. Duromine is treated as prescription medicine in practice,
-                and phentermine is listed in Malaysia's poisons list, which
-                supports controlled access.
-              </div>
-            </motion.details>
-
-            {/* FAQ 3 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  How fast does Duromine start working?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                Many people feel appetite changes early, sometimes within the
-                first days. Weight change usually depends on food intake and
-                consistency over the next weeks.
-              </div>
-            </motion.details>
-
-            {/* FAQ 4 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  How much weight can I lose in one month on Duromine?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                There is no single number that is "guaranteed." Your starting
-                weight, food habits, sleep, and activity level all matter. The
-                safest goal is steady progress you can maintain, not extreme
-                drops.
-              </div>
-            </motion.details>
-
-            {/* FAQ 5 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Is Duromine the same as phentermine?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                Duromine contains phentermine as a modified-release resin
-                complex.
-              </div>
-            </motion.details>
-
-            {/* FAQ 6 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Can Duromine cause heart problems?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                Serious heart-related effects are uncommon but possible, and
-                rare serious cardiovascular events have been reported with
-                anorectic agents. That is why screening and monitoring are
-                essential.
-              </div>
-            </motion.details>
-
-            {/* FAQ 7 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Does Duromine make you anxious or affect sleep?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                It can. Some people feel restless or have insomnia because it is
-                stimulant-like. If sleep gets worse, the plan may need
-                adjustment by a doctor.
-              </div>
-            </motion.details>
-
-            {/* FAQ 8 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Can I drink alcohol while taking Duromine?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                Alcohol can increase nervous system side effects like dizziness
-                or confusion, so it is commonly advised to avoid combining them.
-              </div>
-            </motion.details>
-
-            {/* FAQ 9 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  What happens when you stop Duromine?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                Appetite may return, especially if habits were not built during
-                the program. That is why a good clinic focuses on food
-                structure, routine, and maintenance strategies while you are on
-                the plan.
-              </div>
-            </motion.details>
-
-            {/* FAQ 10 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Duromine vs Ozempic or Wegovy, which is better?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                They are different tools. Duromine is phentermine-based appetite
-                suppression. GLP-1 medicines work through hormone pathways.
-                "Better" depends on your medical profile, risks, and what you
-                can follow long term.
-              </div>
-            </motion.details>
-
-            {/* FAQ 11 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Can I use Duromine if I have high blood pressure?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                Not always. Uncontrolled high blood pressure is a common reason
-                to avoid phentermine-type medicines. Your doctor must assess
-                this.
-              </div>
-            </motion.details>
-
-            {/* FAQ 12 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-cream rounded-xl overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <h3 className="font-medium text-brown">
-                  Is Duromine approved and registered in Malaysia?
-                </h3>
-                <ChevronDown className="w-5 h-5 text-wine group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="px-6 pb-6 text-taupe">
-                Duromine appears with MAL numbers on NPRA comparator product
-                lists, which supports its presence in Malaysia's regulated
-                medicine environment.
-              </div>
-            </motion.details>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Final Word */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 px-4 bg-wine text-white"
-      >
-        <div className="container mx-auto max-w-4xl text-center">
-          <motion.h2 variants={fadeInUp} className="font-georgia text-4xl mb-8">
-            Final word (from Nexus Clinic Kuala Lumpur)
-          </motion.h2>
-
-          <motion.div
-            variants={fadeInUp}
-            className="space-y-6 text-cream text-lg"
-          >
-            <p>
-              If your biggest battle is hunger, cravings, and constant snacking,
-              a doctor monitored program can be a game-changer.
+            <p className="text-cream text-lg mb-8">
+              Book a free consultation at Nexus Clinic KL and let a doctor assess your
+              appetite pattern, risk profile, suitability, ideal dosage, and safest next step.
             </p>
-            <p className="text-2xl font-light italic">
-              Duromine is not for everyone.
-            </p>
-            <p>
-              But for the right person, with the right monitoring, it can help
-              you build momentum and finally feel in control again.
-            </p>
-          </motion.div>
 
-          <motion.div variants={scaleIn} className="mt-10">
-            <button className="bg-cream text-wine px-8 py-4 rounded-full font-medium hover:bg-rose hover:text-white transition-all duration-300 shadow-lg">
-              Schedule Your Consultation
-            </button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-light text-wine px-10 py-5 rounded-full font-medium text-lg hover:bg-cream transition-colors shadow-2xl inline-flex items-center gap-2"
+            >
+              Book Free Consultation
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
           </motion.div>
         </div>
       </motion.section>

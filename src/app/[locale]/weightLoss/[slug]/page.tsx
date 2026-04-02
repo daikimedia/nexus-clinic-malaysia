@@ -14,7 +14,7 @@ import DoctorMonitored from "@/src/views/weightlossTreatment/DoctorMonitored";
 import HCGWeightLoss from "@/src/views/weightlossTreatment/HCG";
 import Duromine from "@/src/views/weightlossTreatment/Duromine";
 import Zepbound from "@/src/views/weightlossTreatment/ZepBound";
-// import IVDrip from "@/src/views/weightlossTreatment/IVDrip";
+import IVDrip from "@/src/views/weightlossTreatment/IVDrip";
 import Default from "@/src/views/weightlossTreatment/Default";
 import PageOzempicMalaysia from "@/src/views/weightlossTreatment/PageOzempicMalaysia";
 import GLP1LandingPage from "@/src/views/weightlossTreatment/GLP";
@@ -35,7 +35,7 @@ const components: Record<string, React.ComponentType<{ locale: string }>> = {
   GLP1LandingPage,
   SimaglutideLanding,
   TirzepatideLanding,
-  //   IVDrip,
+    IVDrip,
 };
 
 export async function generateStaticParams() {

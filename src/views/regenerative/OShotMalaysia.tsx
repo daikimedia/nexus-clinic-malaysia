@@ -18,6 +18,10 @@ import {
   MessageCircle,
   MapPin,
   ChevronDown,
+  Syringe,
+  Scissors,
+  Calendar,
+  TrendingUp,
 } from "lucide-react";
 
 import {
@@ -31,54 +35,116 @@ import FAQ from "@/src/components/FAQ";
 const OShotLanding = () => {
   const faqs = [
     {
-      q: "What is the O-Shot?",
-      a: "O-Shot is a PRP based procedure where platelet-rich plasma from your own blood is injected into intimate tissue to support healing signals and potentially improve comfort and sexual function.",
+      q: "What is the O-Shot and how does it differ from other vaginal treatments?",
+      a: "The O-Shot (Orgasm Shot) is a non-surgical vaginal rejuvenation treatment that uses platelet-rich plasma injection therapy to carefully inject PRP derived from your own blood into specific areas of the vagina including the clitoris, G-spot and anterior vaginal wall; because PRP is derived from your own blood, the minimal risk of side effects is significantly lower than with synthetic or pharmaceutical injectable treatments; the O-Shot is a non-surgical, non-hormonal treatment that relies entirely on the growth factors in your own platelet-rich plasma to stimulate tissue rejuvenation, collagen production and improved blood flow in the vaginal tissue; it differs from local vaginal oestrogen therapy which works through hormonal signalling, and from energy-based vaginal treatments which use thermal or radiofrequency energy to stimulate collagen remodelling; the O-Shot is most effective when used as part of an integrated women's sexual health and wellness programme.",
     },
     {
-      q: "Does O-Shot really work?",
-      a: "Studies show mixed results. A systematic review suggests PRP may improve female sexual dysfunction and stress urinary incontinence symptoms, but evidence is limited and protocols vary.",
+      q: "Is the O-Shot injection painful?",
+      a: "The O-Shot injection is performed under topical numbing cream applied to the vaginal and clitoral area 20 to 30 minutes before the PRP is injected into the vagina; once the numbing cream has taken full effect, most women describe the procedure as producing only mild pressure or minimal discomfort at the injection site; the clitoral area and anterior vaginal wall contain concentrated nerve endings and would be sensitive without adequate numbing, which is why the numbing preparation step is medically necessary and cannot be rushed at a properly operated specialist clinic; you may experience minimal swelling and bruise for up to 3 days after treatment in the treated area, which is an expected and normal response; this is self-limiting and resolves without treatment; sexual activity is typically resumed 3 days after treatment.",
     },
     {
-      q: "Is O-Shot safe?",
-      a: "PRP is autologous (from your own blood), which reduces allergy risk. Most reported side effects are mild and short-term, but good clinical screening matters.",
+      q: "What conditions can the O-Shot help treat?",
+      a: "The O-Shot injections are used for: urinary incontinence (stress urinary incontinence triggered by coughing, sneezing or exercise), where the evidence for improvement is the most consistent of all O-Shot indications; vaginal dryness and painful intercourse, particularly in perimenopausal and postmenopausal women where the O-Shot is most effective when combined with hormone therapy; reduced sexual pleasure and difficulty achieving orgasm, where PRP injected into the vagina may improve sensitivity and the engorgement response of the clitoris and G-spot; vaginal tone improvement as a non-surgical treatment for vagina tightening following childbirth; lichen sclerosus as an emerging indication with promising early evidence; the O-Shot addresses multiple aspects of women's sexual health and overall well-being in a single non-surgical procedure.",
     },
     {
-      q: "Is O-Shot painful?",
-      a: "Most clinics use numbing to reduce discomfort. You may still feel pressure or mild tenderness during and after.",
+      q: "How many O-Shot sessions are needed and how long do results last?",
+      a: "Most specialist clinic protocols recommend 2-3 treatments spaced 2 weeks apart for optimal tissue rejuvenation results; however, some women notice meaningful improvement after a single O-Shot session, particularly for urinary incontinence where the anterior vaginal wall tissue rejuvenation response may be sufficient after one injection; improvement typically begins within a few weeks of the first session and continues to develop from the second to fourth week post-injection as collagen production and new blood vessel formation matures; the O-Shot can last 12 to 18 months before the regenerative effect diminishes and maintenance treatment is recommended; at Nexus Clinic KL, a follow-up consultation at 6 to 8 weeks post-injection assesses the response and determines whether additional O-Shot sessions or programme continuation is appropriate.",
     },
     {
-      q: "How long does O-Shot last?",
-      a: "There is no fixed duration. Many studies assess outcomes between 1 and 6 months, and some clinics describe benefits lasting months to over a year depending on the person.",
+      q: "Is the O-Shot safe for all women?",
+      a: "The O-Shot is generally safe for most women because PRP derived from your own blood is used in this natural treatment; making it a safer option compared to many synthetic injectable performance enhancement methods available on the market; the risk of allergic reactions is minimal; however, contraindications to the O-Shot include: active vaginal infection or cervicitis (infection must be treated before any vaginal injection); significant bleeding disorder or current anticoagulant medication that cannot be paused; active cancer or cancer in remission where growth factor injection requires oncologist consultation before proceeding; pregnancy; at Nexus Clinic KL, all contraindications are assessed at the initial consultation before any O-Shot injection is scheduled; women with lichen sclerosus who are interested in the O-Shot are assessed individually as this emerging indication requires specific clinical discussion about current evidence and realistic expectations.",
     },
     {
-      q: "How many O-Shot sessions do I need?",
-      a: "It depends on your concern. Research protocols vary, and one review describes monthly PRP injections for 3 months as a common protocol for female sexual dysfunction studies.",
+      q: "Can the O-Shot help with urinary incontinence?",
+      a: "Urinary incontinence improvement is the indication with the most published evidence for vaginal PRP injection therapy and is one of the primary reasons many Malaysian women seek the O-Shot; the PRP is carefully injected into specific areas of the vagina adjacent to the urethral sphincter and periurethral tissue to stimulate collagen production and help to heal the muscle tissue in the vagina and periurethral structures that support the sphincter mechanism; improved urethral support from collagen production and blood to repair damaged blood capillaries in the periurethral area reduces involuntary leakage; results for urinary incontinence typically develop within a few weeks and continue to improve over 2 to 3 months as the tissue rejuvenation matures; women with mild to moderate stress urinary incontinence who have not responded to pelvic floor physiotherapy alone may find the O-Shot a useful adjunct; the O-Shot is not a replacement for pelvic floor physiotherapy but complements it by providing growth factor regeneration of the periurethral tissue that exercise alone cannot achieve.",
     },
     {
-      q: "Can O-Shot help with urinary incontinence?",
-      a: "PRP injections have been studied for female stress urinary incontinence, with some trials reporting symptom improvement, but it should be considered carefully and not as a replacement for standard care when severity is higher.",
+      q: "What is the G-spot injection component of the O-Shot?",
+      a: "The G-spot injection refers to the component of the O-Shot protocol where PRP is carefully injected into the anterior vaginal wall at the location associated with the Grafenberg spot (G-spot), an area of particular sensitivity in the anterior wall of the vagina associated with internal stimulation and orgasm; the G-spot injection is typically included as part of the standard O-Shot injection protocol rather than as a separate procedure; when PRP is injected into the vagina at the anterior wall location, the growth factors stimulate blood flow and neovascularisation in the area, improve the engorgement response of the G-spot tissue during sexual stimulation and may enhance sensitivity and orgasm quality from this area; at Nexus Clinic KL, the O-shot and G-spot injection together as part of the same session are included in the standard O-Shot protocol for women seeking sexual pleasure enhancement; a dedicated enhanced G-spot injection option with additional PRP volume directed to the anterior vaginal wall is also available.",
     },
     {
-      q: "Can O-Shot help vaginal dryness?",
-      a: "Some PRP studies and clinical reviews discuss improvements in dryness and tissue quality, but menopause-related dryness often needs broader care, sometimes including local treatments.",
+      q: "How does the O-Shot compare to the P-Shot for couples?",
+      a: "The O-Shot for women and the P-Shot (Priapus Shot) for men are the female and male versions of the same PRP injection therapy concept; both use platelet-rich plasma derived from the patient's own blood, injected into the genital tissue to stimulate blood flow, tissue rejuvenation, collagen production and improved sensitivity; a session of P-Shot for the male partner can be scheduled at Nexus Clinic KL on the same day as the O-Shot for the female partner, with both procedures conducted in separate private consultation rooms; the couple's programme approach allows both partners to address their sexual health and overall well-being simultaneously; the sexual health and wellness benefit of both partners receiving regenerative treatment at the same time is that the improvements in sensitivity, erection quality and orgasm occur on a compatible timeline, allowing both partners to notice the changes together within a few weeks of their sessions.",
     },
     {
-      q: "Is O-Shot the same as vaginal tightening?",
-      a: "Not exactly. O-Shot is PRP injection aimed at tissue support and sensation. Tightening is more often linked with laser or RF based collagen tightening approaches.",
+      q: "Is the O-Shot consultation at Nexus Clinic KL confidential?",
+      a: "Yes. All women's sexual health and vaginal rejuvenation consultations at Nexus Clinic KL are fully confidential; the nature of the consultation is not disclosed to reception or administrative staff beyond the scheduling requirement; the O-Shot procedure is performed in a private consultation room by a certified medical LCP-certified doctor; the clinic understands that vaginal and sexual health concerns are among the most personal matters a woman can discuss with a healthcare provider and approaches every consultation with sensitivity, professionalism and without judgement; you are welcome to attend alone and no partner attendance is required; all records are maintained in strict confidence under Malaysian data protection law; Nexus Clinic KL is a specialist clinic and medical centre for women's sexual health serving patients from Bangsar, TTDI, Mont Kiara, KL City, Puchong and across Malaysia.",
     },
     {
-      q: "What is the cost of O-Shot in Malaysia?",
-      a: "Public references commonly show RM 1,500 to RM 6,000 depending on clinic and inclusions, with some providers listing RM 2,000.",
-    },
-    {
-      q: "Who is not suitable for O-Shot?",
-      a: "Women who are pregnant, have active infection, certain bleeding issues, or unexplained symptoms should be assessed first. A consult determines suitability.",
-    },
-    {
-      q: "Where can I get O-Shot in Kuala Lumpur?",
-      a: "Several KL providers offer O-Shot, including clinics that position it within intimate wellness and aesthetic gynaecology. Nexus Clinic Kuala Lumpur is centrally located at Wisma UOA II, Jalan Pinang.",
+      q: "How do I make an appointment for the O-Shot at Nexus Clinic KL?",
+      a: "To make an appointment for an O-Shot consultation at Nexus Clinic KL, contact us directly by phone or WhatsApp using the contact details on the Nexus Clinic KL website; appointments are available Monday to Saturday; the initial consultation is priced at RM 150 to RM 300 and covers full clinical assessment, treatment discussion and pricing before any O-Shot injection is scheduled; there is no obligation to proceed with treatment at the consultation; contact us for further information on whether the O-Shot, G-spot injection, vaginal oestrogen therapy or a combination approach is most appropriate for your specific sexual health and wellness concerns; Nexus Clinic KL is located at Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur, a medical centre serving women from across KL, Bangsar, TTDI, Mont Kiara, KL City, Puchong, Petaling Jaya, KLCC, Ampang and throughout Malaysia; contact us today to take the first step toward addressing your sexual health concerns.",
     },
   ];
+
+  // O-Shot benefits with evidence status
+  const benefits = [
+    {
+      title: "Enhanced Sexual Pleasure and Orgasm Quality",
+      mechanism: "PRP growth factors stimulate neovascularisation and improve blood flow to vaginal tissue; enhanced sensitivity improves orgasm intensity and frequency",
+      evidence: "Most commonly reported benefit; individual experience varies; develops from second to fourth week post-injection",
+    },
+    {
+      title: "Reduced Urinary Incontinence",
+      mechanism: "PRP stimulates collagen production in periurethral tissue, improving mechanical support of urethral sphincter",
+      evidence: "Strongest published evidence; most consistent clinical outcome across studies; results develop within weeks",
+    },
+    {
+      title: "Vaginal Dryness and Lubrication Improvement",
+      mechanism: "PRP stimulates collagen production and blood flow to vaginal tissue, improving natural lubrication",
+      evidence: "Most effective when combined with hormone therapy; synergistic effect with oestrogen",
+    },
+    {
+      title: "Tissue Rejuvenation and Vaginal Tightening",
+      mechanism: "PRP stimulates local fibroblast activity and collagen production for non-surgical vaginal tone improvement",
+      evidence: "Modest results compared to surgical options; develops over 4-8 weeks; 2-3 treatments recommended",
+    },
+  ];
+
+  // Procedure steps
+  const procedureSteps = [
+    {
+      step: "Step 1: Initial Consultation and Assessment",
+      details: "Full clinical history covering sexual health concerns, physical examination, hormonal status review, evidence discussion, and treatment plan development",
+    },
+    {
+      step: "Step 2: Blood Draw and PRP Preparation",
+      details: "20-60ml blood drawn from arm; centrifuge spins for 15-20 minutes to separate platelet-rich plasma; numbing cream applied simultaneously",
+    },
+    {
+      step: "Step 3: Topical Numbing and Local Anaesthetic",
+      details: "Numbing cream applied for 20-30 minutes; may include local anaesthetic for vaginal injection; ensures patient comfort during procedure",
+    },
+    {
+      step: "Step 4: PRP Injection into Vagina and Clitoris",
+      details: "PRP injected into anterior vaginal wall (G-spot area), clitoral hood and body; total injection time 10-15 minutes; no downtime",
+    },
+  ];
+
+  // Comparison table data
+  const comparisonOptions = [
+    {
+      treatment: "O-Shot (PRP Injection)",
+      mechanism: "Autologous PRP growth factors stimulate blood flow, collagen production, and tissue rejuvenation",
+      bestFor: "Sexual pleasure enhancement, orgasm quality, urinary incontinence, non-hormonal rejuvenation",
+      invasiveness: "Minimally invasive injection with topical numbing",
+      evidence: "Emerging; strongest for urinary incontinence",
+    },
+    {
+      treatment: "Local Vaginal Oestrogen Therapy",
+      mechanism: "Oestrogen replacement restores hormonal support to vaginal epithelium",
+      bestFor: "Menopausal vaginal dryness, recurrent UTIs, vaginal atrophy",
+      invasiveness: "Non-invasive; topical cream, pessary or ring",
+      evidence: "Very strong; gold standard for menopausal vaginal atrophy",
+    },
+    {
+      treatment: "Energy-Based Vaginal Treatments (Laser/RF)",
+      mechanism: "Thermal or radiofrequency energy stimulates collagen remodelling and tissue tightening",
+      bestFor: "Vaginal laxity after childbirth, stress urinary incontinence",
+      invasiveness: "Non-surgical; device probe inserted into vagina",
+      evidence: "Moderate to good; growing evidence base",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-light font-[--font-inter] overflow-x-hidden">
       {/* Hero Section */}
@@ -89,7 +155,7 @@ const OShotLanding = () => {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         style={{
           background:
-            "linear-linear(135deg, var(--color-cream) 0%, var(--color-light) 100%)",
+            "linear-gradient(135deg, var(--color-cream) 0%, var(--color-light) 100%)",
         }}
       >
         {/* Decorative Elements */}
@@ -108,25 +174,28 @@ const OShotLanding = () => {
               <div className="inline-flex items-center px-4 py-2 bg-glass backdrop-blur-sm rounded-full border border-taupe border-opacity-20">
                 <Heart className="w-4 h-4 text-wine mr-2" />
                 <span className="text-sm text-brown font-medium">
-                  Women's Wellness at Nexus Clinic Kuala Lumpur
+                  O-Shot in Malaysia at Nexus Clinic KL
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-brown leading-tight font-georgia">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-brown leading-tight font-georgia">
                 O-Shot in Malaysia
-                <span className="block text-wine mt-2">PRP "Orgasm Shot"</span>
-              </h2>
+                <span className="block text-wine mt-2">
+                  Non-Surgical Vaginal Rejuvenation with PRP
+                </span>
+              </h1>
 
-              <p className="text-xl leading-relaxed">
-                Feeling dry, less sensitive, or "not the same" down there? You
-                are not alone, and you have options.
+              <p className="text-xl leading-relaxed text-brown">
+                The O-Shot (Orgasm Shot) uses platelet-rich plasma (PRP) from
+                your own blood to enhance sexual pleasure, improve orgasm intensity,
+                reduce urinary incontinence, and address vaginal dryness.
               </p>
 
               <p className="text-lg text-brown border-l-4 border-rose pl-6 italic">
-                Intimacy can change after childbirth, during menopause, or
-                simply with time and stress. The O-Shot is a PRP based treatment
-                that some women in Kuala Lumpur choose to support comfort,
-                sensation, and confidence.
+                Because PRP is derived from your own blood, this natural treatment
+                offers a safer option compared to synthetic injectable methods.
+                The most consistent evidence supports its use for urinary incontinence
+                and vaginal tissue rejuvenation.
               </p>
 
               <motion.div
@@ -138,16 +207,28 @@ const OShotLanding = () => {
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-wine text-white rounded-full font-semibold hover:bg-rose transition-colors shadow-lg"
                 >
-                  Schedule Private Consult
+                  Book Your Confidential O-Shot Consultation
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-glass backdrop-blur-sm text-brown rounded-full font-semibold border border-taupe hover:bg-cream transition-colors"
                 >
-                  Learn More
+                  Call or WhatsApp Today
                 </motion.button>
               </motion.div>
+
+              <div className="flex items-center gap-4 text-sm text-brown/70">
+                <div className="flex items-center gap-1">
+                  <MapPin className="w-4 h-4 text-wine" />
+                  <span>Wisma UOA II, Jalan Pinang, KL</span>
+                </div>
+                <div className="w-1 h-1 bg-taupe rounded-full" />
+                <div className="flex items-center gap-1">
+                  <Shield className="w-4 h-4 text-wine" />
+                  <span>Doctor-Performed | Confidential</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
@@ -158,11 +239,11 @@ const OShotLanding = () => {
                     <MapPin className="w-6 h-6 text-wine shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold text-brown">
-                        Central Kuala Lumpur clinic
+                        Nexus Clinic Kuala Lumpur
                       </h3>
                       <p className="text-taupe">
-                        Nexus Clinic Kuala Lumpur, LG 10, Lower Ground Floor,
-                        Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
+                        LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang,
+                        50450 Kuala Lumpur
                       </p>
                       <p className="text-wine font-medium mt-1">
                         Mobile: 016-7025699 / 03-21635699
@@ -172,22 +253,21 @@ const OShotLanding = () => {
 
                   <div className="border-t border-taupe border-opacity-20 pt-4">
                     <h3 className="font-semibold text-brown mb-2">
-                      Women's wellness approach:
+                      Serving women across Malaysia:
                     </h3>
                     <p className="text-taupe">
-                      Nexus Clinic describes vaginal rejuvenation goals like
-                      comfort, confidence, lubrication support, and addressing
-                      occasional urine leakage, and also mentions O-Shot
-                      alongside ThermiVa as part of women's wellness options.
+                      Bangsar, TTDI, Mont Kiara, KL City, Puchong, Petaling Jaya,
+                      KLCC, Ampang and throughout Malaysia
                     </p>
                   </div>
 
                   <div className="bg-wine bg-opacity-5 p-4 rounded-xl">
-                    <p className="text-light text-sm italic">
+                    <p className="text-brown text-sm italic">
                       <span className="font-semibold">Clear expectations:</span>{" "}
-                      the O-Shot is widely marketed as "non-invasive," but it
-                      involves small PRP injections, so we keep the conversation
-                      honest, medical, and realistic.
+                      The O-Shot is an emerging regenerative therapy. Sexual pleasure
+                      and orgasm enhancement benefits are reported by many women who
+                      respond to treatment; this clinic communicates the current evidence
+                      base honestly at every consultation.
                     </p>
                   </div>
                 </div>
@@ -222,35 +302,37 @@ const OShotLanding = () => {
               What Is the O-Shot?
             </h2>
             <div className="w-24 h-1 bg-rose mx-auto rounded-full" />
+            <p className="text-taupe mt-6">
+              Non-surgical vaginal rejuvenation using your body's own growth factors
+            </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeInLeft} className="space-y-6">
               <div className="prose prose-lg text-brown">
                 <p className="text-xl text-wine font-medium">
-                  The O-Shot (often called the Orgasm Shot) is a procedure that
-                  uses platelet-rich plasma (PRP) made from your own blood.
+                  The O-Shot (Orgasm Shot) is a non-surgical vaginal rejuvenation
+                  treatment that uses platelet-rich plasma (PRP) derived from your
+                  own blood.
                 </p>
                 <p>
-                  PRP is prepared by drawing blood, spinning it (centrifuge),
-                  and separating the platelet-rich layer. Then PRP is injected
-                  into specific intimate areas to support tissue healing signals
-                  and blood flow.
+                  PRP is carefully injected into specific areas of the vagina and
+                  clitoral region to stimulate blood flow, tissue rejuvenation,
+                  collagen production and improved sensitivity.
                 </p>
                 <p>
-                  In Malaysia, many clinics position O-Shot as part of female
-                  intimate wellness for concerns like vaginal dryness, reduced
-                  sensation, orgasm difficulty, and sometimes mild urinary
-                  leakage.
+                  The O-Shot is designed to enhance sexual pleasure, improve orgasm
+                  intensity, reduce urinary incontinence, address vaginal dryness
+                  and support overall sexual health and well-being.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4 pt-6">
                 {[
-                  { icon: Droplet, label: "Vaginal dryness" },
-                  { icon: Eye, label: "Reduced sensation" },
-                  { icon: Sparkle, label: "Orgasm difficulty" },
-                  { icon: Activity, label: "Mild leakage" },
+                  { icon: Droplet, label: "Urinary Incontinence" },
+                  { icon: Eye, label: "Vaginal Dryness" },
+                  { icon: Sparkle, label: "Reduced Sexual Pleasure" },
+                  { icon: Activity, label: "Painful Intercourse" },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -261,6 +343,15 @@ const OShotLanding = () => {
                     <span className="text-sm text-brown">{item.label}</span>
                   </motion.div>
                 ))}
+              </div>
+
+              <div className="bg-wine/5 p-4 rounded-xl">
+                <p className="text-sm text-brown">
+                  <span className="font-semibold">Note:</span> The most consistent
+                  evidence currently supports O-Shot use for urinary incontinence
+                  and vaginal tissue rejuvenation, while sexual pleasure benefits
+                  are reported by many women who respond to treatment.
+                </p>
               </div>
             </motion.div>
 
@@ -275,7 +366,7 @@ const OShotLanding = () => {
                 <div className="absolute inset-0 bg-linear-to-t from-brown via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                   <p className="text-sm opacity-90">
-                    PRP preparation process at Nexus Clinic Kuala Lumpur
+                    PRP preparation and O-Shot procedure at Nexus Clinic Kuala Lumpur
                   </p>
                 </div>
               </div>
@@ -284,7 +375,7 @@ const OShotLanding = () => {
         </div>
       </motion.section>
 
-      {/* Truth Section */}
+      {/* How PRP Works Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -292,459 +383,140 @@ const OShotLanding = () => {
         className="py-24 bg-cream"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <AlertCircle className="w-12 h-12 text-wine mx-auto mb-4" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-                The Most Important Truth Before You Book
-              </h2>
-            </div>
-
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
-              <h3 className="text-2xl font-semibold text-wine mb-4">
-                Does O-Shot "work"?
-              </h3>
-
-              <p className="text-brown mb-6 text-lg">
-                Evidence is mixed. Some studies show improvements in sexual
-                function and stress urinary incontinence symptoms, but reviews
-                also stress limitations like small sample sizes and inconsistent
-                PRP protocols.
-              </p>
-
-              <div className="bg-cream p-6 rounded-xl mb-8">
-                <p className="text-brown italic">
-                  A 2023 systematic review concluded PRP might improve female
-                  sexual dysfunction (FSD) and female stress urinary
-                  incontinence (SUI), but also said strong conclusions are
-                  difficult due to clinical heterogeneity.
-                </p>
-              </div>
-
-              <div className="border-l-4 border-rose pl-6">
-                <p className="text-xl font-medium text-brown mb-2">
-                  So the honest promise is:
-                </p>
-                <p className="text-wine text-lg">
-                  Some women feel better. Some feel little change. The right
-                  screening and expectation-setting matter as much as the
-                  injection.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Who Considers Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <Users className="w-12 h-12 text-wine mx-auto mb-4" />
+          <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-              Who Typically Considers O-Shot in Kuala Lumpur?
-            </h2>
-            <p className="text-taupe text-lg">
-              You may be a good fit if you relate to one or more of these:
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              {
-                icon: Droplets,
-                title: "Vaginal dryness or discomfort",
-                desc: "This is common in perimenopause and menopause, but it can also happen from breastfeeding, stress, medications, or hormonal shifts.",
-              },
-              {
-                icon: Eye,
-                title: "Reduced sensation or difficulty reaching orgasm",
-                desc: "Some women describe it as 'I'm there mentally, but my body is slow.'",
-              },
-              {
-                icon: HeartPulse,
-                title: "Pain during intercourse (dyspareunia)",
-                desc: "Pain has many causes. PRP is not the first line for all pain, but it may be discussed after proper assessment.",
-              },
-              {
-                icon: Activity,
-                title: "Mild urinary leakage (stress urinary incontinence)",
-                desc: "Some PRP studies focus on injections in the vaginal wall for SUI improvement, with short-term benefits reported in certain trials.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                custom={index}
-                className="bg-cream p-6 rounded-2xl hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-wine bg-opacity-10 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-light" />
-                </div>
-                <h3 className="text-xl font-semibold text-brown mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-taupe">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mt-8 italic"
-          >
-            Competitor clinics in Malaysia openly list these concerns as O-Shot
-            targets (orgasm difficulty, reduced sensation, urinary incontinence,
-            painful intercourse).
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Who Should Avoid Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <div className="inline-flex items-center px-4 py-2 bg-wine bg-opacity-10 rounded-full">
-                <Shield className="w-4 h-4 text-light mr-2" />
-                <span className="text-sm text-light font-medium">
-                  Important Safety Screening
-                </span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl font-bold text-brown font-georgia">
-                Who Should Avoid O-Shot
-                <span className="block text-wine text-xl mt-2">
-                  (or Needs Careful Review First)
-                </span>
-              </h2>
-
-              <p className="text-taupe text-lg">
-                A responsible clinic should screen you first. You may be asked
-                to postpone or avoid treatment if you have:
-              </p>
-
-              <ul className="space-y-4">
-                {[
-                  "Pregnancy, or immediate post-delivery complications",
-                  "Active vaginal/urinary infection or unexplained bleeding",
-                  "Bleeding disorders, or certain blood-thinning medications",
-                  "Significant pelvic pain with unclear cause (needs diagnosis first)",
-                  "Unrealistic expectations such as guaranteed results or 'permanent change'",
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    variants={fadeInRight}
-                    className="flex items-start space-x-3"
-                  >
-                    <XCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-brown">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-white p-8 rounded-3xl shadow-xl"
-            >
-              <AlertCircle className="w-8 h-8 text-wine mb-4" />
-              <h3 className="text-xl font-semibold text-brown mb-3">
-                Important Note
-              </h3>
-              <p className="text-taupe mb-4">
-                If your main concern is urinary leakage that is moderate to
-                severe, you may need pelvic floor therapy, medical management,
-                or specialist referral.
-              </p>
-              <div className="bg-cream p-4 rounded-xl">
-                <p className="text-wine font-medium">
-                  O-Shot is not a replacement for proper urogynaecology care.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* How It Works Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-              How O-Shot Works
-            </h2>
-            <p className="text-taupe text-lg">In Simple Words</p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <p className="text-brown text-lg leading-relaxed">
-                Platelets contain growth factors that participate in healing.
-                PRP therapy is built on the idea that concentrating platelets
-                and placing them in a target area may support tissue
-                regeneration signals, collagen remodeling, and local
-                circulation.
-              </p>
-              <p className="text-brown text-lg leading-relaxed">
-                In female sexual health research, PRP injections have been
-                studied in areas like the lower anterior vaginal wall, with
-                measured outcomes for sexual function and orgasm.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-cream p-6 rounded-2xl"
-            >
-              <h3 className="text-xl font-semibold text-wine mb-4">
-                Step by Step Process
-              </h3>
-              <div className="space-y-4">
-                {[
-                  {
-                    step: "1: Private consult first",
-                    desc: "We start with your symptoms, timeline, and what your body has been through (childbirth, menopause, breastfeeding, stress, medications). If needed, we discuss whether you should first treat dryness with simpler solutions, or whether O-Shot fits your goals. Nexus Clinic’s women’s wellness content positions vaginal rejuvenation around comfort, lubrication support, confidence, and leakage support, which is the right “whole picture” frame.",
-                  },
-                  {
-                    step: "Step 2: PRP preparation",
-                    desc: "Blood is drawn from your arm and processed to prepare PRP. PRP preparation and injection protocols vary in research, which is one reason outcomes vary.",
-                  },
-                  {
-                    step: "Step 3: Numbing and injection",
-                    desc: "Most providers use numbing cream or local anaesthetic for comfort. Then PRP is injected into targeted areas based on your concern (often around the anterior vaginal wall and/or clitoral region in many published protocols).",
-                  },
-                  {
-                    step: "Step 4: Back to normal life",
-                    desc: "Most women return to normal routines quickly. You may have mild tenderness or swelling for a short time. Plan a calm day if you can.",
-                  },
-                ].map((item, index) => (
-                  <div key={index} className="border-l-2 border-rose pl-4">
-                    <p className="font-semibold text-brown">{item.step}</p>
-                    <p className="text-sm text-taupe mt-1">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          <motion.div variants={fadeInUp} className="bg-cream p-8 rounded-3xl">
-            <p className="text-center text-brown italic mb-4">
-              Nexus Clinic's women's wellness content positions vaginal
-              rejuvenation around comfort, lubrication support, confidence, and
-              leakage support, which is the right "whole picture" frame.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Aftercare Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-brown text-center mb-12 font-georgia">
-              Aftercare (Practical Tips)
-            </h2>
-
-            <div className="bg-white p-8 rounded-3xl shadow-xl">
-              <p className="text-brown mb-6">
-                Your clinic will give you instructions, but a sensible approach
-                usually includes:
-              </p>
-
-              <ul className="space-y-4">
-                {[
-                  "Keep the area clean and avoid harsh products for a short period",
-                  "Avoid intense exercise if you bruise easily",
-                  "Pause sexual activity for the time your clinician recommends",
-                  "Contact the clinic if you develop fever, severe pain, unusual discharge, or persistent bleeding",
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    variants={fadeInRight}
-                    className="flex items-start space-x-3"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span className="text-brown">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Results Timeline Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-white"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <Clock className="w-12 h-12 text-wine mx-auto mb-4" />
-            <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-              When Will You See Results?
+              How PRP Works in the Vagina
             </h2>
             <p className="text-taupe">
-              Results are not instant like a painkiller.
+              PRP contains concentrated growth factors that stimulate natural healing
             </p>
           </motion.div>
 
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream p-6 rounded-2xl mb-8"
-            >
-              <p className="text-brown">
-                Many studies measure outcomes at 1 month to 6 months, and
-                improvements (if they happen) tend to build gradually.
-              </p>
-            </motion.div>
-
-            <div className="relative py-8">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-rose bg-opacity-30" />
-
-              {[
-                { time: "Week 1", desc: "recovery and settling" },
-                {
-                  time: "Weeks 2 to 6",
-                  desc: "early changes in comfort or sensation for some women",
-                },
-                {
-                  time: "Months 2 to 6",
-                  desc: "clearer pattern (either improvement or not)",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className={`relative flex items-center ${index % 2 === 0 ? "justify-start" : "justify-end"} mb-8`}
-                >
-                  <div
-                    className={`w-5/12 ${index % 2 === 0 ? "text-right pr-8" : "pl-8"}`}
-                  >
-                    <div className="bg-cream p-4 rounded-xl">
-                      <p className="font-semibold text-wine">{item.time}</p>
-                      <p className="text-brown text-sm">{item.desc}</p>
-                    </div>
-                  </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-wine rounded-full" />
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream p-6 rounded-2xl mt-8"
-            >
-              <h3 className="text-xl font-semibold text-brown mb-3">
-                How Many Sessions Do You Need?
-              </h3>
-              <p className="text-taupe mb-4">There is no universal rule.</p>
-              <p className="text-brown">
-                In the medical literature, PRP protocols differ, but the 2023
-                systematic review notes one common approach for female sexual
-                dysfunction is monthly injections for 3 months in the distal
-                anterior vaginal wall (protocol examples vary).
-              </p>
-              <p className="text-taupe mt-4 italic">
-                In real clinics, some women do one session, others choose a
-                short series. Your plan should match your symptoms and budget,
-                and should never feel like pressure.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Comparison Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-              O-Shot vs Other Options in Malaysia
-            </h2>
-            <p className="text-taupe">Quick, Honest Comparison</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
-              {
-                vs: "Lubricants and moisturisers",
-                desc: "If the main issue is dryness during sex, you might improve with the right products and simple medical guidance. These are often the first step.",
-              },
-              {
-                vs: "Vaginal oestrogen (menopause dryness)",
-                desc: "For menopause-related dryness, many women benefit from local oestrogen options under medical care. O-Shot is not a replacement for proven menopause GSM treatments, but may be discussed if you want additional support.",
-              },
-              {
-                vs: "Laser vaginal rejuvenation",
-                desc: "Laser treatments are common in Malaysia and are often used for tissue quality and collagen stimulation. A KL clinic overview explains laser works via controlled thermal energy and collagen rebuilding, typically over multiple sessions.",
-              },
-              {
-                vs: "Radiofrequency (ThermiVa style)",
-                desc: "Nexus Clinic's women's wellness content describes ThermiVa as a non-invasive RF approach to improve collagen and blood flow, and explicitly mentions combining O-Shot with ThermiVa as a 'powerful duo.'",
-              },
-              {
-                vs: "Pelvic floor therapy",
-                desc: "If urinary leakage is your main issue, pelvic floor physiotherapy can be a strong first step. PRP has research interest for SUI, but pelvic floor rehab remains a standard approach in many cases.",
-              },
+              { title: "Neovascularisation", desc: "Promotes growth of new blood vessels improving blood flow and circulation to vaginal tissue" },
+              { title: "Collagen Production", desc: "Activates natural collagen production for tissue rejuvenation and vaginal tone improvement" },
+              { title: "Growth Factor Release", desc: "PDGF, TGF-beta, VEGF and EGF stimulate tissue repair and regeneration" },
+              { title: "Tissue Healing", desc: "Helps heal muscle tissue and repair damaged blood capillaries in vaginal area" },
             ].map((item, index) => (
               <motion.div
                 key={index}
                 variants={scaleIn}
-                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-white p-6 rounded-2xl shadow-lg text-center"
               >
-                <h3 className="text-xl font-semibold text-wine mb-2">
-                  {item.vs}
-                </h3>
-                <p className="text-brown">{item.desc}</p>
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <HeartPulse className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-semibold text-brown mb-2">{item.title}</h3>
+                <p className="text-sm text-taupe">{item.desc}</p>
               </motion.div>
             ))}
           </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <p className="text-brown">
+              Because PRP is derived from your own blood (autologous), the risk of
+              side effects is minimal. No risk of disease transmission or immune rejection.
+            </p>
+          </motion.div>
         </div>
       </motion.section>
 
-      {/* Benefits and Cons */}
+      {/* Benefits Section with Evidence Status */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            variants={fadeInUp}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <TrendingUp className="w-12 h-12 text-wine mx-auto mb-4" />
+            <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
+              Benefits of O-Shot
+            </h2>
+            <p className="text-taupe">
+              What PRP injected into the vagina may improve for women's sexual health
+            </p>
+          </motion.div>
+
+          <div className="space-y-6 max-w-4xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="bg-cream rounded-2xl p-6 shadow-lg"
+              >
+                <h3 className="text-xl font-semibold text-wine mb-2">{benefit.title}</h3>
+                <p className="text-brown mb-3"><span className="font-medium">Mechanism:</span> {benefit.mechanism}</p>
+                <div className="bg-white p-3 rounded-xl">
+                  <p className="text-sm text-brown"><span className="font-medium">Evidence status:</span> {benefit.evidence}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-2xl max-w-4xl mx-auto">
+            <p className="text-brown text-center">
+              <span className="font-semibold">Key takeaway:</span> Urinary incontinence improvement
+              has the strongest published evidence. Sexual pleasure enhancement is the most commonly
+              reported benefit but individual experience varies significantly.
+            </p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Procedure Steps Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-cream"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            variants={fadeInUp}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <Syringe className="w-12 h-12 text-wine mx-auto mb-4" />
+            <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
+              O-Shot Procedure Step by Step
+            </h2>
+            <p className="text-taupe">
+              What happens during your O-Shot appointment at Nexus Clinic KL
+            </p>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto">
+            {procedureSteps.map((step, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInRight}
+                className="relative pl-8 pb-8 border-l-2 border-rose last:border-l-0 last:pb-0"
+              >
+                <div className="absolute left-[-9px] top-0 w-4 h-4 bg-wine rounded-full" />
+                <h3 className="text-lg font-semibold text-wine mb-2">{step.step}</h3>
+                <p className="text-brown">{step.details}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 bg-white p-6 rounded-2xl max-w-3xl mx-auto">
+            <p className="text-brown text-center">
+              <span className="font-semibold">Total appointment time:</span> 60 to 90 minutes
+              <br />
+              <span className="font-semibold">No downtime:</span> Return to normal activities immediately
+              <br />
+              <span className="font-semibold">Sexual activity:</span> Resume 3 days after treatment
+            </p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* O-Shot vs Other Options Comparison */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -757,65 +529,51 @@ const OShotLanding = () => {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-              Benefits and Cons
+              O-Shot vs Other Vaginal Rejuvenation Options
             </h2>
-            <p className="text-taupe">What Patients Actually Care About</p>
+            <p className="text-taupe">
+              Honest comparison of treatments available in Malaysia
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <div className="bg-green-50 p-6 rounded-2xl">
-                <h3 className="text-2xl font-semibold text-green-700 mb-4 flex items-center">
-                  <CheckCircle2 className="w-6 h-6 mr-2" />
-                  Potential benefits (not guaranteed)
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    "Better comfort and less dryness",
-                    "Improved sensation or arousal response",
-                    "More confidence during intimacy",
-                    "Possible improvement in mild leakage in selected cases",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start space-x-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                      <span className="text-brown">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-sm text-taupe mt-4 italic">
-                  These are consistent with how Malaysia clinics position O-Shot
-                  services and how PRP research measures outcomes.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-6">
-              <div className="bg-red-50 p-6 rounded-2xl">
-                <h3 className="text-2xl font-semibold text-red-700 mb-4 flex items-center">
-                  <XCircle className="w-6 h-6 mr-2" />
-                  Downsides and limitations
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    "Results vary and may be subtle",
-                    "Evidence quality is still evolving",
-                    "You may need more than one session",
-                    "Cost is out-of-pocket",
-                    "It will not fix every cause of pain, low libido, or orgasm difficulty",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start space-x-2">
-                      <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                      <span className="text-brown">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
+          <div className="overflow-x-auto">
+            <table className="w-full max-w-5xl mx-auto border-collapse">
+              <thead>
+                <tr className="bg-wine text-white">
+                  <th className="p-4 text-left rounded-tl-2xl">Treatment</th>
+                  <th className="p-4 text-left">Mechanism</th>
+                  <th className="p-4 text-left">Best For</th>
+                  <th className="p-4 text-left rounded-tr-2xl">Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonOptions.map((option, index) => (
+                  <tr
+                    key={index}
+                    className={`border-b border-taupe/20 ${index === comparisonOptions.length - 1 ? "" : ""}`}
+                  >
+                    <td className="p-4 font-semibold text-brown">{option.treatment}</td>
+                    <td className="p-4 text-sm text-brown">{option.mechanism}</td>
+                    <td className="p-4 text-sm text-brown">{option.bestFor}</td>
+                    <td className="p-4 text-sm text-brown">{option.evidence}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 p-6 rounded-2xl max-w-4xl mx-auto">
+            <h3 className="font-semibold text-wine mb-2">Combination Value at Nexus Clinic KL</h3>
+            <p className="text-brown">
+              O-Shot combined with local vaginal oestrogen therapy is the most comprehensive
+              approach for postmenopausal women with both vaginal atrophy and reduced sexual pleasure.
+              The oestrogen provides hormonal restoration while PRP delivers growth factor stimulation.
+            </p>
+          </motion.div>
         </div>
       </motion.section>
 
-      {/* Side Effects and Safety */}
+      {/* O-Shot and Hormone Therapy Integration */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -823,43 +581,118 @@ const OShotLanding = () => {
         className="py-24 bg-cream"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <Shield className="w-12 h-12 text-wine mx-auto mb-4" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-                Side Effects and Safety
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+            <motion.div variants={fadeInLeft}>
+              <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-6 font-georgia">
+                O-Shot and <span className="text-wine">Hormone Therapy</span>
               </h2>
-            </div>
-
-            <div className="bg-white p-8 rounded-3xl shadow-xl space-y-6">
-              <p className="text-brown text-lg">
-                Because PRP comes from your own blood, allergy risk is generally
-                low. The main risks are from the injection process itself:
+              <p className="text-brown mb-4">
+                Hormonal status is one of the most important determinants of O-Shot outcome.
+                PRP injection into severely oestrogen-deficient vaginal tissue may produce
+                limited results because the hormonal substrate has been depleted.
               </p>
+              <p className="text-brown mb-4">
+                At Nexus Clinic KL, every woman attending for O-Shot consultation receives
+                assessment of her hormonal status as part of the initial appointment.
+                Women in perimenopause, natural menopause or surgical menopause are assessed
+                for oestrogen, testosterone and thyroid status.
+              </p>
+              <div className="bg-white p-4 rounded-xl">
+                <p className="text-brown">
+                  <span className="font-semibold">Integrated approach:</span> Where hormone
+                  deficiency is identified, appropriate hormone therapy is recommended
+                  alongside the O-Shot for optimal results.
+                </p>
+              </div>
+            </motion.div>
 
-              <ul className="grid md:grid-cols-2 gap-4">
+            <motion.div variants={fadeInRight}>
+              <div className="bg-white p-6 rounded-2xl shadow-xl">
+                <h3 className="text-xl font-semibold text-wine mb-4">Who Benefits Most?</h3>
+                <ul className="space-y-3">
+                  {[
+                    "Women whose vaginal tissue is in reasonable hormonal health",
+                    "Those wanting to improve sensitivity, orgasm quality, or urinary incontinence",
+                    "Women with well-managed hormone therapy seeking additional PRP stimulus",
+                    "Pre-menopausal women seeking non-hormonal vaginal rejuvenation",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
+                      <span className="text-brown">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 p-3 bg-cream rounded-xl">
+                  <p className="text-sm text-brown italic">
+                    Women with severe menopausal atrophy are first offered local vaginal
+                    oestrogen or systemic HRT, then return for O-Shot once tissue is restored.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Safety and Contraindications */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-white"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <motion.div variants={fadeInLeft}>
+              <div className="flex items-center gap-2 mb-6">
+                <Shield className="w-8 h-8 text-wine" />
+                <h2 className="text-3xl font-bold text-brown font-georgia">Safety Profile</h2>
+              </div>
+              <p className="text-brown mb-4">
+                Because PRP is derived from your own blood (autologous), the risk of
+                side effects is significantly lower than with synthetic injectable medications.
+              </p>
+              <ul className="space-y-3">
                 {[
-                  "Temporary swelling, bruising, tenderness",
-                  "Spotting or mild discomfort",
-                  "Infection risk (rare, but possible with any injection)",
+                  "No risk of disease transmission from external blood products",
+                  "No risk of immune rejection",
+                  "Minimal swelling and bruise for up to 3 days after treatment (expected and resolves spontaneously)",
+                  "No downtime required",
                 ].map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start space-x-2 bg-cream p-3 rounded-lg"
-                  >
-                    <AlertCircle className="w-5 h-5 text-wine shrink-0" />
+                  <li key={index} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
                     <span className="text-brown">{item}</span>
                   </li>
                 ))}
               </ul>
+            </motion.div>
 
-              <p className="text-taupe italic border-t border-taupe border-opacity-20 pt-6">
-                Research reviews often report minimal serious adverse events,
-                but also emphasize the need for better quality trials and
-                consistent reporting.
-              </p>
-            </div>
-          </motion.div>
+            <motion.div variants={fadeInRight}>
+              <div className="bg-cream p-6 rounded-2xl">
+                <div className="flex items-center gap-2 mb-4">
+                  <XCircle className="w-6 h-6 text-wine" />
+                  <h3 className="text-xl font-semibold text-brown">Contraindications</h3>
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "Active vaginal infection or cervicitis",
+                    "Significant bleeding disorder or current anticoagulant medication",
+                    "Active cancer (requires oncologist consultation)",
+                    "Pregnancy",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <XCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                      <span className="text-brown text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm text-taupe mt-4">
+                  At Nexus Clinic KL, all contraindications are assessed at the initial consultation
+                  before any O-Shot injection is scheduled.
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
@@ -868,110 +701,69 @@ const OShotLanding = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="py-24 bg-white"
+        className="py-24 bg-cream"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={fadeInUp}
-            className="max-w-4xl mx-auto text-center"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-4 font-georgia">
-              O-Shot Cost in Malaysia
+              O-Shot Treatment Cost in Malaysia 2026
             </h2>
-            <p className="text-taupe mb-8">Kuala Lumpur</p>
+            <p className="text-taupe">
+              Transparent pricing at Nexus Clinic KL — disclosed before any injection is scheduled
+            </p>
+          </motion.div>
 
-            <div className="bg-linear-to-br from-wine to-rose text-white p-8 rounded-3xl shadow-2xl mb-8">
-              <p className="text-2xl mb-4">Pricing varies by provider</p>
-              <div className="text-5xl font-bold mb-4">RM 1,500 - RM 6,000</div>
-              <p className="text-white text-opacity-90">
-                depending on needs and clinic positioning
-              </p>
-            </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div variants={fadeInLeft} className="bg-white rounded-2xl p-6 shadow-xl">
+              <h3 className="text-xl font-semibold text-wine mb-4">Individual Services</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between border-b border-taupe/20 py-2">
+                  <span className="text-brown">O-Shot Initial Consultation</span>
+                  <span className="font-semibold text-brown">RM 150 - RM 300</span>
+                </div>
+                <div className="flex justify-between border-b border-taupe/20 py-2">
+                  <span className="text-brown">O-Shot (Single Session)</span>
+                  <span className="font-semibold text-brown">RM 2,000 - RM 4,500</span>
+                </div>
+                <div className="flex justify-between border-b border-taupe/20 py-2">
+                  <span className="text-brown">O-Shot and G-Shot Combined</span>
+                  <span className="font-semibold text-brown">RM 2,500 - RM 5,000</span>
+                </div>
+                <div className="flex justify-between py-2">
+                  <span className="text-brown">Blood Panel (if indicated)</span>
+                  <span className="font-semibold text-brown">RM 250 - RM 500</span>
+                </div>
+              </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-cream p-4 rounded-xl">
-                <p className="text-wine font-semibold">Published references</p>
-                <p className="text-brown">RM 2,000 for P-Shot & O-Shot</p>
+            <motion.div variants={fadeInRight} className="bg-white rounded-2xl p-6 shadow-xl">
+              <h3 className="text-xl font-semibold text-wine mb-4">Programme Pricing</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between border-b border-taupe/20 py-2">
+                  <span className="text-brown">O-Shot Programme (2-3 sessions)</span>
+                  <span className="font-semibold text-brown">From RM 5,500</span>
+                </div>
+                <div className="flex justify-between py-2">
+                  <span className="text-brown">Session of P-Shot (Partner)</span>
+                  <span className="font-semibold text-brown">RM 2,000 - RM 4,500</span>
+                </div>
               </div>
-              <div className="bg-cream p-4 rounded-xl">
-                <p className="text-wine font-semibold">KL blog-style pricing</p>
-                <p className="text-brown">MYR 1,500 to MYR 2,000</p>
-              </div>
-              <div className="bg-cream p-4 rounded-xl">
-                <p className="text-wine font-semibold">
-                  Minimally invasive option
+              <div className="mt-4 p-3 bg-cream rounded-xl">
+                <p className="text-sm text-brown">
+                  Programme pricing provides better per-session value. Most specialist clinic
+                  recommendations advise 2-3 treatments spaced 2 weeks apart for optimal results.
                 </p>
-                <p className="text-brown">clinic-specific</p>
               </div>
-            </div>
+            </motion.div>
+          </div>
 
-            <div className="bg-cream p-6 rounded-2xl">
-              <p className="text-brown font-medium mb-2">
-                Best way to compare prices:
-              </p>
-              <p className="text-taupe">
-                Ask what's included (consult, numbing, PRP prep method,
-                follow-up), and ask how many sessions they recommend for your
-                goal.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Competitor Review */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-cream"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-brown text-center mb-12 font-georgia">
-              Competitor Review
-            </h2>
-
-            <div className="space-y-6 mb-12">
-              <p className="text-brown text-center text-lg">
-                When people search "O-Shot Malaysia" and "O-Shot Kuala Lumpur,"
-                these types of pages commonly appear:
-              </p>
-
-              {[
-                "Clinic service pages listing O-Shot as 'orgasm shot' for dryness, orgasm difficulty, reduced sensation, and urinary incontinence (example: ESOCLINIQ)",
-                "Aesthetic gynaecology clinics listing O-Shot (PRP) alongside laser options for vaginal relaxation and urinary incontinence (example: Dr K & Associates)",
-                "Aggregators and directories that list multiple clinics offering PRP O-Shot across Malaysia, often with reviews and locations (example: Erufu Care)",
-                "Pricing pages that anchor expectations with a published range or fixed price point (example: Premier's public pricing statements via snippets)",
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInRight}
-                  className="bg-white p-4 rounded-xl shadow-md"
-                >
-                  <p className="text-brown">{item}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="bg-wine bg-opacity-5 p-8 rounded-3xl">
-              <h3 className="text-2xl font-semibold text-light mb-4">
-                How Nexus Clinic KL can stand out
-              </h3>
-              <ul className="space-y-4">
-                {[
-                  "Clear, medical-first screening and a comfort-first conversation (not sales-first)",
-                  "Transparent expectation setting (what is proven vs still evolving) using real research summaries.",
-                  "A 'plan' approach, combining options like RF (ThermiVa) where appropriate, since Nexus explicitly references that pairing.",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <Sparkles className="w-5 h-5 text-taupe shrink-0 mt-0.5" />
-                    <span className="text-taupe">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+          <motion.p variants={fadeInUp} className="text-center text-taupe text-sm mt-6">
+            All pricing includes consultation, procedure, and follow-up where indicated.
+            No obligation to proceed after consultation.
+          </motion.p>
         </div>
       </motion.section>
 
@@ -983,40 +775,43 @@ const OShotLanding = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="py-24 bg-cream"
+        className="py-24 bg-wine"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div variants={scaleIn} className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-brown mb-6 font-georgia">
-              Start with a Private Consult
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 font-georgia">
+              O-Shot Treatment in Malaysia
             </h2>
-            <p className="text-xl text-taupe mb-8">
-              If you're searching for O-Shot in Malaysia or O-Shot in Kuala
-              Lumpur, start with a private consult and an honest plan that fits
-              your body and your comfort.
+            <p className="text-xl text-white/90 mb-8">
+              Non-surgical vaginal rejuvenation at Nexus Clinic KL. Doctor-performed,
+              confidential, with honest communication of evidence and realistic expectations.
+              Serving women from across Kuala Lumpur and Malaysia.
             </p>
 
-            <div className="bg-white p-8 rounded-3xl shadow-xl">
-              <h3 className="text-2xl font-semibold text-wine mb-4">
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl">
+              <h3 className="text-2xl font-semibold text-white mb-4">
                 Nexus Clinic Kuala Lumpur
               </h3>
-              <p className="text-brown mb-2">
-                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                Kuala Lumpur
+              <p className="text-white/90 mb-2">
+                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
               </p>
-              <p className="text-wine font-semibold text-lg mb-6">
+              <p className="text-white font-semibold text-lg mb-6">
                 Mobile: 016-7025699 / 03-21635699
               </p>
 
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-wine text-white rounded-full font-semibold hover:bg-rose transition-colors shadow-lg inline-flex items-center space-x-2"
+                className="px-8 py-4 bg-white text-wine rounded-full font-semibold hover:bg-cream transition-colors shadow-lg inline-flex items-center gap-2"
               >
                 <MessageCircle className="w-5 h-5" />
-                <span>Schedule Your Consultation Today</span>
+                <span>Book Your O-Shot Consultation Today</span>
               </motion.button>
             </div>
+
+            <p className="text-white/70 text-sm mt-6">
+              Over 15 years combined clinical experience | 5,000+ procedures completed
+            </p>
           </motion.div>
         </div>
       </motion.section>

@@ -27,6 +27,18 @@ import {
   Briefcase,
   Award,
   Star,
+  TrendingUp,
+  Droplet,
+  FileText,
+  Stethoscope,
+  Microscope,
+  ClipboardList,
+  Eye,
+  Gauge,
+  TestTube,
+  Pill as PillIcon,
+  Users,
+  Building,
 } from "lucide-react";
 import {
   staggerContainer,
@@ -162,6 +174,95 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     { time: t("timeline.time3"), desc: t("timeline.time3Desc") },
   ];
 
+  const trtFormulations = [
+    {
+      name: "Nebido (Testosterone Undecanoate 1000mg IM)",
+      schedule: "Injection every 10 to 14 weeks at the clinic; second injection at 6 weeks after first",
+      profile: "Slow rise over 2 to 4 weeks; sustained testosterone levels without sharp peaks or troughs",
+      advantages: "Fewest clinic visits (4 to 5 per year); most convenient for working men; no daily compliance burden; no partner transference risk",
+      bestFor: "Men who prioritise convenience; those who travel; most Malaysian men on TRT",
+    },
+    {
+      name: "Sustanon 250 (Mixed Testosterone Esters IM)",
+      schedule: "Injection every 2 to 4 weeks; some protocols weekly for more stable levels",
+      profile: "Rapid peak within 24 to 72 hours after injection; more pronounced variation",
+      advantages: "Faster initial loading; good for men who need rapid symptom relief; flexibility in dose adjustment",
+      bestFor: "Men who need faster testosterone loading; younger men in active optimisation phase",
+    },
+    {
+      name: "Testosterone Gel (Androgel / Testim)",
+      schedule: "Applied daily to shoulders, upper arms or abdomen; applied after showering",
+      profile: "Most physiological: daily application mimics natural morning testosterone levels",
+      advantages: "Most physiological daily rhythm; no needles; easiest dose adjustment; suitable for needle-averse patients",
+      bestFor: "Needle-averse patients; men who prefer daily control of testosterone levels",
+    },
+    {
+      name: "Testosterone Patch (Transdermal)",
+      schedule: "Applied to skin daily; changed every 24 hours",
+      profile: "Consistent daily testosterone levels delivery; slightly lower absorption efficiency",
+      advantages: "No injection; consistent levels; lower transference risk than gel",
+      bestFor: "Men who prefer no injection and find gel inconvenient; those with poor gel absorption",
+    },
+    {
+      name: "Oral Testosterone Undecanoate (Andriol)",
+      schedule: "2 to 4 capsules twice daily with fatty meals; taken morning and evening",
+      profile: "Shorter half-life; absorbed via lymphatic system; levels less predictable",
+      advantages: "No needles; no skin application; tablet form most familiar",
+      bestFor: "Men who cannot tolerate any injection or skin application; bridge therapy",
+    },
+    {
+      name: "Clomiphene Citrate (Fertility-Preserving Alternative)",
+      schedule: "Oral tablet daily or every other day",
+      profile: "Stimulates body's own testosterone production by blocking oestrogen feedback",
+      advantages: "Preserves fertility and spermatogenesis; no suppression; raises testosterone without external hormone administration",
+      bestFor: "Younger men planning a family; fertility-conscious men; those preferring not to start exogenous TRT yet",
+    },
+  ];
+
+  const monitoringParameters = [
+    {
+      parameter: "Total Serum Testosterone",
+      interval: "At 3 months, 6 months, then every 6 to 12 months",
+      target: "Mid-normal range (15 to 25 nmol/L); avoid supraphysiological levels above 35 nmol/L",
+      why: "Confirms adequate therapeutic levels; identifies over/under-dosing; ensures effectiveness",
+    },
+    {
+      parameter: "Haematocrit (Red Blood Cell Percentage)",
+      interval: "At 3 months, 6 months, then every 6 to 12 months; if approaching threshold, every 3 months",
+      target: "Action threshold above 54% requires dose reduction or change to transdermal; target below 50%",
+      why: "Testosterone stimulates red blood cell production; excessive erythrocytosis risks thromboembolic events",
+    },
+    {
+      parameter: "PSA (Prostate-Specific Antigen)",
+      interval: "Baseline for men over 40; at 3 to 6 months after starting; then annually",
+      target: "Concerning: velocity above 0.4 ng/mL/year; absolute above 4.0 ng/mL; increase above 1.4 from baseline",
+      why: "TRT can stimulate growth of pre-existing prostate cancer cells; provides early warning",
+    },
+    {
+      parameter: "Symptom and Quality of Life Review",
+      interval: "At every follow-up visit (minimum every 6 months)",
+      target: "Sustained improvement from baseline in 3 or more ADAM positive symptoms",
+      why: "Lab values confirm safety; symptom improvement confirms therapeutic benefit",
+    },
+    {
+      parameter: "Blood Pressure",
+      interval: "At every visit; required by updated 2025 FDA labeling",
+      target: "Target below 130/80 mmHg; persistent elevation above 140/90 requires management",
+      why: "TRAVERSE trial identified small blood pressure increase; 2025 FDA label update added monitoring requirement",
+    },
+  ];
+
+  const pricingItems = [
+    { item: "Initial TRT Consultation", details: "Comprehensive assessment, symptom history, ADAM questionnaire, medical history review, physical examination, contraindication screening, fertility discussion, blood test requisition", price: "RM 150 to RM 300" },
+    { item: "Baseline Blood Panel (Pre-TRT)", details: "Fasting morning serum testosterone (x2 separate days), free testosterone, SHBG, LH, FSH, oestradiol, prolactin, CBC, haematocrit, LFTs, lipid panel, PSA (men over 40), fasting glucose and HbA1c", price: "RM 350 to RM 600" },
+    { item: "Nebido 1000mg Injection", details: "Testosterone undecanoate long-acting IM injection; every 10 to 14 weeks; 4 to 5 visits per year; includes administration fee", price: "RM 600 to RM 900 per injection" },
+    { item: "Sustanon 250 Injection", details: "Mixed testosterone esters IM injection; every 2 to 4 weeks; includes administration fee", price: "RM 150 to RM 350 per injection" },
+    { item: "Testosterone Gel", details: "Androgel 1% or equivalent; daily application; prescription valid for 1 to 3 months", price: "RM 400 to RM 700 per month" },
+    { item: "Monitoring Blood Panel", details: "Serum testosterone level, haematocrit, PSA, LFTs, blood pressure; at 3, 6 months then every 6 to 12 months", price: "RM 200 to RM 400 per panel" },
+    { item: "Follow-Up Consultation", details: "Review of blood test results, symptom and quality of life assessment, dose adjustment, blood pressure monitoring", price: "RM 100 to RM 200 per visit" },
+    { item: "Clomiphene Citrate", details: "Oral prescription for younger men who want testosterone benefit without spermatogenesis suppression", price: "RM 100 to RM 250 per month" },
+  ];
+
   return (
     <>
       <main className="bg-color-light font-inter overflow-hidden">
@@ -210,10 +311,10 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="text-5xl md:text-7xl font-georgia mb-6 leading-tight"
               style={{ color: "var(--color-brown)" }}
             >
-              {t("hero.title1")}
+              Medically Supervised TRT Clinic in Kuala Lumpur:
               <br />
               <span style={{ color: "var(--color-wine)" }}>
-                {t("hero.title2")}
+                Testosterone Replacement Therapy Malaysia
               </span>
             </motion.h2>
 
@@ -222,7 +323,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto"
               style={{ color: "var(--color-taupe)" }}
             >
-              {t("hero.desc")}
+              TRT clinic in malaysia for confirmed low testosterone levels. Testosterone replacement therapy treatment for men experiencing fatigue, low testosterone deficiency, mood changes, reduced libido and hormone imbalance. Medical clinic, Kuala Lumpur. Book your free consultation today.
             </motion.p>
 
             <motion.div
@@ -266,13 +367,14 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           <div className="max-w-7xl mx-auto">
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"
             >
               {[
-                { icon: <Award />, text: t("trust.trust1") },
-                { icon: <Flask />, text: t("trust.trust2") },
-                { icon: <MapPin />, text: t("trust.trust3") },
-                { icon: <Shield />, text: t("trust.trust4") },
+                { icon: <Award />, text: "5,000+ Procedures Completed" },
+                { icon: <Users />, text: "15+ Years Combined Experience" },
+                { icon: <Flask />, text: "MOH Approved Protocols" },
+                { icon: <Building />, text: "LCP-Certified Doctors" },
+                { icon: <Shield />, text: "Discreet & Confidential Care" },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -297,7 +399,72 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="mt-8 p-6 rounded-2xl text-center"
               style={{ backgroundColor: "var(--color-wine)", opacity: 0.9 }}
             >
-              <p className="text-white italic">{t("trust.quickNote")}</p>
+              <p className="text-white italic">
+                Book Your Testosterone Assessment at Nexus Clinic KL | Wisma UOA II, Kuala Lumpur
+              </p>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* TRT at a Glance Table */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="py-20 px-4 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "var(--color-light)" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-georgia mb-12 text-center"
+              style={{ color: "var(--color-brown)" }}
+            >
+              TRT Clinic Kuala Lumpur: Testosterone Replacement Therapy at a Glance
+            </motion.h2>
+
+            <div className="overflow-x-auto">
+              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+                <thead>
+                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
+                    <th className="p-4 text-left text-white font-georgia">Factor</th>
+                    <th className="p-4 text-left text-white font-georgia">Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>What TRT Treats</td>
+                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Hypogonadism (primary and secondary); age-related testosterone deficiency with confirmed low levels AND symptoms; testosterone deficiency syndrome (TDS)</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Diagnostic Requirement</td>
+                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Two fasting morning total serum testosterone measurements confirming levels below 10.4 to 12 nmol/L (300 to 350 ng/dL) AND clinical symptoms; both criteria required</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>TRT Formulations Available</td>
+                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Nebido (testosterone undecanoate) 1000mg injection | Sustanon 250 injection | Testosterone gel (Androgel, Testim) | Testosterone patch | Oral testosterone undecanoate (Andriol) | Clomiphene citrate (fertility-preserving)</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Timeline to Restored Vitality</td>
+                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Energy and mood: 2 to 4 weeks | Libido: 3 to 6 weeks | Erectile function: 3 to 6 months | Muscle mass: 3 to 6 months | Bone density: 6 to 12 months</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Monitoring Required</td>
+                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Serum testosterone, haematocrit, PSA (men over 40), liver function, lipid panel at 3 and 6 months then every 6 to 12 months</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "var(--color-glass)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>MOH Approved</td>
+                    <td className="p-4" style={{ color: "var(--color-taupe)" }}>Yes. All TRT formulations and monitoring protocols conducted under MOH-approved guidelines; prescriptions issued by LCP-certified doctors</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <motion.div variants={fadeInUp} className="mt-8 text-center">
+              <p className="text-lg italic" style={{ color: "var(--color-wine)" }}>
+                Speak to a Doctor About Low Testosterone | Book Your Assessment at This Clinic
+              </p>
             </motion.div>
           </div>
         </motion.section>
@@ -318,39 +485,39 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                   className="text-4xl md:text-5xl font-georgia mb-6"
                   style={{ color: "var(--color-brown)" }}
                 >
-                  {t("whatIs.title")}
+                  TRT Clinic in Kuala Lumpur: Testosterone Replacement Therapy in Malaysia to Restore Vitality and Regain Your Health
                 </h2>
                 <p
                   className="text-lg mb-4"
                   style={{ color: "var(--color-taupe)" }}
                 >
-                  {t("whatIs.desc")}
+                  Symptoms such as fatigue that sleep does not resolve. Muscle mass that does not build despite consistent training. A libido that has declined progressively over years. Mood changes, brain fog and an irritability that feels out of character. These are the symptoms of testosterone deficiency syndrome, a condition that affects an estimated one in five Malaysian men and that is routinely dismissed as normal ageing, overwork or stress without the blood test that would confirm whether testosterone levels in the body are actually low. Men experiencing symptoms of testosterone deficiency deserve accurate assessment, not reassurance that nothing is wrong.
+                </p>
+                <p className="mb-4" style={{ color: "var(--color-brown)" }}>
+                  Testosterone replacement therapy in Malaysia is a medically prescribed treatment at this clinic for men with confirmed hypogonadism, meaning both clinical symptoms and laboratory-confirmed low testosterone levels below the diagnostic threshold on two fasting morning serum measurements. It is not a lifestyle supplement. At Nexus Clinic KL, a discreet medical clinic in Kuala Lumpur, TRT begins with an accurate diagnosis, not a prescription based on symptoms alone, and it is managed with the monitoring framework that protects patients from underlying health conditions worsening undetected.
                 </p>
                 <ul className="space-y-3">
-                  {[t("whatIs.criteria1"), t("whatIs.criteria2")].map(
-                    (item, index) => (
-                      <motion.li
-                        key={index}
-                        variants={fadeInUp}
-                        className="flex items-center gap-3"
-                      >
-                        <CheckCircle
-                          className="w-5 h-5"
-                          style={{ color: "var(--color-wine)" }}
-                        />
-                        <span style={{ color: "var(--color-brown)" }}>
-                          {item}
-                        </span>
-                      </motion.li>
-                    ),
-                  )}
+                  {[
+                    "Comprehensive assessments to tailor the best treatment plan for each man's individual needs",
+                    "Serving patients from Kuala Lumpur, Damansara, Penang and throughout Malaysia",
+                    "Over 5,000 procedures completed and more than 15 years of combined clinical experience",
+                    "Same clinical rigour as any other hormone prescription",
+                  ].map((item, index) => (
+                    <motion.li
+                      key={index}
+                      variants={fadeInUp}
+                      className="flex items-center gap-3"
+                    >
+                      <CheckCircle
+                        className="w-5 h-5"
+                        style={{ color: "var(--color-wine)" }}
+                      />
+                      <span style={{ color: "var(--color-brown)" }}>
+                        {item}
+                      </span>
+                    </motion.li>
+                  ))}
                 </ul>
-                <p
-                  className="mt-6 text-lg"
-                  style={{ color: "var(--color-taupe)" }}
-                >
-                  {t("whatIs.explanation")}
-                </p>
               </motion.div>
               <motion.div
                 variants={fadeInRight}
@@ -371,7 +538,71 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/50 to-transparent">
                   <p className="text-white font-semibold">
-                    {t("whatIs.imageCaption")}
+                    Medical clinic, Kuala Lumpur
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Recognising Testosterone Deficiency Section */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="py-20 px-4 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "var(--color-cream)" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                variants={fadeInLeft}
+                className="relative h-96 rounded-3xl overflow-hidden order-2 lg:order-1 group"
+              >
+                <img
+                  src={images.labTesting}
+                  alt="Advanced laboratory testing at Nexus Clinic"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(45deg, var(--color-brown) 0%, transparent 70%)",
+                    opacity: 0.2,
+                  }}
+                />
+              </motion.div>
+
+              <motion.div variants={fadeInRight} className="order-1 lg:order-2">
+                <h2
+                  className="text-4xl md:text-5xl font-georgia mb-6"
+                  style={{ color: "var(--color-brown)" }}
+                >
+                  Recognising Testosterone Deficiency Syndrome: Diagnosis at Our Clinic in Malaysia
+                </h2>
+
+                <motion.p
+                  variants={fadeInUp}
+                  className="text-lg mb-4"
+                  style={{ color: "var(--color-brown)" }}
+                >
+                  Testosterone deficiency syndrome (TDS) is defined clinically as the combination of symptoms consistent with low testosterone and laboratory confirmation of low testosterone levels on two separate fasting morning blood test measurements. The morning timing matters because testosterone follows a diurnal rhythm, peaking in the early morning and declining through the day; afternoon measurements may be 15 to 30% lower than morning values and can produce false-positive low results. At this clinic in Kuala Lumpur, every pre-TRT blood test for serum testosterone is ordered as a fasting morning sample to ensure accuracy.
+                </motion.p>
+
+                <motion.p
+                  variants={fadeInUp}
+                  className="text-lg mb-8"
+                  style={{ color: "var(--color-taupe)" }}
+                >
+                  The ADAM (Androgen Deficiency in Aging Males) questionnaire is a validated ten-question screening tool used at Nexus Clinic KL to structure the initial symptom assessment. A positive answer to ADAM question 1 (low libido) or 7 (reduced well-being) alone is highly suggestive of testosterone deficiency. A published Malaysian study found that testosterone deficiency syndrome occurred in 19.7% of Malaysian men with Type 2 diabetes. Men experiencing obesity have five times the risk of low testosterone levels compared to healthy weight men.
+                </motion.p>
+
+                <div className="p-6 rounded-xl" style={{ backgroundColor: "var(--color-glass)", backdropFilter: "blur(10px)" }}>
+                  <p className="italic" style={{ color: "var(--color-wine)" }}>
+                    Start With a Comprehensive Testosterone Assessment | Book at Nexus Clinic KL
                   </p>
                 </div>
               </motion.div>
@@ -386,7 +617,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           whileInView="visible"
           viewport={{ once: true }}
           className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-cream)" }}
+          style={{ backgroundColor: "var(--color-light)" }}
         >
           <div className="max-w-7xl mx-auto">
             <motion.h2
@@ -394,18 +625,10 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="text-4xl md:text-5xl font-georgia mb-12 text-center"
               style={{ color: "var(--color-brown)" }}
             >
-              {t("symptoms.title")}
+              Key Symptoms of Testosterone Deficiency
             </motion.h2>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-center mb-12 max-w-3xl mx-auto italic"
-              style={{ color: "var(--color-taupe)" }}
-            >
-              {t("symptoms.quote")}
-            </motion.p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {symptoms.map((symptom, index) => (
                 <motion.div
                   key={index}
@@ -429,18 +652,71 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 </motion.div>
               ))}
             </div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="mt-8 p-6 rounded-xl text-center"
-              style={{ backgroundColor: "var(--color-rose)", color: "white" }}
-            >
-              {t("symptoms.importantNote")}
-            </motion.p>
           </div>
         </motion.section>
 
-        {/* Diagnosis Section with Image */}
+        {/* TRT Formulations Table */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="py-20 px-4 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "var(--color-cream)" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
+              style={{ color: "var(--color-brown)" }}
+            >
+              Testosterone Replacement Therapy in Malaysia: Choosing the Right Treatment
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-center mb-12 max-w-3xl mx-auto"
+              style={{ color: "var(--color-taupe)" }}
+            >
+              Every TRT formulation available, with clinical guidance on which is most appropriate for each patient and why.
+            </motion.p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+                <thead>
+                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
+                    <th className="p-4 text-left text-white font-georgia">Formulation</th>
+                    <th className="p-4 text-left text-white font-georgia">Dosing Schedule</th>
+                    <th className="p-4 text-left text-white font-georgia">Testosterone Profile</th>
+                    <th className="p-4 text-left text-white font-georgia">Advantages</th>
+                    <th className="p-4 text-left text-white font-georgia">Best For</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {trtFormulations.map((formulation, idx) => (
+                    <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "var(--color-glass)" : "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                      <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>{formulation.name}</td>
+                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{formulation.schedule}</td>
+                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{formulation.profile}</td>
+                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{formulation.advantages}</td>
+                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{formulation.bestFor}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
+              <p className="text-white">
+                Nebido is the most commonly prescribed TRT formulation at this clinic in Malaysia. Requiring only 4 to 5 clinic visits per year, with stable testosterone levels that avoid peak-and-trough variation, Nebido suits the majority of men who want reliable symptom control without daily compliance burden.
+              </p>
+              <p className="text-white mt-4 italic">
+                Discuss the Best TRT Formulation for Your Lifestyle | Book at Nexus Clinic KL
+              </p>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* TRAVERSE Trial Section */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
@@ -450,79 +726,182 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           style={{ backgroundColor: "var(--color-light)" }}
         >
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                variants={fadeInLeft}
-                className="relative h-96 rounded-3xl overflow-hidden order-2 lg:order-1 group"
-              >
-                <img
-                  src={images.labTesting}
-                  alt="Advanced laboratory testing at Nexus Clinic"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(45deg, var(--color-brown) 0%, transparent 70%)",
-                    opacity: 0.2,
-                  }}
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/50 to-transparent">
-                  <p className="text-white font-semibold">
-                    {t("diagnosis.imageCaption")}
-                  </p>
-                </div>
-              </motion.div>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
+              style={{ color: "var(--color-brown)" }}
+            >
+              The TRAVERSE Trial: Updated Cardiovascular Evidence for TRT in Malaysia
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-center mb-12 max-w-3xl mx-auto"
+              style={{ color: "var(--color-taupe)" }}
+            >
+              The most significant development in TRT in the past decade: the TRAVERSE trial (NEJM 2023) and the FDA's removal of the cardiovascular black box warning (February 2025).
+            </motion.p>
 
-              <motion.div variants={fadeInRight} className="order-1 lg:order-2">
-                <h2
-                  className="text-4xl md:text-5xl font-georgia mb-6"
-                  style={{ color: "var(--color-brown)" }}
-                >
-                  {t("diagnosis.title")}
-                  <span
-                    className="block text-xl mt-2"
-                    style={{ color: "var(--color-taupe)" }}
-                  >
-                    {t("diagnosis.subtitle")}
-                  </span>
-                </h2>
-
-                <motion.p
-                  variants={fadeInUp}
-                  className="text-lg mb-8"
-                  style={{ color: "var(--color-brown)" }}
-                >
-                  {t("diagnosis.desc")}
-                </motion.p>
-
-                <div className="space-y-4">
-                  {diagnosisSteps.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-start gap-4 p-4 rounded-xl"
-                      style={{ backgroundColor: "var(--color-cream)" }}
-                    >
-                      <div
-                        className="p-2 rounded-lg shrink-0"
-                        style={{ backgroundColor: "var(--color-wine)" }}
-                      >
-                        {React.cloneElement(item.icon, {
-                          className: "w-5 h-5 text-white",
-                        })}
-                      </div>
-                      <p style={{ color: "var(--color-brown)" }}>{item.text}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+            <div className="overflow-x-auto">
+              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+                <thead>
+                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
+                    <th className="p-4 text-left text-white font-georgia">Clinical Question</th>
+                    <th className="p-4 text-left text-white font-georgia">What the TRAVERSE Trial Found (NEJM 2023)</th>
+                    <th className="p-4 text-left text-white font-georgia">What This Means for Malaysian Men</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Does TRT increase risk of heart attack or stroke?</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>5,246 men aged 45-80 with confirmed low testosterone and pre-existing CVD or high risk. MACE occurred in 7.0% of testosterone group vs 7.3% placebo. Non-inferiority confirmed. TRT did not increase cardiovascular risk.</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Malaysian men with cardiovascular risk factors previously told they could not safely receive TRT should discuss this updated evidence with their doctor.</td>
+                  </tr>
+                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Did the FDA act on these findings?</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>In February 2025, the FDA issued class-wide labeling changes for all testosterone products, removing the cardiovascular black box warning that had been in place since 2015.</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>The cardiovascular warning that led many clinics in Malaysia to restrict TRT in older men or men with cardiac history has been removed from global product labeling.</td>
+                   </tr>
+                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Are there any remaining cardiovascular cautions?</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Yes. The trial noted a small increase in atrial fibrillation, blood pressure and acute kidney injury in the testosterone group.</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>TRT may carry residual cardiovascular considerations requiring assessment. At Nexus Clinic KL, comprehensive medical history review and cardiovascular risk assessment is standard.</td>
+                   </tr>
+                  <tr style={{ backgroundColor: "var(--color-glass)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>What about prostate cancer risk?</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>The TRAVERSE trial did not find a significant increase in overall prostate cancer incidence. An FDA expert panel in December 2025 recommended removing prostate cancer contraindications.</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>TRT remains contraindicated in men with active prostate cancer at this clinic. Baseline PSA is measured before starting TRT and monitored annually.</td>
+                   </tr>
+                </tbody>
+              </table>
             </div>
+
+            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
+              <p className="text-white">
+                Discuss Your Cardiovascular History and TRT Safety at Nexus Clinic KL | Evidence-Based Assessment
+              </p>
+            </motion.div>
           </div>
         </motion.section>
 
-        {/* Treatment Options Section with Image Cards */}
+        {/* Fertility Section */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="py-20 px-4 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "var(--color-cream)" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <h2
+              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
+              style={{ color: "var(--color-brown)" }}
+            >
+              Testosterone Replacement Therapy and Fertility: Discreet Guidance for Younger Men
+            </h2>
+            <p className="text-lg text-center mb-12 max-w-3xl mx-auto" style={{ color: "var(--color-taupe)" }}>
+              Every Malaysian TRT page either ignores fertility or mentions briefly that TRT affects sperm production. At Nexus Clinic KL, fertility is a standard agenda item at every TRT consultation for men of reproductive age.
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+                <thead>
+                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
+                    <th className="p-4 text-left text-white font-georgia">Situation</th>
+                    <th className="p-4 text-left text-white font-georgia">TRT Effect on Fertility</th>
+                    <th className="p-4 text-left text-white font-georgia">Clinical Approach at Nexus Clinic KL</th>
+                   </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Man who has already completed his family</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>TRT suppresses HPG axis, reducing LH and FSH, shutting down spermatogenesis; expected and acceptable</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Standard TRT protocol with Nebido or chosen formulation; patient counselled that fertility suppression is expected</td>
+                   </tr>
+                  <tr style={{ backgroundColor: "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Man currently trying to conceive or planning family in 1-2 years</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Standard TRT is contraindicated as it will suppress sperm production to near-zero</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Clomiphene citrate recommended: stimulates endogenous LH and FSH, increases body's own testosterone while maintaining spermatogenesis</td>
+                   </tr>
+                  <tr style={{ backgroundColor: "var(--color-glass)", borderBottom: "1px solid var(--color-taupe)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Man currently on TRT who wishes to start a family</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Fertility suppressed while on TRT; attempting conception usually unsuccessful</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Options: cessation of TRT with HCG or clomiphene; sperm banking before starting TRT; transition to clomiphene-based protocol</td>
+                   </tr>
+                  <tr style={{ backgroundColor: "var(--color-cream)" }}>
+                    <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>Man uncertain about future fertility with low testosterone symptoms now</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Standard TRT will compromise fertility option during treatment</td>
+                    <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>Fertility discussion is standard; options include clomiphene first, sperm banking, or TRT with clear understanding of implications</td>
+                   </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
+              <p className="text-white">
+                Discuss TRT and Fertility Options at Nexus Clinic KL | Full Information Before Any Prescription
+              </p>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Monitoring Protocol Table */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="py-20 px-4 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "var(--color-light)" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
+              style={{ color: "var(--color-brown)" }}
+            >
+              TRT Monitoring Protocol at Our Clinic: Ensuring Safety and Effectiveness
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-center mb-12 max-w-3xl mx-auto"
+              style={{ color: "var(--color-taupe)" }}
+            >
+              Every TRT clinic page mentions monitoring is needed but none explains what is monitored, at what intervals, and why. At this clinic, monitoring is not optional.
+            </motion.p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+                <thead>
+                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
+                    <th className="p-4 text-left text-white font-georgia">Parameter Monitored</th>
+                    <th className="p-4 text-left text-white font-georgia">Monitoring Interval</th>
+                    <th className="p-4 text-left text-white font-georgia">Target Range / Action Threshold</th>
+                    <th className="p-4 text-left text-white font-georgia">Why This Is Monitored</th>
+                   </tr>
+                </thead>
+                <tbody>
+                  {monitoringParameters.map((param, idx) => (
+                    <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "var(--color-glass)" : "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                      <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>{param.parameter}</td>
+                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{param.interval}</td>
+                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{param.target}</td>
+                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{param.why}</td>
+                     </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
+              <p className="text-white">
+                Start TRT with Structured Monitoring Built In | Book at Nexus Clinic KL
+              </p>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Process Steps */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
@@ -537,135 +916,54 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="text-4xl md:text-5xl font-georgia mb-12 text-center"
               style={{ color: "var(--color-brown)" }}
             >
-              {t("treatment.title")}
-              <span
-                className="block text-xl mt-2"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                {t("treatment.subtitle")}
-              </span>
+              The Testosterone Replacement Therapy Process at Nexus Clinic KL Step by Step
             </motion.h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {treatmentOptions.map((option, index) => (
+              {[
+                { step: "Step One", title: "Clinical Assessment", description: "Comprehensive medical history covering fatigue, mood changes, decreased libido, erectile dysfunction, muscle mass loss, cardiovascular risk factors, metabolic conditions, sleep quality, and prostate history. ADAM questionnaire scored and discussed. Fertility intentions discussed." },
+                { step: "Step Two", title: "Blood Test Panel", description: "Fasting morning total serum testosterone (repeated on separate morning), free testosterone, SHBG, LH, FSH, oestradiol, prolactin, CBC with haematocrit, LFTs, lipid panel, PSA (men over 40), fasting glucose and HbA1c." },
+                { step: "Step Three", title: "Diagnostic Review & Treatment Planning", description: "Doctor reviews blood test results, confirms whether diagnostic criteria are met, explains recommended formulation, discusses monitoring schedule, addresses all patient questions including cardiovascular concerns and fertility status." },
+                { step: "Step Four", title: "Follow-up & Monitoring Programme", description: "First monitoring blood test at 3 months. Consultation to review results. Second panel at 6 months. Then every 6 to 12 months. Blood pressure at every visit. Quality of life assessed using ADAM questionnaire at each follow-up." },
+              ].map((item, index) => (
                 <motion.div
                   key={index}
                   variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="rounded-2xl overflow-hidden group cursor-pointer"
+                  whileHover={{ y: -5 }}
+                  className="p-6 rounded-2xl"
+                  style={{
+                    backgroundColor: "var(--color-glass)",
+                    backdropFilter: "blur(10px)",
+                  }}
                 >
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={option.image}
-                      alt={option.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(to top, var(--color-brown) 0%, transparent 100%)",
-                        opacity: 0.5,
-                      }}
-                    />
-                  </div>
                   <div
-                    className="p-6"
-                    style={{ backgroundColor: "var(--color-light)" }}
+                    className="inline-block px-3 py-1 rounded-full mb-4 text-sm font-semibold"
+                    style={{ backgroundColor: "var(--color-wine)", color: "white" }}
                   >
-                    <div
-                      className="mb-3"
-                      style={{ color: "var(--color-wine)" }}
-                    >
-                      {option.icon}
-                    </div>
-                    <h3
-                      className="text-xl font-georgia mb-2"
-                      style={{ color: "var(--color-brown)" }}
-                    >
-                      {option.title}
-                    </h3>
-                    <p
-                      className="mb-4 text-sm"
-                      style={{ color: "var(--color-taupe)" }}
-                    >
-                      {option.desc}
-                    </p>
-                    <p
-                      className="font-semibold"
-                      style={{ color: "var(--color-wine)" }}
-                    >
-                      {option.price}
-                    </p>
+                    {item.step}
                   </div>
+                  <h3
+                    className="text-xl font-georgia mb-3"
+                    style={{ color: "var(--color-brown)" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-sm" style={{ color: "var(--color-taupe)" }}>
+                    {item.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
+
+            <motion.div variants={fadeInUp} className="mt-8 text-center">
+              <p className="text-lg italic" style={{ color: "var(--color-wine)" }}>
+                Book Your Testosterone Assessment at Nexus Clinic KL | Confirmed Diagnosis Before Any Prescription
+              </p>
+            </motion.div>
           </div>
         </motion.section>
 
-        {/* Patient Care Image Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-brown)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft} className="text-white">
-                <h2 className="text-4xl md:text-5xl font-georgia mb-6">
-                  {t("patientCare.title")}
-                </h2>
-                <p className="text-xl mb-6 opacity-90">
-                  {t("patientCare.desc")}
-                </p>
-                <ul className="space-y-4">
-                  {[
-                    t("patientCare.item1"),
-                    t("patientCare.item2"),
-                    t("patientCare.item3"),
-                    t("patientCare.item4"),
-                  ].map((item, index) => (
-                    <motion.li
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-center gap-3"
-                    >
-                      <CheckCircle
-                        className="w-5 h-5 shrink-0"
-                        style={{ color: "var(--color-rose)" }}
-                      />
-                      <span>{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-              <motion.div
-                variants={fadeInRight}
-                className="relative h-96 rounded-3xl overflow-hidden group"
-              >
-                <img
-                  src={images.patientCare}
-                  alt="Private patient consultation at Nexus Clinic"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(45deg, var(--color-wine) 0%, transparent 70%)",
-                    opacity: 0.2,
-                  }}
-                />
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Results Timeline Section */}
+        {/* Pricing Section */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
@@ -677,54 +975,45 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           <div className="max-w-7xl mx-auto">
             <motion.h2
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-12 text-center"
+              className="text-4xl md:text-5xl font-georgia mb-6 text-center"
               style={{ color: "var(--color-brown)" }}
             >
-              {t("timeline.title")}
+              Testosterone Replacement Therapy Cost at Our Clinic in Malaysia 2026
             </motion.h2>
-
             <motion.p
               variants={fadeInUp}
-              className="text-lg text-center mb-12 italic"
+              className="text-lg text-center mb-12 max-w-3xl mx-auto"
               style={{ color: "var(--color-taupe)" }}
             >
-              {t("timeline.desc")}
+              Total annual cost varies by formulation. Nebido-based programmes: RM 5,000 to RM 9,000 per year. Gel-based programmes: RM 7,000 to RM 12,000 per year. All pricing transparent and disclosed before any treatment plan is issued.
             </motion.p>
 
-            <div className="relative">
-              <div
-                className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5"
-                style={{ backgroundColor: "var(--color-rose)" }}
-              />
-
-              {timelineItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className={`relative flex items-center mb-8 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
-                >
-                  <div
-                    className={`w-5/12 p-6 rounded-2xl ${index % 2 === 0 ? "text-right" : "text-left"}`}
-                    style={{
-                      backgroundColor: "var(--color-glass)",
-                      backdropFilter: "blur(10px)",
-                    }}
-                  >
-                    <h3
-                      className="text-2xl font-georgia mb-2"
-                      style={{ color: "var(--color-wine)" }}
-                    >
-                      {item.time}
-                    </h3>
-                    <p style={{ color: "var(--color-brown)" }}>{item.desc}</p>
-                  </div>
-                  <div
-                    className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full"
-                    style={{ backgroundColor: "var(--color-wine)" }}
-                  />
-                </motion.div>
-              ))}
+            <div className="overflow-x-auto">
+              <table className="w-full rounded-3xl overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+                <thead>
+                  <tr style={{ backgroundColor: "var(--color-wine)" }}>
+                    <th className="p-4 text-left text-white font-georgia">Service / Item</th>
+                    <th className="p-4 text-left text-white font-georgia">Details</th>
+                    <th className="p-4 text-left text-white font-georgia">Price Range (RM) 2026</th>
+                   </tr>
+                </thead>
+                <tbody>
+                  {pricingItems.map((item, idx) => (
+                    <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "var(--color-glass)" : "var(--color-cream)", borderBottom: "1px solid var(--color-taupe)" }}>
+                      <td className="p-4 font-semibold" style={{ color: "var(--color-brown)" }}>{item.item}</td>
+                      <td className="p-4 text-sm" style={{ color: "var(--color-taupe)" }}>{item.details}</td>
+                      <td className="p-4 font-semibold" style={{ color: "var(--color-wine)" }}>{item.price}</td>
+                     </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
+
+            <motion.div variants={fadeInUp} className="mt-8 p-6 rounded-xl text-center" style={{ backgroundColor: "var(--color-brown)" }}>
+              <p className="text-white">
+                Get Your Full TRT Programme Pricing Before Starting | Book at Nexus Clinic KL
+              </p>
+            </motion.div>
           </div>
         </motion.section>
 
@@ -743,7 +1032,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="text-4xl md:text-5xl font-georgia mb-12"
               style={{ color: "var(--color-brown)" }}
             >
-              {t("benefits.title")}
+              Benefits of Testosterone Replacement Therapy
             </motion.h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -777,363 +1066,8 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
 
         <SectionBeforeAfter transformations={transformations} />
 
-        {/* Risks Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-light)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-12 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              {t("risks.title")}
-              <span
-                className="block text-xl mt-2"
-                style={{ color: "var(--color-taupe)" }}
-              >
-                {t("risks.subtitle")}
-              </span>
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-center mb-12 max-w-3xl mx-auto"
-              style={{ color: "var(--color-brown)" }}
-            >
-              {t("risks.desc")}
-            </motion.p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {risks.map((risk, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="p-6 rounded-xl flex items-start gap-4"
-                  style={{ backgroundColor: "var(--color-cream)" }}
-                >
-                  <AlertTriangle
-                    className="w-5 h-5 mt-1 shrink-0"
-                    style={{ color: "var(--color-wine)" }}
-                  />
-                  <p style={{ color: "var(--color-brown)" }}>{risk.text}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="mt-8 p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-cream)" }}
-            >
-              <p style={{ color: "var(--color-brown)" }}>
-                {t("risks.fdaNote")}
-              </p>
-              <p
-                className="mt-4 font-semibold"
-                style={{ color: "var(--color-wine)" }}
-              >
-                {t("risks.bottomLine")}
-              </p>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Fertility Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-cream)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft}>
-                <h2
-                  className="text-4xl md:text-5xl font-georgia mb-6"
-                  style={{ color: "var(--color-brown)" }}
-                >
-                  {t("fertility.title")}
-                  <span
-                    className="block text-lg mt-2"
-                    style={{ color: "var(--color-wine)" }}
-                  >
-                    {t("fertility.subtitle")}
-                  </span>
-                </h2>
-                <p
-                  className="text-lg mb-4"
-                  style={{ color: "var(--color-brown)" }}
-                >
-                  {t("fertility.intro")}
-                </p>
-                <p className="mb-4" style={{ color: "var(--color-taupe)" }}>
-                  {t("fertility.desc")}
-                </p>
-                <p
-                  className="font-semibold"
-                  style={{ color: "var(--color-wine)" }}
-                >
-                  {t("fertility.warning")}
-                </p>
-              </motion.div>
-              <motion.div
-                variants={fadeInRight}
-                className="p-8 rounded-3xl"
-                style={{
-                  backgroundColor: "var(--color-glass)",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <Heart
-                  className="w-16 h-16 mb-4"
-                  style={{ color: "var(--color-wine)" }}
-                />
-                <p style={{ color: "var(--color-brown)" }}>
-                  {t("fertility.preserving")}
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* TRT vs Others Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-light)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <motion.div
-                variants={fadeInLeft}
-                className="p-8 rounded-3xl"
-                style={{ backgroundColor: "var(--color-cream)" }}
-              >
-                <h3
-                  className="text-2xl font-georgia mb-4"
-                  style={{ color: "var(--color-wine)" }}
-                >
-                  {t("trtVs.card1Title")}
-                </h3>
-                <p className="mb-4" style={{ color: "var(--color-brown)" }}>
-                  {t("trtVs.card1P1")}
-                </p>
-                <p className="mb-4" style={{ color: "var(--color-taupe)" }}>
-                  {t("trtVs.card1P2")}
-                </p>
-                <p style={{ color: "var(--color-brown)" }}>
-                  {t("trtVs.card1P3")}
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="p-8 rounded-3xl"
-                style={{ backgroundColor: "var(--color-cream)" }}
-              >
-                <h3
-                  className="text-2xl font-georgia mb-4"
-                  style={{ color: "var(--color-wine)" }}
-                >
-                  {t("trtVs.card2Title")}
-                </h3>
-                <p className="mb-4" style={{ color: "var(--color-brown)" }}>
-                  {t("trtVs.card2P1")}
-                </p>
-                <p style={{ color: "var(--color-taupe)" }}>
-                  {t("trtVs.card2P2")}
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Cost Section */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-cream)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-12 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              {t("cost.title")}
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-center mb-12 max-w-3xl mx-auto"
-              style={{ color: "var(--color-taupe)" }}
-            >
-              {t("cost.desc")}
-            </motion.p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <motion.div
-                variants={scaleIn}
-                className="p-8 rounded-3xl"
-                style={{
-                  backgroundColor: "var(--color-glass)",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <h3
-                  className="text-2xl font-georgia mb-4"
-                  style={{ color: "var(--color-wine)" }}
-                >
-                  {t("cost.injectionsTitle")}
-                </h3>
-                <p
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: "var(--color-brown)" }}
-                >
-                  {t("cost.injectionsPrice")}
-                </p>
-                <p style={{ color: "var(--color-taupe)" }}>
-                  {t("cost.injectionsNote")}
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={scaleIn}
-                className="p-8 rounded-3xl"
-                style={{
-                  backgroundColor: "var(--color-glass)",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <h3
-                  className="text-2xl font-georgia mb-4"
-                  style={{ color: "var(--color-wine)" }}
-                >
-                  {t("cost.gelsTitle")}
-                </h3>
-                <p
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: "var(--color-brown)" }}
-                >
-                  {t("cost.gelsPrice")}
-                </p>
-                <p style={{ color: "var(--color-taupe)" }}>
-                  {t("cost.gelsNote")}
-                </p>
-              </motion.div>
-            </div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "var(--color-brown)" }}
-            >
-              <p className="text-white text-center">{t("cost.tip")}</p>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
-                {[
-                  t("cost.tipItem1"),
-                  t("cost.tipItem2"),
-                  t("cost.tipItem3"),
-                  t("cost.tipItem4"),
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="text-center p-2 rounded"
-                    style={{ backgroundColor: "var(--color-rose)" }}
-                  >
-                    <p className="text-white text-sm">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Competitor Analysis */}
-        <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-light)" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-12 text-center"
-              style={{ color: "var(--color-brown)" }}
-            >
-              {t("competitor.title")}
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <motion.div
-                variants={fadeInLeft}
-                className="p-8 rounded-3xl"
-                style={{ backgroundColor: "var(--color-cream)" }}
-              >
-                <h3
-                  className="text-2xl font-georgia mb-4"
-                  style={{ color: "var(--color-wine)" }}
-                >
-                  {t("competitor.card1Title")}
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    t("competitor.card1Item1"),
-                    t("competitor.card1Item2"),
-                    t("competitor.card1Item3"),
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="text-wine">•</span>
-                      <span style={{ color: "var(--color-brown)" }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="p-8 rounded-3xl"
-                style={{ backgroundColor: "var(--color-wine)" }}
-              >
-                <h3 className="text-2xl font-georgia mb-4 text-white">
-                  {t("competitor.card2Title")}
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    t("competitor.card2Item1"),
-                    t("competitor.card2Item2"),
-                    t("competitor.card2Item3"),
-                    t("competitor.card2Item4"),
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-white mt-1 shrink-0" />
-                      <span className="text-white">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
+        {/* FAQ Section */}
+        <FAQ data={faqs} />
 
         {/* Why Nexus Section */}
         <motion.section
@@ -1142,23 +1076,31 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           whileInView="visible"
           viewport={{ once: true }}
           className="py-20 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "var(--color-cream)" }}
+          style={{ backgroundColor: "var(--color-light)" }}
         >
           <div className="max-w-7xl mx-auto text-center">
             <motion.h2
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-georgia mb-12"
+              className="text-4xl md:text-5xl font-georgia mb-6"
               style={{ color: "var(--color-brown)" }}
             >
-              {t("whyNexus.title")}
+              Clinically Managed Testosterone Replacement Therapy at Nexus Clinic KL, Kuala Lumpur
             </motion.h2>
 
             <motion.p
               variants={fadeInUp}
-              className="text-xl mb-12 max-w-4xl mx-auto"
+              className="text-lg mb-8 max-w-4xl mx-auto"
               style={{ color: "var(--color-taupe)" }}
             >
-              {t("whyNexus.desc")}
+              Testosterone deficiency is a real, diagnosable and treatable medical condition. The evidence base supporting its safe and effective management has never been stronger. The TRAVERSE trial has resolved the cardiovascular debate, the Endocrine Society guidelines are clear on who qualifies and how to monitor, and formulation options available in 2026 allow every man who qualifies to find a protocol that fits his lifestyle.
+            </motion.p>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg mb-12 max-w-4xl mx-auto"
+              style={{ color: "var(--color-brown)" }}
+            >
+              Our licensed men's health doctors bring over 15 years of combined experience, have completed over 5,000 procedures and provide discreet healthcare services that assess and address testosterone deficiency, erectile dysfunction, low libido and the broader cluster of health concerns affecting men's well-being and quality of life in Malaysia.
             </motion.p>
 
             <motion.div
@@ -1177,31 +1119,22 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
                 className="mb-2 font-semibold"
                 style={{ color: "var(--color-brown)" }}
               >
-                {t("whyNexus.clinicName")}
+                Nexus Clinic KL
               </p>
               <p className="mb-4" style={{ color: "var(--color-taupe)" }}>
-                {t("whyNexus.address")}
+                Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur
               </p>
               <div className="flex justify-center gap-4">
                 <span
                   className="flex items-center gap-1"
                   style={{ color: "var(--color-wine)" }}
                 >
-                  <Phone className="w-4 h-4" /> {t("whyNexus.phone1")}
-                </span>
-                <span
-                  className="flex items-center gap-1"
-                  style={{ color: "var(--color-wine)" }}
-                >
-                  <Phone className="w-4 h-4" /> {t("whyNexus.phone2")}
+                  <Phone className="w-4 h-4" /> Call or WhatsApp
                 </span>
               </div>
             </motion.div>
           </div>
         </motion.section>
-
-        {/* FAQ Section */}
-        <FAQ data={faqs} />
 
         {/* CTA Section */}
         <motion.section
@@ -1217,12 +1150,12 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="text-4xl md:text-5xl font-georgia mb-6 text-white"
             >
-              {t("cta.title")}
+              Book Your Testosterone Assessment at Nexus Clinic KL
               <span
                 className="block text-2xl mt-2"
                 style={{ color: "var(--color-rose)" }}
               >
-                {t("cta.titleHighlight")}
+                Wisma UOA II, Kuala Lumpur
               </span>
             </motion.h2>
 
@@ -1230,7 +1163,7 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               variants={fadeInUp}
               className="text-xl mb-8 text-white opacity-90"
             >
-              {t("cta.desc")}
+              Call or WhatsApp today to schedule your confidential consultation.
             </motion.p>
 
             <motion.button
@@ -1240,14 +1173,14 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
               className="px-12 py-4 rounded-xl text-lg font-semibold"
               style={{ backgroundColor: "var(--color-wine)", color: "white" }}
             >
-              {t("cta.button")}
+              Book Your Assessment
             </motion.button>
 
             <motion.p
               variants={fadeInUp}
               className="mt-6 text-white opacity-75"
             >
-              {t("cta.address")}
+              Serving patients from Kuala Lumpur, Damansara, Penang and throughout Malaysia
             </motion.p>
           </div>
         </motion.section>
@@ -1255,5 +1188,5 @@ const TestosteroneLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     </>
   );
 };
-
+ 
 export default TestosteroneLanding;

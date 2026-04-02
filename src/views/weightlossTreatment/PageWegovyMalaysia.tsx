@@ -8,15 +8,13 @@ import {
   AlertCircle,
   CheckCircle2,
   XCircle,
-  Apple,
-  Droplets,
   Heart,
   Zap,
-  Award,
-  Leaf,
   Scale,
   MapPin,
   ChevronRight,
+  Activity,
+  Award,
 } from "lucide-react";
 import {
   fadeInUp,
@@ -36,62 +34,47 @@ export default function PageWegovyMalaysia({
   locale?: string;
 }) {
   const { t } = useTranslation(locale, "weightLoss/wegovy");
+
   const faqs = [
     {
-      q: "How much weight can I lose with Wegovy?",
-      a: "In clinical trials, average weight loss around 68 weeks was about 14.9% with semaglutide 2.4 mg alongside lifestyle intervention, but real results vary.",
+      q: "Is Wegovy available in Malaysia and when did it launch?",
+      a: "Wegovy received NPRA approval in Malaysia in April 2023 and became commercially available from January 2026 through licensed medical clinics after the global supply shortage eased.",
     },
     {
-      q: "How fast does Wegovy start working?",
-      a: "Many people feel appetite changes early, but visible body changes usually build over several weeks. Longer studies show weight loss can plateau later, which is normal.",
+      q: "How does Wegovy differ from Ozempic if they contain the same molecule?",
+      a: "Both contain semaglutide, but Wegovy uses a higher maintenance dose of 2.4 mg and is approved specifically for chronic weight management. Ozempic has a maximum dose of 1 mg and is primarily approved for type 2 diabetes management.",
     },
     {
-      q: "Is Wegovy safe?",
-      a: "Wegovy has well-documented benefits and risks. It also has important warnings, including serious side effects to discuss with a clinician. It must be prescribed and monitored.",
+      q: "Who is Wegovy most suitable for in Malaysia?",
+      a: "Wegovy is commonly suited to patients whose main goal is weight management rather than diabetes control, especially those with BMI above 30 or above 27.5 with a weight-related comorbidity, and patients with cardiovascular risk who may benefit from its additional heart-protection data.",
     },
     {
-      q: "Is Wegovy approved and available in Malaysia?",
-      a: "Wegovy has launched in Malaysia, and NPRA materials discuss Wegovy under GLP-1 medicines and reference product registration sources.",
+      q: "What is the Wegovy price in Malaysia per month?",
+      a: "As of 2026, one Wegovy pen usually costs between RM 1,100 and RM 1,600 depending on dose and clinic structure. At Nexus Clinic KL, monthly programme cost including doctor review commonly ranges from around RM 1,300 to RM 1,800.",
     },
     {
-      q: "What are the most common side effects?",
-      a: "Nausea, vomiting, diarrhoea, constipation, and abdominal discomfort are commonly listed. These often improve as your body adjusts.",
+      q: "Does Wegovy protect against heart attacks and strokes?",
+      a: "Yes. In the SELECT trial, semaglutide 2.4 mg reduced major adverse cardiovascular events by 20% in overweight or obese patients with established cardiovascular disease and no diabetes.",
     },
     {
-      q: "Do you gain weight back after stopping Wegovy?",
-      a: "Many people regain weight after stopping. A published extension analysis showed substantial regain after withdrawal, which is why long-term planning matters.",
+      q: "How long does it take for Wegovy to start working?",
+      a: "Most patients notice lower appetite within one to two weeks. Visible weight loss often starts around weeks three to six, and the strongest rate of reduction usually occurs between months two and five as the dose is titrated upward.",
     },
     {
-      q: "Is Wegovy the same as Ozempic?",
-      a: "They share the same active ingredient (semaglutide), but they are used at different doses and for different labelled purposes.",
+      q: "Is Wegovy safe for patients with PCOS?",
+      a: "Semaglutide has shown useful benefits in patients with PCOS, especially around insulin resistance, weight and metabolic markers. Suitability still depends on a full medical assessment.",
     },
     {
-      q: "Where do you inject Wegovy?",
-      a: "It is given as a subcutaneous injection. Your prescribing clinic will teach correct technique and safe injection habits.",
+      q: "Can I switch from Ozempic to Wegovy?",
+      a: "Yes. This is a common transition for patients who have plateaued at the Ozempic 1 mg ceiling or want to move to the full weight-management indication. The switch is doctor-managed and usually restarts from the Wegovy titration pathway.",
     },
     {
-      q: "What foods should I avoid on Wegovy?",
-      a: "There is no single 'banned' food list, but many people feel worse with oily, heavy, very sweet foods, especially during dose increases. A personalised plan helps.",
+      q: "Will I regain weight after stopping Wegovy?",
+      a: "Weight regain is common if semaglutide is stopped without a structured exit plan. This is why tapering, habit reinforcement and a written maintenance strategy are important.",
     },
     {
-      q: "Can I drink alcohol while on Wegovy?",
-      a: "Alcohol can worsen nausea for some people and adds empty calories. If you drink, keep it moderate and discuss your risks with your doctor, especially if you have liver or pancreas concerns.",
-    },
-    {
-      q: "Can I take Wegovy if I have surgery planned?",
-      a: "Tell your doctors. NPRA has highlighted aspiration risk with GLP-1 medicines during general anaesthesia or deep sedation. Your care team will advise what to do before procedures.",
-    },
-    {
-      q: "How much does Wegovy cost in Malaysia?",
-      a: "Costs vary by dose and provider. Some Malaysia-based listings show dose-based pen pricing in RM, and some clinics advertise promos. The most accurate quote comes after a medical consult.",
-    },
-    {
-      q: "Do I need to exercise for Wegovy to work?",
-      a: "Wegovy is intended to be used with diet and increased physical activity. Even small, consistent movement helps outcomes and helps maintain results.",
-    },
-    {
-      q: "Who should not use Wegovy?",
-      a: "People with certain thyroid cancer risks (MTC/MEN2) and other contraindications should not use it. A clinician will screen you properly.",
+      q: "Why is a prescription and medical supervision required for Wegovy in Malaysia?",
+      a: "Wegovy is prescription-only in Malaysia. It requires a doctor because eligibility, contraindications, medication interactions, titration and ongoing monitoring all need clinical supervision.",
     },
   ];
 
@@ -112,6 +95,7 @@ export default function PageWegovyMalaysia({
       after: "/images/B&A-w/B&A-wegovy3.webp",
     },
   ];
+
   return (
     <>
       <main className="min-h-screen bg-light overflow-hidden">
@@ -122,30 +106,35 @@ export default function PageWegovyMalaysia({
           whileInView="visible"
           className="relative min-h-[90vh] flex items-center"
         >
-          {/* Background Pattern */}
           <div className="absolute inset-0 bg-linear-to-br from-cream via-light to-cream/50" />
 
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
               <motion.div variants={fadeInLeft} className="space-y-8">
                 <div className="inline-flex items-center gap-2 bg-wine/10 px-4 py-2 rounded-full">
                   <Sparkles className="w-4 h-4 text-wine" />
                   <span className="text-wine font-inter text-sm font-medium">
-                    Now Available in Kuala Lumpur
+                    Higher-Dose Semaglutide for Weight Management
                   </span>
                 </div>
 
-                <h2 className="font-['Georgia',serif] text-5xl lg:text-5xl text-brown leading-tight">
-                  Feel lighter, eat with control, and lose weight safely with
+                <h1 className="font-['Georgia',serif] text-5xl lg:text-5xl text-brown leading-tight">
+                  Wegovy Malaysia Programme
                   <span className="text-wine text-4xl block mt-2">
-                    Wegovy in Kuala Lumpur
+                    Weight Loss and Heart Protection Under Doctor Supervision
                   </span>
-                </h2>
+                </h1>
 
                 <p className="text-taupe font-inter text-lg leading-relaxed max-w-lg">
-                  If dieting feels like a daily fight, you are not alone. Wegovy
-                  supports appetite control so your plan finally feels doable.
+                  Wegovy is the only weight loss injection in Malaysia approved
+                  specifically for chronic weight management and supported by
+                  landmark cardiovascular protection data.
+                </p>
+
+                <p className="text-taupe font-inter text-lg leading-relaxed max-w-lg">
+                  At Nexus Clinic KL, Wegovy is prescribed through a fully
+                  supervised doctor-led programme with screening, bloodwork,
+                  titration and monthly follow-up.
                 </p>
 
                 <div className="flex flex-wrap gap-4">
@@ -154,23 +143,23 @@ export default function PageWegovyMalaysia({
                     whileTap={{ scale: 0.95 }}
                     className="bg-wine text-light px-8 py-4 rounded-full font-inter font-medium hover:bg-rose transition-colors shadow-lg shadow-wine/20"
                   >
-                    Book Your Consultation
+                    Book Free Assessment
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="border-2 border-brown/20 text-brown px-8 py-4 rounded-full font-inter font-medium hover:border-wine hover:text-wine transition-colors"
                   >
-                    Learn More
+                    View Programme Guide
                   </motion.button>
                 </div>
 
-                {/* Trust Indicators */}
-                <div className="grid grid-cols-3 gap-4 pt-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
                   {[
                     { icon: Shield, text: "Doctor-supervised" },
-                    { icon: Clock, text: "Ongoing follow-ups" },
-                    { icon: MapPin, text: "KLCC Location" },
+                    { icon: Clock, text: "Weekly injection plan" },
+                    { icon: Heart, text: "20% CV risk reduction" },
+                    { icon: MapPin, text: "KLCC location" },
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -188,7 +177,6 @@ export default function PageWegovyMalaysia({
                 </div>
               </motion.div>
 
-              {/* Right Image */}
               <motion.div
                 variants={fadeInRight}
                 className="relative h-150 rounded-3xl overflow-hidden shadow-2xl"
@@ -201,9 +189,9 @@ export default function PageWegovyMalaysia({
                 />
                 <div className="absolute bottom-6 left-6 right-6 bg-glass backdrop-blur-md p-6 rounded-2xl z-20">
                   <p className="text-brown font-inter text-sm">
-                    Get a doctor-led, monitored Wegovy weight loss programme at
-                    Nexus Clinic Kuala Lumpur, built around your body, your
-                    habits, and your health.
+                    Higher-dose semaglutide with weight-management approval,
+                    structured titration, and doctor-led oversight at Nexus
+                    Clinic Kuala Lumpur.
                   </p>
                 </div>
               </motion.div>
@@ -211,7 +199,7 @@ export default function PageWegovyMalaysia({
           </div>
         </motion.section>
 
-        {/* What is Wegovy Section */}
+        {/* Treatment Overview */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
@@ -221,65 +209,159 @@ export default function PageWegovyMalaysia({
           <div className="container mx-auto px-4 md:px-6">
             <motion.div
               variants={fadeInUp}
-              className="max-w-3xl mx-auto text-center mb-16"
+              className="max-w-4xl mx-auto text-center mb-16"
             >
               <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
-                What is Wegovy, and why is everyone talking about it?
+                Wegovy Weight Loss Programme at a Glance
               </h2>
               <p className="text-taupe font-inter text-lg">
-                Wegovy is a GLP-1 receptor agonist. In simple words, it works
-                like a natural gut hormone that talks to your brain and
-                digestion.
+                A higher-dose semaglutide programme built for chronic weight
+                management, gradual titration and long-term monitoring.
               </p>
             </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { icon: Heart, text: "feel full sooner" },
-                { icon: Clock, text: "stay full longer" },
-                { icon: Zap, text: "think about food less often" },
                 {
-                  icon: Scale,
-                  text: "manage portions without feeling punished",
+                  title: "Active Ingredient",
+                  text: "Semaglutide 2.4 mg",
+                },
+                {
+                  title: "Mechanism",
+                  text: "GLP-1 receptor agonist with appetite and gastric-emptying effects",
+                },
+                {
+                  title: "Expected Weight Loss",
+                  text: "12 to 17% over 68 weeks",
+                },
+                {
+                  title: "Cardiovascular Benefit",
+                  text: "20% reduction in major cardiovascular events",
+                },
+                {
+                  title: "Starting Dose",
+                  text: "0.25 mg weekly for 4 weeks",
+                },
+                {
+                  title: "Frequency",
+                  text: "Once-weekly subcutaneous injection",
+                },
+                {
+                  title: "Malaysia Status",
+                  text: "NPRA-approved since April 2023, available from January 2026",
+                },
+                {
+                  title: "Prescription",
+                  text: "Doctor assessment, blood panel and prescription required",
                 },
               ].map((item, index) => (
                 <motion.div
                   key={index}
                   variants={scaleIn}
-                  whileHover={{ y: -10 }}
-                  className="bg-light p-8 rounded-3xl shadow-lg"
+                  whileHover={{ y: -8 }}
+                  className="bg-light p-6 rounded-3xl shadow-lg"
                 >
-                  <div className="bg-wine/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-4">
-                    <item.icon className="w-8 h-8 text-wine" />
-                  </div>
-                  <p className="text-brown font-georgia text-xl">{item.text}</p>
+                  <h3 className="font-georgia text-xl text-brown mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-brown font-inter text-sm">{item.text}</p>
                 </motion.div>
               ))}
             </div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="mt-12 p-8 bg-white/50 rounded-3xl"
-            >
-              <p className="text-brown font-inter">
-                Wegovy is prescription-only, and it is designed for long-term
-                weight management, not spot slimming. Wegovy has launched in
-                Malaysia and is being discussed widely by clinics and local
-                coverage. NPRA safety communications also list Wegovy among
-                GLP-1 medicines and reference the Malaysian product registration
-                database (QUEST), which supports that it is regulated as a
-                prescription medicine.
-              </p>
-            </motion.div>
           </div>
         </motion.section>
 
-        {/* Who Wegovy is For */}
+        {/* What is Wegovy */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           className="py-24 bg-light"
+        >
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div variants={fadeInLeft} className="space-y-6">
+                <h2 className="font-georgia text-4xl md:text-5xl text-brown">
+                  What makes Wegovy different from{" "}
+                  <span className="text-wine">Ozempic?</span>
+                </h2>
+
+                <p className="text-brown font-inter text-lg">
+                  Wegovy contains the same molecule as Ozempic, semaglutide, but
+                  at more than double the maximum dose. Ozempic is primarily a
+                  diabetes medication. Wegovy is specifically designed and
+                  approved for chronic weight management.
+                </p>
+
+                <div className="bg-cream p-8 rounded-3xl border border-taupe/10">
+                  <p className="font-inter text-brown italic">
+                    <span className="font-bold text-wine">Why that matters:</span>{" "}
+                    Wegovy delivers stronger appetite suppression, carries the
+                    full weight-management indication, and is the only injectable
+                    weight-loss medicine in Malaysia with specific evidence for
+                    reducing heart attack and stroke risk in qualifying patients.
+                  </p>
+                </div>
+
+                <div className="space-y-4 pt-4">
+                  {[
+                    "Wegovy reaches 2.4 mg weekly while Ozempic reaches 1 mg weekly.",
+                    "Wegovy is approved for chronic weight management, not off-label use.",
+                    "Wegovy carries the landmark SELECT trial cardiovascular data.",
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      variants={fadeInUp}
+                      className="flex items-center gap-4 p-4 bg-glass rounded-xl"
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                      <span className="font-inter text-brown">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div variants={fadeInRight} className="space-y-6">
+                <div className="bg-cream p-8 rounded-3xl">
+                  <h3 className="font-georgia text-2xl text-brown mb-6">
+                    Wegovy vs Ozempic
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      "Wegovy: 12 to 17% expected average weight reduction",
+                      "Ozempic: 10 to 15% average reduction at its lower ceiling",
+                      "Wegovy: primary goal is weight management",
+                      "Ozempic: primary goal is diabetes management",
+                    ].map((item, index) => (
+                      <div key={index} className="flex gap-3 items-start">
+                        <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                        <span className="text-brown font-inter">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="bg-wine/5 p-8 rounded-3xl">
+                  <h3 className="font-georgia text-2xl text-brown mb-4">
+                    Heart protection advantage
+                  </h3>
+                  <p className="text-brown font-inter">
+                    In patients with obesity and established cardiovascular
+                    disease, semaglutide 2.4 mg reduced major adverse
+                    cardiovascular events by 20% in the SELECT trial.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Who It Is For */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="py-24 bg-cream"
         >
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -291,24 +373,32 @@ export default function PageWegovyMalaysia({
 
                 <div className="space-y-4">
                   <h3 className="font-georgia text-2xl text-brown">
-                    Wegovy may be considered if you:
+                    Wegovy may be appropriate for:
                   </h3>
-                  <div className="bg-cream p-6 rounded-2xl">
-                    <p className="text-brown font-inter mb-4">
-                      Wegovy is commonly used for adults with:
-                    </p>
+                  <div className="bg-light p-6 rounded-2xl">
                     <ul className="space-y-3">
                       <li className="flex items-center gap-3">
                         <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
                         <span className="text-brown font-inter">
-                          BMI 30+ (obesity)
+                          BMI above 30
                         </span>
                       </li>
                       <li className="flex items-center gap-3">
                         <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
                         <span className="text-brown font-inter">
-                          BMI 27+ (overweight) with weight-related health
-                          problems
+                          BMI above 27.5 with at least one weight-related comorbidity
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                        <span className="text-brown font-inter">
+                          Patients with cardiovascular disease who need both weight reduction and cardiac risk support
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-wine shrink-0" />
+                        <span className="text-brown font-inter">
+                          Patients who plateaued on Ozempic 1 mg and need a step-up semaglutide pathway
                         </span>
                       </li>
                     </ul>
@@ -321,14 +411,11 @@ export default function PageWegovyMalaysia({
                     Wegovy is not for everyone
                   </h3>
                   <p className="text-brown font-inter">
-                    You should not self-start Wegovy. It requires a medical
-                    assessment. Wegovy has important warnings and
-                    contraindications, including a warning about thyroid C-cell
-                    tumors (seen in rodents) and avoidance in people with
-                    certain thyroid cancer risks (like medullary thyroid
-                    carcinoma or MEN2). If you are pregnant, planning pregnancy,
-                    or breastfeeding, you should discuss safer alternatives with
-                    your doctor.
+                    Wegovy is contraindicated in patients with a personal or
+                    family history of medullary thyroid carcinoma or MEN2.
+                    Additional caution is needed for pregnancy planning,
+                    pancreatitis history, active gallbladder disease and some
+                    retinal or mood-related conditions.
                   </p>
                 </div>
               </motion.div>
@@ -337,15 +424,15 @@ export default function PageWegovyMalaysia({
                 <div className="bg-linear-to-br from-wine to-rose p-1 rounded-3xl">
                   <div className="bg-light p-8 rounded-3xl">
                     <h3 className="font-georgia text-2xl text-brown mb-6">
-                      Quick Eligibility Check
+                      What Nexus Clinic KL assesses
                     </h3>
                     <div className="space-y-4">
                       {[
-                        "BMI assessment required",
-                        "Medical history review",
-                        "Current medications check",
-                        "Thyroid health screening",
-                        "Pregnancy planning discussion",
+                        "BMI and waist circumference",
+                        "Weight history and prior treatment attempts",
+                        "Cardiovascular risk factors",
+                        "Current medications and metabolic health",
+                        "Suitability for titration and long-term follow-up",
                       ].map((item, index) => (
                         <div key={index} className="flex items-center gap-3">
                           <div className="w-2 h-2 bg-wine rounded-full" />
@@ -355,6 +442,75 @@ export default function PageWegovyMalaysia({
                     </div>
                   </div>
                 </div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Wegovy vs Mounjaro */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="py-24 bg-light"
+        >
+          <div className="container mx-auto px-4 md:px-6">
+            <motion.div
+              variants={fadeInUp}
+              className="max-w-3xl mx-auto text-center mb-16"
+            >
+              <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
+                Wegovy vs Mounjaro: which one fits better?
+              </h2>
+              <p className="text-taupe font-inter text-lg">
+                Both are powerful injectable options, but they serve slightly
+                different patient priorities.
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              <motion.div
+                variants={scaleIn}
+                className="bg-cream p-8 rounded-3xl shadow-lg"
+              >
+                <h3 className="font-georgia text-2xl text-brown mb-4">
+                  Choose Wegovy more often when:
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    "Weight loss plus cardiovascular protection is a priority",
+                    "You want a semaglutide step-up from Ozempic",
+                    "You have moderate obesity and established cardiovascular risk",
+                    "You want lower cost than Mounjaro in many cases",
+                  ].map((item, index) => (
+                    <li key={index} className="flex gap-3 items-start">
+                      <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                      <span className="text-brown font-inter">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                variants={scaleIn}
+                className="bg-cream p-8 rounded-3xl shadow-lg"
+              >
+                <h3 className="font-georgia text-2xl text-brown mb-4">
+                  Choose Mounjaro more often when:
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    "Maximum weight-loss percentage is the primary goal",
+                    "Starting weight is higher",
+                    "Insulin resistance is more significant",
+                    "You need a different mechanism after plateauing on semaglutide",
+                  ].map((item, index) => (
+                    <li key={index} className="flex gap-3 items-start">
+                      <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                      <span className="text-brown font-inter">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             </div>
           </div>
@@ -376,8 +532,8 @@ export default function PageWegovyMalaysia({
                 What results can you realistically expect?
               </h2>
               <p className="text-taupe font-inter text-lg">
-                Here is the honest answer: results vary, and the "wow" stories
-                online are not the standard.
+                Weight reduction is gradual, dose-dependent and strongly linked
+                to consistency with follow-up and lifestyle structure.
               </p>
             </motion.div>
 
@@ -387,30 +543,11 @@ export default function PageWegovyMalaysia({
                 className="bg-light p-8 rounded-3xl shadow-lg"
               >
                 <div className="text-5xl font-georgia text-wine mb-4">
-                  14.9%
+                  12-17%
                 </div>
                 <p className="text-brown font-inter">
-                  Average weight loss at 68 weeks with semaglutide in STEP 1
-                  clinical trial
-                </p>
-                <div className="mt-4 text-sm text-taupe">
-                  vs 2.4% with placebo
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={scaleIn}
-                className="bg-light p-8 rounded-3xl shadow-lg"
-              >
-                <h3 className="font-georgia text-2xl text-brown mb-4">
-                  When do people start noticing changes?
-                </h3>
-                <p className="text-brown font-inter">
-                  Many people notice appetite changes early. Visible weight
-                  changes often show up gradually over weeks, not days. A common
-                  pattern is steady loss, then a slower phase, then a plateau.
-                  Longer studies show weight loss tends to level off over time,
-                  which is normal.
+                  Expected average body-weight reduction over 68 weeks in STEP
+                  trials at Wegovy dosing.
                 </p>
               </motion.div>
 
@@ -419,22 +556,33 @@ export default function PageWegovyMalaysia({
                 className="bg-light p-8 rounded-3xl shadow-lg"
               >
                 <h3 className="font-georgia text-2xl text-brown mb-4">
-                  What happens if you stop Wegovy?
+                  Early timeline
                 </h3>
                 <p className="text-brown font-inter">
-                  Stopping often leads to weight regain for many people. In a
-                  well-known extension analysis, participants regained a
-                  significant portion of lost weight after stopping semaglutide.
-                  That does not mean you can never stop. It means weight care
-                  should be planned like long-term health care, not a short
-                  "challenge".
+                  Many patients feel appetite reduction within the first one to
+                  two weeks. Visible change often begins around weeks three to
+                  six and becomes stronger through the middle titration phases.
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={scaleIn}
+                className="bg-light p-8 rounded-3xl shadow-lg"
+              >
+                <h3 className="font-georgia text-2xl text-brown mb-4">
+                  If treatment stops
+                </h3>
+                <p className="text-brown font-inter">
+                  Clinical evidence shows that substantial weight regain can
+                  happen after stopping semaglutide without an exit plan. This
+                  is why tapering and maintenance planning matter.
                 </p>
               </motion.div>
             </div>
           </div>
         </motion.section>
 
-        {/* Your Journey at Nexus Clinic */}
+        {/* Dosage Timeline */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
@@ -442,14 +590,75 @@ export default function PageWegovyMalaysia({
           className="py-24 bg-light"
         >
           <div className="container mx-auto px-4 md:px-6">
-            <motion.div variants={fadeInUp} className="max-w-3xl mb-16">
+            <motion.div variants={fadeInUp} className="max-w-4xl mb-16">
               <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
-                Wegovy at Nexus Clinic Kuala Lumpur: what your journey can look
-                like
+                Wegovy dosage timeline: what to expect at each phase
               </h2>
               <p className="text-taupe font-inter text-lg">
-                At Nexus Clinic KL, the goal is simple: help you lose weight
-                safely while protecting your health.
+                Wegovy is titrated gradually from 0.25 mg to 2.4 mg over about
+                16 to 20 weeks to minimise GI side effects while building the
+                full appetite-suppression effect.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-5 gap-6">
+              {[
+                {
+                  title: "Phase 1",
+                  desc: "Weeks 1 to 4 at 0.25 mg. Appetite begins reducing and GI effects are most likely here.",
+                },
+                {
+                  title: "Phase 2",
+                  desc: "Weeks 5 to 8 at 0.5 mg. Food cravings reduce and visible weight change often starts.",
+                },
+                {
+                  title: "Phase 3",
+                  desc: "Weeks 9 to 12 at 1.0 mg. Appetite suppression strengthens and blood pressure or glucose may begin improving.",
+                },
+                {
+                  title: "Phase 4",
+                  desc: "Weeks 13 to 16 at 1.7 mg. Peak rate of weight loss for many patients.",
+                },
+                {
+                  title: "Phase 5",
+                  desc: "Week 17+ at 2.4 mg. Maintenance dose with long-term weight and cardiovascular benefit focus.",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInLeft}
+                  className="bg-cream p-6 rounded-2xl hover:shadow-xl transition-shadow"
+                >
+                  <div className="bg-wine text-light w-10 h-10 rounded-full flex items-center justify-center font-bold font-inter mb-4">
+                    {index + 1}
+                  </div>
+                  <h3 className="font-georgia text-xl text-brown mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-brown font-inter text-sm">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Journey at Nexus */}
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          className="py-24 bg-cream"
+        >
+          <div className="container mx-auto px-4 md:px-6">
+            <motion.div variants={fadeInUp} className="max-w-3xl mb-16">
+              <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
+                Wegovy at Nexus Clinic Kuala Lumpur: what your journey looks like
+              </h2>
+              <p className="text-taupe font-inter text-lg">
+                The programme is structured around safety, metabolic monitoring,
+                dose tolerance and long-term weight maintenance.
               </p>
             </motion.div>
 
@@ -457,30 +666,30 @@ export default function PageWegovyMalaysia({
               <div className="space-y-6">
                 {[
                   {
-                    step: "Step 1",
-                    title: "A real consultation, not a sales pitch",
-                    desc: "We start with your story. Not just your weight. Sleep, stress, cravings, work routine, past diets, medical history and current meds. Because the right plan is the one you can actually follow.",
+                    title: "Step 1: Doctor consultation and eligibility assessment",
+                    desc: "We review your health history, BMI, waist circumference, cardiovascular risk, medications and weight-loss history.",
                   },
                   {
-                    step: "Step 2",
-                    title: "Safety screening and suitability checks",
-                    desc: "Wegovy is a prescription medicine, so we focus on safety first. You may be advised on baseline checks depending on your risks and history.",
+                    title: "Step 2: Pre-treatment blood panel",
+                    desc: "HbA1c, fasting glucose, liver, kidney, thyroid and lipid markers are checked before prescription.",
                   },
                   {
-                    step: "Step 3",
-                    title: "A doctor-led dosing plan (slow and steady)",
-                    desc: "Wegovy is typically started at a low dose and increased gradually. Many guides describe stepping up about every 4 weeks until a maintenance dose is reached, based on response and tolerance.",
+                    title: "Step 3: Prescription, injection training and personalised plan",
+                    desc: "You receive a structured titration plan, injection guidance and dietary recommendations focused on protein-first eating.",
                   },
                   {
-                    step: "Step 4",
-                    title: "Follow-ups that keep you consistent",
-                    desc: "Most people do better with structure. Follow-ups help you manage side effects, adjust habits, and keep momentum when motivation dips.",
+                    title: "Step 4: Monthly reviews and cardiovascular monitoring",
+                    desc: "Weight, side effects, blood pressure, heart rate and metabolic progress are reviewed regularly.",
+                  },
+                  {
+                    title: "Step 5: Exit strategy and maintenance planning",
+                    desc: "Tapering or minimum-effective-dose planning is introduced for long-term stability.",
                   },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
                     variants={fadeInLeft}
-                    className="bg-cream p-6 rounded-2xl hover:shadow-xl transition-shadow"
+                    className="bg-light p-6 rounded-2xl hover:shadow-xl transition-shadow"
                   >
                     <div className="flex items-start gap-4">
                       <div className="bg-wine text-light w-10 h-10 rounded-full flex items-center justify-center font-bold font-inter">
@@ -502,17 +711,17 @@ export default function PageWegovyMalaysia({
               <motion.div variants={fadeInRight} className="space-y-6">
                 <div className="bg-rose/5 p-8 rounded-3xl">
                   <h3 className="font-georgia text-2xl text-brown mb-4 flex items-center gap-2">
-                    <Heart className="w-6 h-6 text-wine" />
-                    Areas we assess
+                    <Activity className="w-6 h-6 text-wine" />
+                    What the monthly review focuses on
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      "Sleep",
-                      "Stress",
-                      "Cravings",
-                      "Work routine",
-                      "Past diets",
-                      "Medical history",
+                      "Weight trend",
+                      "GI side effects",
+                      "Blood pressure",
+                      "Heart rate",
+                      "Dose tolerance",
+                      "Metabolic progress",
                     ].map((item, index) => (
                       <div key={index} className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 bg-wine rounded-full" />
@@ -523,20 +732,32 @@ export default function PageWegovyMalaysia({
                     ))}
                   </div>
                 </div>
+
+                <div className="bg-white p-8 rounded-3xl">
+                  <h3 className="font-georgia text-2xl text-brown mb-4 flex items-center gap-2">
+                    <Award className="w-6 h-6 text-wine" />
+                    Why this structure matters
+                  </h3>
+                  <p className="text-brown font-inter">
+                    Proper titration and monitoring reduce dropout risk, improve
+                    tolerability, and help patients build a plan that is more
+                    sustainable after the active treatment phase.
+                  </p>
+                </div>
               </motion.div>
             </div>
           </div>
         </motion.section>
 
-        {/* Before & After Section */}
+        {/* Before & After */}
         <SectionBeforeAfter transformations={transformations} />
 
-        {/* Side Effects Section */}
+        {/* Side Effects */}
         <motion.section
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="py-24 bg-cream"
+          className="py-24 bg-light"
         >
           <div className="container mx-auto px-4 md:px-6">
             <motion.div
@@ -544,69 +765,97 @@ export default function PageWegovyMalaysia({
               className="max-w-3xl mx-auto text-center mb-16"
             >
               <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
-                Side effects: what's common, what's serious, what to do
+                Side effects, safety and what to watch for
               </h2>
               <p className="text-taupe font-inter">
-                Most side effects are digestive and often improve over time.
-                Commonly reported effects include nausea, vomiting, diarrhea,
-                constipation, and stomach discomfort.
+                The most common side effects are gastrointestinal and
+                dose-dependent. They usually happen during early titration or
+                after dose increases.
               </p>
             </motion.div>
 
             <div className="grid lg:grid-cols-2 gap-12">
               <motion.div variants={fadeInLeft} className="space-y-6">
                 <h3 className="font-georgia text-2xl text-brown mb-4">
-                  Simple ways doctors often reduce side effects
+                  Common side effects
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { icon: Apple, text: "Slower eating" },
-                    { icon: Scale, text: "Smaller meals" },
-                    { icon: Leaf, text: "Higher protein and fibre" },
-                    { icon: Droplets, text: "Better hydration" },
-                    {
-                      icon: XCircle,
-                      text: "Avoid greasy, heavy meals during dose increases",
-                    },
+                    "Nausea",
+                    "Vomiting",
+                    "Diarrhoea",
+                    "Constipation",
+                    "Abdominal discomfort",
+                    "Temporary GI upset",
                   ].map((item, index) => (
                     <motion.div
                       key={index}
                       whileHover={{ scale: 1.05 }}
-                      className="bg-light p-4 rounded-2xl flex items-center gap-3"
+                      className="bg-cream p-4 rounded-2xl flex items-center gap-3"
                     >
-                      <item.icon className="w-5 h-5 text-wine" />
+                      <AlertCircle className="w-5 h-5 text-wine" />
                       <span className="text-brown font-inter text-sm">
-                        {item.text}
+                        {item}
                       </span>
                     </motion.div>
                   ))}
+                </div>
+
+                <div className="bg-cream p-6 rounded-2xl">
+                  <h3 className="font-georgia text-xl text-brown mb-3">
+                    Practical ways to reduce discomfort
+                  </h3>
+                  <ul className="space-y-2">
+                    {[
+                      "Eat smaller meals",
+                      "Avoid very rich or high-fat foods",
+                      "Stay hydrated",
+                      "Use slower dose escalation when clinically appropriate",
+                    ].map((item, index) => (
+                      <li key={index} className="flex gap-3 items-start">
+                        <ChevronRight className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                        <span className="text-brown font-inter text-sm">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
 
               <motion.div variants={fadeInRight} className="space-y-6">
                 <div className="bg-rose/10 p-6 rounded-2xl border-l-4 border-wine">
                   <h3 className="font-georgia text-xl text-brown mb-3">
-                    When to get medical help urgently
+                    More serious risks that need monitoring
                   </h3>
                   <p className="text-brown font-inter">
-                    Seek urgent medical care if you have severe symptoms that
-                    could suggest serious issues (your doctor will explain what
-                    to watch for). Wegovy prescribing safety information
-                    highlights serious risks and warning signs to discuss with a
-                    clinician.
+                    Pancreatitis, acute gallbladder disease, retinal changes in
+                    selected patients, thyroid-cancer contraindications, and
+                    pregnancy-related safety restrictions all require doctor
+                    oversight.
                   </p>
                 </div>
 
                 <div className="bg-wine/5 p-6 rounded-2xl">
                   <h3 className="font-georgia text-xl text-brown mb-3">
-                    Extra Malaysia-specific safety note (important)
+                    Malaysia-specific safety note
                   </h3>
                   <p className="text-brown font-inter">
-                    NPRA has published safety alerts discussing GLP-1 medicines
-                    (including semaglutide and tirzepatide) and the risk of
-                    aspiration during general anaesthesia or deep sedation. If
-                    you are planning surgery or sedation, tell your doctor and
-                    your anaesthetist.
+                    NPRA has highlighted aspiration risk with GLP-1 medicines
+                    during general anaesthesia or deep sedation. If you are
+                    planning surgery or a sedated procedure, your care team must
+                    know in advance.
+                  </p>
+                </div>
+
+                <div className="bg-cream p-6 rounded-2xl">
+                  <h3 className="font-georgia text-xl text-brown mb-3">
+                    Pregnancy planning
+                  </h3>
+                  <p className="text-brown font-inter">
+                    Wegovy should not be used during pregnancy, and patients
+                    planning pregnancy are typically advised to stop it at least
+                    two months beforehand.
                   </p>
                 </div>
               </motion.div>
@@ -619,25 +868,27 @@ export default function PageWegovyMalaysia({
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="py-24 bg-light"
+          className="py-24 bg-cream"
         >
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div variants={fadeInLeft} className="space-y-6">
                 <h2 className="font-georgia text-4xl md:text-5xl text-brown">
-                  Wegovy cost in Malaysia:{" "}
-                  <span className="text-wine">what affects the price?</span>
+                  Wegovy price in Malaysia:{" "}
+                  <span className="text-wine">what affects the cost?</span>
                 </h2>
 
                 <p className="text-brown font-inter">
-                  Wegovy pricing can vary based on:
+                  Wegovy is generally more expensive than Ozempic because of its
+                  higher dose formulation and dedicated weight-management
+                  indication.
                 </p>
 
                 <ul className="space-y-3">
                   {[
                     "dose stage (starter vs maintenance)",
-                    "supply and availability",
-                    "clinic support (monitoring, follow-ups, bundled programmes)",
+                    "individual monthly billing vs package structure",
+                    "consultation, bloodwork and monitoring included",
                   ].map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <ChevronRight className="w-5 h-5 text-wine" />
@@ -647,51 +898,58 @@ export default function PageWegovyMalaysia({
                 </ul>
 
                 <p className="text-brown font-inter">
-                  Online pharmacy listings in Malaysia show different prices by
-                  strength and packaging. For example, one Malaysia-based
-                  listing shows Wegovy pens at different RM price points
-                  depending on dose. Nexus Clinic Kuala Lumpur has also promoted
-                  Wegovy pricing on social posts (example: per-pen pricing and
-                  limited-time promos). If you want a "true cost" estimate, the
-                  best approach is a consultation because your dose and timeline
-                  depend on your tolerance and goals.
+                  At Nexus Clinic KL, a precise quote is given after doctor
+                  assessment and treatment planning, with transparent programme
+                  breakdown before commitment.
                 </p>
               </motion.div>
 
               <motion.div
                 variants={fadeInRight}
-                className="bg-cream p-8 rounded-3xl"
+                className="bg-light p-8 rounded-3xl"
               >
                 <h3 className="font-georgia text-2xl text-brown mb-6">
-                  Price Range Estimate
+                  2026 indicative pricing
                 </h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-4 border-b border-taupe/20">
-                    <span className="text-brown font-inter">Starter dose</span>
+                    <span className="text-brown font-inter">Starter pen</span>
                     <span className="text-wine font-georgia text-xl">
-                      RM X,XXX
+                      RM 1,100 - RM 1,350
                     </span>
                   </div>
                   <div className="flex justify-between items-center pb-4 border-b border-taupe/20">
                     <span className="text-brown font-inter">
-                      Maintenance dose
+                      Maintenance pen
                     </span>
                     <span className="text-wine font-georgia text-xl">
-                      RM X,XXX
+                      RM 1,250 - RM 1,600
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center pb-4 border-b border-taupe/20">
+                    <span className="text-brown font-inter">
+                      Monthly doctor review
+                    </span>
+                    <span className="text-wine font-georgia text-xl">
+                      RM 100 - RM 200
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center pb-4 border-b border-taupe/20">
+                    <span className="text-brown font-inter">3-month package</span>
+                    <span className="text-wine font-georgia text-xl">
+                      From RM 3,500
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-brown font-inter">
-                      Bundled programme
-                    </span>
+                    <span className="text-brown font-inter">6-month package</span>
                     <span className="text-wine font-georgia text-xl">
-                      Contact clinic
+                      From RM 6,800
                     </span>
                   </div>
                 </div>
                 <p className="text-sm text-taupe mt-6">
-                  *Prices are estimates. Actual cost depends on your specific
-                  treatment plan.
+                  *Indicative 2026 pricing. Final cost depends on dose, timing
+                  and personalised programme structure.
                 </p>
               </motion.div>
             </div>
@@ -703,7 +961,7 @@ export default function PageWegovyMalaysia({
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          className="py-24 bg-cream"
+          className="py-24 bg-light"
         >
           <div className="container mx-auto px-4 md:px-6">
             <motion.div
@@ -711,7 +969,7 @@ export default function PageWegovyMalaysia({
               className="max-w-3xl mx-auto text-center mb-16"
             >
               <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
-                Wegovy vs Ozempic vs Mounjaro: what is the difference?
+                Wegovy vs Ozempic vs Mounjaro
               </h2>
             </motion.div>
 
@@ -720,23 +978,23 @@ export default function PageWegovyMalaysia({
                 {
                   title: "Wegovy vs Ozempic",
                   content:
-                    "Both use semaglutide, but they are not the same product or purpose. Ozempic is commonly associated with type 2 diabetes management, while Wegovy is designed and dosed for chronic weight management.",
+                    "Both use semaglutide, but Wegovy is built and approved for chronic weight management at a higher dose, while Ozempic is primarily a diabetes medication.",
                 },
                 {
                   title: "Wegovy vs Mounjaro",
                   content:
-                    "Mounjaro (tirzepatide) works on two hormone pathways (GIP and GLP-1), while Wegovy targets GLP-1. Some trials show higher average weight loss with tirzepatide, but suitability, side effects, cost, and availability matter.",
+                    "Mounjaro usually produces higher average weight-loss percentages, but Wegovy has the unique advantage of cardiovascular outcome data for heart-risk reduction.",
                 },
                 {
-                  title: "Wegovy vs 'fat freezing'",
+                  title: "Wegovy and body contouring",
                   content:
-                    "If your main issue is stubborn pockets (lower belly pooch, love handles, bra bulge), fat freezing may be a better fit. If your issue is overall appetite, portion control, and steady weight gain, Wegovy may be more relevant. Many people do best with a combined plan: medical weight management first, then contouring for shape.",
+                    "Wegovy helps with overall weight reduction. If residual localised fat remains after medical weight loss, body contouring like fat freezing or CoolSculpting may become the next step.",
                 },
               ].map((item, index) => (
                 <motion.div
                   key={index}
                   variants={scaleIn}
-                  className="bg-light p-8 rounded-3xl shadow-lg"
+                  className="bg-cream p-8 rounded-3xl shadow-lg"
                 >
                   <h3 className="font-georgia text-2xl text-brown mb-4">
                     {item.title}
@@ -751,108 +1009,20 @@ export default function PageWegovyMalaysia({
               className="mt-12 p-8 bg-white/50 rounded-3xl"
             >
               <h3 className="font-georgia text-2xl text-brown mb-4">
-                Areas people commonly want help with
+                Areas patients often ask about
               </h3>
               <p className="text-brown font-inter mb-4">
-                Wegovy supports whole-body weight loss. That said, in real life,
-                people often ask about: belly fat and waistline, thighs, upper
-                arms, back fat, face changes.
+                Wegovy supports whole-body fat reduction rather than spot
+                reduction. Patients commonly ask about waistline, belly, thighs,
+                arms, back fat and facial changes as weight comes down.
               </p>
               <p className="text-brown font-inter">
-                Your body decides where it loses fat first. A doctor can help
-                you plan for realistic body composition changes over time.
+                Where fat reduces first is individual. The right plan focuses on
+                overall metabolic improvement first, then refinement if needed.
               </p>
             </motion.div>
           </div>
         </motion.section>
-
-        {/* Competitor Analysis Section */}
-        {/* <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="py-24 bg-light"
-        >
-          <div className="container mx-auto px-4 md:px-6">
-            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-              <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-8 text-center">
-                "Top competitors" on Google in Malaysia: what they do well (and
-                where they fall short)
-              </h2>
-
-              <div className="bg-cream p-8 rounded-3xl mb-8">
-                <p className="text-brown font-inter mb-4">
-                  Based on commonly surfaced pages for queries like "Wegovy
-                  Malaysia" and "Wegovy Kuala Lumpur", you will see clinics and
-                  platforms such as:
-                </p>
-                <ul className="grid grid-cols-2 gap-3 mb-6">
-                  {[
-                    "CLEO Clinic",
-                    "Alainn Clinic",
-                    "PULSE Clinic",
-                    "Klinik Sentosa",
-                    "Online pharmacy listings",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-wine rounded-full" />
-                      <span className="text-brown font-inter">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-rose/5 p-6 rounded-2xl">
-                  <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
-                    <XCircle className="w-5 h-5 text-wine" />
-                    What most competitor pages miss
-                  </h3>
-                  <ul className="space-y-2">
-                    <li className="text-brown font-inter text-sm">
-                      • talk about benefits, but skip clear "who it is for"
-                      safety screening
-                    </li>
-                    <li className="text-brown font-inter text-sm">
-                      • mention results, but do not explain plateaus or regain
-                      risks
-                    </li>
-                    <li className="text-brown font-inter text-sm">
-                      • do not clearly address Malaysia safety alerts and
-                      sedation planning
-                    </li>
-                    <li className="text-brown font-inter text-sm">
-                      • do not explain what happens if side effects hit at
-                      higher doses
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-wine/5 p-6 rounded-2xl">
-                  <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
-                    <Award className="w-5 h-5 text-wine" />
-                    How Nexus Clinic KL positions differently
-                  </h3>
-                  <ul className="space-y-2">
-                    <li className="text-brown font-inter text-sm">
-                      ✓ doctor-led safety and patient selection
-                    </li>
-                    <li className="text-brown font-inter text-sm">
-                      ✓ structured follow-ups and habit support
-                    </li>
-                    <li className="text-brown font-inter text-sm">
-                      ✓ realistic expectations backed by clinical evidence
-                    </li>
-                    <li className="text-brown font-inter text-sm">
-                      ✓ clear guidance around NPRA safety alerts and surgery
-                      planning
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.section> */}
 
         {/* FAQ Section */}
         <FAQ data={faqs} />
@@ -872,20 +1042,19 @@ export default function PageWegovyMalaysia({
               className="max-w-3xl mx-auto text-center"
             >
               <h2 className="font-georgia text-4xl md:text-5xl text-light mb-6">
-                Ready to make weight loss feel more manageable?
+                Ready to start a doctor-led Wegovy programme?
               </h2>
               <p className="text-cream font-inter text-lg mb-8">
-                If you want a medically supervised Wegovy weight loss plan in
-                Kuala Lumpur, book a consultation with Nexus Clinic KL and get a
-                personalised roadmap that prioritises safety, consistency, and
-                real-life routines.
+                If you want medically supervised Wegovy treatment in Kuala
+                Lumpur, Nexus Clinic KL can guide you through screening,
+                titration, monitoring and long-term maintenance planning.
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-light text-wine px-10 py-5 rounded-full font-inter font-medium text-lg hover:bg-cream transition-colors shadow-2xl"
               >
-                Book Your Consultation Today
+                Book Free Assessment
               </motion.button>
             </motion.div>
           </div>
