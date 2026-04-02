@@ -1,59 +1,20 @@
 "use client";
 import { motion } from "framer-motion";
+import SocialIcons from "@/src/components/SocialIcons";
 import {
   Sparkles,
-  Award,
   MapPin,
-  Calendar,
-  CheckCircle,
   Clock,
   Heart,
   Shield,
   ArrowRight,
-  Zap,
-  Droplet,
   Target,
-  ChevronRight,
   Phone,
-  Users,
-  Flame,
-  HelpCircle,
-  EyeOff,
-  Gem,
-  Feather,
-  Wind,
-  Activity,
-  Syringe,
-  Pill,
-  Brain,
-  Droplets,
-  Scan,
-  Weight,
-  Thermometer,
-  Snowflake,
-  AlertCircle,
-  TrendingUp,
-  BarChart3,
-  Star,
   Quote,
-  Play,
-  Stethoscope,
   Smile,
-  ThumbsUp,
-  Globe,
-  Instagram,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Mail,
-  MessageCircle,
-  Home,
   Building2,
   BadgeCheck,
-  Leaf,
-  Trophy,
   Briefcase,
-  GraduationCap,
 } from "lucide-react";
 import {
   staggerContainer,
@@ -739,16 +700,8 @@ export default function AboutUs() {
             for face, skin, hair, and weight loss. We focus on clear diagnosis, natural-looking outcomes, and treatment 
             plans built around long-term confidence and wellbeing.
           </p>
-          <div className="flex items-center justify-center gap-6 mt-6">
-            <a href="#" className="text-cream/50 hover:text-cream transition-colors">
-              <Facebook size={18} />
-            </a>
-            <a href="#" className="text-cream/50 hover:text-cream transition-colors">
-              <Instagram size={18} />
-            </a>
-            <a href="#" className="text-cream/50 hover:text-cream transition-colors">
-              <MessageCircle size={18} />
-            </a>
+          <div className="flex justify-center mt-6">
+            <SocialIcons variant="dark" iconSize={20} showTooltip={true} />
           </div>
         </motion.div>
       </section>

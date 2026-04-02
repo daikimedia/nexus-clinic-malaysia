@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
+import SocialIcons from "@/src/components/SocialIcons";
 
 export const Footer = ({ locale }: { locale?: string }) => {
   const { t, i18n } = useTranslation();
@@ -137,7 +138,9 @@ export const Footer = ({ locale }: { locale?: string }) => {
                 </a>
               </li>
             </ul>
+            <SocialIcons variant="light" iconSize={18} />
           </div>
+          
         </div>
 
         {/* Bottom Bar */}

@@ -650,7 +650,7 @@ const Navbar = ({ locale }: { locale?: string }) => {
               exit={{ opacity: 0, height: 0 }}
               className="hidden lg:block bg-brown text-light/90 text-xs"
             >
-              <div className="max-w-7xl mx-auto px-6 lg:px-8">
+              <div className="max-w-5xl mx-auto px-6 lg:px-8 p">
                 <div className="flex items-center justify-between py-2">
                   <div className="flex items-center gap-6">
                     <a
