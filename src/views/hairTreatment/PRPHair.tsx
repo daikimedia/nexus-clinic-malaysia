@@ -1,41 +1,92 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
-  Clock,
+  Sparkles,
+  Award,
   MapPin,
   Calendar,
-  Mail,
-  ChevronRight,
-  Activity,
-  Award,
+  CheckCircle,
+  Clock,
   Heart,
-  Target,
-  CheckCircle2,
+  Shield,
+  ArrowRight,
   AlertCircle,
+  Activity,
   Zap,
-  Sun,
-  Minus,
-  User,
+  Eye,
+  AlertTriangle,
+  Droplet,
+  TrendingUp,
+  DollarSign,
   Layers,
-  LineChart,
-  Maximize2,
-  Flame,
+  Users,
+  Target,
+  Syringe,
+  Thermometer,
 } from "lucide-react";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
-  scaleIn,
   fadeInUp,
+  scaleIn,
 } from "../../lib/animations";
 import FAQ from "../../components/FAQ";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const PRPLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "hair/prpHair");
+interface PRPHairTreatmentProps {
+  locale: string;
+}
+
+export default function PRPLandingPage({ locale }: PRPHairTreatmentProps) {
+  const prpComparison = [
+    { type: "Standard PRP", concentration: "1.5x to 3x baseline", density: "Moderate", application: "General scalp health maintenance and mild hair thinning" },
+    { type: "High-Concentration PRP", concentration: "3x to 5x baseline", density: "High", application: "Androgenetic alopecia, moderate hair loss, post-transplant support" },
+    { type: "Pure PRP (Leucocyte-poor)", concentration: "4x to 6x baseline", density: "Very High", application: "Sensitive scalp applications, facial skin rejuvenation, acne scar treatment" },
+    { type: "Activated PRP (Calcium Chloride)", concentration: "Variable", density: "Maximised", application: "Dormant hair follicle reactivation, combined laser and PRP protocols" },
+  ];
+
+  const combinationTreatments = [
+    { combination: "PRP + Minoxidil", mechanism: "PRP reactivates dormant follicles; minoxidil increases scalp blood flow simultaneously", bestFor: "Early-stage androgenetic alopecia in both men and women" },
+    { combination: "PRP + Finasteride", mechanism: "PRP addresses follicle health from outside; finasteride blocks DHT causing internal follicle damage", bestFor: "Male pattern hair loss with active miniaturisation" },
+    { combination: "PRP + Low-Level Laser Therapy", mechanism: "Laser activates follicles through photobiomodulation; PRP delivers growth factors at the same session", bestFor: "Accelerated regrowth, plateau-stage hair loss, post-PRP maintenance" },
+    { combination: "PRP + FUE Hair Transplant", mechanism: "PRP injected at transplant site improves graft survival and accelerates new hair growth post-surgery", bestFor: "Post-transplant healing, maximising graft integration success rate" },
+    { combination: "PRP + Mesotherapy", mechanism: "Mesotherapy delivers nutrient cocktail; PRP adds concentrated growth factors for synergistic scalp stimulation", bestFor: "Diffuse hair thinning with scalp nutrient deficiency component" },
+    { combination: "PRP + Exosome Therapy", mechanism: "Exosomes deliver cellular signalling molecules; PRP provides growth factor concentration for dual cellular repair", bestFor: "Advanced hair thinning, post-transplant, or patients wanting maximum regenerative effect" },
+  ];
+
+  const aestheticApplications = [
+    { application: "Hair Loss Treatment", whatItDoes: "Reactivates dormant hair follicles, improves hair density and thickness, strengthens existing follicles", sessions: "4 to 6 sessions, then quarterly maintenance" },
+    { application: "Acne Scar Treatment", whatItDoes: "Collagen stimulation fills depressed scars, reduces redness, improves skin texture from within", sessions: "3 to 5 sessions, 4 to 6 weeks apart" },
+    { application: "Facial Skin Rejuvenation", whatItDoes: "Promotes new collagen production, improves skin elasticity, reduces appearance of fine wrinkle lines", sessions: "3 to 4 sessions, then twice-yearly maintenance" },
+    { application: "Under-Eye and Thin Skin", whatItDoes: "Thickens thin under-eye skin, reduces hollowing, improves skin quality in delicate areas", sessions: "2 to 4 sessions depending on degree of concern" },
+    { application: "Post-Surgical Scar Reduction", whatItDoes: "Accelerates healing, reduces scar formation, improves skin quality at incision sites", sessions: "3 sessions starting from 6 to 8 weeks post-surgery" },
+  ];
+
+  const pricingTiers = [
+    { treatment: "PRP Hair Treatment (Standard)", sessionType: "Per session", price: "RM 800 to RM 1,500" },
+    { treatment: "PRP Hair Treatment (High-Concentration)", sessionType: "Per session", price: "RM 1,200 to RM 2,000" },
+    { treatment: "PRP Hair Package (4 sessions)", sessionType: "Package rate", price: "RM 2,800 to RM 5,500" },
+    { treatment: "PRP Hair Package (6 sessions)", sessionType: "Package rate", price: "RM 4,200 to RM 8,000" },
+    { treatment: "PRP Facial Skin Rejuvenation", sessionType: "Per session", price: "RM 800 to RM 1,500" },
+    { treatment: "PRP Acne Scar Treatment", sessionType: "Per session", price: "RM 900 to RM 1,600" },
+    { treatment: "Combined PRP + Laser Session", sessionType: "Per combined session", price: "RM 1,200 to RM 2,500" },
+  ];
+
+  const faqData = [
+    { q: "How does PRP therapy stop hair loss and stimulate regrowth?", a: "PRP therapy delivers a concentrated dose of your own growth factors directly to the scalp. These growth factors activate the stem cells in the dermal papilla of the hair follicle, extend the anagen (growth) phase of the hair cycle, and improve blood supply to the follicle. Follicles that have been miniaturised by DHT begin producing thicker, longer hairs, and follicles that have been suppressed into a dormant phase are reactivated to produce new hair growth. The treatment also reduces the scalp inflammation that accelerates follicle miniaturisation in androgenetic alopecia." },
+    { q: "How many PRP hair treatment sessions do I need?", a: "Most patients require four to six sessions spaced four to six weeks apart for the initial course. This is followed by maintenance treatments every three to six months depending on hair loss severity and individual response. Patients with mild to moderate hair thinning often see substantial improvement within three to four sessions. Those with more significant hair loss may need the full six-session course and quarterly maintenance to sustain results. Your doctor at Nexus Clinic KL will personalise the session schedule based on your scalp condition and treatment response." },
+    { q: "Is PRP hair treatment painful?", a: "Most patients at Nexus Clinic KL report that PRP hair injections involve mild discomfort comparable to small pinprick sensations at each injection point. The level of discomfort is generally well tolerated without anaesthesia. For patients who prefer additional comfort, a topical numbing cream is applied to the scalp for twenty minutes before the injections begin. The injection session itself typically takes fifteen to twenty minutes, after which any scalp sensitivity resolves quickly." },
+    { q: "Can PRP be combined with minoxidil or finasteride?", a: "Yes, and combining PRP with medical treatments generally produces better outcomes than either approach alone. Minoxidil increases scalp blood flow and prolongs the anagen phase independently of PRP, creating a synergistic environment for follicle recovery. Finasteride blocks DHT at the hormonal level, addressing the root cause of androgenetic alopecia while PRP addresses the current follicle health status. Your doctor will review your current medications and recommend which combination best matches your hair loss pattern." },
+    { q: "How soon will I see results from PRP hair treatment?", a: "Most patients notice a reduction in daily hair shedding within four to six weeks of their first session. This is the first indicator that the treatment is working. Visible improvement in hair density and thickness typically becomes noticeable after three to four sessions, usually at three to four months from the start of treatment. The full benefit of a complete treatment course is visible at six months. Hair growth improvements continue to develop gradually, so the final assessment is best made at twelve months from the start of the programme rather than after a single session." },
+    { q: "Does PRP treatment work for both men and women?", a: "Yes. PRP hair therapy is evidence-based for androgenetic alopecia in both male and female patients. Women with postpartum hair shedding, diffuse hair thinning, or early-stage pattern hair loss respond particularly well to PRP because their hair loss is typically less advanced than male pattern baldness and more follicles remain viable. Men with Norwood Stage 1 to 4 hair loss show the most consistent clinical response. Patients with fully bald scalps where follicles have been permanently lost do not respond to PRP because there are no viable follicles remaining to reactivate." },
+    { q: "Can PRP be used for skin care as well as hair loss?", a: "Yes. PRP treatment uses the same concentrated growth factor preparation for both hair and skin applications. For skin care, PRP is injected into targeted areas to promote collagen production, improve skin texture, reduce the appearance of acne scars, and soften fine lines and wrinkle formation. The treatment rejuvenates skin from within by activating the skin's own repair mechanisms. At Nexus Clinic KL, combined hair and skin PRP sessions can be arranged for patients who want to address both concerns in a single clinic visit." },
+    { q: "Are there any side effects from PRP hair treatment?", a: "Because PRP uses the patient's own blood, the risk of allergic reactions is essentially zero. The most common side effects are mild redness and minor swelling or tenderness at the injection sites, which typically subsides within a few hours to twenty-four hours for most patients. Occasional mild headache or scalp sensitivity on the day of treatment resolves without intervention. Bruising at the injection sites is uncommon but possible. Infection risk is negligible when the procedure is performed in a licensed clinic using sterile technique. Patients on blood-thinning medications should disclose this at consultation as it may affect suitability for the procedure." },
+    { q: "Is PRP hair therapy a permanent solution to hair loss?", a: "PRP is not a permanent cure for androgenetic alopecia because the underlying genetic predisposition to hair loss continues. However, regular PRP maintenance sessions can significantly slow the progression of pattern hair loss and sustain the improvements in hair density and scalp health achieved during the initial treatment course. Patients who combine PRP with medical treatments like minoxidil and finasteride experience more sustained results because the medical treatments address the hormonal cause while PRP maintains follicle health. For permanent hair restoration in areas that have already become bald, a hair transplant remains the only surgical solution." },
+    { q: "How do I know if I am a good candidate for PRP hair therapy?", a: "The ideal candidate for PRP hair therapy is a patient with early to moderate hair thinning where viable hair follicles are still present but underperforming. Patients with androgenetic alopecia at Norwood Stage 1 to 4 in men and Ludwig Stage 1 to 2 in women are the most responsive. Patients with alopecia areata, postpartum shedding, or stress-related hair loss also benefit from PRP. Patients who are not suitable include those who are pregnant or breastfeeding, patients with platelet disorders or clotting conditions, patients with active scalp infections, and heavy smokers whose platelet function may be significantly impaired. A scalp assessment at Nexus Clinic KL will confirm your suitability and provide a personalised treatment plan." },
+  ];
 
   const transformations = [
     {
@@ -55,1267 +106,668 @@ const PRPLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  const faqs = [];
   return (
     <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-linear-to-b from-light to-cream"
-      >
-        {/* Glass overlay */}
-        <div className="absolute inset-0 bg-glass backdrop-blur-[2px]" />
-
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <motion.div variants={fadeInUp} className="mb-8">
-            <span className="inline-block px-6 py-3 bg-rose/10 rounded-full text-rose font-inter text-sm tracking-wide mb-6">
-              PRP Hair Treatment in Malaysia
-            </span>
-          </motion.div>
-
-          <motion.h1
-            variants={fadeInUp}
-            className="font-georgia text-5xl md:text-7xl text-brown mb-6 leading-tight"
-          >
-            Thinning hair?
-            <br />
-            <span className="text-wine">
-              Let's wake up your follicles again.
-            </span>
-          </motion.h1>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-xl text-taupe max-w-3xl mx-auto mb-12 leading-relaxed"
-          >
-            Grow stronger hair with your own platelets at Nexus Clinic Kuala
-            Lumpur
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-lg text-brown max-w-3xl mx-auto mb-12 leading-relaxed"
-          >
-            PRP hair treatment uses your own blood platelets to support thicker
-            growth. It is a doctor-guided option for early hair thinning in
-            Kuala Lumpur.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-wrap gap-6 justify-center mb-16"
-          >
-            <button className="group bg-wine hover:bg-rose text-light px-8 py-4 rounded-full font-inter font-medium transition-all duration-300 flex items-center gap-2">
-              Schedule Your Consultation
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border-2 border-wine text-wine hover:bg-wine hover:text-light px-8 py-4 rounded-full font-inter font-medium transition-all duration-300">
-              Learn More About PRP
-            </button>
-          </motion.div>
-
-          {/* Trust Section */}
-          <motion.div
-            variants={fadeInUp}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
-          >
-            {[
-              {
-                icon: MapPin,
-                text: "Central KL location (Wisma UOA II, Jalan Pinang)",
-              },
-              { icon: Calendar, text: "Established clinic (founded in 2001)" },
-              {
-                icon: Clock,
-                text: "Consultations scheduled with Nexus doctors",
-              },
-              {
-                icon: Mail,
-                text: "Easy booking via contact form, phone, or email",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                whileHover={{ y: -5 }}
-                className="bg-glass backdrop-blur-sm rounded-2xl p-6 border border-cream"
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Natural • Non-Surgical • Doctor-Performed</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
               >
-                <item.icon className="w-6 h-6 text-wine mb-3" />
-                <p className="font-inter text-sm text-brown">{item.text}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+                PRP Hair Treatment in Malaysia for{" "}
+                <span className="text-wine italic">Hair Loss, Scalp Health and Skin Rejuvenation</span>
+              </motion.h1>
 
-          {/* Quick Answers */}
-          <motion.div
-            variants={fadeInUp}
-            className="mt-20 bg-white/50 backdrop-blur-sm rounded-3xl p-8 border border-cream"
-          >
-            <h2 className="font-georgia text-2xl text-brown mb-8">
-              Quick answers most people want first
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <motion.div variants={scaleIn} className="text-left">
-                <h3 className="font-inter font-semibold text-wine mb-2">
-                  Does PRP work for hair loss?
-                </h3>
-                <p className="font-inter text-sm text-taupe">
-                  It can help many people with thinning hair, but results vary.
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Hair loss responds to your own biology better than to any synthetic drug. PRP therapy harnesses this principle directly: a small blood sample is drawn, processed to concentrate platelets and growth factors, and injected into the scalp.
+              </motion.p>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                At Nexus Clinic KL, PRP hair treatment is delivered as a personalised treatment programme within a fully licensed aesthetic clinic setting, with doctor-administered injections and a structured session schedule matched to your hair loss pattern and severity.
+              </motion.p>
+
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  PRP uses your own blood, making allergic reactions essentially impossible. It is a completely natural, non-surgical approach that stops hair shedding and promotes new hair growth in patients at early to moderate stages of hair loss.
                 </p>
               </motion.div>
-              <motion.div variants={scaleIn} className="text-left">
-                <h3 className="font-inter font-semibold text-wine mb-2">
-                  When will I see results?
-                </h3>
-                <p className="font-inter text-sm text-taupe">
-                  Many people notice less shedding first, then visible growth in
-                  a few months.
-                </p>
-              </motion.div>
-              <motion.div variants={scaleIn} className="text-left">
-                <h3 className="font-inter font-semibold text-wine mb-2">
-                  How many sessions?
-                </h3>
-                <p className="font-inter text-sm text-taupe">
-                  A common plan is monthly sessions for 3 months, then boosters.
-                </p>
-              </motion.div>
-              <motion.div variants={scaleIn} className="text-left">
-                <h3 className="font-inter font-semibold text-wine mb-2">
-                  Cost in Malaysia?
-                </h3>
-                <p className="font-inter text-sm text-taupe">
-                  PRP sessions are often priced per session, and can vary by
-                  clinic and add-ons.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Key Positioning Points Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-16 bg-cream"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            <motion.div
-              variants={scaleIn}
-              className="bg-light rounded-2xl p-6 shadow-sm"
-            >
-              <Heart className="w-8 h-8 text-wine mb-3" />
-              <p className="font-inter text-brown">
-                They position PRP as "natural" because it uses your own blood
-                components.
-              </p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-light rounded-2xl p-6 shadow-sm"
-            >
-              <Target className="w-8 h-8 text-wine mb-3" />
-              <p className="font-inter text-brown">
-                They target early hair thinning more than full bald areas.
-              </p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-light rounded-2xl p-6 shadow-sm"
-            >
-              <Layers className="w-8 h-8 text-wine mb-3" />
-              <p className="font-inter text-brown">
-                They show simple steps: blood draw, spin, inject.
-              </p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-light rounded-2xl p-6 shadow-sm"
-            >
-              <Zap className="w-8 h-8 text-wine mb-3" />
-              <p className="font-inter text-brown">
-                They combine treatments like PRP plus microneedling or laser to
-                boost results.
-              </p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-light rounded-2xl p-6 shadow-sm"
-            >
-              <Clock className="w-8 h-8 text-wine mb-3" />
-              <p className="font-inter text-brown">
-                They set expectations: improvements often show after 3 to 6
-                months, not overnight.
-              </p>
-            </motion.div>
-          </div>
-          <motion.p
-            variants={fadeInUp}
-            className="mt-8 font-inter text-brown text-center"
-          >
-            At Nexus Clinic Kuala Lumpur, the goal is the same: keep it medical,
-            keep it clear, and build a plan that fits your hair pattern and
-            lifestyle.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* What is PRP Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="relative px-4 py-24 bg-linear-to-b from-cream to-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-16">
-            <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
-              What is PRP hair treatment?
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <p className="font-inter text-lg text-taupe leading-relaxed">
-                PRP means platelet-rich plasma. Platelets are tiny parts of your
-                blood that carry growth factors. In PRP hair treatment, we take
-                a small blood sample, concentrate the platelets, then inject
-                that PRP into thinning areas of the scalp.
-              </p>
-              <p className="font-inter text-lg text-taupe leading-relaxed">
-                Think of it as giving your scalp a targeted "signal" to support
-                healthier follicles and a stronger growth phase. The science is
-                still evolving, and results are not guaranteed, but many studies
-                and reviews show PRP can improve hair density in androgenetic
-                alopecia (male and female pattern hair loss).
-              </p>
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Free Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in PRP hair treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                <img
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
                   src="/images/hair/prp-hair-treatment.webp"
-                  alt="PRP Hair Treatment Procedure at Nexus Clinic Kuala Lumpur"
-                  className="w-full h-full object-cover"
+                  alt="Nexus Clinic Kuala Lumpur - PRP Hair Treatment"
+                  fill
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-wine text-light p-6 rounded-2xl shadow-xl">
-                <p className="font-georgia text-sm">Natural treatment</p>
-                <p className="font-georgia text-2xl font-bold">
-                  Using your own platelets
-                </p>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">Natural Growth Factors</p>
+                <p className="font-inter text-sm text-taupe">Your own platelets, concentrated</p>
               </div>
             </motion.div>
           </div>
+        </motion.div>
+      </section>
 
-          {/* How PRP may help */}
-          <motion.div variants={fadeInUp} className="mt-16">
-            <h3 className="font-georgia text-2xl text-brown mb-6">
-              How PRP may help with hair growth (simple explanation)
-            </h3>
-            <p className="font-inter text-taupe mb-4">
-              Hair grows in cycles. Some follicles stay in the growth phase
-              longer. Some switch to shedding earlier.
-            </p>
-            <p className="font-inter text-taupe mb-4">
-              PRP contains growth factors that may:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-              <motion.div
-                variants={scaleIn}
-                className="bg-glass backdrop-blur-sm rounded-xl p-6"
-              >
-                <p className="font-inter text-brown">
-                  1 support the hair growth phase
-                </p>
-              </motion.div>
-              <motion.div
-                variants={scaleIn}
-                className="bg-glass backdrop-blur-sm rounded-xl p-6"
-              >
-                <p className="font-inter text-brown">
-                  1 improve the environment around the follicle
-                </p>
-              </motion.div>
-              <motion.div
-                variants={scaleIn}
-                className="bg-glass backdrop-blur-sm rounded-xl p-6"
-              >
-                <p className="font-inter text-brown">
-                  1 help weak follicles produce thicker strands over time
-                </p>
-              </motion.div>
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
+              </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
             </div>
-            <p className="font-inter text-taupe mt-6">
-              This is why PRP is usually best for thinning hair, not a shiny
-              bald scalp with no active follicles.
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Over 15 Years</p>
+                  <p className="font-inter text-taupe text-xs">Combined clinical experience</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH Licensed</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Ministry of Health Malaysia licensed clinic</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Doctor-Performed</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Qualified doctor administers every session</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Extensive experience in PRP therapy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Natural, No Allergic Reaction Risk</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">4 to 6 Sessions for Initial Course</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Hair + Skin Applications</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">PRP Hair Treatment at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Platelet-rich plasma therapy for hair restoration</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Syringe, label: "Session Duration", value: "45 to 60 minutes per session" },
+              { icon: Heart, label: "Downtime", value: "Minimal. Redness subsides within hours." },
+              { icon: Clock, label: "Treatment Frequency", value: "4 to 6 sessions, 4 to 6 weeks apart" },
+              { icon: TrendingUp, label: "Visible Results", value: "3 to 6 months after starting" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Source</p>
+                <p className="font-georgia text-brown font-semibold">Patient's own blood. Completely natural.</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Suitable For</p>
+                <p className="font-georgia text-brown font-semibold">Hair thinning, androgenetic alopecia, postpartum shedding</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Also Used For</p>
+                <p className="font-georgia text-brown">Facial skin care: acne scars, wrinkle reduction, rejuvenation</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Consultation</p>
+                <p className="font-georgia text-brown">Complimentary at Nexus Clinic KL</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About PRP Therapy | Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* PRP Quality and Concentration Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PRP Quality and Platelet Concentration</h2>
+            <p className="text-taupe font-inter">Understanding the difference in treatment outcomes</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">PRP Type</th>
+                  <th className="p-4 text-left font-georgia">Platelet Concentration</th>
+                  <th className="p-4 text-left font-georgia">Growth Factor Density</th>
+                  <th className="p-4 text-left font-georgia">Best Application</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prpComparison.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.type}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.concentration}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.density}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.application}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              Not all PRP treatments deliver the same clinical result. The therapeutic effect depends directly on the concentration of platelets in the final preparation. At Nexus Clinic KL, the PRP preparation protocol is calibrated to deliver therapeutically meaningful platelet concentrations for each application.
             </p>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Who PRP hair treatment is for */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-16">
-            <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
-              Who PRP hair treatment is for
-            </h2>
+      {/* Combination Treatments Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PRP in Combination with Other Treatments</h2>
+            <p className="text-taupe font-inter">Enhanced results through multi-modal approach</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Combined Treatment</th>
+                  <th className="p-4 text-left font-georgia">How They Work Together</th>
+                  <th className="p-4 text-left font-georgia">Best For</th>
+                </tr>
+              </thead>
+              <tbody>
+                {combinationTreatments.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.combination}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.bestFor}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* PRP Aesthetic Applications Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PRP Aesthetic Applications</h2>
+            <p className="text-taupe font-inter">Beyond hair loss: skin rejuvenation and scar treatment</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Aesthetic Application</th>
+                  <th className="p-4 text-left font-georgia">What PRP Does</th>
+                  <th className="p-4 text-left font-georgia">Typical Sessions Needed</th>
+                </tr>
+              </thead>
+              <tbody>
+                {aestheticApplications.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.application}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.whatItDoes}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.sessions}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* PRP Treatment Results Timeline Slider Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">PRP Hair Treatment Results Timeline</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">What to expect and when to see results</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
             <motion.div
               variants={fadeInLeft}
-              className="bg-cream rounded-3xl p-8"
+              className="bg-light p-8 rounded-2xl border border-taupe/20 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <h3 className="font-georgia text-2xl text-wine mb-6 flex items-center gap-2">
-                <CheckCircle2 className="w-6 h-6" />
-                PRP hair treatment in Kuala Lumpur can be a good fit if you:
-              </h3>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">Factors Affecting Response</h3>
+              </div>
               <ul className="space-y-4">
-                <motion.li
-                  variants={fadeInUp}
-                  className="flex items-start gap-3 font-inter text-brown"
-                >
-                  <span className="text-wine mt-1">•</span>
-                  notice gradual thinning at the crown or part line
-                </motion.li>
-                <motion.li
-                  variants={fadeInUp}
-                  className="flex items-start gap-3 font-inter text-brown"
-                >
-                  <span className="text-wine mt-1">•</span>
-                  see a widening hair part or weaker ponytail volume
-                </motion.li>
-                <motion.li
-                  variants={fadeInUp}
-                  className="flex items-start gap-3 font-inter text-brown"
-                >
-                  <span className="text-wine mt-1">•</span>
-                  have early male or female pattern hair loss
-                </motion.li>
-                <motion.li
-                  variants={fadeInUp}
-                  className="flex items-start gap-3 font-inter text-brown"
-                >
-                  <span className="text-wine mt-1">•</span>
-                  want a non-surgical hair restoration option
-                </motion.li>
-                <motion.li
-                  variants={fadeInUp}
-                  className="flex items-start gap-3 font-inter text-brown"
-                >
-                  <span className="text-wine mt-1">•</span>
-                  want to support results after a hair transplant
-                </motion.li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Individual healing response and biology</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>PRP concentration (standard vs high-concentration)</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Underlying cause of hair loss (androgenetic vs telogen effluvium)</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Consistency with treatment schedule</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Combination with medical treatments (minoxidil, finasteride)</span>
+                </li>
               </ul>
+              <div className="mt-8 p-4 bg-wine/5 rounded-xl">
+                <p className="text-brown font-inter text-sm text-center">
+                  Most patients notice reduced shedding within 4 to 6 weeks. Visible improvement in density typically becomes noticeable after 3 to 4 sessions.
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
               variants={fadeInRight}
-              className="bg-rose/10 rounded-3xl p-8"
+              className="bg-wine p-8 rounded-2xl text-white shadow-xl hover:shadow-2xl transition-shadow"
             >
-              <h3 className="font-georgia text-2xl text-brown mb-6 flex items-center gap-2">
-                <AlertCircle className="w-6 h-6 text-rose" />
-                Who may not be suitable (important)
-              </h3>
-              <p className="font-inter text-brown mb-4">
-                PRP is not for everyone. A proper consultation matters.
-              </p>
-              <p className="font-inter text-brown mb-4">
-                PRP may be unsuitable if you have:
-              </p>
-              <ul className="space-y-4">
-                <motion.li
-                  variants={fadeInUp}
-                  className="flex items-start gap-3 font-inter text-brown"
-                >
-                  <span className="text-rose mt-1">•</span>
-                  very low platelets or certain blood-related conditions
-                </motion.li>
-                <motion.li
-                  variants={fadeInUp}
-                  className="flex items-start gap-3 font-inter text-brown"
-                >
-                  <span className="text-rose mt-1">•</span>
-                  active infection at the treatment area
-                </motion.li>
-                <motion.li
-                  variants={fadeInUp}
-                  className="flex items-start gap-3 font-inter text-brown"
-                >
-                  <span className="text-rose mt-1">•</span>
-                  certain serious medical conditions where injections are not
-                  advised
-                </motion.li>
-              </ul>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Improvement Timeline</h3>
+              </div>
+              
+              <div className="space-y-8">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Reduced Shedding</span>
+                    <span className="font-georgia text-xl font-bold text-white">4 to 6 weeks</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "25%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">First indicator that treatment is working</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Visible Regrowth</span>
+                    <span className="font-georgia text-xl font-bold text-white">3 to 4 months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "55%" }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">After 3 to 4 sessions</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Full Benefit</span>
+                    <span className="font-georgia text-xl font-bold text-white">6 months</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "75%" }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Complete initial course assessment</p>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Maintenance</span>
+                    <span className="font-georgia text-xl font-bold text-white">Quarterly</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "90%" }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Every 3 to 6 months for sustained results</p>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-4 border-t border-white/20">
+                <p className="text-white/80 text-sm text-center">
+                  Final assessment is best made at 12 months from the start of the programme rather than after a single session.
+                </p>
+              </div>
             </motion.div>
           </div>
 
-          <motion.p
-            variants={fadeInUp}
-            className="mt-8 font-inter text-taupe italic"
-          >
-            Many clinics also discuss PRP for postpartum shedding or stress
-            shedding, but it is still important to identify the real cause first
-            because some shedding patterns recover naturally with time and
-            proper care.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Procedure Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-linear-to-b from-light to-cream"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-16">
-            <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-6">
-              The PRP Procedure
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -5 }}
-              className="bg-glass backdrop-blur-sm rounded-2xl p-6 border border-cream"
-            >
-              <span className="w-10 h-10 bg-wine text-light rounded-full flex items-center justify-center font-georgia text-xl mb-4">
-                1
-              </span>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Scalp and hair assessment
-              </h3>
-              <p className="font-inter text-sm text-taupe">
-                We look at your pattern, family history, lifestyle triggers, and
-                scalp health. We also talk about goals. "Stop shedding" is a
-                different goal than "fill a hairline."
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -5 }}
-              className="bg-glass backdrop-blur-sm rounded-2xl p-6 border border-cream"
-            >
-              <span className="w-10 h-10 bg-wine text-light rounded-full flex items-center justify-center font-georgia text-xl mb-4">
-                2
-              </span>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Blood draw
-              </h3>
-              <p className="font-inter text-sm text-taupe">
-                A small amount of blood is taken from your arm, like a normal
-                blood test.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -5 }}
-              className="bg-glass backdrop-blur-sm rounded-2xl p-6 border border-cream"
-            >
-              <span className="w-10 h-10 bg-wine text-light rounded-full flex items-center justify-center font-georgia text-xl mb-4">
-                3
-              </span>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Centrifuge preparation
-              </h3>
-              <p className="font-inter text-sm text-taupe">
-                The blood is spun to separate layers and concentrate platelets.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -5 }}
-              className="bg-glass backdrop-blur-sm rounded-2xl p-6 border border-cream"
-            >
-              <span className="w-10 h-10 bg-wine text-light rounded-full flex items-center justify-center font-georgia text-xl mb-4">
-                4
-              </span>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Scalp numbing (if needed)
-              </h3>
-              <p className="font-inter text-sm text-taupe">
-                Many clinics use local anaesthetic options to make the
-                injections easier.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -5 }}
-              className="bg-glass backdrop-blur-sm rounded-2xl p-6 border border-cream"
-            >
-              <span className="w-10 h-10 bg-wine text-light rounded-full flex items-center justify-center font-georgia text-xl mb-4">
-                5
-              </span>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                PRP scalp injections
-              </h3>
-              <p className="font-inter text-sm text-taupe">
-                PRP is injected into thinning areas with small, controlled
-                injections.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="mt-8 font-inter text-brown text-center"
-          >
-            Most sessions take around an hour, depending on the plan and any
-            add-ons.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 bg-white/50 backdrop-blur-sm rounded-2xl p-8"
-          >
-            <h3 className="font-georgia text-2xl text-brown mb-4">
-              Does PRP hurt?
-            </h3>
-            <p className="font-inter text-taupe">
-              It can feel like quick pinches or pressure across the scalp. Pain
-              tolerance varies a lot. The good news is downtime is usually
-              minimal, and most people return to normal activities the same day.
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <p className="text-taupe font-inter text-sm">
+              ✨ PRP is not a permanent cure for androgenetic alopecia. Regular maintenance sessions significantly slow progression and sustain improvements achieved during the initial course.
             </p>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Results Timeline */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div variants={fadeInUp} className="text-center mb-16">
-            <h2 className="font-georgia text-4xl md:text-5xl text-brown mb-4">
-              PRP hair treatment results timeline (what to expect)
-            </h2>
-            <p className="font-inter text-wine text-xl">
-              PRP is slow, because hair growth is slow.
-            </p>
+      {/* PRP Treatment Process Steps */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The PRP Treatment Process at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step</p>
           </motion.div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-taupe text-center mb-12"
-          >
-            A realistic timeline often looks like this:
-          </motion.p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            <motion.div variants={scaleIn} className="bg-cream rounded-2xl p-6">
-              <Clock className="w-8 h-8 text-wine mb-3" />
-              <h3 className="font-georgia text-xl text-wine mb-2">
-                Weeks 2 to 6
-              </h3>
-              <p className="font-inter text-brown">
-                less shedding for some people
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-cream rounded-2xl p-6">
-              <LineChart className="w-8 h-8 text-wine mb-3" />
-              <h3 className="font-georgia text-xl text-wine mb-2">
-                Month 2 to 3
-              </h3>
-              <p className="font-inter text-brown">
-                early signs of improvement
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-cream rounded-2xl p-6">
-              <Maximize2 className="w-8 h-8 text-wine mb-3" />
-              <h3 className="font-georgia text-xl text-wine mb-2">
-                Month 3 to 6
-              </h3>
-              <p className="font-inter text-brown">
-                clearer changes in density and thickness
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-cream rounded-2xl p-6">
-              <Award className="w-8 h-8 text-wine mb-3" />
-              <h3 className="font-georgia text-xl text-wine mb-2">
-                After 6 months
-              </h3>
-              <p className="font-inter text-brown">
-                optimal results with maintenance
-              </p>
-            </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              { step: "01", title: "Scalp Assessment", desc: "Doctor examines hair loss pattern, scalp health, and determines if PRP is appropriate for your condition." },
+              { step: "02", title: "Blood Draw", desc: "Small blood sample (10 to 20ml) drawn from arm, same as routine blood test. No fasting required." },
+              { step: "03", title: "Centrifuge Processing", desc: "Blood spun in calibrated centrifuge to separate and concentrate platelet-rich plasma layer." },
+              { step: "04", title: "Scalp Numbing", desc: "Topical numbing cream applied for patient comfort. Most patients find injections well-tolerated." },
+              { step: "05", title: "PRP Injections", desc: "Concentrated PRP injected into thinning areas using fine-gauge needle in grid pattern." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-12 h-12 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-lg mx-auto mb-3 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-sm text-brown mb-1 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-xs">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Free Consultation
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">PRP therapy for hair and skin at Nexus Clinic KL</p>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <motion.p
-            variants={fadeInUp}
-            className="mt-12 font-inter text-taupe text-center"
-          >
-            Most studies report improvement after a few months, and outcomes
-            depend on protocol, platelet concentration, and your underlying
-            cause.
-          </motion.p>
-        </div>
-      </motion.section>
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">PRP Hair Treatment Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">Session Type</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.treatment}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{tier.sessionType}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    Package rates for multiple sessions represent the most cost-effective approach for patients committing to a full course of treatment. All consultations are complimentary at Nexus Clinic KL.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised PRP Treatment Quote
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
+      {/* Before After Section */}
       <SectionBeforeAfter transformations={transformations} />
 
-      {/* Sessions & Aftercare */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-linear-to-b from-cream to-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          {/* Sessions */}
-          <motion.div variants={fadeInUp} className="mb-16">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-6">
-              How many PRP sessions do you need?
-            </h2>
-            <p className="font-inter text-taupe mb-4">
-              There is no single perfect number. But there are common patterns.
-            </p>
-            <p className="font-inter text-taupe mb-4">A widely used plan is:</p>
-            <div className="bg-cream rounded-xl p-6 mb-4">
-              <ul className="space-y-2">
-                <li className="font-inter text-brown">
-                  • one session each month for 3 months
-                </li>
-                <li className="font-inter text-brown">
-                  • then a booster every 6 months
-                </li>
-              </ul>
-            </div>
-            <p className="font-inter text-taupe">
-              Some clinics recommend more initial sessions (like 4 to 6),
-              especially when thinning is more active.
-            </p>
-          </motion.div>
-
-          {/* Aftercare */}
-          <motion.div variants={fadeInUp}>
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-6">
-              PRP hair treatment aftercare (simple rules)
-            </h2>
-            <p className="font-inter text-taupe mb-4">
-              After your PRP session, the goal is to keep the scalp calm.
-            </p>
-            <p className="font-inter text-taupe mb-4">
-              Common guidance includes:
-            </p>
-            <ul className="space-y-3 mb-4">
-              <motion.li
-                variants={fadeInUp}
-                className="flex items-start gap-3 font-inter text-brown"
-              >
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                avoid heavy sweating for a short period
-              </motion.li>
-              <motion.li
-                variants={fadeInUp}
-                className="flex items-start gap-3 font-inter text-brown"
-              >
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                shampoo gently the next day (many clinics advise next morning)
-              </motion.li>
-              <motion.li
-                variants={fadeInUp}
-                className="flex items-start gap-3 font-inter text-brown"
-              >
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                avoid anti-inflammatory meds like NSAIDs for a period if your
-                doctor advises, because they may interfere with the intended
-                effect
-              </motion.li>
-              <motion.li
-                variants={fadeInUp}
-                className="flex items-start gap-3 font-inter text-brown"
-              >
-                <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                stay hydrated and do not skip meals before treatment to avoid
-                feeling lightheaded during the blood draw
-              </motion.li>
-            </ul>
-            <p className="font-inter text-taupe">
-              Your clinician will tailor advice to your health and routine.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Side Effects and Risks */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl md:text-5xl text-brown text-center mb-8"
-          >
-            Side effects and risks
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-taupe text-center mb-4"
-          >
-            PRP uses your own blood, so allergy risk is low. Most side effects
-            are local and temporary.
-          </motion.p>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-taupe text-center mb-8"
-          >
-            You may notice:
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-6 text-center"
-            >
-              <Flame className="w-8 h-8 text-wine mx-auto mb-3" />
-              <p className="font-inter text-brown">scalp soreness</p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-6 text-center"
-            >
-              <Activity className="w-8 h-8 text-wine mx-auto mb-3" />
-              <p className="font-inter text-brown">mild swelling</p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-6 text-center"
-            >
-              <Sun className="w-8 h-8 text-wine mx-auto mb-3" />
-              <p className="font-inter text-brown">redness</p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-cream rounded-xl p-6 text-center"
-            >
-              <Minus className="w-8 h-8 text-wine mx-auto mb-3" />
-              <p className="font-inter text-brown">
-                bruising at injection spots
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center font-inter text-taupe"
-          >
-            Infection risk is low when done properly, but no procedure is zero
-            risk.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Cost Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-linear-to-b from-cream to-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl md:text-5xl text-brown text-center mb-6"
-          >
-            PRP hair treatment cost in Malaysia (what affects the price)
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-taupe text-center mb-8"
-          >
-            PRP hair treatment price in Malaysia varies by:
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <motion.div variants={scaleIn} className="bg-cream rounded-xl p-6">
-              <MapPin className="w-6 h-6 text-wine mb-2" />
-              <p className="font-inter text-brown">
-                clinic location (KL is often higher)
-              </p>
-            </motion.div>
-            <motion.div variants={scaleIn} className="bg-cream rounded-xl p-6">
-              <User className="w-6 h-6 text-wine mb-2" />
-              <p className="font-inter text-brown">
-                doctor-led vs add-on packages
-              </p>
-            </motion.div>
-            <motion.div variants={scaleIn} className="bg-cream rounded-xl p-6">
-              <Award className="w-6 h-6 text-wine mb-2" />
-              <p className="font-inter text-brown">
-                PRP kit quality and preparation method
-              </p>
-            </motion.div>
-            <motion.div variants={scaleIn} className="bg-cream rounded-xl p-6">
-              <Zap className="w-6 h-6 text-wine mb-2" />
-              <p className="font-inter text-brown">
-                whether it includes microneedling, laser, or "hair booster"
-                programs
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-wine/5 rounded-3xl p-8 text-center"
-          >
-            <p className="font-inter text-taupe mb-4">
-              Some Malaysia clinic pages cite PRP session ranges roughly around
-            </p>
-            <p className="font-georgia text-4xl text-wine mb-2">
-              RM800 to RM2,500
-            </p>
-            <p className="font-inter text-brown">
-              per session, depending on the clinic and plan.
-            </p>
-            <p className="font-inter text-taupe mt-4">
-              Cost guides also show PRP hair single-session pricing ranges and
-              package ranges that vary with add-ons.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Comparison Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-light"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl md:text-5xl text-brown text-center mb-12"
-          >
-            PRP vs other hair loss treatments (clear comparison)
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div variants={scaleIn} className="bg-cream rounded-3xl p-8">
-              <h3 className="font-georgia text-2xl text-wine mb-4">
-                PRP vs minoxidil
-              </h3>
-              <p className="font-inter text-taupe">
-                Minoxidil is a daily topical or oral plan for many people. PRP
-                is a clinic procedure done in sessions. Many experts view PRP as
-                an add-on when simpler options are not enough.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-cream rounded-3xl p-8">
-              <h3 className="font-georgia text-2xl text-wine mb-4">
-                PRP vs hair transplant
-              </h3>
-              <p className="font-inter text-taupe mb-2">
-                PRP vs hair transplant- A transplant moves follicles from donor
-                to thinning areas.
-              </p>
-              <p className="font-inter text-taupe mb-2">
-                PRP supports existing follicles and may support transplant
-                recovery.
-              </p>
-              <p className="font-inter text-taupe">
-                A transplant can create density where PRP cannot, especially on
-                bald zones.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-cream rounded-3xl p-8">
-              <h3 className="font-georgia text-2xl text-wine mb-4">
-                PRP vs microneedling
-              </h3>
-              <p className="font-inter text-taupe">
-                PRP vs microneedling- Microneedling is sometimes paired with PRP
-                to enhance stimulation, and many clinics market this
-                combination.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Target Areas */}
-          <motion.div variants={fadeInUp} className="mt-12">
-            <h3 className="font-georgia text-2xl text-brown mb-6">
-              Areas PRP can target
-            </h3>
-            <p className="font-inter text-taupe mb-4">
-              PRP for hair loss in KL is commonly used for:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-              <motion.div
-                variants={scaleIn}
-                className="bg-cream rounded-xl p-4"
-              >
-                <p className="font-inter text-brown">crown thinning</p>
-              </motion.div>
-              <motion.div
-                variants={scaleIn}
-                className="bg-cream rounded-xl p-4"
-              >
-                <p className="font-inter text-brown">mid-scalp thinning</p>
-              </motion.div>
-              <motion.div
-                variants={scaleIn}
-                className="bg-cream rounded-xl p-4"
-              >
-                <p className="font-inter text-brown">
-                  general diffuse thinning
-                </p>
-              </motion.div>
-              <motion.div
-                variants={scaleIn}
-                className="bg-cream rounded-xl p-4"
-              >
-                <p className="font-inter text-brown">
-                  sometimes temples and hairline, depending on follicle presence
-                </p>
-              </motion.div>
-            </div>
-            <p className="font-inter text-taupe">
-              If the area is fully bald, your clinician may discuss other
-              options.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Why Choose PRP */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-linear-to-b from-cream to-light"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl md:text-5xl text-brown mb-8"
-          >
-            Why people choose PRP hair treatment in Kuala Lumpur
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-3xl text-wine mb-8"
-          >
-            Because it feels like a middle path.
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <motion.div
-              variants={scaleIn}
-              className="bg-glass backdrop-blur-sm rounded-2xl p-6"
-            >
-              <p className="font-inter text-xl text-brown mb-2">
-                Not ready for surgery.
-              </p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-glass backdrop-blur-sm rounded-2xl p-6"
-            >
-              <p className="font-inter text-xl text-brown mb-2">
-                Not happy with "just shampoo."
-              </p>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              className="bg-glass backdrop-blur-sm rounded-2xl p-6"
-            >
-              <p className="font-inter text-xl text-brown mb-2">
-                Want something medical, but still natural.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.p variants={fadeInUp} className="font-inter text-taupe">
-            PRP is also popular because sessions are short, downtime is usually
-            low, and it can fit into a working week.
-          </motion.p>
-        </div>
-      </motion.section>
-
       {/* FAQ Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-light"
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl md:text-5xl text-brown text-center mb-4"
-          >
-            People Also Ask (PAA) style FAQs about PRP hair treatment
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-taupe text-center mb-12"
-          >
-            These FAQs are based on the same real questions patients commonly
-            ask online and in clinic, including those found on major hair
-            restoration education pages.
-          </motion.p>
-
-          <div className="space-y-6">
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Does PRP actually regrow hair?
-              </h3>
-              <p className="font-inter text-brown">
-                For many people with thinning hair, it can help. Some see
-                regrowth. Some mainly see less shedding. Some see little change.
-                There are no guarantees, so a realistic plan matters.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                How successful is PRP for hair loss?
-              </h3>
-              <p className="font-inter text-brown">
-                Success is hard to define because protocols vary. Many studies
-                show improvement, but not everyone responds. Outcomes depend on
-                your hair loss type, stage, and consistency.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                How many PRP sessions are needed for hair?
-              </h3>
-              <p className="font-inter text-brown">
-                A common program is one session monthly for three months, then a
-                booster every six months. Some people need more initial
-                sessions.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                How long does PRP take to regrow hair?
-              </h3>
-              <p className="font-inter text-brown">
-                Some people notice reduced shedding in 1 to 2 months. Visible
-                growth can take up to six months. Hair changes are gradual.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                What happens if you stop PRP?
-              </h3>
-              <p className="font-inter text-brown">
-                If PRP helped you keep or grow hair, stopping may lead to
-                gradual loss again over time. Maintenance supports longer-term
-                results.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Is PRP painful for the scalp?
-              </h3>
-              <p className="font-inter text-brown">
-                It can be uncomfortable because it involves injections. Many
-                clinics reduce discomfort with numbing options. Most people
-                describe it as tolerable.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                What are the side effects of PRP for hair loss?
-              </h3>
-              <p className="font-inter text-brown">
-                The most common effects are local pain, tenderness, and
-                temporary swelling. Bruising can also happen. Serious issues are
-                uncommon when done properly.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Who is not a good candidate for PRP?
-              </h3>
-              <p className="font-inter text-brown">
-                People who are completely bald in the target area are less
-                likely to benefit. Certain active skin conditions or serious
-                health conditions may also rule it out.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Is PRP better than a hair transplant?
-              </h3>
-              <p className="font-inter text-brown">
-                They do different jobs. A transplant creates new density by
-                moving follicles. PRP supports existing follicles and can
-                complement other treatments.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Is PRP permanent?
-              </h3>
-              <p className="font-inter text-brown">
-                PRP is not usually a one-time fix. It often needs repeat
-                sessions to maintain benefits.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Can I wash my hair after PRP?
-              </h3>
-              <p className="font-inter text-brown">
-                Many providers recommend gentle shampoo the next morning, but
-                follow your clinician's instructions for your scalp.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Can I exercise after PRP?
-              </h3>
-              <p className="font-inter text-brown">
-                Light exercise is often fine the next day. Many clinics suggest
-                waiting a few days for intense workouts.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-cream rounded-2xl p-6"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                How much does PRP hair treatment cost in Malaysia?
-              </h3>
-              <p className="font-inter text-brown">
-                Pricing varies by clinic and plan. Some Malaysia clinics cite
-                PRP session ranges that can run from hundreds to a few thousand
-                ringgit per session depending on inclusions. Packages may reduce
-                per-session cost.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Booking Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        variants={staggerContainer}
-        className="px-4 py-24 bg-linear-to-b from-cream to-light"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl md:text-5xl text-brown mb-6"
-          >
-            Booking PRP hair treatment at Nexus Clinic Kuala Lumpur
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-inter text-lg text-taupe mb-8"
-          >
-            If you want a plan that fits your hair pattern, start with a
-            consultation. You will get a scalp review, a realistic expectation,
-            and a treatment roadmap.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-wine text-light rounded-3xl p-8"
-          >
-            <h3 className="font-georgia text-2xl mb-4">
-              Nexus Clinic Kuala Lumpur (KLCC area)
-            </h3>
-            <p className="font-inter mb-2">
-              LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala
-              Lumpur
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Start Your PRP Hair Treatment Journey at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              PRP is a non-surgical, natural approach to hair restoration using your own biology. For patients in Kuala Lumpur, Selangor, and across Malaysia who are not ready for surgical options, PRP therapy provides a clinically evidence-based first step.
             </p>
-            <p className="font-inter mb-2">
-              Phone: +6016-921 5699 / +6016-702 5699
+            <p className="text-cream/90 font-inter">
+              Our licensed doctors bring over 15 years of combined experience, perform every procedure personally, and use only MOH-approved techniques. One biological mechanism. Multiple aesthetic results.
             </p>
-            <p className="font-inter">Email: contact@nexus-clinic.com</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Free Consultation
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a consultation for PRP hair treatment at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
+            </div>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
     </div>
   );
-};
-
-export default PRPLandingPage;
+}

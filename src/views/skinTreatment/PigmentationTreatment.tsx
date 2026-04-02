@@ -43,7 +43,7 @@ interface PigmentationTreatmentProps {
   locale: string;
 }
 
-export default function PigmentationTreatment({ locale }: PigmentationTreatmentProps) {
+export default function PigmentationLanding({ locale }: PigmentationTreatmentProps) {
   const transformations = [
     {
       id: 1,

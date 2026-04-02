@@ -2,96 +2,186 @@
 
 import { motion } from "framer-motion";
 import {
-  ChevronRight,
-  Clock,
-  Shield,
+  Sparkles,
+  Award,
   MapPin,
-  Droplets,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
   AlertCircle,
-  CheckCircle2,
-  HeartPulse,
-  Home,
-  Users,
+  Activity,
+  Zap,
+  Eye,
+  AlertTriangle,
   Scissors,
+  TrendingUp,
+  DollarSign,
+  Layers,
+  Users,
+  Stethoscope,
+  Droplets,
+  FileText,
+  Leaf,
+  Phone,
+  Mail,
   Pill,
   Syringe,
-  Info,
-  Heart,
-  Ban,
-  Flame,
-  Pill as PillIcon,
   Target,
-  Layers,
   Repeat,
-  TrendingUp,
-  Divide,
+  Flame,
   Camera,
+  HeartPulse,
+  Ban,
 } from "lucide-react";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
-  scaleIn,
   fadeInUp,
+  scaleIn,
 } from "../../lib/animations";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const MinoxidilLanding = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "hair/minoxidil");
+interface MinoxidilLandingProps {
+  locale: string;
+}
 
-  const quickAnswers = [
-    { question: t("quickAnswers.q1"), answer: t("quickAnswers.a1") },
-    { question: t("quickAnswers.q2"), answer: t("quickAnswers.a2") },
-    { question: t("quickAnswers.q3"), answer: t("quickAnswers.a3") },
-  ];
-
-  const benefits = [
+export default function MinoxidilLanding({ locale }: MinoxidilLandingProps) {
+  // Mechanism of Action Table
+  const mechanismTable = [
     {
-      icon: <Target className="w-6 h-6" />,
-      title: t("benefits.b1Title"),
-      desc: t("benefits.b1Desc"),
+      step: "Blood Vessel Dilation in the Scalp",
+      mechanism: "Minoxidil is a potassium channel opener that causes smooth muscle cells in blood vessel walls to relax; this relaxation dilates the blood vessels supplying the hair follicles in the scalp.",
+      effect: "Improved blood flow delivers more oxygen and nutrients to reach the hair follicle, providing the metabolic substrate needed for the energy-intensive anagen hair growth phase.",
+      implication: "At Nexus Clinic KL, minoxidil's vascular mechanism complements PRP therapy, targeting the hair follicle from two complementary directions."
     },
     {
-      icon: <Shield className="w-6 h-6" />,
-      title: t("benefits.b2Title"),
-      desc: t("benefits.b2Desc"),
+      step: "Anagen Phase Extension",
+      mechanism: "Minoxidil extends the growth phase of the hair growth cycle, keeping more hair follicles in active anagen for longer periods.",
+      effect: "As more follicles spend more time in anagen simultaneously, hair density visible on the scalp increases because at any given moment more follicles are actively producing a visible hair shaft.",
+      implication: "Patients are counselled that initial hair fall in the first 4-8 weeks is caused by telogen-phase hairs being pushed out early to make way for new anagen-phase hair growth."
     },
     {
-      icon: <TrendingUp className="w-6 h-6" />,
-      title: t("benefits.b3Title"),
-      desc: t("benefits.b3Desc"),
+      step: "Direct Hair Follicle Keratinocyte Stimulation",
+      mechanism: "Minoxidil directly stimulates proliferation of hair follicle keratinocytes and upregulates vascular endothelial growth factor (VEGF) expression in the follicle.",
+      effect: "Minoxidil works even in follicles with adequate blood supply by directly accelerating hair follicle cell division. VEGF upregulation creates a sustained angiogenic effect that builds over time.",
+      implication: "Individual variability in scalp sulphotransferase enzyme activity explains why some patients respond much better to minoxidil than others."
     },
     {
-      icon: <Heart className="w-6 h-6" />,
-      title: t("benefits.b4Title"),
-      desc: t("benefits.b4Desc"),
-    },
-  ];
-
-  const steps = [
-    {
-      number: "01",
-      title: t("journey.s1Title"),
-      desc: t("journey.s1Desc"),
-    },
-    {
-      number: "02",
-      title: t("journey.s2Title"),
-      desc: t("journey.s2Desc"),
-    },
-    {
-      number: "03",
-      title: t("journey.s3Title"),
-      desc: t("journey.s3Desc"),
+      step: "Initial Shedding and New Hair Growth Sequence",
+      mechanism: "Minoxidil pushes hair follicles that have been in a prolonged or premature telogen phase into a new anagen cycle; the old telogen hair must shed before new anagen hair can emerge.",
+      effect: "The new hair growth that emerges following this shedding phase is the actual therapeutic effect of minoxidil, producing long-term hair regrowth benefit.",
+      implication: "Pre-treatment counselling about the initial shedding phase is mandatory at every minoxidil consultation to prevent premature treatment cessation."
     },
   ];
 
-  const faqs = [
-    { q: t("faq.q1"), a: t("faq.a1") },
-    { q: t("faq.q2"), a: t("faq.a2") },
-    { q: t("faq.q3"), a: t("faq.a3") },
+  // Minoxidil for Men vs Women Table
+  const genderTable = [
+    {
+      factor: "Pattern of Hair Loss Addressed",
+      men: "Androgenetic alopecia (male pattern baldness) presenting as receding hairline and progressive crown thinning following Norwood-Hamilton classification.",
+      women: "Female pattern hair loss presenting as diffuse hair thinning over the crown with preserved hairline following Ludwig classification."
+    },
+    {
+      factor: "Concentration Recommended",
+      men: "Minoxidil 5% topical solution or foam is the standard concentration. The higher concentration produces greater hair regrowth and hair density improvement than 2%.",
+      women: "Minoxidil 2% is the traditional concentration. Minoxidil 5% is increasingly used under medical guidance, particularly for women not achieving adequate results on 2%."
+    },
+    {
+      factor: "Role of Finasteride",
+      men: "Combining minoxidil with finasteride is the most effective non-surgical approach. Minoxidil promotes growth while finasteride addresses the primary hormonal cause.",
+      women: "Finasteride is not recommended for women of reproductive age. Women with PCOS or androgen excess may benefit from spironolactone combined with minoxidil."
+    },
+    {
+      factor: "Oral Minoxidil Option",
+      men: "Low-dose oral minoxidil (2.5 to 5mg daily) is increasingly prescribed for men who find topical application inconvenient or are poor topical responders.",
+      women: "Very low-dose oral minoxidil (0.625 to 2.5mg daily) is increasingly used, particularly for older women who prefer oral medication over daily topical application."
+    },
+    {
+      factor: "Best Results Programme",
+      men: "Minoxidil 5% topical or oral combined with finasteride 1mg plus PRP hair treatment (3 sessions) for comprehensive approach addressing blood flow, DHT suppression and follicle regeneration.",
+      women: "Minoxidil 2-5% topical or low-dose oral combined with PRP and scalp mesotherapy, plus hormonal assessment to identify and treat any contributing hormonal imbalance."
+    },
+  ];
+
+  // Topical vs Oral Minoxidil Comparison Table
+  const formulationTable = [
+    {
+      factor: "Delivery and Application",
+      topical: "Applied directly to scalp once or twice daily using dropper, pump or foam applicator. Must be applied to dry scalp and allowed to dry for at least 4 hours before washing.",
+      oral: "Taken as oral medication once daily at low dose (0.625 to 5mg depending on patient profile). Bypasses scalp sulphotransferase conversion step that limits topical efficacy."
+    },
+    {
+      factor: "Effectiveness",
+      topical: "FDA-approved for male androgenetic alopecia. Clinical trials show approximately 60-70% of men maintaining or improving hair count at 12 months. Response varies with scalp sulphotransferase enzyme activity.",
+      oral: "Produces comparable or superior hair density improvement to topical. Less affected by scalp sulphotransferase variability because conversion occurs systemically in the liver."
+    },
+    {
+      factor: "Side Effect Profile",
+      topical: "Side effects rare at standard concentrations. Most common: scalp irritation, contact dermatitis, scalp dryness. Unwanted facial hair uncommon. Systemic absorption low.",
+      oral: "Side effects at low doses include fluid retention (ankle swelling, weight gain), facial hair growth (hypertrichosis), reflex tachycardia, mild blood pressure lowering. Requires monitoring."
+    },
+    {
+      factor: "Who Should Consider",
+      topical: "Most patients beginning treatment for first time; patients wanting to minimise systemic medication; patients comfortable with twice-daily scalp application.",
+      oral: "Patients who find topical application inconvenient; patients with inadequate topical response after 6 months; patients with scalp irritation from topical; patients with active lifestyles."
+    },
+  ];
+
+  // Combination Programme Table
+  const combinationTable = [
+    {
+      component: "Minoxidil (Topical or Oral)",
+      role: "Forms the daily treatment foundation. Provides blood flow stimulus and anagen phase extension that improves hair density progressively over months.",
+      integration: "Prescribed based on patient profile and preference. Concentration, formulation and dosing selected based on hair loss pattern, severity, lifestyle factors and response history."
+    },
+    {
+      component: "Finasteride (for Male Patients)",
+      role: "Adds DHT-blocking mechanism. Stops underlying cause while minoxidil stimulates growth cycle. Combination produces additive improvement in hair density.",
+      integration: "Recommended as first-line combination partner for all eligible men with androgenetic alopecia. Full side effect discussion conducted before any prescription."
+    },
+    {
+      component: "PRP Hair Treatment",
+      role: "Adds growth factors directly to scalp environment. PRP contains PDGF, VEGF, TGF-beta and other growth factors that stimulate follicle activity at cellular level.",
+      integration: "Typically scheduled as 3 sessions 4-6 weeks apart, starting 4-6 weeks after minoxidil and finasteride programme has begun. Maintenance sessions every 6-12 months."
+    },
+    {
+      component: "Advanced Hair Assessment and Monitoring",
+      role: "Standardised scalp photography at baseline, 3, 6 and 12 months provides objective documentation of treatment progress.",
+      integration: "Every patient has standardised baseline scalp photography. Photography set repeated at 6 and 12 months to provide objective evidence of hair density changes."
+    },
+  ];
+
+  // Pricing Data
+  const pricingTiers = [
+    { service: "Hair Loss Assessment Consultation", details: "Expert hair assessment; trichoscopy scalp examination; hair loss pattern grading; minoxidil treatment plan discussion; topical vs oral assessment.", price: "RM 150 - RM 300" },
+    { service: "Topical Minoxidil 5% (per month)", details: "Standard 5% topical solution or foam; once or twice daily scalp application; guidance on correct application technique provided.", price: "RM 30 - RM 120" },
+    { service: "Oral Minoxidil Prescription (per month)", details: "Low-dose oral minoxidil (0.625mg to 5mg); baseline blood pressure check required; once-daily oral medication.", price: "RM 80 - RM 200" },
+    { service: "Finasteride 1mg (per month, for men)", details: "Oral finasteride for male androgenetic alopecia; combined with minoxidil for best results; full side effect discussion.", price: "RM 60 - RM 180" },
+    { service: "PRP Hair Treatment (per session)", details: "Platelet-rich plasma injected into scalp; growth factors stimulate hair growth; 3-session initial course recommended.", price: "RM 1,200 - RM 2,500" },
+    { service: "6-Month Hair Loss Review", details: "Standardised hair density photography comparison; scalp trichoscopy; treatment effectiveness assessment; plan adjustment if needed.", price: "RM 100 - RM 200" },
+  ];
+
+  // FAQ Data
+  const faqData = [
+    { q: "What is minoxidil and how does it work for hair loss?", a: "Minoxidil is a vasodilator medication originally developed to treat high blood pressure; its hair growth-promoting effect was discovered as a side effect. Minoxidil works by dilating blood vessels in the scalp to allow more oxygen and nutrients to reach the hair follicles, extending the anagen (active growth) phase of the hair growth cycle. Minoxidil is a topical solution or foam applied directly to the scalp or taken as an oral medication once daily. It is used to treat androgenetic alopecia in both men and women and is one of the two most evidence-supported medications for hair loss treatment alongside finasteride." },
+    { q: "How long does minoxidil take to work for hair regrowth?", a: "Minoxidil requires consistent use over several months to produce visible hair regrowth. Most patients experience an initial hair fall in the first 4 to 8 weeks as telogen-phase hair follicles are pushed into new anagen growth cycles; this initial shedding is evidence that minoxidil is working and should not prompt stopping treatment. Visible new hair growth typically appears at 3 to 6 months. Significant improvement is usually seen at 6 to 12 months of consistent use. Maximum effectiveness is seen at 12 months. Minoxidil must be continued indefinitely to maintain the hair density benefit." },
+    { q: "What is the difference between topical and oral minoxidil?", a: "Topical minoxidil is applied directly to the scalp once or twice daily; it delivers the vasodilatory effect locally with minimal systemic absorption. Minoxidil 5% is the standard concentration for men. Oral minoxidil is taken as an oral medication once daily at a low dose; it produces more consistent delivery of the active minoxidil form because it bypasses the scalp sulphotransferase conversion step that limits topical effectiveness in some patients. Oral minoxidil is increasingly used for patients who find topical application inconvenient, have scalp irritation, or are inadequate topical responders. Both formulations require medical supervision." },
+    { q: "Can I use minoxidil and finasteride together?", a: "Yes; minoxidil and finasteride together produce the best results for men with androgenetic alopecia compared to either treatment alone. The two medications address hair loss through completely different mechanisms: minoxidil promotes hair growth by improving blood flow and extending the growth phase, while finasteride blocks the DHT hormone that causes androgenetic alopecia. These mechanisms are fully complementary and the combination produces additive improvement in hair density, hair regrowth and slowing of hair loss progression. At Nexus Clinic KL, the minoxidil and finasteride combination is the standard treatment plan for eligible men." },
+    { q: "Is minoxidil safe for women?", a: "Yes; minoxidil is one of the safest and most evidence-supported hair loss treatment options for women. Minoxidil 2% is the traditional concentration recommended for women and minoxidil 5% is increasingly used with adequate medical guidance. The most common side effect in women is unwanted facial hair growth (hypertrichosis), which is more common with 5% than 2% and resolves after stopping the medication. Scalp irritation may occur with the topical solution and is usually managed by switching to the foam formulation. Oral minoxidil at very low dose (0.625mg to 2.5mg) is an option for women who prefer oral medication." },
+    { q: "Why is my hair falling out after starting minoxidil?", a: "Initial hair fall in the first 4 to 8 weeks of minoxidil use is an expected and normal part of how minoxidil works. When minoxidil is applied to the scalp, it pushes hair follicles that are in a prolonged or premature telogen (resting) phase into a new anagen (growth) cycle; the old telogen hair must shed before new anagen hair can emerge. This shedding phase is not minoxidil causing damage; it is the transition process that produces the long-term hair regrowth benefit. New hair growth emerges at 3 to 6 months following this initial shedding. At Nexus Clinic KL, every patient receives pre-treatment counselling about the initial shedding." },
+    { q: "Where can I buy minoxidil in Malaysia?", a: "Topical minoxidil 5% for men is available from most pharmacies in Malaysia without a prescription, sold under various brand names and as generic formulations. Oral minoxidil requires a prescription from a registered medical doctor and is not available over the counter. At Nexus Clinic KL, the appropriate minoxidil formulation, concentration and dosing schedule is determined at the initial consultation and prescribed with a treatment plan and monitoring schedule. Medical guidance is recommended for all patients starting minoxidil, particularly those combining it with finasteride or oral medication." },
+    { q: "How does PRP complement minoxidil treatment?", a: "PRP (platelet-rich plasma) hair treatment adds growth factors directly to the scalp environment alongside minoxidil's blood flow mechanism. Minoxidil improves blood flow to allow more oxygen and nutrients to reach the hair follicles, while PRP delivers PDGF, VEGF and TGF-beta growth factors that directly stimulate hair follicle cell proliferation through a different biological pathway. Together, minoxidil and PRP target hair follicle health from two complementary angles and consistently produce better hair density and hair regrowth outcomes than either treatment alone." },
+    { q: "How long do I need to use minoxidil?", a: "Minoxidil must be used indefinitely to maintain the hair density benefit. When minoxidil is stopped, the improved blood flow and extended anagen phase effect gradually disappears. Hair loss resumes at its pre-treatment rate within several months of stopping minoxidil. Any new hair growth achieved during minoxidil use is typically lost within 3 to 6 months of stopping. This is why minoxidil is a long-term hair care commitment rather than a short course of treatment. At Nexus Clinic KL, patients are counselled that minoxidil is a lifelong treatment commitment for those who want to maintain their hair density." },
+    { q: "Is the minoxidil consultation at Nexus Clinic KL worth having?", a: "Yes; the medical consultation provides value beyond pharmacy-dispensed minoxidil in several important ways: the expert hair assessment confirms the correct diagnosis before any treatment is started; the consultation determines whether topical or oral minoxidil is more appropriate; pre-treatment counselling about initial shedding prevents the single most common reason for treatment failure; the combination of minoxidil with finasteride for men and PRP for both sexes produces significantly better outcomes; and standardised hair density photography confirms the treatment works and guides programme adjustments." },
+    { q: "Can minoxidil cause unwanted facial hair?", a: "Yes, it can, especially if the product spreads to nearby skin or drips. Unwanted hair growth on adjacent skin is a possible side effect of topical minoxidil. Clean application, careful drying, and thorough hand-washing after each use reduce this risk. If unwanted facial hair occurs, it typically resolves after stopping the medication or adjusting the application technique. At Nexus Clinic KL, proper application technique is demonstrated at the initial consultation to minimise this risk." },
+    { q: "Is minoxidil dangerous to pets?", a: "Yes, topical minoxidil can be highly toxic to pets, especially cats, and even small exposure can be serious. Medical literature highlights that pets can be affected by minoxidil residue on pillowcases, hands, or the scalp itself. Simple safety habits include washing hands thoroughly after every use, letting the scalp dry fully before touching pets, keeping bottles locked away, and changing pillowcases often if applying at night. If you have pets that sleep on your pillow or lick your hair, discuss safer routines and strict precautions with your doctor." },
   ];
 
   const transformations = [
@@ -113,599 +203,617 @@ const MinoxidilLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-light font-[(--font-inter)]">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-cream overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
         <motion.div
-          initial="hidden"
-          animate="visible"
           variants={staggerContainer}
-          className="container mx-auto px-4 py-20 md:py-28"
-        >
-          <div className="max-w-4xl">
-            <motion.div variants={fadeInUp} className="mb-2">
-              <span className="text-wine font-medium tracking-wide">
-                Nexus Clinic Kuala Lumpur
-              </span>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeInUp}
-              className="font-georgia text-5xl md:text-6xl lg:text-7xl text-brown mb-6 leading-tight"
-            >
-              Keep your hair longer.
-              <br />
-              <span className="text-rose">Thicken weak zones again.</span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg md:text-xl text-taupe max-w-2xl mb-8"
-            >
-              Minoxidil is one of the most trusted hair loss treatments
-              worldwide. Used early, it can slow thinning and support regrowth
-              over time.
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
-            >
-              <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 text-wine mt-1 shrink-0" />
-                <div>
-                  <p className="text-brown font-medium">
-                    MOH registered and compliant, doctor-led care at Nexus
-                    Clinic Kuala Lumpur.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-wine mt-1 shrink-0" />
-                <div>
-                  <p className="text-brown font-medium">
-                    Treatment plans start with a real assessment, not a sales
-                    pitch.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-wine mt-1 shrink-0" />
-                <div>
-                  <p className="text-brown font-medium">
-                    Central KL location at Wisma UOA II, Jalan Pinang (Kuala
-                    Lumpur).
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Decorative element */}
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-rose/5 rounded-full blur-3xl" />
-      </section>
-
-      {/* Quick Answers Section */}
-      <section className="py-16 bg-white">
-        <motion.div
           initial="hidden"
           whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl text-brown mb-10 text-center"
-          >
-            Quick answers people want first
-          </motion.h2>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Topical • Oral • Doctor-Prescribed</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Minoxidil Hair Loss Treatment in Malaysia for{" "}
+                <span className="text-wine italic">Proven Hair Regrowth Results</span>
+              </motion.h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
-              <div className="flex items-start gap-4">
-                <div className="bg-wine/10 p-3 rounded-full">
-                  <Info className="w-6 h-6 text-wine" />
-                </div>
-                <div>
-                  <h3 className="font-georgia text-lg text-brown mb-2">
-                    What does minoxidil do?
-                  </h3>
-                  <p className="text-taupe">
-                    It helps slow hair loss and may regrow some hair, mainly in
-                    early pattern hair loss.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Minoxidil is one of only two FDA-approved medications for hair loss treatment with decades of published clinical evidence behind it.
+              </motion.p>
 
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
-              <div className="flex items-start gap-4">
-                <div className="bg-wine/10 p-3 rounded-full">
-                  <Clock className="w-6 h-6 text-wine" />
-                </div>
-                <div>
-                  <h3 className="font-georgia text-lg text-brown mb-2">
-                    How long until results?
-                  </h3>
-                  <p className="text-taupe">
-                    Many people need at least 4-6 months, and often longer, to
-                    judge results.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Whether applied directly to the scalp as a topical solution or taken as a low-dose oral medication, minoxidil works by improving blood flow to hair follicles, extending the anagen (growth) phase and stimulating hair growth in areas where thinning has occurred.
+              </motion.p>
 
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
-              <div className="flex items-start gap-4">
-                <div className="bg-wine/10 p-3 rounded-full">
-                  <Repeat className="w-6 h-6 text-wine" />
-                </div>
-                <div>
-                  <h3 className="font-georgia text-lg text-brown mb-2">
-                    Will it work forever?
-                  </h3>
-                  <p className="text-taupe">
-                    It works only while you keep using it. Stopping usually
-                    leads to hair loss again within months.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  At Nexus Clinic KL, minoxidil is prescribed as part of a personalised hair loss treatment programme that combines the right formulation, finasteride for men with androgenetic alopecia, PRP for growth factor stimulation and structured monitoring.
+                </p>
+              </motion.div>
 
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
-              <div className="flex items-start gap-4">
-                <div className="bg-wine/10 p-3 rounded-full">
-                  <Flame className="w-6 h-6 text-wine" />
-                </div>
-                <div>
-                  <h3 className="font-georgia text-lg text-brown mb-2">
-                    Is shedding normal at the start?
-                  </h3>
-                  <p className="text-taupe">
-                    Some shedding can happen early, often in the first couple of
-                    weeks.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* What is Minoxidil Section with Image */}
-      <section className="py-20 bg-cream">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft}>
-              <h2 className="font-georgia text-4xl text-brown mb-6">
-                What is minoxidil (simple explanation)
-              </h2>
-              <p className="text-taupe text-lg leading-relaxed mb-4">
-                Minoxidil started as an oral medicine for high blood pressure.
-                Later, doctors noticed it could stimulate hair growth. Today, it
-                is mostly used as a topical treatment for pattern hair loss in
-                men and women.
-              </p>
-              <p className="text-taupe text-lg leading-relaxed">
-                Minoxidil does not "cure" hair loss. It supports hair follicles
-                so they stay in the growth phase longer. That is why consistency
-                matters.
-              </p>
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book Minoxidil Assessment
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in minoxidil hair loss treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="aspect-4/3 rounded-3xl overflow-hidden shadow-2xl">
-                <img
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
                   src="/images/hair/minoxidil-treatment.webp"
-                  alt="Hair consultation at Nexus Clinic Kuala Lumpur"
-                  className="w-full h-full object-cover"
+                  alt="Nexus Clinic Kuala Lumpur - Minoxidil Hair Loss Treatment"
+                  fill
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
               </div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-rose/20 rounded-full blur-2xl" />
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-wine/20 rounded-full blur-2xl" />
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">Topical • Oral • PRP</p>
+                <p className="font-inter text-sm text-taupe">Proven hair regrowth results</p>
+              </div>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Who is minoxidil treatment for? Section */}
-      <section className="py-20 bg-white">
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
         <motion.div
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-12 text-center"
-          >
-            Who is minoxidil treatment for?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe text-center mb-12 max-w-2xl mx-auto"
-          >
-            Minoxidil treatment in Malaysia is usually considered for:
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Users className="w-6 h-6 text-wine" />
-                <h3 className="font-georgia text-xl text-brown">
-                  Men with male pattern hair loss
-                </h3>
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
               </div>
-              <p className="text-taupe">
-                If you are seeing temple recession or crown thinning, minoxidil
-                can help early loss.
-              </p>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Founded 2001</p>
+                  <p className="font-inter text-taupe text-xs">Over two decades of service</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Shield className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Credentials</p>
+                  <p className="font-georgia text-brown font-bold text-sm">MOH Licensed</p>
+                  <p className="font-inter text-taupe text-xs">Doctor-prescribed medication</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Pill className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">FDA-Approved</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Decades of clinical evidence</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Target className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Proven Results</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">60-70% maintain or improve hair count</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Repeat className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Long-Term Commitment</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Continued use maintains benefits</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Topical Minoxidil 5%</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Oral Minoxidil Low Dose</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Combined with Finasteride for Men</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Quick Answer Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Quick Answers About Minoxidil</h2>
+            <p className="text-taupe font-inter">What you need to know before starting treatment</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+              <h3 className="font-georgia text-lg text-brown mb-2">What does minoxidil do?</h3>
+              <p className="text-taupe font-inter text-sm">It helps slow hair loss and may regrow some hair, mainly in early pattern hair loss.</p>
             </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Users className="w-6 h-6 text-wine" />
-                <h3 className="font-georgia text-xl text-brown">
-                  Women with female pattern hair loss
-                </h3>
-              </div>
-              <p className="text-taupe">
-                The American Academy of Dermatology notes minoxidil is
-                FDA-approved for women, and products with 2% or 5% minoxidil are
-                approved for female pattern hair loss.
-              </p>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+              <h3 className="font-georgia text-lg text-brown mb-2">How long until results?</h3>
+              <p className="text-taupe font-inter text-sm">Many people need at least 4-6 months, and often longer, to judge results.</p>
             </motion.div>
-
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Target className="w-6 h-6 text-wine" />
-                <h3 className="font-georgia text-xl text-brown">
-                  People with early thinning (not complete baldness)
-                </h3>
-              </div>
-              <p className="text-taupe">
-                Minoxidil is more helpful when follicles are still alive but
-                getting weaker.
-              </p>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+              <h3 className="font-georgia text-lg text-brown mb-2">Will it work forever?</h3>
+              <p className="text-taupe font-inter text-sm">It works only while you keep using it. Stopping usually leads to hair loss again within months.</p>
             </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Layers className="w-6 h-6 text-wine" />
-                <h3 className="font-georgia text-xl text-brown">
-                  People using a wider plan
-                </h3>
-              </div>
-              <p className="text-taupe">
-                Minoxidil is often combined with clinic treatments like PRP,
-                mesotherapy, or medical options, depending on your diagnosis.
-              </p>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+              <h3 className="font-georgia text-lg text-brown mb-2">Is shedding normal at the start?</h3>
+              <p className="text-taupe font-inter text-sm">Some shedding can happen early, often in the first couple of weeks. This is expected.</p>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Who should be careful, or avoid minoxidil? Section */}
-      <section className="py-20 bg-rose/5">
+      {/* Minoxidil at a Glance */}
+      <section className="py-20 px-4 bg-light">
         <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-4 text-center"
-          >
-            Who should be careful, or avoid minoxidil?
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe text-center mb-12 max-w-2xl mx-auto"
-          >
-            Minoxidil is not for everyone.
-          </motion.p>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Minoxidil Hair Loss Treatment at a Glance</h2>
+            <p className="text-taupe font-inter">What makes minoxidil the most trusted hair regrowth treatment</p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <HeartPulse className="w-8 h-8 text-wine mb-4" />
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                Pregnancy and breastfeeding
-              </h3>
-              <p className="text-taupe text-sm">
-                Some NHS hospital leaflets state there is no evidence confirming
-                safety during conception attempts, pregnancy, or breastfeeding,
-                so they do not suggest it in these groups.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-sm">
+              <Pill className="w-10 h-10 text-wine mb-4" />
+              <p className="font-inter text-sm text-taupe mb-1">What Minoxidil Is</p>
+              <p className="font-georgia text-sm text-brown">Vasodilator medication; FDA-approved topical hair loss treatment; one of only two medications with strong clinical evidence</p>
             </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <Flame className="w-8 h-8 text-wine mb-4" />
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                If your scalp is very inflamed or infected
-              </h3>
-              <p className="text-taupe text-sm">
-                If your scalp is red, painful, or has infection, you need
-                treatment for that first.
-              </p>
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-sm">
+              <Target className="w-10 h-10 text-wine mb-4" />
+              <p className="font-inter text-sm text-taupe mb-1">How Minoxidil Works</p>
+              <p className="font-georgia text-sm text-brown">Dilates blood vessels in scalp; extends anagen growth phase; stimulates hair follicle proliferation</p>
             </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <Ban className="w-8 h-8 text-wine mb-4" />
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                If you have scarring hair loss
-              </h3>
-              <p className="text-taupe text-sm">
-                For some scarring alopecias, minoxidil alone is not enough to
-                stop progression. The AAD notes minoxidil alone cannot prevent
-                further hair loss in CCAA.
-              </p>
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-sm">
+              <Users className="w-10 h-10 text-wine mb-4" />
+              <p className="font-inter text-sm text-taupe mb-1">Who It's Used For</p>
+              <p className="font-georgia text-sm text-brown">Men with male pattern baldness; women with female pattern hair loss; early to moderate thinning</p>
             </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <HeartPulse className="w-8 h-8 text-wine mb-4" />
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                If you have heart or blood pressure issues (especially oral
-                minoxidil)
-              </h3>
-              <p className="text-taupe text-sm">
-                Oral minoxidil can affect blood pressure and heart rate. It must
-                be doctor-guided.
-              </p>
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-sm">
+              <Clock className="w-10 h-10 text-wine mb-4" />
+              <p className="font-inter text-sm text-taupe mb-1">Timeline for Results</p>
+              <p className="font-georgia text-sm text-brown">Initial shedding 4-8 weeks; visible regrowth 3-6 months; maximum results 12 months</p>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Types of minoxidil used in hair loss treatment */}
-      <section className="py-20 bg-white">
+      {/* How Minoxidil Works - Mechanism Table */}
+      <section className="py-20 px-4 bg-cream">
         <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-12 text-center"
-          >
-            Types of minoxidil used in hair loss treatment
-          </motion.h2>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">How Minoxidil Works for Hair Loss</h2>
+            <p className="text-taupe font-inter">Blood flow, anagen phase and the shedding sequence explained</p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="font-georgia text-2xl text-brown mb-4">
-                Topical minoxidil (most common)
-              </h3>
-              <p className="text-taupe mb-2">Comes as solution or foam.</p>
-              <p className="text-taupe mb-2">
-                Typical use guidance (varies by product):
-              </p>
-              <div className="space-y-2 text-taupe">
-                <p>• Men often use 5% once or twice daily</p>
-                <p>
-                  • Women often use 2% solution twice daily or 5% foam once
-                  daily
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-cream p-8 rounded-2xl"
-            >
-              <h3 className="font-georgia text-2xl text-brown mb-4">
-                Oral minoxidil (low dose, off-label in many places)
-              </h3>
-              <p className="text-taupe">
-                Some clinics prescribe low-dose oral minoxidil when topical is
-                not tolerated or adherence is poor. It can have systemic side
-                effects, so it needs medical screening and monitoring.
-              </p>
-            </motion.div>
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Mechanism Step</th>
+                  <th className="p-4 text-left font-georgia">What Happens Biologically</th>
+                  <th className="p-4 text-left font-georgia">How This Promotes Hair Growth</th>
+                  <th className="p-4 text-left font-georgia">Clinical Implication</th>
+                </tr>
+              </thead>
+              <tbody>
+                {mechanismTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.step}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.effect}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.implication}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </motion.div>
-      </section>
 
-      {/* How to use topical minoxidil correctly */}
-      <section className="py-20 bg-cream">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-6 text-center"
-          >
-            How to use topical minoxidil correctly (and get better results)
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe text-center mb-12 max-w-2xl mx-auto"
-          >
-            This is where most people fail. Not because minoxidil "doesn't
-            work". Because they use it in a way that makes results harder.
-          </motion.p>
-
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-4">
-                Step-by-step
-              </h3>
-              <ol className="space-y-3 text-taupe list-decimal pl-5">
-                <li>Start with a dry scalp.</li>
-                <li>Apply the recommended amount to thinning areas.</li>
-                <li>Wash hands after.</li>
-                <li>Let it dry before styling products.</li>
-                <li>Keep it away from your face, pillowcases, and pets.</li>
-              </ol>
-              <p className="mt-6 text-taupe italic">
-                Mayo Clinic notes hair growth, if it happens, usually occurs
-                after several months and lasts only as long as you keep using
-                it.
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Common mistakes that reduce results */}
-      <section className="py-16 bg-white">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl text-brown mb-8 text-center"
-          >
-            Common mistakes that reduce results
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto"
-          >
-            <motion.div
-              variants={scaleIn}
-              className="bg-rose/5 p-4 rounded-xl border border-rose/10"
-            >
-              <AlertCircle className="w-5 h-5 text-rose mb-2" />
-              <p className="text-brown text-sm">Applying to hair, not scalp</p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-rose/5 p-4 rounded-xl border border-rose/10"
-            >
-              <AlertCircle className="w-5 h-5 text-rose mb-2" />
-              <p className="text-brown text-sm">
-                Using less than recommended, then expecting "fast results"
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-rose/5 p-4 rounded-xl border border-rose/10"
-            >
-              <AlertCircle className="w-5 h-5 text-rose mb-2" />
-              <p className="text-brown text-sm">
-                Stopping after 4 weeks because shedding started
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-rose/5 p-4 rounded-xl border border-rose/10"
-            >
-              <AlertCircle className="w-5 h-5 text-rose mb-2" />
-              <p className="text-brown text-sm">
-                Using it on many body areas (can trigger unwanted hair growth)
-              </p>
-            </motion.div>
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm">
+              The scalp sulphotransferase enzyme variability row is the most clinically novel content for Malaysian patients. The reason some patients get excellent hair density improvement while others get minimal response is primarily explained by individual differences in the scalp enzyme that converts topical minoxidil to its active form. At Nexus Clinic KL, this variability is the clinical rationale for switching to oral minoxidil in patients with inadequate topical response.
+            </p>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* The minoxidil shedding phase */}
-      <section className="py-20 bg-cream">
+      {/* Minoxidil for Men vs Women Table */}
+      <section className="py-20 px-4 bg-light">
         <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
         >
-          <div className="max-w-3xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-4xl text-brown mb-6 text-center"
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Minoxidil for Men vs Women</h2>
+            <p className="text-taupe font-inter">Concentration, finasteride and best results for hair regrowth in Malaysia</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Factor</th>
+                  <th className="p-4 text-left font-georgia">Minoxidil for Men</th>
+                  <th className="p-4 text-left font-georgia">Minoxidil for Women</th>
+                </tr>
+              </thead>
+              <tbody>
+                {genderTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.factor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.men}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.women}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Topical vs Oral Minoxidil Comparison Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Topical Solution vs Oral Minoxidil</h2>
+            <p className="text-taupe font-inter">Choosing the right formulation in Malaysia</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Comparison Factor</th>
+                  <th className="p-4 text-left font-georgia">Topical Minoxidil</th>
+                  <th className="p-4 text-left font-georgia">Oral Minoxidil</th>
+                </tr>
+              </thead>
+              <tbody>
+                {formulationTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.factor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.topical}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.oral}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm">
+              Oral minoxidil is not reserved only for patients who have failed topical minoxidil. For patients with active lifestyles, frequent travel, scalp conditions making topical application uncomfortable, or those wanting maximum compliance convenience, oral minoxidil can be a first-line rather than second-line choice.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Minoxidil, Finasteride and PRP Combination Programme */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Minoxidil, Finasteride and PRP</h2>
+            <p className="text-taupe font-inter">The advanced hair loss treatment programme at Nexus Clinic KL</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment Component</th>
+                  <th className="p-4 text-left font-georgia">Role in the Combination Programme</th>
+                  <th className="p-4 text-left font-georgia">How Nexus Clinic KL Integrates This</th>
+                </tr>
+              </thead>
+              <tbody>
+                {combinationTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.component}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.role}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.integration}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Results Timeline Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">How Long Does Minoxidil Take to Work?</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">A realistic timeline helps you stick with it</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-light p-8 rounded-2xl border border-taupe/20 shadow-lg"
             >
-              The minoxidil shedding phase (what it is and why it happens)
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-rose text-xl mb-8 text-center"
-            >
-              This is the moment most people panic.
-            </motion.p>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">Treatment Timeline</h3>
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-brown">First 2-8 weeks</span>
+                    <span className="font-georgia text-xl font-bold text-wine">Shedding Phase</span>
+                  </div>
+                  <div className="w-full bg-taupe/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "15%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="bg-wine h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-taupe text-xs mt-2">Possible shedding, scalp adjustment. This is expected and normal.</p>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-brown">2-4 months</span>
+                    <span className="font-georgia text-xl font-bold text-wine">Early Signs</span>
+                  </div>
+                  <div className="w-full bg-taupe/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "40%" }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                      className="bg-wine h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-taupe text-xs mt-2">Early signs in some people. Patience is essential.</p>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-brown">6 months</span>
+                    <span className="font-georgia text-xl font-bold text-wine">Meaningful Results</span>
+                  </div>
+                  <div className="w-full bg-taupe/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "70%" }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="bg-wine h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-taupe text-xs mt-2">Mayo Clinic notes it can take at least six months to prevent further loss and start regrowth.</p>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-brown">12 months</span>
+                    <span className="font-georgia text-xl font-bold text-wine">Maximum Results</span>
+                  </div>
+                  <div className="w-full bg-taupe/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                      className="bg-wine h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-taupe text-xs mt-2">Maximum effectiveness typically seen at 12 months of consistent use.</p>
+                </div>
+              </div>
+            </motion.div>
 
             <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm"
+              variants={fadeInRight}
+              className="bg-wine p-8 rounded-2xl text-white shadow-xl"
             >
-              <p className="text-taupe mb-4">
-                Mayo Clinic notes hair loss may continue for about 2 weeks after
-                starting minoxidil. Other consumer clinical guides also describe
-                early shedding during the first weeks.
-              </p>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <AlertCircle className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">The Shedding Phase</h3>
+              </div>
+              <p className="text-white/90 mb-4">This is the moment most people panic.</p>
+              <p className="text-white/80 text-sm mb-4">Mayo Clinic notes hair loss may continue for about 2 weeks after starting minoxidil. Other clinical guides also describe early shedding during the first weeks.</p>
+              <div className="mt-4 pt-4 border-t border-white/20">
+                <p className="font-semibold text-white mb-2">What's happening:</p>
+                <p className="text-white/80 text-sm">Minoxidil can shift weak hairs out sooner, so stronger growth can come later. This phase is usually temporary.</p>
+              </div>
+              <div className="mt-4">
+                <p className="font-semibold text-white mb-2">What to do:</p>
+                <ul className="space-y-2 text-white/80 text-sm">
+                  <li className="flex items-start gap-2">• Stay consistent (unless you have severe side effects)</li>
+                  <li className="flex items-start gap-2">• Take progress photos monthly</li>
+                  <li className="flex items-start gap-2">• Review technique and dosage with a doctor if unsure</li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
 
-              <p className="text-brown font-medium mb-2">What's happening:</p>
-              <p className="text-taupe mb-6">
-                Minoxidil can shift weak hairs out sooner, so stronger growth
-                can come later. This phase is usually temporary.
-              </p>
+      {/* Benefits and Who Should Avoid Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-cream p-8 rounded-2xl border border-taupe/20 shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Heart className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">Benefits of Minoxidil Treatment</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Slows down thinning and hair loss progression</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Improves density in thinning areas</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Helps you keep hair you still have</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>One of only two FDA-approved medications for hair loss</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Decades of published clinical evidence supporting effectiveness</span>
+                </li>
+              </ul>
+            </motion.div>
 
-              <p className="text-brown font-medium mb-2">What to do:</p>
-              <ul className="space-y-2 text-taupe">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-wine mt-1 shrink-0" />
-                  <span>
-                    Stay consistent (unless you have severe side effects)
-                  </span>
+            <motion.div variants={fadeInRight} className="bg-wine p-8 rounded-2xl text-white shadow-xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Ban className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Who Should Avoid Minoxidil</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-white/90 font-inter text-sm">
+                  <AlertCircle className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                  <span>Pregnancy and breastfeeding (no safety evidence)</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-wine mt-1 shrink-0" />
-                  <span>Take progress photos monthly</span>
+                <li className="flex items-start gap-3 text-white/90 font-inter text-sm">
+                  <AlertCircle className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                  <span>Scalp that is very inflamed or infected</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-wine mt-1 shrink-0" />
-                  <span>
-                    Review technique and dosage with a doctor if unsure
-                  </span>
+                <li className="flex items-start gap-3 text-white/90 font-inter text-sm">
+                  <AlertCircle className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                  <span>Scarring hair loss (minoxidil alone is not enough)</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/90 font-inter text-sm">
+                  <AlertCircle className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                  <span>Heart or blood pressure issues (especially oral minoxidil)</span>
                 </li>
               </ul>
             </motion.div>
@@ -713,745 +821,175 @@ const MinoxidilLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         </motion.div>
       </section>
 
-      {/* How long does minoxidil take to work? */}
-      <section className="py-20 bg-white">
+      {/* Common Mistakes Section */}
+      <section className="py-20 px-4 bg-cream">
         <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-6 text-center"
-          >
-            How long does minoxidil take to work?
-          </motion.h2>
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Common Mistakes That Reduce Results</h2>
+            <p className="text-taupe font-inter">Avoid these to get the most from your minoxidil treatment</p>
+          </motion.div>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe text-center mb-12 max-w-2xl mx-auto"
-          >
-            A realistic timeline helps you stick with it.
-          </motion.p>
-
-          <div className="max-w-3xl mx-auto space-y-6">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-6 rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-2">
-                First 2-8 weeks:
-              </h3>
-              <p className="text-taupe">possible shedding, scalp adjustment</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <motion.div variants={fadeInUp} className="bg-light p-5 rounded-xl border-l-4 border-rose shadow-sm">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
+                <p className="text-brown font-inter">Applying to hair, not scalp</p>
+              </div>
             </motion.div>
-
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-6 rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-2">
-                2-4 months:
-              </h3>
-              <p className="text-taupe">early signs in some people</p>
+            <motion.div variants={fadeInUp} className="bg-light p-5 rounded-xl border-l-4 border-rose shadow-sm">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
+                <p className="text-brown font-inter">Using less than recommended, then expecting fast results</p>
+              </div>
             </motion.div>
-
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-6 rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-2">
-                6 months:
-              </h3>
-              <p className="text-taupe">
-                Mayo Clinic notes it can take at least six months to prevent
-                further loss and start regrowth, and it may take longer to judge
-                effectiveness
-              </p>
+            <motion.div variants={fadeInUp} className="bg-light p-5 rounded-xl border-l-4 border-rose shadow-sm">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
+                <p className="text-brown font-inter">Stopping after 4 weeks because shedding started</p>
+              </div>
             </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-center text-taupe mt-8 italic"
-            >
-              If it works for you, you usually need to keep using it to maintain
-              benefits.
-            </motion.p>
+            <motion.div variants={fadeInUp} className="bg-light p-5 rounded-xl border-l-4 border-rose shadow-sm">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-0.5" />
+                <p className="text-brown font-inter">Using it on many body areas (can trigger unwanted hair growth)</p>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Benefits of minoxidil treatment */}
-      <section className="py-16 bg-cream">
+      {/* Pet Safety Section */}
+      <section className="py-20 px-4 bg-light">
         <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl text-brown mb-8 text-center"
-          >
-            Benefits of minoxidil treatment
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe text-center max-w-2xl mx-auto mb-8"
-          >
-            When used early and consistently, minoxidil may:
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl text-center shadow-sm"
-            >
-              <CheckCircle2 className="w-8 h-8 text-wine mx-auto mb-3" />
-              <p className="text-brown">slow down thinning</p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl text-center shadow-sm"
-            >
-              <CheckCircle2 className="w-8 h-8 text-wine mx-auto mb-3" />
-              <p className="text-brown">improve density in some areas</p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-xl text-center shadow-sm"
-            >
-              <CheckCircle2 className="w-8 h-8 text-wine mx-auto mb-3" />
-              <p className="text-brown">help you keep hair you still have</p>
-            </motion.div>
-          </div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mt-8 text-sm"
-          >
-            Mayo Clinic also highlights it may help regrow hair or slow the rate
-            of hair loss, but you need ongoing use to keep benefits.
-          </motion.p>
+          <motion.div variants={fadeInUp} className="bg-rose/5 p-8 rounded-2xl border border-rose/20 text-center">
+            <HeartPulse className="w-12 h-12 text-rose mx-auto mb-4" />
+            <h2 className="font-georgia text-2xl text-brown mb-4">Minoxidil Safety at Home (Especially If You Have Pets)</h2>
+            <p className="text-rose font-semibold mb-4">This is a big one people miss.</p>
+            <p className="text-taupe mb-6">Medical literature highlights topical minoxidil can be highly toxic to pets, especially cats, and even small exposure can be serious.</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-white p-3 rounded-lg">
+                <p className="text-brown text-sm">wash hands after every use</p>
+              </div>
+              <div className="bg-white p-3 rounded-lg">
+                <p className="text-brown text-sm">let scalp dry fully before touching pets</p>
+              </div>
+              <div className="bg-white p-3 rounded-lg">
+                <p className="text-brown text-sm">keep bottles locked away</p>
+              </div>
+              <div className="bg-white p-3 rounded-lg">
+                <p className="text-brown text-sm">change pillowcases often</p>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </section>
 
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Minoxidil Hair Loss Treatment Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Service / Treatment</th>
+                  <th className="p-4 text-left font-georgia">Details</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.service}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{tier.details}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    Annual cost for complete minoxidil, finasteride and PRP programme is approximately RM 6,000 to RM 12,000 for men. Women on minoxidil alone have annual cost of approximately RM 1,000 to RM 3,000. All pricing disclosed at initial consultation.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Before After Section */}
       <SectionBeforeAfter transformations={transformations} />
 
-      {/* Side effects of minoxidil (honest list) */}
-      <section className="py-20 bg-white">
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
         <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-6 text-center"
-          >
-            Side effects of minoxidil (honest list)
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe text-center mb-12 max-w-2xl mx-auto"
-          >
-            Most side effects are manageable, but you should know them upfront.
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInLeft}
-              className="bg-cream p-6 rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-4">
-                Common topical side effects
-              </h3>
-              <ul className="space-y-2 text-taupe">
-                <li>• scalp irritation or itching</li>
-                <li>
-                  • unwanted hair growth on nearby face or hands if it spreads
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-cream p-6 rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-4">
-                Less common but important
-              </h3>
-              <p className="text-taupe">
-                If you notice dizziness, chest symptoms, swelling, or
-                palpitations, stop and seek medical advice, especially if using
-                oral minoxidil. NHS sources list systemic effects like fluid
-                retention, palpitations, and dizziness as possible side effects
-                for minoxidil (not everyone gets these).
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Minoxidil safety at home */}
-      <section className="py-16 bg-rose/5">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
-        >
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              variants={scaleIn}
-              className="inline-block p-4 bg-white rounded-full mb-6 mx-auto"
-            >
-              <Home className="w-8 h-8 text-wine" />
-            </motion.div>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="font-georgia text-3xl text-brown mb-4 text-center"
-            >
-              Minoxidil safety at home (especially if you have pets)
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-rose text-lg mb-6 text-center"
-            >
-              This is a big one people miss.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-taupe mb-8 text-center"
-            >
-              Medical literature highlights topical minoxidil can be highly
-              toxic to pets, especially cats, and even small exposure can be
-              serious.
-            </motion.p>
-
-            <motion.h3
-              variants={fadeInUp}
-              className="font-georgia text-xl text-brown mb-4"
-            >
-              Simple safety habits:
-            </motion.h3>
-
-            <motion.div
-              variants={staggerContainer}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
-            >
-              <motion.div
-                variants={scaleIn}
-                className="bg-white p-4 rounded-xl"
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Ready to Start Minoxidil Treatment the Right Way?
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              If you're searching for minoxidil treatment in Malaysia, start with a proper hair and scalp assessment at Nexus Clinic Kuala Lumpur. We'll confirm the cause, recommend the right strength and routine, and tell you what results are realistic for your stage.
+            </p>
+            <p className="text-cream/90 font-inter">
+              Our licensed doctors bring over 15 years of combined clinical experience. Nexus Clinic KL is located at Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur, serving patients from across KL, Petaling Jaya, Bangsar, KLCC, Ampang, Mont Kiara and throughout Malaysia.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
-                <p className="text-brown text-sm">wash hands after every use</p>
-              </motion.div>
-
-              <motion.div
-                variants={scaleIn}
-                className="bg-white p-4 rounded-xl"
-              >
-                <p className="text-brown text-sm">
-                  let scalp dry fully before touching pets
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={scaleIn}
-                className="bg-white p-4 rounded-xl"
-              >
-                <p className="text-brown text-sm">keep bottles locked away</p>
-              </motion.div>
-
-              <motion.div
-                variants={scaleIn}
-                className="bg-white p-4 rounded-xl"
-              >
-                <p className="text-brown text-sm">
-                  change pillowcases often if you apply at night
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Minoxidil cost in Malaysia */}
-      <section className="py-20 bg-white">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-6 text-center"
-          >
-            Minoxidil cost in Malaysia (realistic ranges)
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-taupe text-center mb-8">
-            Costs change by brand, concentration, and where you buy.
-          </motion.p>
-
-          <motion.div
-            variants={scaleIn}
-            className="max-w-2xl mx-auto bg-cream p-8 rounded-2xl"
-          >
-            <p className="text-taupe mb-4">Examples seen in Malaysia:</p>
-
-            <div className="space-y-3 text-brown">
-              <p>
-                • Online pharmacy listings show minoxidil products around RM 178
-                for an 80ml 5% lotion (example listing).
-              </p>
-              <p>
-                • Some Malaysia hair clinic blogs list typical ranges like RM
-                50-RM 120 for 2% solution, RM 70-RM 180 for 5% solution, and RM
-                100-RM 250 for 5% foam.
-              </p>
-              <p>
-                • Some clinic pages present minoxidil as part of packages, with
-                pricing ranges depending on plan.
-              </p>
+                Book Your Assessment
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a consultation for minoxidil hair loss treatment at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
             </div>
-
-            <div className="mt-8 p-6 bg-white rounded-xl">
-              <p className="text-wine">
-                At Nexus Clinic Kuala Lumpur, we focus on total plan cost, not
-                just the bottle price, because the right diagnosis can save you
-                months of wasted spending.
-              </p>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Phone className="w-4 h-4" /> Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Mail className="w-4 h-4" /> Email: info@nexusclinic.my</a>
             </div>
           </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Minoxidil vs other hair loss treatments */}
-      <section className="py-20 bg-cream">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-12 text-center"
-          >
-            Minoxidil vs other hair loss treatments (simple comparison)
-          </motion.h2>
-
-          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-2xl">
-              <div className="flex items-center gap-2 mb-3">
-                <Droplets className="w-5 h-5 text-wine" />
-                <h3 className="font-georgia text-lg text-brown">
-                  Minoxidil vs PRP
-                </h3>
-              </div>
-              <p className="text-taupe text-sm">
-                Minoxidil is daily home treatment. PRP is in-clinic and often
-                done in sessions. Many people combine them, especially for
-                faster support in early thinning.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-2xl">
-              <div className="flex items-center gap-2 mb-3">
-                <Syringe className="w-5 h-5 text-wine" />
-                <h3 className="font-georgia text-lg text-brown">
-                  Minoxidil vs mesotherapy
-                </h3>
-              </div>
-              <p className="text-taupe text-sm">
-                Mesotherapy focuses on scalp nutrient delivery. Minoxidil is a
-                proven first-line option for many pattern hair loss cases.
-                Combination depends on the scalp condition and stage.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-2xl">
-              <div className="flex items-center gap-2 mb-3">
-                <Pill className="w-5 h-5 text-wine" />
-                <h3 className="font-georgia text-lg text-brown">
-                  Minoxidil vs finasteride (men)
-                </h3>
-              </div>
-              <p className="text-taupe text-sm">
-                Finasteride targets DHT and is prescription-based. Many clinics
-                pair it with minoxidil for male pattern hair loss.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-2xl">
-              <div className="flex items-center gap-2 mb-3">
-                <Scissors className="w-5 h-5 text-wine" />
-                <h3 className="font-georgia text-lg text-brown">
-                  Minoxidil vs hair transplant
-                </h3>
-              </div>
-              <p className="text-taupe text-sm">
-                Minoxidil supports existing follicles. Transplant replaces
-                missing follicles. If an area is fully bald, transplant may be
-                the more direct option.
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* What a minoxidil plan looks like at Nexus Clinic Kuala Lumpur */}
-      <section className="py-20 bg-white">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-6 text-center"
-          >
-            What a minoxidil plan looks like at Nexus Clinic Kuala Lumpur
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-taupe text-center mb-12"
-          >
-            We keep it clear and realistic.
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
-              <div className="text-3xl mb-4">
-                <Divide />
-              </div>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                1) Diagnosis first
-              </h3>
-              <p className="text-taupe text-sm">
-                Not all hair loss is the same. Pattern hair loss, stress
-                shedding, scalp inflammation, and scarring loss need different
-                approaches.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
-              <div className="text-3xl mb-4">
-                <Pill />
-              </div>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                2) Correct product and routine
-              </h3>
-              <p className="text-taupe text-sm">
-                Foam vs solution. Once daily vs twice daily. Sensitive scalp vs
-                oily scalp. We match the plan to your lifestyle so you actually
-                stick to it.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
-              <div className="text-3xl mb-4">
-                <Scissors />
-              </div>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                3) Combine only if it makes sense
-              </h3>
-              <p className="text-taupe text-sm">
-                Some people need only minoxidil. Others benefit from PRP or
-                other in-clinic support based on severity.
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-cream p-6 rounded-2xl">
-              <div className="text-3xl mb-4">
-                <Camera />
-              </div>
-              <h3 className="font-georgia text-lg text-brown mb-2">
-                4) Track progress properly
-              </h3>
-              <p className="text-taupe text-sm">
-                Monthly photos. Same lighting. Same angles. This keeps the plan
-                honest.
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* People Also Ask FAQs */}
-      <section className="py-20 bg-cream">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-brown mb-12 text-center"
-          >
-            People Also Ask FAQs (real search intent)
-          </motion.h2>
-
-          <div className="max-w-3xl mx-auto space-y-4">
-            {/* FAQ 1 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Does minoxidil work for hair regrowth?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                Minoxidil can help slow hair loss and support regrowth,
-                especially in early pattern hair loss. The AAD notes it can help
-                early hair loss, but it cannot regrow an entire head of hair.
-                Mayo Clinic also notes it may take at least six months to see
-                meaningful changes and you need ongoing use to keep results.
-              </p>
-            </motion.details>
-
-            {/* FAQ 2 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                How long do I need to use minoxidil before I see results?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                Many people need several months. Mayo Clinic advises that if
-                regrowth happens, it usually appears after several months of
-                consistent use, and you should evaluate results around 4-6
-                months or longer. If you stop too early, you may miss the real
-                benefit window.
-              </p>
-            </motion.details>
-
-            {/* FAQ 3 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Is it normal to shed hair after starting minoxidil?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                Yes, it can be normal. Mayo Clinic notes hair loss may continue
-                for about 2 weeks after starting. Other clinical guides also
-                describe early shedding in the first weeks. This is often
-                temporary and linked to hair cycle shifts.
-              </p>
-            </motion.details>
-
-            {/* FAQ 4 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                What happens if I stop using minoxidil?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                You usually lose the benefits over time. Mayo Clinic notes hair
-                loss will begin again within a few months after stopping. The
-                AAD also explains that when you stop, you gradually shed more
-                and lose the thickness minoxidil helped maintain.
-              </p>
-            </motion.details>
-
-            {/* FAQ 5 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Can women use minoxidil in Malaysia?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                Yes, many women use it for female pattern hair loss. The AAD
-                notes minoxidil is FDA-approved for women, with 2% and 5%
-                options approved for female pattern hair loss. Product choice
-                and dosing should match your scalp sensitivity and goals.
-              </p>
-            </motion.details>
-
-            {/* FAQ 6 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Which is better, minoxidil foam or solution?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                It depends on your scalp and routine. Some people prefer foam
-                because it can feel less messy. The key is consistent scalp
-                application as directed. At Nexus Clinic KL, we help you choose
-                what you can realistically use long term.
-              </p>
-            </motion.details>
-
-            {/* FAQ 7 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Can minoxidil cause unwanted facial hair?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                It can, especially if it spreads to nearby skin or drips. Mayo
-                Clinic lists unwanted hair growth on adjacent skin as a possible
-                side effect. Clean application, careful drying, and hand-washing
-                reduce this risk.
-              </p>
-            </motion.details>
-
-            {/* FAQ 8 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Is oral minoxidil safe for hair loss?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                Low-dose oral minoxidil is used by some clinicians, but it can
-                affect blood pressure and heart rate. NHS leaflets list possible
-                side effects like fluid retention, palpitations, dizziness, and
-                more. This is why it should be prescribed and monitored by a
-                doctor.
-              </p>
-            </motion.details>
-
-            {/* FAQ 9 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Can I use minoxidil if I am trying to conceive, pregnant, or
-                breastfeeding?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                Many hospital guidance leaflets state there is no evidence
-                confirming safety in these groups and recommend avoiding it. If
-                this applies to you, speak to a doctor for safer alternatives.
-              </p>
-            </motion.details>
-
-            {/* FAQ 10 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                How much does minoxidil cost in Malaysia?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                It varies by brand and type. Malaysia sources show ranges like
-                RM 70-RM 180 for 5% solution and RM 100-RM 250 for 5% foam, and
-                some online pharmacy listings show around RM 178 for a 5%
-                lotion. Prices change, so we guide based on your plan and
-                budget.
-              </p>
-            </motion.details>
-
-            {/* FAQ 11 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Can minoxidil help scarring alopecia?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                Usually not on its own. The AAD notes that for some scarring
-                conditions like CCCA, minoxidil alone cannot prevent further
-                hair loss and prescription anti-inflammatory treatment is
-                needed. This is why diagnosis matters before you invest time and
-                money.
-              </p>
-            </motion.details>
-
-            {/* FAQ 12 */}
-            <motion.details
-              variants={fadeInUp}
-              className="group bg-white rounded-xl p-4 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-brown font-medium">
-                Is minoxidil dangerous to pets?
-                <ChevronRight className="w-5 h-5 text-wine group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="mt-4 text-taupe text-sm leading-relaxed">
-                It can be. Research highlights topical minoxidil can be highly
-                toxic to pets, especially cats, even with small exposure. If you
-                have pets that sleep on your pillow or lick your hair, ask your
-                doctor about safer routines and strict precautions.
-              </p>
-            </motion.details>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Ready to start Section */}
-      <section className="py-20 bg-wine">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4 text-center"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-4xl text-white mb-6"
-          >
-            Ready to start minoxidil treatment in KL the right way?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-cream text-lg mb-8 max-w-2xl mx-auto"
-          >
-            If you're searching for minoxidil treatment in Malaysia, start with
-            a proper hair and scalp assessment at Nexus Clinic Kuala Lumpur.
-            We'll confirm the cause, recommend the right strength and routine,
-            and tell you what results are realistic for your stage.
-          </motion.p>
-
-          <motion.button
-            variants={scaleIn}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-wine px-8 py-4 rounded-full font-medium hover:bg-cream transition-colors"
-          >
-            Book your assessment
-          </motion.button>
         </motion.div>
       </section>
     </div>
   );
-};
-
-export default MinoxidilLanding;
+}

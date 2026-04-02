@@ -37,7 +37,7 @@ interface EczemaTreatmentProps {
   locale: string;
 }
 
-export default function EczemaTreatment({ locale }: EczemaTreatmentProps) {
+export default function EczemaLandingPage({ locale }: EczemaTreatmentProps) {
   const severityFramework = [
     { severity: "Mild", signs: "Small dry patches; occasional itch; minimal sleep disruption; no infection; skin not thickened", scorad: "SCORAD below 25; limited areas affected", treatment: "Twice-daily prescription emollient; mild or moderate potency topical corticosteroid applied to flare patches; trigger identification", escalate: "If not clearing within 2 to 3 weeks or spreading" },
     { severity: "Moderate", signs: "Widespread redness; persistent night-time itch; frequent flares; skin thickening; some sleep disruption", scorad: "SCORAD 25 to 50; multiple affected areas", treatment: "Moderate to potent topical corticosteroid for flares; topical calcineurin inhibitor for face and flexures; proactive maintenance twice weekly; antihistamine", escalate: "If uncontrolled after 4 to 6 weeks of combined topical therapy" },

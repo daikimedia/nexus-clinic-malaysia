@@ -36,7 +36,7 @@ interface HydraFacialProps {
   locale: string;
 }
 
-export default function HydraFacial({ locale }: HydraFacialProps) {
+export default function HydraFacialLandingPage({ locale }: HydraFacialProps) {
   const skinConcernMatrix = [
     { concern: "Clogged Pores and Blackheads", tier: "Signature", booster: "Salicylic acid and glycolic acid peel solution", addOn: "Blue LED therapy for bacterial suppression", outcome: "Visibly cleaner pores after 1 session; reduction in congestion over 3 to 4 monthly sessions" },
     { concern: "Dehydration and Dullness", tier: "Signature or Deluxe", booster: "Hyaluronic acid and peptide fusion serum", addOn: "Antiox+ serum booster for antioxidant saturation", outcome: "Immediate plumping and glow visible same day; sustained hydration with monthly sessions" },

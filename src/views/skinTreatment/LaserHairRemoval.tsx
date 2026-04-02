@@ -53,7 +53,7 @@ interface LaserHairRemovalProps {
   locale: string;
 }
 
-export default function LaserHairRemoval({ locale }: LaserHairRemovalProps) {
+export default function LaserHairRemovalLanding({ locale }: LaserHairRemovalProps) {
   const transformations = [
     {
       id: 1,

@@ -38,7 +38,7 @@ interface DarkEyeCircleProps {
   locale: string;
 }
 
-export default function DarkEyeCircle({ locale }: DarkEyeCircleProps) {
+export default function DarkEyeCircleLanding({ locale }: DarkEyeCircleProps) {
   const darkCircleTypes = [
     { type: "Pigmented (Brown)", appearance: "Tan, brown or dark brown patches; uniform colour; similar tone on both sides", test: "Gently stretch the under-eye skin sideways. If colour stays dark or becomes more visible, it is pigmented.", cause: "Excess melanin from UV, allergies, chronic eye rubbing, genetic predisposition", treatment: "Pico Laser (1064nm toning) + medical-grade topicals with kojic acid and niacinamide" },
     { type: "Vascular (Blue or Purple)", appearance: "Blue, purple or reddish-pink hue; more visible when tired, dehydrated or after allergies", test: "Gently press the under-eye area. If colour temporarily lightens or blanches, it is vascular.", cause: "Visible blood vessels through thin skin; allergic rhinitis; poor circulation; sleep deprivation", treatment: "Sylfirm X (vascular RF coagulation) + Rejuran I to thicken dermis" },

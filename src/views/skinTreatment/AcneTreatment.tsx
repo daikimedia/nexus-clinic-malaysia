@@ -37,7 +37,7 @@ interface AcneTreatmentProps {
   locale: string;
 }
 
-export default function AcneTreatment({ locale }: AcneTreatmentProps) {
+export default function AcneLandingPage({ locale }: AcneTreatmentProps) {
   const acneTypes = [
     { type: "Comedonal acne (clogged pores)", description: "Looks like tiny bumps, blackheads, and 'texture' that never feels smooth. Often worse with heavy makeup, oily skincare, or humid days." },
     { type: "Inflammatory acne (red, angry acne)", description: "Red, inflamed bumps that can be tender to touch. Often requires medical intervention." },

@@ -51,7 +51,7 @@ interface PicoLaserProps {
   locale: string;
 }
 
-export default function PicoLaser({ locale }: PicoLaserProps) {
+export default function PicoLaserLanding({ locale }: PicoLaserProps) {
   const transformations = [
     {
       id: 1,

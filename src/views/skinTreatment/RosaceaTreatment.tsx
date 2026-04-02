@@ -39,7 +39,7 @@ interface RosaceaTreatmentProps {
   locale: string;
 }
 
-export default function RosaceaTreatment({ locale }: RosaceaTreatmentProps) {
+export default function RosaceaTreatmentLanding({ locale }: RosaceaTreatmentProps) {
   const rosaceaSubtypes = [
     { subtype: "Erythematotelangiectatic Rosacea (ETR)", features: "Persistent central facial redness; visible dilated capillaries, broken capillaries and blood vessels; episodic flushing; burning or stinging sensation; no papules", mechanism: "Vascular hyperreactivity: abnormal dilatation of superficial facial blood vessels; permanently dilated visible blood vessels; neurogenic flushing component", firstLine: "Topical brimonidine (for acute redness reduction); Sylfirm X or PDL/IPL laser therapy to coagulate visible telangiectasia; gentle barrier repair skincare; strict SPF50 daily", escalate: "If telangiectasia is dense or brimonidine insufficient alone; add procedural vascular laser treatment" },
     { subtype: "Papulopustular Rosacea (PPR)", features: "Central face papules and pustules; persistent background redness; acne-like appearance but no comedones; often confused with acne", mechanism: "Inflammatory: Demodex mite overgrowth, dysregulated toll-like receptor 2 activation trigger neutrophil influx producing acne-like papules and pustules", firstLine: "Topical ivermectin (1% cream) or metronidazole (0.75%) once daily; oral doxycycline (low dose anti-inflammatory) for moderate to severe; azelaic acid as alternative", escalate: "If topical inadequate after 8 to 12 weeks; add oral doxycycline; isotretinoin for severe or refractory cases" },

@@ -1,37 +1,95 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
-  CheckCircle2,
-  AlertCircle,
   Sparkles,
-  Flame,
-  Leaf,
-  Calendar,
-  MapPin,
-  Shield,
-  Wind,
   Award,
+  MapPin,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
+  Zap,
+  Eye,
   AlertTriangle,
+  Scissors,
+  TrendingUp,
+  DollarSign,
+  Layers,
+  Users,
+  Target,
+  Droplet,
+  Leaf,
+  Flame,
+  Wind,
 } from "lucide-react";
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
 import FAQ from "../../components/FAQ";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-export default function BeardLanding({
-  locale = fallbackLng,
-}: {
-  locale?: string;
-}) {
-  const { t } = useTranslation(locale, "hair/beardTransplant");
+interface BeardTransplantProps {
+  locale: string;
+}
+
+export default function BeardLanding({ locale }: BeardTransplantProps) {
+  const beardZoneGuide = [
+    { zone: "Full Beard", coverage: "Cheeks, jawline, chin, upper lip, sideburns", grafts: "1,500 to 3,000 grafts", considerations: "Angle and direction must follow natural downward-and-outward growth pattern. Density gradation from border to centre." },
+    { zone: "Goatee", coverage: "Chin and lower lip area only", grafts: "500 to 1,000 grafts", considerations: "Precise border definition critical. Downward angle at chin tip. Subtle density graduation at edges." },
+    { zone: "Moustache", coverage: "Upper lip area", grafts: "300 to 600 grafts", considerations: "Very fine calibre hairs preferred. Lateral hair must angle outward and slightly downward to follow philtrum." },
+    { zone: "Cheek Beard", coverage: "Lateral cheek region above jawline", grafts: "500 to 1,200 grafts", considerations: "Growth is thin in this area naturally. Single-hair grafts for natural sparse coverage pattern at upper border." },
+    { zone: "Sideburns", coverage: "Pre-auricular area connecting scalp and beard", grafts: "300 to 800 grafts", considerations: "Must blend seamlessly with existing scalp hair at top and beard hair at bottom. Transition density essential." },
+    { zone: "Jawline Definition", coverage: "Lower jaw outline enhancement", grafts: "400 to 900 grafts", considerations: "Sharpens jaw profile without unnatural hard edges. Outward horizontal angle at jaw boundary." },
+  ];
+
+  const donorSources = [
+    { source: "Back of Scalp (Occipital)", characteristics: "Single to multi-hair grafts, medium calibre, straight to slightly wavy", matchQuality: "Excellent. Most similar to natural beard hair texture.", bestUsed: "Primary donor source for most beard transplant cases. Sufficient for 500 to 2,500 grafts." },
+    { source: "Side of Scalp (Temporal)", characteristics: "Finer calibre, naturally single hairs at periphery", matchQuality: "Very Good for moustache and sideburn areas.", bestUsed: "Supplementary source for fine-calibre zones like moustache or upper border of sideburns." },
+    { source: "Chest Hair", characteristics: "Coarser, curlier growth cycle, different calibre", matchQuality: "Moderate. Can look unnatural in high-visibility areas.", bestUsed: "Last resort supplement when scalp donor is exhausted. Used for interior beard density only." },
+    { source: "Existing Beard Hair", characteristics: "Identical texture and growth cycle to recipient area", matchQuality: "Perfect match for hair loss within existing beard due to scarring.", bestUsed: "Scar camouflage within existing beard where adjacent facial hair is available." },
+  ];
+
+  const fueVsDhi = [
+    { factor: "Extraction Method", fue: "Individual hair follicles extracted one by one from scalp donor area using punch tool", dhi: "Individual follicles extracted and immediately implanted using patented DHI implanter pen" },
+    { factor: "Angle and Direction Control", fue: "Good. Surgeon creates incisions first then places grafts.", dhi: "Superior. Implanter controls angle and direction simultaneously at implantation." },
+    { factor: "Graft Survival Rate", fue: "90 to 95% for beard applications", dhi: "95 to 99% due to minimal out-of-body time" },
+    { factor: "Best For", fue: "Larger sessions, full beard coverage, cost-effective approach", dhi: "Precision zones: moustache, sideburn borders, goatee definition" },
+    { factor: "Recovery", fue: "5 to 7 days visible healing", dhi: "4 to 6 days. Fastest of all beard techniques." },
+    { factor: "Cost in Malaysia (per graft)", fue: "RM 8 to RM 12 per hair", dhi: "RM 10 to RM 15 per hair" },
+  ];
+
+  const pricingTiers = [
+    { package: "Moustache Transplant (FUE)", grafts: "300 to 600 hairs", price: "RM 3,000 to RM 7,200" },
+    { package: "Goatee Transplant (FUE)", grafts: "500 to 1,000 grafts", price: "RM 5,000 to RM 12,000" },
+    { package: "Sideburn Transplant (FUE)", grafts: "300 to 800 grafts", price: "RM 3,000 to RM 9,600" },
+    { package: "Partial Beard (FUE)", grafts: "800 to 1,500 grafts", price: "RM 8,000 to RM 18,000" },
+    { package: "Full Beard Transplant (FUE)", grafts: "1,500 to 3,000 grafts", price: "RM 15,000 to RM 36,000" },
+    { package: "Full Beard Transplant (DHI)", grafts: "1,500 to 3,000 hairs", price: "RM 18,000 to RM 45,000" },
+    { package: "Eyebrow Transplant (FUE)", grafts: "200 to 500 grafts per brow", price: "RM 4,000 to RM 12,000" },
+  ];
+
+  const faqData = [
+    { q: "Is beard transplant permanent in Malaysia?", a: "Yes. The transplanted hair follicles come from the DHT-resistant donor area at the back of the scalp and are genetically programmed to continue growing for the patient's lifetime. Once the transplanted follicles are established in the beard area, the hair continues to grow naturally and is not subject to the hormonal miniaturisation that causes pattern hair loss. The transplanted hair can be shaved, shaped, and groomed exactly like natural beard hair, and it will regrow at the normal rate after shaving." },
+    { q: "How many grafts does a full beard transplant require?", a: "A full beard covering the cheeks, chin, jawline, and moustache area typically requires 1,500 to 3,000 grafts depending on the existing facial hair density and the desired final density of the transplanted beard. Patients with sparse but existing facial hair require fewer grafts because the transplant supplements rather than creates from scratch. Patients with no facial hair across the full beard area need more grafts to create the complete coverage. The doctor will calculate the number of grafts needed at the beard design consultation after assessing the coverage area and density goals." },
+    { q: "Can a beard transplant fill in only patchy areas?", a: "Yes, and this is one of the most common beard goals among patients at Nexus Clinic KL. Men with some existing facial hair but uneven or patchy areas can receive a targeted beard transplant that fills in the sparse zones to match the density of the surrounding natural facial hair. This approach requires fewer grafts than a full beard transplant and produces a result that blends seamlessly with the existing facial hair. The design consultation maps the specific patchy areas and plans implantation density to match the surrounding beard texture and direction." },
+    { q: "Does beard transplant leave any scars?", a: "Using the FUE technique, the donor area at the back of the scalp develops only tiny circular dot scars at each extraction site. These are not visible under normal hair length and require very close shaving to become noticeable. There are no stitches, no linear scar, and no visible evidence of the donor harvest under everyday hair length. At the beard recipient area, tiny scabs form at each implant site and fall away naturally within seven to ten days, leaving no visible trace of the procedure once healing is complete." },
+    { q: "When will my transplanted beard start to grow?", a: "After the initial shock loss of transplanted hair shafts at two to four weeks, the hair follicles enter a dormant phase before new growth begins. New beard hair begins to grow from the transplanted follicles from month three to four, initially appearing as fine, short hairs that gradually thicken. By month six, meaningful coverage is visible. The full result with natural density and length potential is established at month nine to twelve. This timeline mirrors the scalp hair transplant growth timeline and is the same regardless of whether FUE or DHI technique is used." },
+    { q: "Can a beard transplant be combined with an eyebrow transplant in the same session?", a: "Yes, and combining beard and eyebrow transplant in a single session is possible when the total graft count is manageable within one session's duration. Both procedures use the same scalp donor area and the same FUE extraction technique. Combined sessions are cost-efficient and reduce total recovery time. However, the implantation of eyebrow grafts requires the most precise angle control of any facial hair transplant zone, so the surgeon must be experienced in eyebrow-specific technique. At Nexus Clinic KL, the clinical team advises on the feasibility of a combined session at the consultation based on the total grafts needed for both areas." },
+    { q: "What is the difference between FUE and DHI for beard transplant in Malaysia?", a: "FUE extracts individual hair follicles and implants them into pre-made recipient sites, giving the surgeon good control over direction. DHI uses a patented implanter pen that simultaneously extracts and implants each follicle in a single step, providing superior control over the angle and direction of each hair at the moment of implantation. For beard transplant, the DHI technique is particularly valuable in precision zones like the moustache and sideburn borders where natural growth direction is critical to a natural-looking outcome. FUE is appropriate for larger coverage areas where efficiency and graft count are the primary priorities." },
+    { q: "Are beard transplant results natural-looking?", a: "Yes, when the procedure is performed by an experienced transplant surgeon who controls the angle and direction of implantation to match the natural growth pattern of the beard zone being treated. The transplanted hair is the patient's own scalp hair relocated to the face, so the texture and growth characteristics are essentially equivalent to any natural hair follicle. The key variable determining whether the result looks natural is the precision of implantation angle, which is why choosing a surgeon with specific beard transplant experience matters significantly more than the technique used." },
+    { q: "How long does the beard transplant procedure take and what is the recovery?", a: "A moustache or goatee transplant requiring 300 to 800 grafts takes approximately three to five hours including design, anaesthesia, extraction, and implantation. A full beard transplant requiring 1,500 to 3,000 grafts takes six to eight hours. Both are performed as day sessions under local anaesthesia with no hospital admission required. Recovery involves mild facial swelling and redness for two to three days, scabbing at the implant sites for seven to ten days, and a return to work within three to five days for most patients. Strenuous exercise and direct sun exposure to the face should be avoided for the first two weeks." },
+    { q: "Is Nexus Clinic KL one of the beard transplant clinics in Malaysia I should consider?", a: "Nexus Clinic KL is a licensed hair transplant clinic in Malaysia offering beard transplant procedures performed by qualified surgeons under full Ministry of Health Malaysia-compliant clinical standards. Over 5,000 facial filler and hair restoration procedures have been completed at the clinic, with a team that combines medical expertise with the aesthetic sensibility required to produce natural-looking beard results for patients across KL, Petaling Jaya, Bangsar, and throughout Malaysia. The clinic offers a complimentary first consultation, full beard design session before any surgery, transparent graft-count and pricing breakdown, and structured aftercare." },
+  ];
 
   const transformations = [
     {
@@ -51,1358 +109,717 @@ export default function BeardLanding({
     },
   ];
 
-  const faqs = [
-    {
-      q: "How can I grow a beard faster?",
-      a: "No instant switch. Depends on genetics, hormones. Medical review helps choose between supportive treatments and transplant.",
-    },
-    {
-      q: "Why is my beard patchy?",
-      a: "Genetics, alopecia areata, scarring, skin inflammation. Diagnosis prevents wasted money.",
-    },
-    {
-      q: "What is the best treatment for a patchy beard?",
-      a: "Depends on cause. Alopecia areata: steroid injections. Missing follicles: transplant.",
-    },
-    {
-      q: "Does PRP work for beard growth?",
-      a: "Used in hair restoration, discussed for beard. Results vary, supportive for areas with follicles.",
-    },
-    {
-      q: "Is minoxidil safe for beard growth?",
-      a: "Commonly discussed but off-label. Can irritate. Use with clinician guidance. Store safely.",
-    },
-    {
-      q: "Is a beard transplant permanent?",
-      a: "Moves follicles to beard area. Once established, results are long-lasting.",
-    },
-    {
-      q: "How long to see beard transplant results?",
-      a: "Multi-month timeline before beard looks settled.",
-    },
-    {
-      q: "How many grafts for beard transplant?",
-      a: "500-1,000 for moustache/goatee, higher for jawline and cheeks.",
-    },
-    {
-      q: "How much does beard transplant cost in Malaysia?",
-      a: "RM 7,000-15,000 ranges. Starting from RM 3,000. Depends on graft count.",
-    },
-    {
-      q: "Does a beard transplant look natural?",
-      a: "Yes, when surgeon plans direction, angle, and density correctly.",
-    },
-    {
-      q: "Can you transplant hair from scalp to beard?",
-      a: "Yes. FUE or FUT from scalp, depending on surgeon judgment.",
-    },
-    {
-      q: "What if my beard has dandruff and itching?",
-      a: "Seborrheic dermatitis. Antifungal care, gentle cleansing, medical review if persists.",
-    },
-  ];
   return (
-    <div className="min-h-screen bg-light font-inter">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="relative overflow-hidden bg-linear-to-br from-cream via-light to-rose/5"
-      >
-        <div className="absolute inset-0 bg-glass backdrop-blur-3xl" />
-        <div className="container mx-auto px-4 py-20 lg:py-32 relative z-10">
-          <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-            <h1 className="font-georgia text-4xl lg:text-6xl text-brown mb-6 leading-tight">
-              Beard Treatment in Kuala Lumpur, Malaysia
-            </h1>
-
-            <p className="text-2xl lg:text-3xl text-taupe mb-8 font-georgia italic border-l-4 border-wine pl-6">
-              Build a fuller beard, fix patchy areas, and calm beard skin at
-              Nexus Clinic Kuala Lumpur
-            </p>
-
-            <div className="bg-wine/5 p-8 rounded-3xl border border-wine/10">
-              <p className="text-xl text-brown mb-4 font-georgia leading-relaxed">
-                A patchy beard can mess with your confidence. Let's fix it
-                properly.
-              </p>
-              <p className="text-taupe leading-relaxed">
-                From thin cheeks to uneven jawlines, beard concerns are common
-                in Malaysia. At Nexus Clinic Kuala Lumpur, we focus on medical
-                assessment first, then the right plan.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Trust at a glance Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="bg-brown/5 py-12 border-y border-taupe/20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-2xl text-brown mb-8 text-center"
-          >
-            Trust at a glance
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <Calendar className="text-wine shrink-0 mt-1" size={24} />
-              <p className="text-brown">
-                Founded in 2001 and located in KL's Golden Triangle area.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <MapPin className="text-wine shrink-0 mt-1" size={24} />
-              <p className="text-brown">
-                Clinic address: LG 10, Lower Ground Floor, Wisma UOA II, Jalan
-                Pinang, 50450 Kuala Lumpur.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <Shield className="text-wine shrink-0 mt-1" size={24} />
-              <p className="text-brown">
-                Hair transplant and hair restoration content and services are
-                published by Nexus Clinic.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <Award className="text-wine shrink-0 mt-1" size={24} />
-              <p className="text-brown">
-                Facial hair transplant is listed for Nexus Clinic on medical
-                directories.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Quick Answers */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-12 text-center"
-          >
-            Quick answers people want first
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Can a patchy beard be treated?
-              </h3>
-              <p className="text-taupe">
-                Yes, in many cases. The best option depends on the cause.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Is a beard transplant permanent?
-              </h3>
-              <p className="text-taupe">
-                A beard transplant places hair follicles into beard areas, and
-                results are typically described as long-lasting once growth
-                settles.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                Does PRP help beard growth?
-              </h3>
-              <p className="text-taupe">
-                Some clinics offer PRP for facial hair, but results vary and the
-                evidence is still evolving.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-2">
-                How much does beard transplant cost in Malaysia?
-              </h3>
-              <p className="text-taupe">
-                Public pricing ranges vary by clinic, grafts, and coverage area.
-                Some Malaysia clinic pages cite ranges like RM 7,000- RM 15,000,
-                while directories show starting prices from around RM 3,000.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Additional text from PDF */}
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 p-6 bg-cream rounded-2xl"
-          >
-            <p className="text-brown leading-relaxed">
-              1. They push FUE beard transplant as the "main solution" for true
-              gaps or scarring, because it moves follicles into the beard. 2.
-              They use clear "use cases" like patchy cheeks, weak moustache,
-              goatee gaps, and scar cover. 3. They talk about graft counts and
-              pricing ranges to match expectations. 4. They add non-surgical
-              boosters like PRP or scalp style PRP adapted for facial hair,
-              often as an add-on or for early thinning. 5. They rely on FAQs
-              because people search questions like "Is it permanent?" "Does it
-              hurt?" "How long does it take?"
-            </p>
-            <p className="text-wine font-georgia mt-4 italic">
-              At Nexus Clinic Kuala Lumpur, we take the same high-intent
-              questions, but we answer them with a bigger focus on diagnosis.
-              Because the "best beard treatment" is different for every face.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* What Section with Image */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-12"
-          >
-            What does "beard treatment" mean in real life?
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-taupe mb-8 text-lg">
-            In clinic terms, beard treatment usually means one of these goals:
-          </motion.p>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-6">
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <Leaf className="text-wine" size={24} />
-                  <h3 className="font-georgia text-xl text-brown">
-                    1) Beard growth and beard thickening
-                  </h3>
-                </div>
-                <p className="text-taupe">
-                  You have hair, but it is light, thin, or uneven.
-                </p>
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">FUE • DHI • Permanent Results</span>
               </motion.div>
-
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
               >
-                <div className="flex items-center gap-3 mb-2">
-                  <Sparkles className="text-wine" size={24} />
-                  <h3 className="font-georgia text-xl text-brown">
-                    2) Patchy beard treatment
-                  </h3>
-                </div>
-                <p className="text-taupe">
-                  You have clear gaps, islands, or sections that never filled
-                  in.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <Flame className="text-wine" size={24} />
-                  <h3 className="font-georgia text-xl text-brown">
-                    3) Beard hair loss treatment
-                  </h3>
-                </div>
-                <p className="text-taupe">
-                  You used to have hair, then it started falling out in patches.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInLeft}
-                className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <Wind className="text-wine" size={24} />
-                  <h3 className="font-georgia text-xl text-brown">
-                    4) Beard skin treatment
-                  </h3>
-                </div>
-                <p className="text-taupe">
-                  You have beard dandruff, itch, redness, ingrown hairs, or
-                  bumps.
-                </p>
-              </motion.div>
+                Best Beard Transplant in Malaysia for{" "}
+                <span className="text-wine italic">Permanent, Natural-Looking Facial Hair</span>
+              </motion.h1>
 
               <motion.p
                 variants={fadeInUp}
-                className="font-georgia italic text-brown text-lg mt-6"
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
               >
-                A strong plan starts with one step: identify which one is your
-                problem.
+                Not every man can grow a beard. Genetics, hormonal factors, or scarring can leave the face with patchy or sparse facial hair that no supplement, oil, or dermaroller will ever fully address.
               </motion.p>
-            </div>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                The only solution that produces permanent, natural-looking results is a beard transplant: moving individual hair follicles from the back of the scalp to the beard area where growth is absent or insufficient. Nexus Clinic KL is a trusted hair transplant clinic in Malaysia offering beard transplant procedures using FUE and DHI techniques.
+              </motion.p>
+
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  Every beard transplant at Nexus Clinic KL is performed by a qualified hair transplant surgeon under full medical supervision, not by a technician. The beard design process involves a detailed consultation before any procedure is confirmed.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Free Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in beard transplant at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
+            </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="rounded-3xl aspect-4/4 overflow-hidden shadow-2xl">
-                <img
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
                   src="/images/hair/beard-transplant.webp"
-                  alt="Beard consultation at Nexus Clinic"
-                  className="w-full h-full object-cover"
+                  alt="Nexus Clinic Kuala Lumpur - Beard Transplant"
+                  fill
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">FUE • DHI</p>
+                <p className="font-inter text-sm text-taupe">90-99% Graft Survival</p>
               </div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Why Your Beard is Patchy Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-12"
-          >
-            Why your beard is patchy or not growing (common causes)
-          </motion.h2>
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
+              </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-3">
-                Genetics and hormones
-              </h3>
-              <p className="text-taupe">
-                Some men naturally grow thicker beards. Some do not. Age also
-                matters. Many beards fill in later than people expect.
-              </p>
-            </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Over 15 Years</p>
+                  <p className="font-inter text-taupe text-xs">Combined clinical experience</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
 
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-3">
-                Alopecia areata in the beard (alopecia barbae)
-              </h3>
-              <p className="text-taupe">
-                This is an autoimmune condition that can cause round, patchy
-                loss in the beard. Treatment often involves dermatologist-led
-                options like corticosteroid injections or topical treatments.
-              </p>
-            </motion.div>
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH Licensed</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Ministry of Health Malaysia licensed clinic</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Doctor-Performed</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Qualified hair transplant surgeon</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Extensive experience in facial hair restoration</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-3">
-                Scars or burns
-              </h3>
-              <p className="text-taupe">
-                If the skin has scar tissue, hair may not grow in that zone.
-                This is where transplant is often discussed because the
-                follicles are missing in that area.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-3">
-                Traction and grooming habits
-              </h3>
-              <p className="text-taupe">
-                Aggressive picking, harsh shaving, or frequent friction can
-                irritate the skin and worsen thinning for some people.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10 md:col-span-2"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-3">
-                Beard dandruff and inflammation
-              </h3>
-              <p className="text-taupe">
-                Seborrheic dermatitis can be worse under moustaches and beards
-                and may need targeted care like antifungal approaches.
-              </p>
-            </motion.div>
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">FUE • DHI Techniques</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">90-99% Graft Survival</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Permanent, Natural Results</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Beard Assessment Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-6"
-          >
-            Beard assessment at Nexus Clinic Kuala Lumpur (what we look for)
-          </motion.h2>
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Beard Transplant at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">FUE and DHI facial hair restoration by licensed doctors</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Clock, label: "Session Duration", value: "4 to 8 hours depending on graft count" },
+              { icon: Heart, label: "Anaesthesia", value: "Local anaesthesia. Patient remains awake." },
+              { icon: Activity, label: "Graft Survival", value: "90 to 99% depending on technique" },
+              { icon: TrendingUp, label: "Full Results", value: "Month 9 to 12 post-procedure" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Procedure</p>
+                <p className="font-georgia text-brown font-semibold">Beard Transplant (FUE and DHI)</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Graft Count Range</p>
+                <p className="font-georgia text-brown font-semibold">500 to 3,000 grafts depending on design</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Recovery</p>
+                <p className="font-georgia text-brown">Return to work within 3 to 5 days</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Consultation</p>
+                <p className="font-georgia text-brown">Complimentary at Nexus Clinic KL</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Transplant Surgeon About Your Beard Goals | Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-taupe mb-8 font-georgia italic"
-          >
-            A beard consult should not feel like a sales pitch. It should feel
-            like someone finally understands what you are dealing with.
-          </motion.p>
-
-          <motion.p variants={fadeInUp} className="text-brown mb-6">
-            A good assessment usually includes:
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <motion.div variants={fadeInLeft} className="space-y-4">
-              <div className="flex items-start gap-3 bg-white p-4 rounded-xl">
-                <CheckCircle2 className="text-wine shrink-0 mt-1" size={20} />
-                <p className="text-brown">what your beard looked like before</p>
-              </div>
-              <div className="flex items-start gap-3 bg-white p-4 rounded-xl">
-                <CheckCircle2 className="text-wine shrink-0 mt-1" size={20} />
-                <p className="text-brown">
-                  how long the patchiness has been there
-                </p>
-              </div>
-              <div className="flex items-start gap-3 bg-white p-4 rounded-xl">
-                <CheckCircle2 className="text-wine shrink-0 mt-1" size={20} />
-                <p className="text-brown">
-                  whether the skin is inflamed or itchy
-                </p>
-              </div>
-              <div className="flex items-start gap-3 bg-white p-4 rounded-xl">
-                <CheckCircle2 className="text-wine shrink-0 mt-1" size={20} />
-                <p className="text-brown">
-                  whether you have sudden patchy loss (possible autoimmune)
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-4">
-              <div className="flex items-start gap-3 bg-white p-4 rounded-xl">
-                <CheckCircle2 className="text-wine shrink-0 mt-1" size={20} />
-                <p className="text-brown">
-                  whether you have scars, acne scars, or injury lines
-                </p>
-              </div>
-              <div className="flex items-start gap-3 bg-white p-4 rounded-xl">
-                <CheckCircle2 className="text-wine shrink-0 mt-1" size={20} />
-                <p className="text-brown">
-                  your goal: subtle fill or a fuller defined beard line
-                </p>
-              </div>
-            </motion.div>
+      {/* Facial Hair Transplant Zone Guide Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Facial Hair Transplant Zone Guide</h2>
+            <p className="text-taupe font-inter">Graft estimates by beard area</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Beard Zone</th>
+                  <th className="p-4 text-left font-georgia">Coverage Area</th>
+                  <th className="p-4 text-left font-georgia">Typical Grafts Needed</th>
+                  <th className="p-4 text-left font-georgia">Key Design Considerations</th>
+                </tr>
+              </thead>
+              <tbody>
+                {beardZoneGuide.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.zone}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.coverage}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.grafts}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.considerations}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+        </motion.div>
+      </section>
 
-          <motion.p
-            variants={fadeInUp}
-            className="mt-8 p-6 bg-wine/10 rounded-xl text-brown border-l-4 border-wine text-lg"
-          >
-            If we suspect alopecia areata or another medical condition, we focus
-            on diagnosis first. Because cosmetic boosters are not the same as
-            medical treatment.
-          </motion.p>
-        </div>
-      </motion.section>
+      {/* Donor Source Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Donor Hair for Beard Transplant</h2>
+            <p className="text-taupe font-inter">Choosing the right source for natural results</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Donor Source</th>
+                  <th className="p-4 text-left font-georgia">Hair Characteristics</th>
+                  <th className="p-4 text-left font-georgia">Beard Match Quality</th>
+                  <th className="p-4 text-left font-georgia">Best Used For</th>
+                </tr>
+              </thead>
+              <tbody>
+                {donorSources.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.source}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.characteristics}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.matchQuality}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.bestUsed}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
 
-      {/* Treatment Options Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-12"
-          >
-            Beard treatment options in Malaysia (what actually helps)
-          </motion.h2>
+      {/* FUE vs DHI Comparison Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">FUE Beard Transplant vs DHI Technique</h2>
+            <p className="text-taupe font-inter">Which is better for your beard goals?</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Factor</th>
+                  <th className="p-4 text-left font-georgia">FUE for Beard Transplant</th>
+                  <th className="p-4 text-left font-georgia">DHI Technique for Beard Transplant</th>
+                </tr>
+              </thead>
+              <tbody>
+                {fueVsDhi.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.factor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.fue}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.dhi}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
 
-          <div className="space-y-8">
+      {/* Beard Transplant Results Timeline Slider Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">Beard Transplant Growth Timeline</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">What to expect after your procedure</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
             <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
+              variants={fadeInLeft}
+              className="bg-light p-8 rounded-2xl border border-taupe/20 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <h3 className="font-georgia text-2xl text-wine mb-4">
-                Option 1: Medical treatment for beard hair loss (patches that
-                appeared suddenly)
-              </h3>
-              <p className="text-taupe mb-4">
-                If you have new patchy loss, this is often treated like alopecia
-                areata. A common dermatologist approach for adults is
-                corticosteroid injections into the patches, repeated every 4 to
-                6 weeks if needed. Some people see regrowth within about 3
-                months when it works.
-              </p>
-              <p className="text-rose font-medium flex items-center gap-2">
-                <AlertTriangle size={18} />
-                This is not something you should self-treat at home. It needs a
-                proper medical review.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-2xl text-wine mb-4">
-                Option 2: PRP beard treatment (for thinning or weak growth in
-                areas with follicles)
-              </h3>
-              <p className="text-taupe mb-4">
-                PRP means platelet-rich plasma. It uses a concentration of your
-                own platelets and is injected into target areas. PRP is widely
-                discussed for hair restoration, and some clinics adapt it for
-                facial hair goals.
-              </p>
-              <p className="text-brown font-medium mb-2">
-                What PRP is best for:
-              </p>
-              <ul className="list-disc list-inside text-taupe mb-4 space-y-1">
-                <li>early thinning beard density</li>
-                <li>weak growth where follicles exist</li>
-                <li>as a support plan, not a miracle fix</li>
-              </ul>
-              <p className="text-brown font-medium mb-2">What PRP cannot do:</p>
-              <ul className="list-disc list-inside text-taupe mb-4">
-                <li>
-                  create hair in a totally bald scar area with no follicles
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">Factors Affecting Growth</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Individual healing response varies by patient</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Technique used (FUE vs DHI)</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Surgeon skill and graft handling quality</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Post-operative care compliance</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Beard zone being treated (moustache grows differently from cheeks)</span>
                 </li>
               </ul>
-              <p className="text-taupe">
-                If you are comparing clinics, ask how many sessions they suggest
-                and how they track progress (photos, density checks). Many PRP
-                plans are session-based over months, not a one-time visit.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-2xl text-wine mb-4">
-                Option 3: Microneedling for beard area (supportive, not magic)
-              </h3>
-              <p className="text-taupe">
-                Microneedling is often discussed for hair support because it can
-                improve skin quality and may stimulate growth pathways. A
-                well-cited clinical study shows microneedling improved outcomes
-                when paired with minoxidil for scalp hair loss, which is why it
-                appears in "beard roller" discussions too.
-              </p>
-              <p className="text-taupe mt-4">
-                For the beard area, it should be done carefully. Face skin is
-                sensitive. Hygiene matters a lot.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-2xl text-wine mb-4">
-                Option 4: Minoxidil for beard growth (off-label, needs caution)
-              </h3>
-              <p className="text-taupe mb-4">
-                Many men ask about minoxidil for beard growth. Here is the
-                honest answer:
-              </p>
-              <p className="text-taupe mb-4">
-                It is not licensed specifically for beard use in many places, so
-                it is considered off-label. There is published medical
-                discussion and clinical evidence for beard enhancement using
-                topical minoxidil, but it should still be used with professional
-                guidance due to irritation risk and variable response.
-              </p>
-              <div className="bg-rose/10 p-6 rounded-xl border-l-4 border-rose">
-                <p className="text-brown font-medium mb-2">
-                  Safety note that matters in real homes:
-                </p>
-                <p className="text-taupe">
-                  In early 2026, U.S. regulators announced recalls of some hair
-                  and beard growth serums containing minoxidil because they
-                  lacked child-resistant packaging, creating a poisoning risk if
-                  ingested by children. Store any minoxidil products safely and
-                  follow clinician advice.
+              <div className="mt-8 p-4 bg-wine/5 rounded-xl">
+                <p className="text-brown font-inter text-sm text-center">
+                  The most important session in any beard transplant journey is not the surgery. It is the beard design consultation that precedes it.
                 </p>
               </div>
-              <p className="text-taupe mt-4">
-                At Nexus Clinic Kuala Lumpur, if you ask about minoxidil, you
-                should expect a balanced discussion. Benefits, limits, and
-                safety.
-              </p>
             </motion.div>
 
             <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
+              variants={fadeInRight}
+              className="bg-wine p-8 rounded-2xl text-white shadow-xl hover:shadow-2xl transition-shadow"
             >
-              <h3 className="font-georgia text-2xl text-wine mb-4">
-                Option 5: Beard transplant in Malaysia (FUE facial hair
-                transplant)
-              </h3>
-              <p className="text-taupe mb-4">
-                If you have long-term gaps, no follicles in the area, or scar
-                zones, transplant is the option many clinics position as the
-                most direct solution.
-              </p>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Growth Timeline</h3>
+              </div>
+              
+              <div className="space-y-8">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Shock Loss</span>
+                    <span className="font-georgia text-xl font-bold text-white">Weeks 2 to 4</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "15%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Transplanted hair shafts fall out. Follicle roots remain intact.</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Initial Growth</span>
+                    <span className="font-georgia text-xl font-bold text-white">Month 3 to 4</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "35%" }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Fine, short hairs become visible. Early beard formation begins.</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Progressive Thickening</span>
+                    <span className="font-georgia text-xl font-bold text-white">Month 5 to 6</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "60%" }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Meaningful coverage visible. Beard can be shaped and styled.</p>
+                </div>
 
-              <h4 className="font-georgia text-xl text-brown mt-6 mb-3">
-                What a beard transplant is
-              </h4>
-              <p className="text-taupe mb-4">
-                A beard transplant moves hair follicles from a donor area (often
-                the scalp) to beard areas to create or enhance facial hair
-                density.
-              </p>
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Maturation</span>
+                    <span className="font-georgia text-xl font-bold text-white">Month 8 to 9</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "80%" }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Hair thickens and matures in texture.</p>
+                </div>
 
-              <h4 className="font-georgia text-xl text-brown mt-6 mb-3">
-                FUE vs FUT for beard transplant
-              </h4>
-              <p className="text-taupe mb-4">
-                The International Society of Hair Restoration Surgery (ISHRS)
-                notes that if hairs are harvested from the beard itself, only
-                FUE is acceptable. If scalp hairs are harvested, either FUE or
-                FUT can be used, depending on surgeon judgment.
-              </p>
-
-              <h4 className="font-georgia text-xl text-brown mt-6 mb-3">
-                Why design matters
-              </h4>
-              <p className="text-taupe">
-                Beard hair direction and angle are everything. A peer-reviewed
-                review on beard and moustache reconstruction describes
-                harvesting grafts and placing them with planned direction and
-                density to match facial zones.
-              </p>
-              <p className="text-taupe mt-4">
-                So if you are choosing a clinic in Kuala Lumpur, do not only ask
-                "how many grafts?" Ask "how will it look on my face?"
-              </p>
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Full Results</span>
+                    <span className="font-georgia text-xl font-bold text-white">Month 9 to 12</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      transition={{ duration: 1, delay: 1.0 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Natural-looking beard fully established. Can be shaved, trimmed, and styled.</p>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-4 border-t border-white/20">
+                <p className="text-white/80 text-sm text-center">
+                  Full results are not visible until month 9 to 12. Patience during the growth phase is essential for optimal outcomes.
+                </p>
+              </div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
 
-      {/* Areas Beard Treatment Can Target */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-8"
-          >
-            Areas beard treatment can target
-          </motion.h2>
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <p className="text-taupe font-inter text-sm">
+              ✨ The final appearance of a beard transplant is determined at the design stage: the outline of the beard, the density distribution across different zones, and the angle and direction of growth in each area.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <motion.p variants={fadeInUp} className="text-taupe mb-8">
-            Most beard treatment plans focus on one or more of these:
-          </motion.p>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {/* Beard Transplant Procedure Steps */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Beard Transplant Procedure at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              "cheeks (patchy zones)",
-              "jawline definition",
-              "moustache fill",
-              "goatee density",
-              "sideburn connection",
-              "scar cover, if suitable",
-            ].map((area, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="bg-white px-6 py-4 rounded-xl text-brown border border-wine/20 shadow-sm text-center"
-              >
-                {area}
+              { step: "01", title: "Beard Design Consultation", desc: "Surgeon draws planned beard outline on face, confirms final design. Graft count confirmed based on agreed coverage area and density goals." },
+              { step: "02", title: "Donor Area Preparation", desc: "Donor area at back of scalp trimmed. Local anaesthetic administered. Patient feels no pain during extraction." },
+              { step: "03", title: "Follicular Unit Extraction", desc: "Hair follicles extracted one by one from donor area using FUE punch or DHI extraction pen. Grafts placed in holding solution." },
+              { step: "04", title: "Implantation into Beard Area", desc: "For FUE, recipient sites created then grafts placed. For DHI, implanter inserts each follicle directly at planned angle and direction." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Free Consultation
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">FUE • DHI — Expert facial hair restoration at Nexus Clinic KL</p>
+          </motion.div>
+        </motion.div>
+      </section>
 
+      {/* Eyebrow Transplant Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Eyebrow Transplant at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Facial hair restoration beyond the beard</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border-l-4 border-wine">
+            <p className="text-brown font-inter mb-4">The same FUE technique used for beard transplant is the standard approach for eyebrow transplant, making it the most technically demanding of all facial hair restoration procedures. Eyebrow hair grows at an almost horizontal angle and lies flat against the skin, which means every individual hair follicle must be implanted at an extremely shallow acute angle.</p>
+            <ul className="space-y-2 text-taupe font-inter text-sm">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                <span>Available for patients with over-plucked, thinning, or absent eyebrows</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                <span>Hair follicles from nape of neck or fine-hair temporal areas preferred</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                <span>200 to 500 grafts per eyebrow depending on coverage needed</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                <span>Full results visible at 9 to 12 months</span>
+              </li>
+            </ul>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Beard Transplant Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Beard Transplant Package</th>
+                  <th className="p-4 text-left font-georgia">Graft / Hair Count</th>
+                  <th className="p-4 text-left font-georgia">Estimated Total Price (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.package}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{tier.grafts}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    Beard transplant cost in Malaysia is calculated per graft or per hair depending on technique used. All consultations are complimentary at Nexus Clinic KL. Final pricing confirmed after beard design consultation.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised Beard Transplant Quote
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Before After Section */}
       <SectionBeforeAfter transformations={transformations} />
 
-      {/* Pros and Cons Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-12"
-          >
-            Pros and cons of common beard treatments
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* PRP Card */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-2xl text-wine mb-6">
-                PRP for beard
-              </h3>
-
-              <div className="mb-6">
-                <h4 className="font-georgia text-lg text-brown mb-3 flex items-center gap-2">
-                  <CheckCircle2 className="text-wine" size={20} />
-                  Pros
-                </h4>
-                <ul className="space-y-2 text-taupe">
-                  <li>• uses your own platelets</li>
-                  <li>• minimal downtime for many people</li>
-                  <li>• can suit early thinning goals</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-georgia text-lg text-brown mb-3 flex items-center gap-2">
-                  <AlertCircle className="text-rose" size={20} />
-                  Cons
-                </h4>
-                <ul className="space-y-2 text-taupe">
-                  <li>• results vary</li>
-                  <li>• needs multiple sessions</li>
-                  <li>• not ideal for totally hairless scar zones</li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Minoxidil Card */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-2xl text-wine mb-6">
-                Minoxidil off-label
-              </h3>
-
-              <div className="mb-6">
-                <h4 className="font-georgia text-lg text-brown mb-3 flex items-center gap-2">
-                  <CheckCircle2 className="text-wine" size={20} />
-                  Pros
-                </h4>
-                <ul className="space-y-2 text-taupe">
-                  <li>• accessible and widely discussed</li>
-                  <li>• some clinical support exists</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-georgia text-lg text-brown mb-3 flex items-center gap-2">
-                  <AlertCircle className="text-rose" size={20} />
-                  Cons
-                </h4>
-                <ul className="space-y-2 text-taupe">
-                  <li>• can irritate facial skin</li>
-                  <li>• off-label for beard use in many regions</li>
-                  <li>• must be stored safely, especially around children</li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Beard Transplant Card */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-2xl text-wine mb-6">
-                Beard transplant
-              </h3>
-
-              <div className="mb-6">
-                <h4 className="font-georgia text-lg text-brown mb-3 flex items-center gap-2">
-                  <CheckCircle2 className="text-wine" size={20} />
-                  Pros
-                </h4>
-                <ul className="space-y-2 text-taupe">
-                  <li>• builds density where follicles are missing</li>
-                  <li>• long-lasting results after growth settles</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-georgia text-lg text-brown mb-3 flex items-center gap-2">
-                  <AlertCircle className="text-rose" size={20} />
-                  Cons
-                </h4>
-                <ul className="space-y-2 text-taupe">
-                  <li>• higher cost</li>
-                  <li>• healing period and patience required</li>
-                  <li>• outcomes depend heavily on skill and design</li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Side Effects Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-8"
-          >
-            Beard treatment side effects (what to expect)
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-taupe mb-8">
-            Side effects depend on the method.
-          </motion.p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-3">
-                PRP or injectable boosters
-              </h3>
-              <p className="text-taupe">
-                Common temporary effects can include tenderness, mild swelling,
-                or redness.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-3">
-                Microneedling
-              </h3>
-              <p className="text-taupe">
-                You may have redness and sensitivity for a short time. Infection
-                risk rises if hygiene is poor.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm"
-            >
-              <h3 className="font-georgia text-xl text-wine mb-3">
-                Beard transplant
-              </h3>
-              <p className="text-taupe">
-                Expect redness, scabbing, and a healing phase. Growth takes
-                time. This is normal in hair restoration timelines.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="mt-8 p-6 bg-white rounded-2xl shadow-sm"
-          >
-            <h3 className="font-georgia text-xl text-wine mb-3">
-              Beard dandruff and irritation treatments
-            </h3>
-            <p className="text-taupe">
-              If you have beard dandruff, you may be dealing with seborrheic
-              dermatitis, which can flare under beards. Treatments often focus
-              on antifungal care and calming inflammation.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Cost Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-8"
-          >
-            Beard treatment cost in Malaysia (real ranges you will see online)
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-taupe mb-6">
-            Pricing depends on coverage area, technique, and graft count.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
-          >
-            <p className="text-taupe mb-4">
-              Here are public examples from Malaysia sources:
-            </p>
-            <ul className="space-y-4 text-brown">
-              <li className="flex items-start gap-3">
-                <span className="text-wine font-bold">•</span>
-                <span>
-                  Some Malaysia clinic pages cite beard transplant ranges like
-                  RM 7,000- RM 15,000, often depending on complexity and area.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-wine font-bold">•</span>
-                <span>
-                  A KL clinic blog cites per-graft pricing ranges and gives
-                  examples like goatee or moustache density vs jawline and
-                  cheeks with higher graft counts.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-wine font-bold">•</span>
-                <span>
-                  Directories list beard transplant prices starting from around
-                  RM 3,000, but final cost depends on your plan.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-wine font-bold">•</span>
-                <span>
-                  Nexus Clinic is listed on a directory with facial hair
-                  transplant pricing range shown as RM 5,000- RM 10,000. Treat
-                  this as a guide and confirm during consultation.
-                </span>
-              </li>
-            </ul>
-            <p className="mt-6 text-rose font-medium text-lg border-t pt-6 border-taupe/20">
-              If a clinic gives pricing without seeing your beard area, that is
-              a red flag. Beard work is custom.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Beard Dandruff Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-8"
-          >
-            Beard dandruff and beard skin problems (often ignored, but
-            important)
-          </motion.h2>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white p-8 rounded-2xl shadow-sm border border-taupe/10"
-          >
-            <p className="text-taupe mb-6 text-lg">
-              A beard can look patchy even when hair exists, simply because the
-              skin is inflamed.
-            </p>
-
-            <p className="text-brown mb-4">
-              If you have flakes, itch, and redness:
-            </p>
-            <ul className="list-disc list-inside text-taupe space-y-3 mb-6">
-              <li>
-                seborrheic dermatitis is a common cause, and it can be worse
-                under beards and moustaches
-              </li>
-              <li>
-                treatment often focuses on antifungal approaches and gentle
-                care, sometimes with medical guidance
-              </li>
-            </ul>
-
-            <p className="text-wine font-georgia italic text-lg">
-              At Nexus Clinic Kuala Lumpur, this matters because beard
-              confidence is not only hair density. It is also how clean and calm
-              the beard area looks.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* How to Choose Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-light"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-12"
-          >
-            How to choose the right beard treatment in Kuala Lumpur
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-taupe mb-8 text-lg">
-            Use this simple logic:
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-wine">
-                <h3 className="font-georgia text-xl text-wine mb-2">
-                  If you have sudden new patches
-                </h3>
-                <p className="text-taupe">
-                  Think medical first. Rule out alopecia areata and treat it
-                  properly.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-wine">
-                <h3 className="font-georgia text-xl text-wine mb-2">
-                  If you have always had patchy cheeks
-                </h3>
-                <p className="text-taupe">
-                  Think follicles. If follicles exist, some people try
-                  supportive plans. If follicles are absent, transplant is the
-                  direct option.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="space-y-6">
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-wine">
-                <h3 className="font-georgia text-xl text-wine mb-2">
-                  If your beard looks thin because the skin is irritated
-                </h3>
-                <p className="text-taupe">
-                  Treat the skin. Beard dandruff and inflammation can make
-                  everything look worse.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-wine">
-                <h3 className="font-georgia text-xl text-wine mb-2">
-                  If you want a sharp beard line or a denser look
-                </h3>
-                <p className="text-taupe">
-                  Talk design. A natural direction and angle is what makes it
-                  believable.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
       {/* FAQ Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="py-20 bg-cream"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-brown mb-12"
-          >
-            People Also Ask FAQs (real search intent FAQs for beard treatment)
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* FAQ 1 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                How can I grow a beard faster?
-              </h3>
-              <p className="text-taupe text-sm">
-                There is no instant switch. Beard growth depends on genetics,
-                hormones, and follicle activity. If growth is patchy, a medical
-                review helps you choose between supportive treatments and
-                transplant options.
-              </p>
-            </motion.div>
-
-            {/* FAQ 2 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                Why is my beard patchy?
-              </h3>
-              <p className="text-taupe text-sm">
-                Common reasons include genetics, alopecia areata (autoimmune
-                patches), scarring, and skin inflammation under the beard. A
-                diagnosis prevents wasted money.
-              </p>
-            </motion.div>
-
-            {/* FAQ 3 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                What is the best treatment for a patchy beard?
-              </h3>
-              <p className="text-taupe text-sm">
-                It depends on cause. If it is alopecia areata, steroid
-                injections are a common adult treatment option. If follicles are
-                missing in an area, a beard transplant is a direct solution.
-              </p>
-            </motion.div>
-
-            {/* FAQ 4 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                Does PRP work for beard growth?
-              </h3>
-              <p className="text-taupe text-sm">
-                PRP is used in hair restoration and is also discussed for beard
-                growth. Results vary, and it tends to be positioned as
-                supportive for areas where follicles exist.
-              </p>
-            </motion.div>
-
-            {/* FAQ 5 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                Is minoxidil safe for beard growth?
-              </h3>
-              <p className="text-taupe text-sm">
-                Minoxidil is commonly discussed for beard growth, but it is
-                often off-label for beard use. It can irritate facial skin and
-                should be used with clinician guidance. Store it safely,
-                especially around children.
-              </p>
-            </motion.div>
-
-            {/* FAQ 6 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                Is a beard transplant permanent?
-              </h3>
-              <p className="text-taupe text-sm">
-                A beard transplant moves follicles into the beard area. Once
-                growth is established, results are typically described as
-                long-lasting. The final look depends on planning and technique.
-              </p>
-            </motion.div>
-
-            {/* FAQ 7 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                How long does it take to see beard transplant results?
-              </h3>
-              <p className="text-taupe text-sm">
-                Growth takes time because follicles follow a cycle. Clinics
-                often talk about a multi-month timeline before the beard looks
-                "settled."
-              </p>
-            </motion.div>
-
-            {/* FAQ 8 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                How many grafts do I need for a beard transplant?
-              </h3>
-              <p className="text-taupe text-sm">
-                It depends on your face and goal. Some clinics estimate ranges
-                like 500-1,000 grafts for moustache or goatee density and higher
-                counts for jawline and cheeks.
-              </p>
-            </motion.div>
-
-            {/* FAQ 9 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                How much does beard transplant cost in Malaysia?
-              </h3>
-              <p className="text-taupe text-sm">
-                Public ranges vary widely. Some clinic pages cite RM 7,000- RM
-                15,000, while directories list starting prices from around RM
-                3,000. Your real price depends on graft count and coverage.
-              </p>
-            </motion.div>
-
-            {/* FAQ 10 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                Does a beard transplant look natural?
-              </h3>
-              <p className="text-taupe text-sm">
-                It can, when the surgeon plans the direction, angle, and density
-                correctly. Beard reconstruction literature emphasizes careful
-                placement to match facial zones.
-              </p>
-            </motion.div>
-
-            {/* FAQ 11 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                Can you transplant hair from the scalp to the beard?
-              </h3>
-              <p className="text-taupe text-sm">
-                Yes. Beard transplant commonly uses donor follicles from the
-                scalp. ISHRS notes FUE or FUT can be used when harvesting from
-                the scalp, depending on surgeon judgment.
-              </p>
-            </motion.div>
-
-            {/* FAQ 12 */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-taupe/10"
-            >
-              <h3 className="font-georgia text-lg text-wine mb-3">
-                What if my beard has dandruff and itching?
-              </h3>
-              <p className="text-taupe text-sm">
-                Seborrheic dermatitis can be worse under beards. Treatment often
-                involves antifungal care and gentle cleansing strategies, and
-                sometimes medical review if it persists.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Final CTA Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        className="bg-linear-to-r from-wine to-rose py-20"
-      >
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="font-georgia text-3xl lg:text-4xl text-white mb-6"
-          >
-            Book beard treatment consultation at Nexus Clinic Kuala Lumpur
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-white/90 text-xl mb-8 max-w-3xl mx-auto leading-relaxed"
-          >
-            If you want a beard that looks even, natural, and confident, start
-            with a proper assessment. We will help you understand the cause,
-            then choose the right path, from skin care to beard growth plans or
-            facial hair transplant discussions.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="text-white font-georgia bg-white/10 p-8 rounded-2xl backdrop-blur-sm max-w-2xl mx-auto"
-          >
-            <p className="text-2xl mb-2">Nexus Clinic Kuala Lumpur</p>
-            <p className="text-sm opacity-90">
-              LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala
-              Lumpur, Malaysia
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Begin Your Beard Transplant Journey at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              If you want a beard that looks even, natural, and confident, start with a proper assessment. We will help you understand the cause, then choose the right path, from beard growth plans to facial hair transplant discussions.
             </p>
+            <p className="text-cream/90 font-inter">
+              Our licensed doctors bring over 15 years of combined experience, perform every procedure personally, and use only MOH-approved techniques. Nexus Clinic KL serves patients from across Malaysia seeking beard transplant clinics with clinical standards and aesthetic sensibility.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Free Consultation
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a consultation for beard transplant at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
+            </div>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
     </div>
   );
 }

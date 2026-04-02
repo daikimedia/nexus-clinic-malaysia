@@ -50,7 +50,7 @@ interface MelasmaTreatmentProps {
   locale: string;
 }
 
-export default function MelasmaTreatment({ locale }: MelasmaTreatmentProps) {
+export default function MelasmaLanding({ locale }: MelasmaTreatmentProps) {
   const transformations = [
     {
       id: 1,

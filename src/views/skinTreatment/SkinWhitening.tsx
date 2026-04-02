@@ -39,7 +39,7 @@ interface SkinWhiteningProps {
   locale: string;
 }
 
-export default function SkinWhitening({ locale }: SkinWhiteningProps) {
+export default function SkinWhiteningLanding({ locale }: SkinWhiteningProps) {
   const whiteningGoals = [
     { goal: "Overall Face Brightening and Glow", treatment: "Pico Laser toning + HydraFacial with Britenol booster + Oral brightening supplements", mechanism: "Laser clears accumulated surface and dermal melanin; HydraFacial infuses brightening actives; supplements suppress melanocyte activation", timeline: "Visible glow from session 1 to 2; sustained brightness at 4 to 6 sessions", sessions: "3 to 6 monthly" },
     { goal: "Targeted Spot and Pigmentation Removal", treatment: "Pico Laser Spot Mode (532nm or 755nm) for individual lesions", mechanism: "High-energy photoacoustic shockwave shatters specific melanin clusters; spot fades as fragmented particles clear", timeline: "Darkening then clearing in 7 to 10 days per spot", sessions: "1 to 3 per spot" },

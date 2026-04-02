@@ -2,36 +2,192 @@
 
 import { motion } from "framer-motion";
 import {
-  Shield,
-  CheckCircle,
-  AlertCircle,
   Sparkles,
-  Droplets,
-  Zap,
-  Calendar,
   Award,
-  Phone,
-  Mail,
   MapPin,
-  ChevronRight,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
+  Zap,
+  Eye,
+  AlertTriangle,
+  Scissors,
+  TrendingUp,
+  DollarSign,
+  Layers,
+  Users,
+  Stethoscope,
+  Droplets,
   FileText,
   Leaf,
-  Layers,
+  Phone,
+  Mail,
 } from "lucide-react";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
-  scaleIn,
   fadeInUp,
+  scaleIn,
 } from "../../lib/animations";
 import FAQ from "../../components/FAQ";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const HairLossTreatment = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "hair/hairLoss");
+interface HairLossTreatmentProps {
+  locale: string;
+}
+
+export default function HairLossTreatment({ locale }: HairLossTreatmentProps) {
+  // Hair Loss Types Table Data
+  const hairLossTypesTable = [
+    {
+      type: "Androgenetic Alopecia (Pattern Hair Loss)",
+      features: "Most common type. Gradual thinning. In men: receding hairline and crown. In women: diffuse thinning over crown with preserved hairline.",
+      causes: "Genetic sensitivity of hair follicles to DHT (dihydrotestosterone). Hormonal changes.",
+      treatment: "Finasteride (men), minoxidil, PRP growth factors injection, low-level laser therapy."
+    },
+    {
+      type: "Alopecia Areata",
+      features: "Sudden patchy hair loss. Round or oval smooth bald patches. Can progress to total scalp or body hair loss.",
+      causes: "Autoimmune condition. Immune system attacks hair follicles. Associated with other autoimmune conditions.",
+      treatment: "Intralesional corticosteroid injections, topical immunotherapy, minoxidil, PRP as regenerative option."
+    },
+    {
+      type: "Telogen Effluvium",
+      features: "Diffuse hair thinning across scalp. Increased hair fall. No distinct bald patches.",
+      causes: "Physiological stress (surgery, illness), hormonal changes (post-partum, thyroid), nutritional deficiency (iron, vitamin D, zinc), medications.",
+      treatment: "Identify and remove trigger. Self-limiting in most cases. Nutritional support. Minoxidil if prolonged."
+    },
+    {
+      type: "Traction Alopecia",
+      features: "Thinning along hairline and temples. Redness and tenderness in early stages.",
+      causes: "Repeated mechanical tension from tight hairstyles (braids, ponytails, extensions), chemical treatments.",
+      treatment: "Stop causative hairstyles. Early cases may regrow. Advanced cases with scarring require specialist intervention."
+    },
+    {
+      type: "Scarring Alopecia",
+      features: "Permanent hair loss. Scalp shows visible scarring. Follicles replaced by scar tissue.",
+      causes: "Inflammatory skin conditions, autoimmune cutaneous conditions, physical scalp trauma.",
+      treatment: "Scalp biopsy for diagnosis. Focus on halting progression. Natural regrowth not possible in scarred areas."
+    },
+    {
+      type: "Secondary Hair Loss",
+      features: "Hair thinning from underlying medical condition. Often diffuse and reversible.",
+      causes: "Thyroid dysfunction, iron deficiency anaemia, PCOS, nutritional deficiencies, medications.",
+      treatment: "Identify and treat underlying medical condition first. Hair typically regrows when primary cause corrected."
+    }
+  ];
+
+  // Treatment Options Table Data
+  const treatmentOptionsTable = [
+    {
+      treatment: "PRP (Platelet-Rich Plasma) Hair Treatment",
+      howItWorks: "Growth factors from platelet-rich plasma injected into scalp at follicle level. PDGF, VEGF, TGF-beta stimulate follicles and promote hair growth.",
+      bestFor: "Men and women with androgenetic alopecia. Hair loss from multiple causes. Combination with finasteride and minoxidil.",
+      evidence: "Good to strong evidence. Multiple studies show improved hair density. Recognised by international dermatology societies.",
+      downtime: "No downtime. Mild scalp tenderness 24-48 hours."
+    },
+    {
+      treatment: "Minoxidil (Topical Lotion, Foam or Tonic)",
+      howItWorks: "Applied directly to scalp. Increases blood flow to follicles. Extends anagen (growth) phase. Vasodilatory mechanism independent of DHT.",
+      bestFor: "Androgenetic alopecia in males and females. First-line treatment. Hair density maintenance.",
+      evidence: "Very strong evidence. One of only two medications approved for androgenetic alopecia. Effective in majority with consistent use.",
+      downtime: "No downtime. Some experience scalp dryness or irritation."
+    },
+    {
+      treatment: "Finasteride (Oral or Topical)",
+      howItWorks: "Blocks 5-alpha reductase enzyme. Reduces conversion of testosterone to DHT. Slows androgenic alopecia progression.",
+      bestFor: "Men with androgenetic alopecia. Early signs of hair loss. Combination with minoxidil for advanced cases.",
+      evidence: "Strongest evidence of all oral options. 83-90% of men maintain or improve hair count at 2 years. Gold standard prescription medication.",
+      downtime: "No downtime. Medical assessment and prescription required."
+    },
+    {
+      treatment: "Low-Level Laser Therapy (LLLT)",
+      howItWorks: "Red light (630-680nm) delivered to scalp. Photobiomodulation increases cellular energy (ATP) in follicle cells. Promotes hair growth.",
+      bestFor: "Androgenetic alopecia in males and females. Mild to moderate loss. Complement to PRP and minoxidil.",
+      evidence: "Moderate to good evidence. FDA-cleared devices. Most effective when combined with other modalities.",
+      downtime: "No downtime. Sessions 20-30 minutes. Repeated sessions required."
+    },
+    {
+      treatment: "Scalp Mesotherapy with Hyaluronic Acid",
+      howItWorks: "Customised cocktail of vitamins, minerals, hyaluronic acid delivered by microinjection. Concentrated nutrients to scalp.",
+      bestFor: "Diffuse thinning from nutritional deficiency. Scalp health improvement. Combination with PRP for comprehensive regeneration.",
+      evidence: "Moderate evidence as standalone. Strong synergistic evidence when combined with PRP.",
+      downtime: "No downtime. Mild redness for 24 hours."
+    }
+  ];
+
+  // Causes of Hair Loss Table Data
+  const causesTable = [
+    {
+      cause: "DHT and Hormonal Changes",
+      mechanism: "DHT binds to androgen receptors in genetically susceptible follicles, progressively miniaturising them. Hormonal changes at menopause, post-partum, or from thyroid/PCOS conditions cause hair loss through different mechanisms.",
+      affected: "Majority of Malaysian men with progressive thinning. Perimenopausal and post-partum women. Women with PCOS. Those with undiagnosed thyroid conditions.",
+      approach: "Hormonal assessment included in every initial evaluation. Thyroid function, testosterone, DHEA-S, oestrogen checked where indicated. Treat underlying hormonal imbalance first."
+    },
+    {
+      cause: "Nutritional Deficiency",
+      mechanism: "Iron required for metabolic activity of hair follicle matrix cells. Iron deficiency impairs healthy growth. Vitamin D, zinc, biotin and protein deficiency contribute to thinning hair.",
+      affected: "Malaysian women with heavy periods. Vegetarians and vegans. Those with chronic restrictive dieting. Patients exposed to harsh chemical treatments and environmental stressors.",
+      approach: "Blood test for nutritional status (iron, ferritin, vitamin D, zinc, full blood count). Correcting deficiencies is most effective treatment. Dietary improvement and lifestyle changes provided."
+    },
+    {
+      cause: "Autoimmune (Alopecia Areata)",
+      mechanism: "Immune system mistakenly targets hair follicles. Follicles enter state of arrested activity, not permanently destroyed. Bald patches appear suddenly.",
+      affected: "Any age, both males and females. Often begins in childhood or young adulthood. Associated with thyroid disease, vitiligo, Type 1 diabetes. Family history is risk factor.",
+      approach: "Diagnosis confirmed by clinical examination or scalp biopsy. Managed with intralesional corticosteroids, topical immunotherapy, PRP as regenerative option."
+    },
+    {
+      cause: "Stress, Lifestyle and Scalp Health",
+      mechanism: "Chronic psychological stress causes telogen effluvium. Large proportion of follicles simultaneously enter resting phase. Diffuse hair fall 2-3 months after stress event.",
+      affected: "Malaysian professionals with work-related stress. Post-COVID hair loss patients. New mothers with post-partum hair fall. Those with chronic scalp conditions.",
+      approach: "Lifestyle changes and stress management discussed at every consultation. Scalp health assessment included. Shampoo and tonic recommendations provided in writing."
+    }
+  ];
+
+  // Growth Timeline Data
+  const growthTimeline = [
+    { period: "Month 1", happening: "Initial hope and anticipation. Some notice less shedding first. Follicles beginning to respond to treatment.", experience: "Feel hopeful, then impatient. Early signs may be subtle. Continue treatment consistently." },
+    { period: "Months 2 to 3", happening: "Small improvements may become visible. Hair follicles entering active growth phase. Cellular changes occurring beneath scalp surface.", experience: "Photos help track progress. Daily mirror checks can be misleading. Trust the process." },
+    { period: "Months 3 to 6", happening: "Real change becomes visible if treatment plan suits your hair loss type. New hair shafts emerging. Density gradually improving.", experience: "Most patients notice meaningful difference during this period. Continue all treatments as prescribed." },
+    { period: "Month 9 onwards", happening: "Results look more settled. Full benefits of treatment programme visible. Maximum density achieved for non-surgical approaches.", experience: "Results appear natural and established. Maintenance plan continues for long-term preservation." },
+  ];
+
+  // Pricing Data
+  const pricingTiers = [
+    { service: "Initial Hair Loss Consultation", details: "Comprehensive hair loss assessment. Trichoscopy scalp examination. Hair loss pattern grading. Diagnosis of type. Blood test panel where indicated. Personalised treatment recommendation.", price: "RM 150 - RM 300" },
+    { service: "PRP Hair Treatment (per session)", details: "Platelet-rich plasma injected into scalp. Growth factors stimulate hair growth. Doctor-performed. Topical anaesthetic. 45-60 minutes. No downtime.", price: "RM 1,200 - RM 2,500" },
+    { service: "PRP Hair Treatment Programme (3 sessions)", details: "3-session PRP programme for comprehensive follicle stimulation. Programme pricing for initial course. Includes follow-up scalp assessment at 8-12 weeks.", price: "From RM 3,500" },
+    { service: "Scalp Mesotherapy with Hyaluronic Acid", details: "Customised nutrient and hyaluronic acid cocktail. Regenerative scalp rejuvenation. Encourages hair growth. No downtime. Can combine with PRP.", price: "RM 600 - RM 1,500" },
+    { service: "Finasteride 1mg Prescription (per month)", details: "Doctor-prescribed oral finasteride for male androgenetic alopecia. Full side effect discussion. Review at 6 and 12 months with hair density photography.", price: "RM 60 - RM 180" },
+    { service: "Low-Level Laser Therapy (per session)", details: "Laser therapy for scalp follicle stimulation. 630-680nm red light. Non-surgical. No downtime. 20-30 minute sessions.", price: "RM 200 - RM 500" },
+    { service: "Follow-Up Hair Growth Review", details: "Structured 6-month and 12-month reviews. Standardised hair density photography. Scalp trichoscopy. Treatment response assessment.", price: "RM 100 - RM 200" },
+  ];
+
+  // FAQ Data (expanded from content)
+  const faqData = [
+    { q: "Can hair loss be reversed naturally?", a: "Sometimes. If hair loss is linked to a temporary trigger like stress or mild nutrient issues, it may improve when the trigger is addressed. Genetic pattern loss (androgenetic alopecia) usually needs medical treatment for real change. At Nexus Clinic KL, we identify the specific cause before recommending any treatment approach." },
+    { q: "What is the most effective hair loss treatment in Malaysia?", a: "The most effective treatment depends entirely on your type of hair loss. For androgenetic alopecia (pattern hair loss), the combination of finasteride (for men), topical minoxidil, and PRP produces the best results. For telogen effluvium, identifying and removing the trigger is most effective. For alopecia areata, intralesional corticosteroid injections and PRP show good results. A proper diagnosis at Nexus Clinic KL ensures you receive the treatment matched to your specific condition." },
+    { q: "How long does it take to see results from hair loss treatment?", a: "Most treatments need at least 3 to 6 months of consistency before visible change appears. Minoxidil typically shows results at 3-6 months. Finasteride shows hair loss slowing at 3-6 months and maximum benefit at 12-24 months. PRP shows improvement beginning from the second session onward, with maximum results at 3-6 months after completing the initial 3-session course. Patience and consistency are essential for optimal outcomes." },
+    { q: "Is PRP treatment effective for hair regrowth in Malaysia?", a: "Yes. PRP (platelet-rich plasma) is an effective treatment for stimulating hair growth in patients with androgenetic alopecia and in some patients with alopecia areata. PRP delivers growth factors including PDGF, VEGF and TGF-beta directly to hair follicles. Published clinical studies consistently show improvement in hair density and scalp hair count after a course of PRP treatment. PRP is most effective when combined with finasteride and minoxidil rather than used as a standalone treatment." },
+    { q: "How many PRP sessions do I need for hair loss?", a: "Most patients require 3 to 4 initial PRP sessions spaced 4 to 6 weeks apart. After completing the initial course, maintenance sessions every 4 to 6 months help preserve the results. The exact number depends on your specific hair loss type, the extent of thinning, and how well your follicles respond to treatment. Your personalised treatment plan at Nexus Clinic KL will include a clear session schedule based on your assessment." },
+    { q: "What are the side effects of PRP for hair?", a: "Most reported side effects are temporary and mild, including tenderness at injection sites, mild scalp redness, and slight swelling that resolves within 24 to 48 hours. Because PRP uses your own blood components, there is no risk of allergic reaction. Some patients experience mild headache on the day of treatment. Serious complications are extremely rare when performed by a qualified medical professional." },
+    { q: "Is finasteride safe for hair loss treatment?", a: "Finasteride is used for male pattern hair loss but requires proper medical counselling. Side effects can include sexual side effects (reported in 1-2% of users) and rare mood changes. Regulators have issued reminders about psychiatric risks. Finasteride should only be taken under medical supervision with regular follow-up. At Nexus Clinic KL, we discuss all risks thoroughly before prescribing and monitor patients throughout treatment. Women who are or may be pregnant must never use finasteride." },
+    { q: "Does minoxidil regrow hair permanently?", a: "Minoxidil can help early hair loss and may slow loss or support regrowth, but it will not restore an entire head of hair. It requires consistent use for months to see results. If minoxidil works for you, you typically need to continue using it to maintain benefits. Stopping minoxidil usually leads to gradual return of hair loss within 3 to 6 months. Minoxidil is most effective when started early, before significant follicle miniaturisation has occurred." },
+    { q: "What causes hair loss in Malaysian women?", a: "Common causes of hair loss in Malaysian women include: female pattern hair loss (androgenetic alopecia), telogen effluvium from stress or post-partum changes, iron deficiency (particularly common in women with heavy periods), thyroid dysfunction, PCOS-related hormonal changes, traction alopecia from tight hairstyles, and nutritional deficiencies. A proper diagnosis at Nexus Clinic KL avoids wasted time on inappropriate treatments." },
+    { q: "Can stress cause hair loss?", a: "Yes. Stress is a well-recognised trigger for telogen effluvium, a condition where a large number of hair follicles simultaneously enter the resting phase, causing diffuse hair fall 2 to 3 months after the stressful event. Chronic psychological stress, significant illness, surgery, or dramatic weight loss can all trigger this response. In most cases, hair grows back naturally when the stress trigger is resolved, though nutritional support and minoxidil can accelerate recovery." },
+    { q: "When should I consider a hair transplant?", a: "A hair transplant should be considered when hair follicles in an area are no longer producing hair and non-surgical treatments cannot revive them. For most patients, we recommend starting with a 12-month non-surgical programme (finasteride, minoxidil, PRP) before considering transplant. This stabilises ongoing hair loss and maximises existing density. Men with advanced baldness (Norwood grade V to VII) are more likely to be transplant candidates. At Nexus Clinic KL, we provide honest guidance on whether you are an immediate or deferred transplant candidate." },
+    { q: "How much does hair loss treatment cost in Malaysia?", a: "Costs vary by treatment type and number of sessions. PRP sessions typically range from RM 800 to RM 2,500 per session. Hair transplant costs range from RM 6,000 to RM 15,000 depending on graft count and technique. Medication plans vary based on product and dose. A comprehensive non-surgical programme including PRP, finasteride, minoxidil and follow-up consultations costs approximately RM 7,000 to RM 15,000 annually. At Nexus Clinic KL, all pricing is disclosed at the initial consultation before any treatment begins." },
+    { q: "What scalp care does Nexus Clinic KL recommend between treatments?", a: "Between hair loss treatment sessions, patients receive a personalised self-care programme including: appropriate shampoo selection for their specific scalp type (oily, dry, seborrhoeic, normal); scalp tonic applied directly to the scalp after cleansing; sun exposure protection using a cap or hat in Malaysia's intense UV environment; dietary guidance including adequate protein and iron-rich foods; lifestyle changes including stress management; and specific post-treatment scalp care instructions after every PRP or mesotherapy session. The post-treatment self-care programme is as important as the clinical treatment itself." },
+    { q: "Is the hair loss consultation at Nexus Clinic KL free?", a: "The initial hair loss assessment at Nexus Clinic KL is priced at RM 150 to RM 300 and includes a comprehensive trichoscopy scalp examination, hair loss type diagnosis, blood test panel where indicated for medical causes of hair loss, personalised treatment recommendation with full pricing, and discussion of all treatment options including finasteride, minoxidil, PRP, laser therapy, and when considering a hair transplant is appropriate. This investment ensures you receive a proper diagnosis rather than a generic sales pitch." },
+  ];
 
   const transformations = [
     {
@@ -51,1378 +207,692 @@ const HairLossTreatment = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  // Quick stats data
-  const trustStats = [
-    { icon: <Calendar className="w-5 h-5" />, text: "Founded in 2001" },
-    { icon: <MapPin className="w-5 h-5" />, text: "KL's Golden Triangle" },
-    { icon: <Award className="w-5 h-5" />, text: "MOH-licensed doctors" },
-  ];
-
-  // Quick answers data
-  const quickAnswers = [
-    {
-      q: "Can hair loss be treated?",
-      a: "Yes. Many types can be slowed, improved, or managed, depending on the cause.",
-    },
-    {
-      q: "What works best for genetic hair loss?",
-      a: "First-line options often include minoxidil and, for many men, finasteride under medical advice.",
-    },
-    {
-      q: "When do results show?",
-      a: "Most treatments need at least 3 to 6 months of consistency before visible change.",
-    },
-    {
-      q: "Do clinic treatments help?",
-      a: "Options like PRP, laser, and transplant can help selected patients when matched to the right hair loss type.",
-    },
-  ];
-
-  // Hair loss types data
-  const hairLossTypes = [
-    {
-      title: "Pattern hair loss",
-      desc: "Male and female pattern hair loss - the most common type, typically gradual and genetic.",
-    },
-    {
-      title: "Telogen effluvium",
-      desc: "Stress shedding triggered by high stress, fever, illness, major weight loss, childbirth, or low nutrients.",
-    },
-    {
-      title: "Alopecia areata",
-      desc: "Patchy hair loss appearing as round patches. Can be self-limited but needs proper diagnosis.",
-    },
-    {
-      title: "Traction hair loss",
-      desc: "Caused by tight hairstyles pulling hair over time. Edges and temples often suffer first.",
-    },
-    {
-      title: "Scarring hair loss",
-      desc: "Requires early specialist care. The goal is to stop damage quickly.",
-    },
-  ];
-
-  // Treatment options data
-  const treatmentOptions = [
-    {
-      icon: <Droplets className="w-6 h-6" />,
-      title: "Minoxidil",
-      desc: "A core option for many people with early pattern hair loss. Requires months of consistent use.",
-      details: [
-        "Need months of consistent use",
-        "Must continue to keep benefits",
-        "May cause scalp irritation",
-        "Early shedding can happen",
-      ],
-    },
-    {
-      icon: <FileText className="w-6 h-6" />,
-      title: "Finasteride",
-      desc: "Mainly for men, prescription only. Requires real counseling and follow-up.",
-      details: [
-        "Sexual side effects possible",
-        "Rare mood changes reported",
-        "Medical supervision required",
-        "Not a casual supplement",
-      ],
-    },
-    {
-      icon: <Sparkles className="w-6 h-6" />,
-      title: "PRP Hair Treatment",
-      desc: "Uses your own platelet-rich plasma injected into the scalp. Widely marketed in Malaysia.",
-      details: [
-        "Best for early thinning",
-        "Helps crown thinning",
-        "Post-partum thinning (after review)",
-        "3-4 sessions, then maintenance",
-      ],
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Low-level Laser Therapy",
-      desc: "Light-based therapy as part of hair loss programs. Positioned as supportive, not magic.",
-      details: [
-        "Supportive treatment",
-        "Best combined with core plan",
-        "Non-invasive",
-        "Regular sessions needed",
-      ],
-    },
-    {
-      icon: <Layers className="w-6 h-6" />,
-      title: "Hair Fillers & Mesotherapy",
-      desc: "Scalp injectables and boosters used as add-ons for selected patients.",
-      details: [
-        "Add-on treatments",
-        "Must match your hair loss type",
-        "Clinic-based procedure",
-        "Results vary by case",
-      ],
-    },
-    {
-      icon: <Leaf className="w-6 h-6" />,
-      title: "Advanced Options",
-      desc: "Regenerative options like stem cell or exosomes. Evolving areas of treatment.",
-      details: [
-        "Ask about evidence",
-        "Check safety and downtime",
-        "Realistic expectations",
-        "No pressure consultation",
-      ],
-    },
-  ];
-
-  // Timeline data
-  const timeline = [
-    {
-      month: "Month 1",
-      desc: "Feel hopeful, then impatient. Some notice less shedding first.",
-    },
-    {
-      month: "Months 2-3",
-      desc: "May see small improvements. Photos help, daily mirror checks can lie.",
-    },
-    {
-      month: "Months 3-6",
-      desc: "Real change becomes visible if the plan suits you.",
-    },
-    {
-      month: "Month 9+",
-      desc: "Results look more settled, especially with transplant or combined programs.",
-    },
-  ];
-
-  // FAQ data
-  const faqs = [
-    {
-      q: "Can hair loss be reversed naturally?",
-      a: "Sometimes. If hair loss is linked to a temporary trigger like stress or mild nutrient issues, it may improve. Genetic pattern loss usually needs medical treatment for real change.",
-    },
-    {
-      q: "What is the most effective hair loss treatment?",
-      a: "It depends on the cause. For pattern hair loss, common first-line options include minoxidil and, for many men, finasteride with medical guidance.",
-    },
-    {
-      q: "How long does it take to see results from hair loss treatment?",
-      a: "Many clinics and medical sources note it can take 3 to 6 months to see visible change, sometimes longer.",
-    },
-    {
-      q: "Is PRP good for hair loss?",
-      a: "PRP is widely used for thinning hair and early-stage loss in many clinics. Protocols vary, and results vary, so assessment matters.",
-    },
-    {
-      q: "How many PRP sessions do I need?",
-      a: "Many clinic FAQs commonly recommend 3 to 4 sessions spaced 4 to 6 weeks apart, then maintenance.",
-    },
-    {
-      q: "What are PRP side effects for hair?",
-      a: "Most reported effects are temporary, like tenderness, redness, or swelling at injection points.",
-    },
-    {
-      q: "Is finasteride safe for hair loss?",
-      a: "Finasteride is used for male pattern hair loss but can have sexual and mood-related side effects. Regulators have also issued reminders about psychiatric risks. Discuss risks properly before starting.",
-    },
-    {
-      q: "Does minoxidil regrow hair?",
-      a: "It can help early hair loss and may slow loss or support regrowth, but it will not restore an entire head of hair. It needs consistent use for months.",
-    },
-    {
-      q: "What happens if I stop minoxidil?",
-      a: "Benefits often fade after stopping, which is why it is usually a long-term plan if it works for you.",
-    },
-    {
-      q: "What causes hair loss in women?",
-      a: "Common causes include female pattern hair loss, stress shedding, nutritional issues, and hormonal factors. A proper diagnosis avoids wasted time.",
-    },
-    {
-      q: "Can stress cause hair loss?",
-      a: "Yes. Stress is listed as a risk factor for hair loss and can trigger shedding patterns in some people.",
-    },
-    {
-      q: "When do I need a hair transplant?",
-      a: "When follicles are no longer active in an area, a transplant may be considered. Many Malaysia sources cite typical transplant cost ranges around RM 6,000 to RM 15,000 depending on grafts.",
-    },
-    {
-      q: "How much does hair loss treatment cost in Malaysia?",
-      a: "PRP session pricing is commonly listed in the hundreds to a few thousand RM per session. Transplant costs are usually higher and depend on grafts. The right number depends on your plan.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-light font-inter">
-      {/* Hero Section - SEMUA KATA dari Page 1 */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="relative overflow-hidden bg-linear-to-br from-cream via-light to-rose/5"
-      >
-        <div className="absolute inset-0 bg-glass backdrop-blur-3xl" />
-        <div className="container relative px-4 py-20 mx-auto">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <motion.div
-              variants={{
-                hidden: { x: -50, opacity: 0 },
-                visible: { x: 0, opacity: 1 },
-              }}
-              className="space-y-8"
-            >
-              <h1 className="font-georgia text-5xl lg:text-5xl leading-tight text-brown">
-                Hair Loss Treatment in Kuala Lumpur, Malaysia
-              </h1>
+    <div className="w-full bg-light overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">PRP • Finasteride • Minoxidil • Laser Therapy</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                Hair Loss Treatment in Malaysia for{" "}
+                <span className="text-wine italic">All Types of Alopecia</span>
+              </motion.h1>
 
-              <p className="text-xl text-rose font-georgia">
-                Real solutions for thinning hair at Nexus Clinic Kuala Lumpur
-              </p>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                Hair loss is one of the most common concerns bringing Malaysian patients to a specialist clinic, yet it is also one of the most inconsistently managed.
+              </motion.p>
 
-              <div className="space-y-4">
-                <h2 className="font-georgia text-2xl text-brown">
-                  Your hair is not "just hair." It is how you show up.
-                </h2>
-                <p className="text-lg text-taupe leading-relaxed">
-                  If your hair is thinning, we get it. It can feel personal. At
-                  Nexus Clinic Kuala Lumpur, we build a plan that fits your hair
-                  type, your lifestyle, and your goals.
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                The reason most hair loss treatment approaches fail is that they do not start with a correct diagnosis of which type of hair loss the patient has, what causes hair loss in that specific case, and what the evidence-based treatment options are for that particular cause.
+              </motion.p>
+
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
                 </p>
-              </div>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  At Nexus Clinic KL, every hair loss assessment begins with a clinical diagnosis of the specific type of hair loss, followed by a personalised hair growth treatment programme designed around that diagnosis.
+                </p>
+              </motion.div>
 
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 space-y-3">
-                <h3 className="font-georgia text-xl text-brown">
-                  Trust at a glance
-                </h3>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2 text-taupe">
-                    <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span>
-                      Founded in 2001 and based in KL's Golden Triangle area.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2 text-taupe">
-                    <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span>
-                      Clinic address: LG 10, Lower Ground Floor, Wisma UOA II,
-                      Jalan Pinang, Kuala Lumpur.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2 text-taupe">
-                    <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
-                    <span>
-                      Direct contact: phone numbers and email listed by Nexus
-                      Clinic.
-                    </span>
-                  </li>
-                </ul>
-              </div>
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Book Hair Loss Assessment
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in hair loss treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
-            <motion.div
-              variants={{
-                hidden: { x: 50, opacity: 0 },
-                visible: { x: 0, opacity: 1 },
-              }}
-              className="relative"
-            >
-              <div className="relative aspect-square max-w-md mx-auto">
-                <div className="absolute inset-0 bg-linear-to-tr from-wine/20 to-rose/20 rounded-3xl" />
-                <img
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
                   src="/images/hair/hair-loss-treatment.webp"
-                  alt="Hair loss consultation at Nexus Clinic Kuala Lumpur"
-                  className="relative z-10 object-cover w-full h-full rounded-3xl shadow-2xl"
+                  alt="Nexus Clinic Kuala Lumpur - Hair Loss Treatment"
+                  fill
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">PRP • Finasteride • Minoxidil</p>
+                <p className="font-inter text-sm text-taupe">Doctor-performed treatments</p>
               </div>
             </motion.div>
           </div>
+        </motion.div>
+      </section>
 
-          {/* Quick Answers Section - dari Page 1 */}
-          <motion.div
-            variants={{
-              hidden: { y: 50, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="mt-16 max-w-4xl mx-auto"
-          >
-            <h3 className="font-georgia text-2xl text-brown mb-6 text-center">
-              Quick answers (so you do not have to scroll forever)
-            </h3>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="p-4 bg-white rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  Can hair loss be treated?
-                </p>
-                <p className="text-taupe text-sm">
-                  Yes. Many types can be slowed, improved, or managed, depending
-                  on the cause.
-                </p>
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
               </div>
-              <div className="p-4 bg-white rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  What works best for genetic hair loss?
-                </p>
-                <p className="text-taupe text-sm">
-                  First-line options often include minoxidil and, for many men,
-                  finasteride under medical advice.
-                </p>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Founded 2001</p>
+                  <p className="font-inter text-taupe text-xs">Over two decades of service</p>
+                </div>
               </div>
-              <div className="p-4 bg-white rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  When do results show?
-                </p>
-                <p className="text-taupe text-sm">
-                  Most treatments need at least 3 to 6 months of consistency
-                  before visible change.
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
               </div>
-              <div className="p-4 bg-white rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  Do clinic treatments help?
-                </p>
-                <p className="text-taupe text-sm">
-                  Options like PRP, laser, and transplant can help selected
-                  patients when matched to the right hair loss type.
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Shield className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Credentials</p>
+                  <p className="font-georgia text-brown font-bold text-sm">MOH Licensed</p>
+                  <p className="font-inter text-taupe text-xs">Certified aesthetic doctors</p>
+                </div>
               </div>
             </div>
+
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Stethoscope className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Doctor-Performed</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Qualified medical professionals</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Extensive clinical experience</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Personalised Care</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Treatment matched to your hair loss type</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">PRP • Finasteride • Minoxidil</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Low-Level Laser Therapy</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Scalp Mesotherapy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Quick Answers Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Quick Answers About Hair Loss Treatment</h2>
+            <p className="text-taupe font-inter">What you need to know before your consultation</p>
           </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Page 2 Content - SEMUA KATA */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-white"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <p className="text-taupe mb-4">
-              1. They list a "menu" of solutions (medications, PRP, laser,
-              transplant).
-            </p>
-            <p className="text-taupe mb-4">
-              2. They push early action (treat thinning early, not when it is
-              fully bald).
-            </p>
-            <p className="text-taupe mb-4">
-              3. They promise a timeline (usually "a few months," sometimes
-              longer).
-            </p>
-            <p className="text-taupe mb-4">
-              4. They use FAQs to answer real search questions (cost, results,
-              side effects, sessions).
-            </p>
-            <p className="text-taupe mb-4">
-              5. They highlight credibility (MOH-licensed doctors, reviews,
-              verified listings).
-            </p>
-            <p className="text-wine font-medium mt-6">
-              That is useful, but it also hides the real point. Your best
-              treatment depends on your hair loss type. Not the trend.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto mt-12"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              Hair loss in Malaysia: why it happens (in plain words)
-            </h2>
-            <p className="text-taupe mb-4">
-              Hair loss is not one single condition. It is a symptom with many
-              causes.
-            </p>
-            <p className="text-taupe mb-4">
-              Some people lose hair slowly over years. Some people shed suddenly
-              after stress, illness, weight loss, or low iron. Some people get
-              patchy hair loss that comes and goes.
-            </p>
-            <p className="text-wine font-georgia text-xl mt-6">
-              The right treatment starts with one question: What type of hair
-              loss is this?
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Page 2-3: Common Types of Hair Loss */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-cream"
-      >
-        <div className="container px-4 mx-auto flex flex-col justify-center items-center">
-          <motion.h2
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="font-georgia text-3xl text-brown mb-8"
-          >
-            Common types of hair loss we see in clinic
-          </motion.h2>
-
-          <div className="space-y-6 max-w-4xl">
-            <motion.div
-              variants={{
-                hidden: { x: -20, opacity: 0 },
-                visible: { x: 0, opacity: 1 },
-              }}
-              className="p-6 bg-white rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-2">
-                1) Pattern hair loss (male and female pattern)
-              </h3>
-              <p className="text-taupe">
-                Pattern hair loss (male and female pattern) - the most common
-                type of hair loss, typically gradual and genetic.
-              </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+              <h3 className="font-georgia text-lg text-brown mb-2">Can hair loss be treated?</h3>
+              <p className="text-taupe font-inter text-sm">Yes. Many types can be slowed, improved, or managed, depending on the cause.</p>
             </motion.div>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+              <h3 className="font-georgia text-lg text-brown mb-2">What works best for genetic hair loss?</h3>
+              <p className="text-taupe font-inter text-sm">First-line options often include minoxidil and, for many men, finasteride under medical advice.</p>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+              <h3 className="font-georgia text-lg text-brown mb-2">When do results show?</h3>
+              <p className="text-taupe font-inter text-sm">Most treatments need at least 3 to 6 months of consistency before visible change.</p>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+              <h3 className="font-georgia text-lg text-brown mb-2">Do clinic treatments help?</h3>
+              <p className="text-taupe font-inter text-sm">Options like PRP, laser, and transplant can help selected patients when matched to the right hair loss type.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
 
+      {/* Types of Hair Loss Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Types of Hair Loss and Alopecia</h2>
+            <p className="text-taupe font-inter">Understanding your hair loss type is the first step to effective treatment</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Type of Hair Loss / Alopecia</th>
+                  <th className="p-4 text-left font-georgia">Clinical Features</th>
+                  <th className="p-4 text-left font-georgia">Causes</th>
+                  <th className="p-4 text-left font-georgia">Treatment Approach</th>
+                </tr>
+              </thead>
+              <tbody>
+                {hairLossTypesTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.type}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.features}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.causes}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.treatment}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm">
+              <span className="font-semibold">Important:</span> The secondary hair loss from medical conditions row in this table is the most practically important for Malaysian patients who have been using hair loss treatment products without improvement. Many Malaysian women experiencing significant hair fall have an underlying thyroid condition, iron deficiency or PCOS-related hormonal imbalance as the primary cause. At Nexus Clinic KL, a blood test panel to identify medical causes is included where clinically suspected.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Options Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Hair Loss Treatment Options in Malaysia</h2>
+            <p className="text-taupe font-inter">PRP, Finasteride, Minoxidil and Laser Therapy for Hair Regrowth</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Treatment</th>
+                  <th className="p-4 text-left font-georgia">How It Works</th>
+                  <th className="p-4 text-left font-georgia">Best For</th>
+                  <th className="p-4 text-left font-georgia">Evidence & Efficacy</th>
+                  <th className="p-4 text-left font-georgia">Downtime</th>
+                </tr>
+              </thead>
+              <tbody>
+                {treatmentOptionsTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.treatment}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.howItWorks}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.bestFor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.evidence}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.downtime}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm">
+              The combination of treatments consistently produces better results than any single treatment alone. PRP provides growth factors, minoxidil promotes blood flow, finasteride blocks DHT, laser therapy provides additional stimulation, and scalp mesotherapy optimises the scalp environment. At Nexus Clinic KL, your treatment programme is customised to your specific hair loss type, degree of hair loss, lifestyle and budget.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Causes of Hair Loss Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Causes of Hair Loss in Malaysian Patients</h2>
+            <p className="text-taupe font-inter">Hormonal, Nutritional, Autoimmune and Environmental Factors</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Cause of Hair Loss</th>
+                  <th className="p-4 text-left font-georgia">How It Affects Hair Follicles</th>
+                  <th className="p-4 text-left font-georgia">Who Is Affected in Malaysia</th>
+                  <th className="p-4 text-left font-georgia">Approach at Nexus Clinic KL</th>
+                </tr>
+              </thead>
+              <tbody>
+                {causesTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.cause}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.mechanism}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.affected}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.approach}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm">
+              <span className="font-semibold">Malaysia-specific note:</span> Environmental factors and nutritional deficiency are particularly relevant for Malaysian patients. Malaysia's year-round intense sun exposure, high-pollution urban environment, widespread use of chemical treatments on hair, and the high prevalence of iron deficiency among Malaysian women combine to create a unique set of contributing factors not addressed by simply prescribing finasteride or minoxidil.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Hair Growth Timeline Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">What Does Hair Loss Treatment Feel Like Over Time?</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">The honest timeline most patients experience</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
             <motion.div
-              variants={{
-                hidden: { x: -20, opacity: 0 },
-                visible: { x: 0, opacity: 1 },
-              }}
-              className="p-6 bg-white rounded-2xl"
+              variants={fadeInLeft}
+              className="bg-light p-8 rounded-2xl border border-taupe/20 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <h3 className="font-georgia text-xl text-brown mb-2">
-                2) Telogen effluvium (stress shedding)
-              </h3>
-              <p className="text-taupe mb-3">
-                Hair sheds more than usual, often after:
-              </p>
-              <ul className="list-disc pl-6 text-taupe space-y-1">
-                <li>high stress</li>
-                <li>fever or illness</li>
-                <li>major weight loss</li>
-                <li>childbirth</li>
-                <li>low nutrients</li>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">What Affects Your Results</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Your specific type of hair loss diagnosis</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>How early you started treatment</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Consistency with your treatment plan</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Combination of treatments used</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Addressing underlying medical causes</span>
+                </li>
               </ul>
-              <p className="text-taupe mt-3">
-                This type can improve when the trigger is addressed.
-              </p>
+              <div className="mt-8 p-4 bg-wine/5 rounded-xl">
+                <p className="text-brown font-inter text-sm text-center">
+                  Patience is essential. Most treatments need 3-6 months of consistency before visible change appears. The most common reason patients conclude treatment doesn't work is stopping too early.
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
-              variants={{
-                hidden: { x: -20, opacity: 0 },
-                visible: { x: 0, opacity: 1 },
-              }}
-              className="p-6 bg-white rounded-2xl"
+              variants={fadeInRight}
+              className="bg-wine p-8 rounded-2xl text-white shadow-xl hover:shadow-2xl transition-shadow"
             >
-              <h3 className="font-georgia text-xl text-brown mb-2">
-                3) Alopecia areata (patchy hair loss)
-              </h3>
-              <p className="text-taupe">
-                This often appears as round patches of loss. It can be
-                self-limited, but needs proper diagnosis.
-              </p>
-            </motion.div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Treatment Timeline</h3>
+              </div>
 
-            <motion.div
-              variants={{
-                hidden: { x: -20, opacity: 0 },
-                visible: { x: 0, opacity: 1 },
-              }}
-              className="p-6 bg-white rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-2">
-                4) Traction hair loss
-              </h3>
-              <p className="text-taupe">
-                Hair is pulled over time by tight hairstyles. Edges and temples
-                often suffer first.
-              </p>
-            </motion.div>
+              <div className="space-y-6">
+                {growthTimeline.map((item, idx) => (
+                  <div key={idx}>
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="font-inter text-white/90">{item.period}</span>
+                      <span className="font-georgia text-xl font-bold text-white">{item.period}</span>
+                    </div>
+                    <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${25 + idx * 25}%` }}
+                        transition={{ duration: 1, delay: 0.2 * idx }}
+                        className="bg-white h-2.5 rounded-full"
+                      ></motion.div>
+                    </div>
+                    <p className="text-white/70 text-xs mt-2">{item.happening}</p>
+                  </div>
+                ))}
+              </div>
 
-            <motion.div
-              variants={{
-                hidden: { x: -20, opacity: 0 },
-                visible: { x: 0, opacity: 1 },
-              }}
-              className="p-6 bg-white rounded-2xl"
-            >
-              <h3 className="font-georgia text-xl text-brown mb-2">
-                5) Scarring hair loss
-              </h3>
-              <p className="text-taupe">
-                This needs early specialist care. The goal is to stop damage
-                fast.
-              </p>
+              <div className="mt-8 pt-4 border-t border-white/20">
+                <p className="text-white/80 text-sm text-center">
+                  Photos help track progress. Daily mirror checks can be misleading. Trust the process and follow your treatment plan consistently.
+                </p>
+              </div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Page 3-4: Assessment Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-white"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              How we assess hair loss at Nexus Clinic Kuala Lumpur
-            </h2>
-            <p className="text-taupe text-lg mb-6">
-              A good consult is not a sales talk. It is a clear check of what is
-              happening.
-            </p>
-            <p className="text-brown font-medium mb-4">
-              A typical assessment includes:
-            </p>
-
-            <div className="space-y-4">
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-taupe">
-                  1) Daily foundations (simple, but important)
-                </p>
-                <p className="text-taupe mt-2">
-                  These do not replace medical treatment, but they support
-                  results.
-                </p>
-                <ul className="list-disc pl-6 mt-2 text-taupe">
-                  <li>Gentle scalp hygiene</li>
-                  <li>Avoid tight hairstyles and harsh pulling</li>
-                  <li>Sleep and stress care</li>
-                  <li>Protein and iron support (if low)</li>
-                </ul>
-                <p className="text-wine mt-2">
-                  If hair loss is sudden, this foundation matters even more.
-                </p>
-              </div>
-            </div>
+      {/* Growth Timeline Detailed Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Month-by-Month Hair Growth Timeline</h2>
+            <p className="text-taupe font-inter">What happens during treatment and what patients experience</p>
           </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Page 4-5: Minoxidil Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-cream"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              2) Minoxidil (a core option for many people)
-            </h2>
-            <p className="text-taupe mb-4">
-              Minoxidil is widely used for early pattern hair loss. Dermatology
-              guidance notes it can help early loss, but it does not regrow a
-              full head of hair.
-            </p>
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Timeframe</th>
+                  <th className="p-4 text-left font-georgia">What Happens During Treatment</th>
+                  <th className="p-4 text-left font-georgia">What the Patient Experiences</th>
+                </tr>
+              </thead>
+              <tbody>
+                {growthTimeline.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.period}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.happening}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.experience}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
 
-            <h3 className="font-georgia text-xl text-brown mb-3">
-              What to expect:
-            </h3>
-            <ul className="list-disc pl-6 mb-4 text-taupe">
-              <li>You need months of consistent use</li>
-              <li>
-                If it helps, you usually need to continue to keep benefits
-              </li>
-            </ul>
-
-            <h3 className="font-georgia text-xl text-brown mb-3">
-              Common issues:
-            </h3>
-            <ul className="list-disc pl-6 text-taupe">
-              <li>scalp irritation (some people)</li>
-              <li>shedding early on can happen</li>
-            </ul>
+      {/* Scalp Care Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Scalp Care and Self-Care for Hair Growth in Malaysia</h2>
+            <p className="text-taupe font-inter">Shampoo, tonic and lifestyle guidance for hair health</p>
           </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Page 5: Finasteride Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-white"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              3) Finasteride (mainly for men, prescription)
-            </h2>
-            <p className="text-taupe mb-4">
-              Finasteride is commonly prescribed for male pattern hair loss
-              under medical supervision.
-            </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-light p-6 rounded-xl border-l-4 border-wine shadow-md">
+              <h3 className="font-georgia text-xl text-brown mb-3">Scalp Cleansing and Shampoo Selection</h3>
+              <p className="text-taupe font-inter text-sm mb-3">Regular scalp cleansing with an appropriate shampoo removes sebum, dead skin cells, product buildup and pollutants that can clog hair follicles. In Malaysia's humid climate, daily or every-other-day cleansing is typically appropriate.</p>
+              <p className="text-wine font-inter text-sm font-semibold">At Nexus Clinic KL:</p>
+              <p className="text-taupe font-inter text-sm">Patients receive specific shampoo selection advice based on their scalp condition (oily, dry, seborrhoeic dermatitis, normal) rather than generic guidance.</p>
+            </motion.div>
 
-            <h3 className="font-georgia text-xl text-brown mb-3">
-              What patients should know:
-            </h3>
-            <ul className="list-disc pl-6 mb-4 text-taupe">
-              <li>Side effects can include sexual side effects</li>
-              <li>
-                Rare mood changes and serious warnings have been highlighted by
-                regulators
-              </li>
-            </ul>
+            <motion.div variants={fadeInRight} className="bg-light p-6 rounded-xl border-l-4 border-wine shadow-md">
+              <h3 className="font-georgia text-xl text-brown mb-3">Scalp Tonic and Topical Treatment Absorption</h3>
+              <p className="text-taupe font-inter text-sm mb-3">A scalp tonic applied directly to the scalp between treatment sessions delivers active ingredients to the follicle level without dilution from shampoo rinse.</p>
+              <p className="text-wine font-inter text-sm font-semibold">At Nexus Clinic KL:</p>
+              <p className="text-taupe font-inter text-sm">The scalp tonic recommendation is personalised to each patient's hair loss type. Application technique is demonstrated at the first consultation.</p>
+            </motion.div>
 
-            <p className="text-wine font-medium">
-              This is why we do not treat it like a casual supplement. It needs
-              real counselling and follow-up.
+            <motion.div variants={fadeInLeft} className="bg-light p-6 rounded-xl border-l-4 border-wine shadow-md">
+              <h3 className="font-georgia text-xl text-brown mb-3">Sun Exposure Protection for the Scalp</h3>
+              <p className="text-taupe font-inter text-sm mb-3">Malaysia's year-round UV index of 10-13 damages hair follicle DNA and degrades the scalp skin barrier. Men with thinning hair are particularly vulnerable.</p>
+              <p className="text-wine font-inter text-sm font-semibold">At Nexus Clinic KL:</p>
+              <p className="text-taupe font-inter text-sm">Sun exposure protection is included in the self-care guidance at every consultation. Patients are specifically advised to protect the scalp in the 48 hours after treatment.</p>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="bg-light p-6 rounded-xl border-l-4 border-wine shadow-md">
+              <h3 className="font-georgia text-xl text-brown mb-3">Nutrition and Lifestyle Changes for Hair Growth</h3>
+              <p className="text-taupe font-inter text-sm mb-3">Adequate dietary protein, iron, vitamin D, zinc, biotin and omega-3 fatty acids are essential for healthy hair growth. In Malaysian patients, iron deficiency is the most common nutritional cause.</p>
+              <p className="text-wine font-inter text-sm font-semibold">At Nexus Clinic KL:</p>
+              <p className="text-taupe font-inter text-sm">Nutritional assessment is included in the initial evaluation. Dietary advice and supplement recommendations are provided based on blood test results.</p>
+            </motion.div>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              Post-treatment self-care instructions are provided in writing after every clinical hair treatment session and reviewed at each follow-up appointment to ensure your home care routine supports rather than undermines your hair growth treatment outcomes.
             </p>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Page 5-6: PRP Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-cream"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              4) PRP hair treatment (clinic-based support for thinning)
-            </h2>
-            <p className="text-taupe mb-4">
-              PRP uses your own platelet-rich plasma, injected into the scalp.
-              It is widely marketed in Malaysia for thinning hair.
-            </p>
-
-            <h3 className="font-georgia text-xl text-brown mb-3">
-              Who may benefit most:
-            </h3>
-            <ul className="list-disc pl-6 mb-4 text-taupe">
-              <li>early thinning</li>
-              <li>crown thinning</li>
-              <li>post-partum thinning (after medical review)</li>
-              <li>as support after transplant (selected cases)</li>
-            </ul>
-
-            <p className="text-taupe">
-              3 to 4 sessions spaced 4 to 6 weeks apart, then maintenance
-            </p>
+      {/* Matching Guide Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Which Treatment Is Best For You?</h2>
+            <p className="text-taupe font-inter">Simple matching guide based on your hair loss stage</p>
           </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Page 6: LLLT Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-white"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              5) Low-level laser therapy (LLLT) and photomodulation
-            </h2>
-            <p className="text-taupe mb-4">
-              Many KL clinics list laser or light-based therapy as part of hair
-              loss programs. These are usually positioned as supportive, not
-              magic.
-            </p>
-            <p className="text-taupe">
-              They may help some people, especially when combined with a core
-              plan.
-            </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-md hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mb-4">1</div>
+              <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">Early Thinning</h3>
+              <p className="text-taupe font-inter text-sm">Start with scalp assessment, then consider minoxidil, PRP, and supportive laser or injectables if suitable.</p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-md hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mb-4">2</div>
+              <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">Fast Shedding</h3>
+              <p className="text-taupe font-inter text-sm">Rule out triggers first: illness, stress, nutrition deficiencies, medications. Identify and address the underlying cause.</p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-md hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mb-4">3</div>
+              <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">Crown Thinning</h3>
+              <p className="text-taupe font-inter text-sm">Combination plans are common: medication plus PRP plus supportive therapy for comprehensive coverage.</p>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-md hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mb-4">4</div>
+              <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">Bald & Smooth</h3>
+              <p className="text-taupe font-inter text-sm">Discuss transplant options and long-term maintenance. Non-surgical treatments may still help protect remaining hair.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Hair Loss Treatment Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
           </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Page 6: Hair Fillers Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-cream"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              6) Hair fillers, mesotherapy, and scalp injectables
-            </h2>
-            <p className="text-taupe mb-4">
-              Some clinics in KL offer "hair fillers" or scalp boosters. These
-              can be used as add-ons for selected patients.
-            </p>
-            <p className="text-wine font-medium">
-              The key is not the label. The key is whether your hair loss type
-              fits that approach.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Service / Treatment</th>
+                  <th className="p-4 text-left font-georgia">Details</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.service}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{tier.details}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    Annual cost for a comprehensive non-surgical programme including PRP, finasteride, minoxidil and follow-up consultations is approximately RM 7,000 to RM 15,000. Men using only finasteride and topical minoxidil without PRP have an annual programme of approximately RM 1,500 to RM 3,500. All consultations are complimentary for treatment planning at Nexus Clinic KL.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </motion.div>
+      </section>
 
-      {/* Page 6: Advanced Options Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-white"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              7) Advanced options you may see in Malaysia (stem cell, exosomes)
-            </h2>
-            <p className="text-taupe mb-4">
-              You will see more clinics in KL listing regenerative options like
-              stem cell or exosomes. These are evolving areas.
-            </p>
-
-            <h3 className="font-georgia text-xl text-brown mb-3">
-              If you are considering them, ask:
-            </h3>
-            <ul className="list-disc pl-6 mb-4 text-taupe">
-              <li>What evidence supports it for my diagnosis?</li>
-              <li>What is the safety and downtime?</li>
-              <li>What results are realistic for my stage?</li>
-            </ul>
-
-            <p className="text-wine">
-              A good clinic will answer without pressure.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Page 7: Hair Transplant Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-cream"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              8) Hair transplant for advanced loss (when hair is gone)
-            </h2>
-            <p className="text-taupe mb-4">
-              If follicles are no longer active in an area, topical solutions
-              may not fill it. That is when transplant becomes a serious option.
-            </p>
-            <p className="text-taupe mb-4">
-              Many Malaysia cost guides commonly show hair transplant ranges
-              around:
-            </p>
-            <p className="text-2xl text-wine font-georgia mb-2">
-              - RM 6,000 to RM 15,000 (often depending on grafts and method)
-            </p>
-            <p className="text-taupe mb-4">
-              Transplant is not always "one and done."
-            </p>
-            <p className="text-taupe">
-              You may still need maintenance for native hair.
-            </p>
-            <p className="text-taupe mt-2">
-              You may still need maintenance for native hair.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Page 7: Timeline Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-white"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              What does hair loss treatment feel like over time?
-            </h2>
-            <p className="text-taupe mb-6">
-              Here is the honest timeline most people experience:
-            </p>
-
-            <div className="space-y-4">
-              <div className="p-4 bg-cream rounded-xl">
-                <h3 className="font-georgia text-xl text-brown mb-2">
-                  Month 1
-                </h3>
-                <p className="text-taupe">
-                  You feel hopeful, then impatient. Some people notice less
-                  shedding first.
-                </p>
-              </div>
-              <div className="p-4 bg-cream rounded-xl">
-                <h3 className="font-georgia text-xl text-brown mb-2">
-                  Months 2 to 3
-                </h3>
-                <p className="text-taupe">
-                  You may see small improvements. Photos help, because daily
-                  mirror checks can lie.
-                </p>
-              </div>
-              <div className="p-4 bg-cream rounded-xl">
-                <h3 className="font-georgia text-xl text-brown mb-2">
-                  Months 3 to 6
-                </h3>
-                <p className="text-taupe">
-                  This is where many people notice real change, if the plan
-                  suits them.
-                </p>
-              </div>
-              <div className="p-4 bg-cream rounded-xl">
-                <h3 className="font-georgia text-xl text-brown mb-2">
-                  Month 9 onwards
-                </h3>
-                <p className="text-taupe">
-                  Results look more "settled," especially with transplant or
-                  combined programs.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
+      {/* Before After Section */}
       <SectionBeforeAfter transformations={transformations} />
 
-      {/* Page 8: Cost Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-cream"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              Hair loss treatment cost in Malaysia (realistic ranges)
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Book Your Hair Loss Assessment at Nexus Clinic KL
             </h2>
-            <p className="text-taupe mb-4">
-              Costs vary by clinic, method, and severity. But these public
-              ranges give a helpful baseline:
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              If you are tired of guessing, start with a real assessment. We will match your hair loss type to the right plan, then track progress properly.
             </p>
-
-            <div className="space-y-4 mb-6">
-              <p className="text-taupe">
-                PRP sessions: some Malaysia clinic sources cite around RM 800 to
-                RM 2,500 per session.
-              </p>
-              <p className="text-taupe">
-                Hair transplant: many Malaysia guides cite RM 6,000 to RM 15,000
-                depending on grafts.
-              </p>
-              <p className="text-taupe">
-                Medication plans: cost varies by product, dose, and follow- up
-                needs (best confirmed after assessment).
-              </p>
-            </div>
-
-            <h3 className="font-georgia text-xl text-brown mb-3">
-              A good quote should explain:
-            </h3>
-            <ul className="list-disc pl-6 text-taupe">
-              <li>what is included (sessions, aftercare, reviews)</li>
-              <li>what results are realistic</li>
-              <li>what maintenance looks like</li>
-            </ul>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Page 8-9: Matching Guide Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-white"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              Which treatment is best for you? (simple matching guide)
-            </h2>
-
-            <div className="space-y-6">
-              <div className="p-6 bg-cream rounded-2xl">
-                <h3 className="font-georgia text-xl text-brown mb-3">
-                  If you are in early thinning
-                </h3>
-                <p className="text-taupe mb-2">
-                  Start with scalp assessment, then consider:
-                </p>
-                <ul className="list-disc pl-6 text-taupe">
-                  <li>minoxidil</li>
-                  <li>PRP</li>
-                  <li>supportive laser or injectables (if suitable)</li>
-                </ul>
-              </div>
-
-              <div className="p-6 bg-cream rounded-2xl">
-                <h3 className="font-georgia text-xl text-brown mb-3">
-                  If you are losing hair fast (shedding)
-                </h3>
-                <p className="text-taupe mb-2">Rule out triggers first:</p>
-                <p className="text-taupe">
-                  illness, stress, nutrition, medications
-                </p>
-              </div>
-
-              <div className="p-6 bg-cream rounded-2xl">
-                <h3 className="font-georgia text-xl text-brown mb-3">
-                  If your crown is thin and widening
-                </h3>
-                <p className="text-taupe mb-2">Combination plans are common:</p>
-                <p className="text-taupe">
-                  medication plus PRP plus supportive therapy
-                </p>
-              </div>
-
-              <div className="p-6 bg-cream rounded-2xl">
-                <h3 className="font-georgia text-xl text-brown mb-3">
-                  If the area is bald and smooth
-                </h3>
-                <p className="text-taupe">
-                  Discuss transplant options and long- term maintenance.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Page 9: How to Choose Clinic Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-cream"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-4">
-              How to choose a hair loss clinic in Kuala Lumpur
-            </h2>
-            <p className="text-taupe mb-6">
-              Use this checklist when you compare clinics:
+            <p className="text-cream/90 font-inter">
+              Our certified aesthetic doctors bring over 15 years of combined clinical experience and have completed over 5,000 procedures. Nexus Clinic KL is located at Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur, serving patients from across KL, Petaling Jaya, Bangsar, KLCC, Ampang, Mont Kiara and throughout Malaysia.
             </p>
-
-            <ul className="list-disc pl-6 text-taupe space-y-2">
-              <li>Doctor-led diagnosis, not just a package sale</li>
-              <li>A clear explanation of your hair loss type</li>
-              <li>Before and after results that match your hair type</li>
-              <li>Real aftercare plan and follow-ups</li>
-              <li>Transparent pricing</li>
-            </ul>
-
-            <p className="text-taupe mt-4">
-              If you use directories, look for clinics that are listed as
-              licensed and verified by medical listing networks.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Pages 10-11: FAQ Section - SEMUA PERTANYAAN */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-white"
-      >
-        <div className="container px-4 mx-auto">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl text-brown mb-8 text-center">
-              People Also Ask (PAA-style FAQs) about hair loss treatment in
-              Malaysia
-            </h2>
-
-            <div className="space-y-4">
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  Can hair loss be reversed naturally?
-                </p>
-                <p className="text-taupe">
-                  Sometimes. If hair loss is linked to a temporary trigger like
-                  stress or mild nutrient issues, it may improve. Genetic
-                  pattern loss usually needs medical treatment for real change.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  What is the most effective hair loss treatment?
-                </p>
-                <p className="text-taupe">
-                  It depends on the cause. For pattern hair loss, common
-                  first-line options include minoxidil and, for many men,
-                  finasteride with medical guidance.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  How long does it take to see results from hair loss treatment?
-                </p>
-                <p className="text-taupe">
-                  Many clinics and medical sources note it can take 3 to 6
-                  months to see visible change, sometimes longer.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  Is PRP good for hair loss?
-                </p>
-                <p className="text-taupe">
-                  PRP is widely used for thinning hair and early-stage loss in
-                  many clinics. Protocols vary, and results vary, so assessment
-                  matters.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  How many PRP sessions do I need?
-                </p>
-                <p className="text-taupe">
-                  Many clinic FAQs commonly recommend 3 to 4 sessions spaced 4
-                  to 6 weeks apart, then maintenance.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  What are PRP side effects for hair?
-                </p>
-                <p className="text-taupe">
-                  Most reported effects are temporary, like tenderness, redness,
-                  or swelling at injection points.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  Is finasteride safe for hair loss?
-                </p>
-                <p className="text-taupe">
-                  Finasteride is used for male pattern hair loss but can have
-                  sexual and mood-related side effects. Regulators have also
-                  issued reminders about psychiatric risks. Discuss risks
-                  properly before starting.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  Does minoxidil regrow hair?
-                </p>
-                <p className="text-taupe">
-                  It can help early hair loss and may slow loss or support
-                  regrowth, but it will not restore an entire head of hair. It
-                  needs consistent use for months.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  What happens if I stop minoxidil?
-                </p>
-                <p className="text-taupe">
-                  Benefits often fade after stopping, which is why it is usually
-                  a long-term plan if it works for you.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  What causes hair loss in women?
-                </p>
-                <p className="text-taupe">
-                  Common causes include female pattern hair loss, stress
-                  shedding, nutritional issues, and hormonal factors. A proper
-                  diagnosis avoids wasted time.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  Can stress cause hair loss?
-                </p>
-                <p className="text-taupe">
-                  Yes. Stress is listed as a risk factor for hair loss and can
-                  trigger shedding patterns in some people.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  When do I need a hair transplant?
-                </p>
-                <p className="text-taupe">
-                  When follicles are no longer active in an area, a transplant
-                  may be considered. Many Malaysia sources cite typical
-                  transplant cost ranges around RM 6,000 to RM 15,000 depending
-                  on grafts.
-                </p>
-              </div>
-
-              <div className="p-4 bg-cream rounded-xl">
-                <p className="text-brown font-medium mb-2">
-                  How much does hair loss treatment cost in Malaysia?
-                </p>
-                <p className="text-taupe">
-                  PRP session pricing is commonly listed in the hundreds to a
-                  few thousand RM per session. Transplant costs are usually
-                  higher and depend on grafts. The right number depends on your
-                  plan.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Page 11: CTA Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
-        className="py-16 bg-linear-to-br from-wine to-rose text-white"
-      >
-        <div className="container px-4 mx-auto text-center">
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
-            className="max-w-2xl mx-auto"
-          >
-            <h2 className="font-georgia text-3xl mb-4">
-              Book a hair loss assessment at Nexus Clinic Kuala Lumpur
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              If you are tired of guessing, start with a real assessment. We
-              will match your hair loss type to the right plan, then track
-              progress properly.
-            </p>
-
-            <div className="space-y-2 mb-6">
-              <p className="font-georgia text-xl">Nexus Clinic Kuala Lumpur</p>
-              <p>
-                Address: LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang,
-                Kuala Lumpur
-              </p>
-              <p>Contact details listed by Nexus Clinic (phone and email)</p>
-            </div>
-
-            <div className="flex justify-center gap-4">
-              <a
-                href="tel:+60312345678"
-                className="flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
-                <Phone className="w-4 h-4" />
-                <span>Call Us</span>
-              </a>
-              <a
-                href="mailto:info@nexusclinic.my"
-                className="flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Email Us</span>
-              </a>
+                Book Your Assessment
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a consultation for hair loss treatment at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Phone className="w-4 h-4" /> Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Mail className="w-4 h-4" /> Email: info@nexusclinic.my</a>
             </div>
           </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Page 12: SEO Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1 },
-        }}
-        className="py-8 bg-cream hidden"
-      >
-        <div className="container px-4 mx-auto">
-          <div className="max-w-3xl mx-auto text-center text-taupe">
-            <p className="text-sm">SEO extras (optional, website-ready)</p>
-            <p className="text-sm mt-2">
-              Meta title: Hair Loss Treatment in Kuala Lumpur, Malaysia | Nexus
-              Clinic KL
-            </p>
-            <p className="text-sm">
-              Meta description: Struggling with hair thinning or hair fall?
-              Explore medical hair loss treatment in Kuala Lumpur at Nexus
-              Clinic KL, from PRP to medications and transplant support.
-            </p>
-            <p className="text-sm mt-1">
-              Suggested URL: /hair-loss-treatment-kuala-lumpur/
-            </p>
-          </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
     </div>
   );
-};
-
-export default HairLossTreatment;
+}

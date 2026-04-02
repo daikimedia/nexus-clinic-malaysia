@@ -3,52 +3,162 @@
 import { motion } from "framer-motion";
 import {
   Sparkles,
-  Droplets,
-  Clock,
-  Shield,
-  Heart,
-  AlertCircle,
-  XCircle,
+  Award,
   MapPin,
-  Phone,
-  Users,
-  Wind,
-  Scissors,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
+  Shield,
+  ArrowRight,
+  AlertCircle,
+  Activity,
   Zap,
-  Check,
-  Minus,
-  HelpCircle,
+  Eye,
+  AlertTriangle,
+  Scissors,
+  TrendingUp,
+  DollarSign,
+  Layers,
+  Users,
+  Stethoscope,
+  Droplets,
   FileText,
-  Droplet as DropletIcon,
-  Scissors as ScissorsIcon,
-  Flame,
-  Zap as ZapIcon,
+  Leaf,
+  Phone,
+  Mail,
+  Syringe,
+  FlaskRound,
 } from "lucide-react";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
-  scaleIn,
   fadeInUp,
+  scaleIn,
 } from "../../lib/animations";
 import FAQ from "../../components/FAQ";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const HairMesotherapyLanding = ({
-  locale = fallbackLng,
-}: {
-  locale?: string;
-}) => {
-  const { t } = useTranslation(locale, "hair/hairMesotherapy");
+interface HairMesotherapyProps {
+  locale: string;
+}
 
-  const faqs = [
-    { q: t("faq.q1"), a: t("faq.a1") },
-    { q: t("faq.q2"), a: t("faq.a2") },
-    { q: t("faq.q3"), a: t("faq.a3") },
-    { q: t("faq.q4"), a: t("faq.a4") },
-    { q: t("faq.q5"), a: t("faq.a5") },
+export default function HairMesotherapyLanding({ locale }: HairMesotherapyProps) {
+  // Treatment at a Glance Data
+  const treatmentOverview = [
+    { icon: Syringe, label: "Session Duration", value: "30 to 45 minutes per session" },
+    { icon: Clock, label: "Downtime", value: "Minimal. Mild scalp sensitivity 24-48 hours" },
+    { icon: Activity, label: "Procedure Type", value: "Non-surgical. Microinjections into scalp only" },
+    { icon: Calendar, label: "Recommended Sessions", value: "6 to 10 sessions, spaced 2-4 weeks apart" },
+    { icon: TrendingUp, label: "Visible Results", value: "Reduced shedding from session 3-4. Improved density month 3-6" },
+    { icon: Users, label: "Suitable For", value: "Androgenetic alopecia, hair thinning, postpartum loss, stress shedding" },
+  ];
+
+  // Formulation by Hair Loss Type Table
+  const formulationTable = [
+    {
+      type: "Androgenetic Alopecia (DHT-driven)",
+      activeSubstances: "DHT blocker + follicle stimulants",
+      ingredients: "Biotin, saw palmetto extract, finasteride-based compounds, zinc, B-complex vitamins, amino acids, minoxidil-based peptides"
+    },
+    {
+      type: "Diffuse Hair Thinning (Nutritional)",
+      activeSubstances: "Vitamins + minerals + amino acids",
+      ingredients: "Vitamin B7 (biotin), B12, folic acid, iron, copper, zinc, silicon, cysteine, taurine, growth factors"
+    },
+    {
+      type: "Postpartum and Stress Shedding",
+      activeSubstances: "Adaptogens + cellular boosters",
+      ingredients: "Panthenol, adenosine, VEGF-stimulating peptides, glutathione, amino acids, magnesium, B-complex vitamins"
+    },
+    {
+      type: "Alopecia Areata (Patchy Loss)",
+      activeSubstances: "Anti-inflammatory + immune modulators",
+      ingredients: "Corticosteroid micro-doses, zinc, selenium, biotin, platelet-rich plasma-derived growth factors"
+    },
+    {
+      type: "Scalp Inflammation and Dandruff-Related",
+      activeSubstances: "Sebum regulators + scalp balancers",
+      ingredients: "Salicylic acid derivatives, selenium, zinc pyrithione-analogues, anti-inflammatory peptides, B5"
+    }
+  ];
+
+  // Mesotherapy vs PRP vs Exosome Comparison Table
+  const comparisonTable = [
+    {
+      factor: "Source of Active Ingredient",
+      mesotherapy: "Medical-grade pharmaceutical cocktail: vitamins, minerals, amino acids, growth factors",
+      prp: "Patient's own blood: concentrated platelets and growth factors",
+      exosome: "Bioengineered or donor-derived exosomes: cellular signalling vesicles"
+    },
+    {
+      factor: "Customisation Level",
+      mesotherapy: "High. Customized cocktail formulated per hair loss type and patient condition.",
+      prp: "Moderate. Concentration varies by centrifuge protocol. Not ingredient-customisable.",
+      exosome: "Low to moderate. Pre-formulated concentration of exosomal cargo."
+    },
+    {
+      factor: "Mechanism",
+      mesotherapy: "Delivers nutrients directly to follicle and scalp mesoderm layer. Stimulates cell metabolism.",
+      prp: "Activates follicle stem cells via concentrated growth factor signal.",
+      exosome: "Delivers cellular repair instructions via exosomal vesicles. Deepest cellular level."
+    },
+    {
+      factor: "Session Frequency",
+      mesotherapy: "6 to 10 sessions, 2 to 4 weeks apart. Monthly maintenance.",
+      prp: "4 to 6 sessions, 4 to 6 weeks apart. Quarterly maintenance.",
+      exosome: "1 to 3 sessions. Less frequent due to potency."
+    },
+    {
+      factor: "Best For",
+      mesotherapy: "Nutritional deficiency hair loss, early thinning, diffuse shedding, combined with other treatments.",
+      prp: "Androgenetic alopecia, moderate loss, dormant follicle reactivation.",
+      exosome: "Advanced hair thinning, post-transplant support, patients wanting maximum regenerative effect."
+    },
+    {
+      factor: "Cost per Session (Malaysia)",
+      mesotherapy: "RM 400 to RM 900",
+      prp: "RM 800 to RM 2,000",
+      exosome: "RM 1,500 to RM 4,000"
+    }
+  ];
+
+  // Skin Applications Table
+  const skinApplications = [
+    { application: "Facial Skin Rejuvenation", substances: "Hyaluronic acid, vitamins C and E, amino acids, collagen boosters", result: "Improved skin hydration, youthful skin texture, reduced dullness and early fine lines" },
+    { application: "Wrinkle and Fine Line Reduction", substances: "NCTF (New Cellular Treatment Factor), peptides, hyaluronic acid, B vitamins", result: "Softened wrinkles and fine lines. Stimulate collagen and elastin for firmer skin." },
+    { application: "Signs of Aging and Skin Laxity", substances: "Collagen and elastin peptides, antioxidants, silicon, zinc", result: "Reduced signs of aging, improved skin firmness, enhanced skin layer density" },
+    { application: "Neck and Décolletage", substances: "Vitamins, minerals, retinol derivatives, hyaluronic acid", result: "Improved skin quality in commonly neglected skin areas" },
+    { application: "Acne Scar and Dull Skin", substances: "Vitamin C, glutathione, AHA derivatives, zinc", result: "Brighter youthful skin tone, reduced post-inflammatory hyperpigmentation" },
+  ];
+
+  // Pricing Data
+  const pricingTiers = [
+    { service: "Initial Consultation + Scalp Assessment", details: "Comprehensive scalp analysis. Hair loss type diagnosis. Personalised treatment recommendation.", price: "Free" },
+    { service: "Mesotherapy Hair Loss (Standard)", details: "Per session. Customized cocktail formulation. Doctor-performed microinjections.", price: "RM 400 - RM 700" },
+    { service: "Mesotherapy Hair Loss (Premium Cocktail)", details: "Per session. Advanced formulation with enhanced active ingredients.", price: "RM 600 - RM 900" },
+    { service: "Mesotherapy Hair Package (6 sessions)", details: "Full initial treatment course. Includes follow-up scalp assessment.", price: "RM 2,000 - RM 4,500" },
+    { service: "Mesotherapy Hair Package (10 sessions)", details: "Comprehensive treatment programme. Best value for advanced cases.", price: "RM 3,200 - RM 7,500" },
+    { service: "Mesotherapy Skin Rejuvenation (Face)", details: "Per session. Customized facial cocktail. Improves skin quality and hydration.", price: "RM 500 - RM 900" },
+    { service: "Combined Mesotherapy + PRP Session", details: "Dual treatment approach. Maximum regenerative benefit.", price: "RM 1,000 - RM 2,000" },
+    { service: "Mesotherapy + Laser Booster Session", details: "Enhanced scalp microcirculation. Combined photobiomodulation.", price: "RM 900 - RM 1,800" },
+  ];
+
+  // FAQ Data
+  const faqData = [
+    { q: "What exactly is injected into the scalp during hair mesotherapy?", a: "The contents of the mesotherapy injection are a customized cocktail of medical-grade active substances tailored to the patient's specific hair loss pattern. The base formulation includes biotin and B-complex vitamins to support follicle metabolism, amino acids such as cysteine and taurine as building blocks for hair protein, minerals including zinc, copper, and selenium that regulate follicle enzyme activity, and growth factors that stimulate cell proliferation. For patients with DHT-driven androgenetic alopecia, the cocktail may include DHT-blocking compounds. The specific composition is determined by the doctor at the initial consultation." },
+    { q: "How many mesotherapy sessions does hair thinning require?", a: "The number of sessions required depends on the cause and severity of hair thinning. Patients with mild to moderate hair thinning caused by nutritional deficiency or postpartum shedding typically respond after three to four sessions and complete a course of six sessions. Patients with androgenetic alopecia that has been progressing for several years generally need eight to ten sessions for meaningful improvement and quarterly maintenance sessions thereafter. Your doctor will assess the scalp condition and provide a session plan at the first consultation." },
+    { q: "Is mesotherapy for hair loss painful?", a: "Mesotherapy is described as essentially painless by the majority of patients at Nexus Clinic KL, primarily because a topical numbing cream is applied to the scalp before every session. The numbing cream requires approximately 20 minutes to take effect and significantly reduces the sensation of the microinjections. Patients typically report only mild pressure or minor tingling at each injection point rather than pain. Post-session scalp sensitivity is mild and resolves within 24 to 48 hours." },
+    { q: "Can mesotherapy be combined with PRP or other hair loss treatments?", a: "Yes, and combination approaches generally produce better outcomes. Mesotherapy provides the nutritional and hormonal environment for follicle recovery, while PRP adds a concentrated growth factor signal from the patient's own blood. Combining both treatments in an alternating session schedule addresses hair loss from complementary biological directions. Mesotherapy can also be combined with laser booster therapy for enhanced scalp microcirculation, and with oral medications like minoxidil or finasteride to address the systemic hormonal component of androgenetic alopecia." },
+    { q: "How soon will I see results from hair mesotherapy?", a: "Most patients notice a reduction in daily hair shedding within the first three to four sessions, which is typically the earliest measurable sign that mesotherapy is working. Improvement in scalp health, reduction in scalp oiliness or sensitivity, and early signs of new hair growth become visible from month two to three of a regular treatment schedule. Improved hair density and thickness develops progressively over the full six to ten session course, with the most complete result visible at six months from the start of the programme." },
+    { q: "Is mesotherapy suitable for all forms of hair loss?", a: "Mesotherapy is most effective for androgenetic alopecia (pattern hair loss), diffuse hair thinning from nutritional deficiency or hormonal imbalance, postpartum hair loss, and stress or illness-related shedding. Mesotherapy can help patients at early to moderate stages of these conditions, where viable follicles are still present but underperforming. It is less effective for alopecia areata where the immune attack on follicles requires additional therapeutic approaches, and it is not suitable for completely bald areas where follicles have been permanently destroyed." },
+    { q: "What is the difference between mesotherapy and PRP for hair loss?", a: "Mesotherapy delivers a customized cocktail of vitamins, minerals, amino acids, and pharmaceutically active compounds to the scalp layer via microinjections. The composition can be tailored precisely to the patient's diagnosis. PRP (platelet-rich plasma) uses a concentrated preparation of the patient's own blood, which is rich in growth factors but cannot be ingredient-customised in the same way. Mesotherapy is generally better for nutritional deficiency and DHT-inhibition applications, while PRP delivers a stronger growth factor stimulus for follicle reactivation." },
+    { q: "Can mesotherapy be used for facial skin rejuvenation as well as hair loss?", a: "Yes. The mesotherapy technique used for hair loss is the same minimally invasive injection technique applied to facial skin for skin rejuvenation, wrinkle reduction, and improvement of the signs of aging. For facial applications, the customized cocktail typically contains hyaluronic acid, collagen-stimulating peptides, vitamins C and E, and amino acids that rejuvenate the skin from within the dermis. Patients at Nexus Clinic KL can receive both hair and facial mesotherapy at the same visit." },
+    { q: "Is there any downtime after a mesotherapy hair session?", a: "Mesotherapy has no meaningful downtime. Patients return directly to work and daily activities after the session. The scalp may appear slightly flushed and feel mildly tender for 24 to 48 hours, which is the expected inflammatory response to the microinjections and is a sign the treatment is working. Most patients choose not to wash their hair on the day of treatment to allow maximum absorption of the injected cocktail. No bandaging, rest, or special accommodation is required." },
+    { q: "What are the side effects of scalp mesotherapy?", a: "Most side effects are mild and temporary, including redness, swelling, tenderness at injection sites, and mild scalp sensitivity that typically settles within a few days. Like any injection-based procedure, rare risks can include infection or allergic reaction. Medical literature also notes possible local reactions such as pain, itching, edema, hematoma, folliculitis, and rare inflammatory complications. This is why sterile technique and medical oversight at Nexus Clinic KL matter." },
   ];
 
   const transformations = [
@@ -70,1454 +180,783 @@ const HairMesotherapyLanding = ({
   ];
 
   return (
-    <main className="bg-light font-inter overflow-hidden">
-      {/* Hero Section - Page 1 */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-cream to-light">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-rose/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-wine/10 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-block px-4 py-2 bg-glass backdrop-blur-sm rounded-full text-wine font-semibold text-sm border border-wine/20">
-                Nexus Clinic Kuala Lumpur
-              </span>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeInUp}
-              className="text-5xl md:text-7xl font-georgia text-brown mb-6 leading-tight"
-            >
-              Hair Mesotherapy
-              <span className="block text-wine">in Kuala Lumpur, Malaysia</span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl text-taupe mb-4 max-w-2xl mx-auto"
-            >
-              Feed your follicles again. Bring back thicker-looking hair.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown/80 mb-8 max-w-3xl mx-auto"
-            >
-              Hair thinning can feel personal, fast. Hair mesotherapy is a
-              simple, doctor-guided way to support regrowth.
-            </motion.p>
-
-            {/* Trust Badges - From Page 1 */}
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
-            >
-              <div className="flex items-center gap-3 p-4 bg-glass backdrop-blur-sm rounded-xl border border-taupe/20">
-                <Shield className="w-8 h-8 text-wine shrink-0" />
-                <p className="text-sm text-left text-brown">
-                  MOH registered and compliant. Doctor-led care.
-                </p>
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-glass backdrop-blur-sm rounded-xl border border-taupe/20">
-                <MapPin className="w-8 h-8 text-wine shrink-0" />
-                <p className="text-sm text-left text-brown">
-                  Central Kuala Lumpur location (Wisma UOA II, Jalan Pinang).
-                </p>
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-glass backdrop-blur-sm rounded-xl border border-taupe/20">
-                <Scissors className="w-8 h-8 text-wine shrink-0" />
-                <p className="text-sm text-left text-brown">
-                  Non-surgical hair restoration options, including PRP and hair
-                  mesotherapy.
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Quick Answer Section - Page 1 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            className="max-w-4xl mx-auto"
-          >
-            <h2 className="text-2xl font-georgia text-brown mb-4">
-              Quick answer (for fast readers)
-            </h2>
-            <p className="text-lg text-taupe leading-relaxed">
-              Hair mesotherapy uses tiny scalp injections of a nutrient
-              "cocktail" to support hair follicles. At Nexus Clinic, a common
-              plan is 4-6 sessions, then maintenance every 1-3 months, based on
-              your hair loss pattern and goals. Most people see changes
-              gradually, often over weeks to a few months. In Kuala Lumpur,
-              scalp mesotherapy can cost roughly RM 600-RM 2,000 per session,
-              depending on the clinic and plan.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Hair Loss Feels Frustrating - Pages 1-2 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Why hair loss feels so frustrating
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-6">
-              Hair loss rarely happens for one reason. It is often a mix of
-              genetics, hormones, stress, diet, scalp health, and styling
-              habits.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              You might notice:
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6"
-            >
-              <div className="flex items-start gap-3 p-3 bg-cream rounded-lg">
-                <Minus className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">A widening part line</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-cream rounded-lg">
-                <Minus className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">Thinner crown coverage</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-cream rounded-lg">
-                <Minus className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">Receding temples or hairline</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-cream rounded-lg">
-                <Minus className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  More hair on the pillow or in the shower
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-cream rounded-lg md:col-span-2">
-                <Minus className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  A scalp that feels itchy, oily, or inflamed
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown font-semibold"
-            >
-              The hardest part is uncertainty. Is it temporary shedding, or
-              pattern hair loss? This is why a proper scalp assessment matters.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* What is Hair Mesotherapy - Page 2 with Image */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={staggerContainer}
-            >
-              <motion.h2
-                variants={fadeInLeft}
-                className="text-3xl md:text-4xl font-georgia text-brown mb-6"
+    <div className="w-full bg-light overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">Non-Surgical • Doctor-Performed • Customised Cocktails</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
               >
-                What is hair mesotherapy for hair loss?
-              </motion.h2>
+                Mesotherapy Hair Loss Treatment in Malaysia for{" "}
+                <span className="text-wine italic">Thinning Hair & Scalp Rejuvenation</span>
+              </motion.h1>
 
               <motion.p
-                variants={fadeInRight}
-                className="text-lg text-taupe mb-4"
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
               >
-                Hair mesotherapy is a minimally invasive treatment. It involves
-                injecting a tailored mix of nutrients into the scalp to nourish
-                follicles and support healthier growth.
+                Hair thinning does not respond to shampoos. The active substances that follicles need to combat hair loss cannot penetrate the scalp through topical application alone.
               </motion.p>
 
-              <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-                In clinical terms, mesotherapy involves injecting therapeutic
-                agents into the skin at a shallow depth, often around 2-4 mm.
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Mesotherapy solves this problem directly: a minimally invasive, non-surgical procedure that involves injecting a customized cocktail of active nutrients directly into the middle layer of the scalp where hair follicles live.
               </motion.p>
 
-              <motion.p variants={fadeInUp} className="text-lg text-taupe">
-                At Nexus Clinic, hair mesotherapy is positioned as a
-                non-surgical option for people dealing with thinning hair, hair
-                loss, or scalp concerns like alopecia.
-              </motion.p>
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
+                </p>
+                <p className="text-taupe font-inter text-sm mt-1">
+                  At Nexus Clinic KL, every mesotherapy session is delivered under full doctor supervision using medical-grade formulations registered with the Ministry of Health Malaysia.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Free Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in mesotherapy hair loss treatment at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={scaleIn}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-linear-to-tr from-wine/20 to-rose/20 rounded-3xl transform rotate-3"></div>
-              <img
-                src="/images/hair/mesotherapy-hair-loss.webp"
-                alt="Hair mesotherapy treatment at Nexus Clinic Kuala Lumpur"
-                className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
-              />
-              <div className="absolute bottom-4 left-4 right-4 bg-glass backdrop-blur-md p-4 rounded-xl">
-                <p className="text-brown font-semibold text-sm">
-                  Micro-injections at 2-4mm depth delivering nutrient cocktail
-                  to hair follicles
-                </p>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/hair/mesotherapy-hair-loss.webp"
+                  alt="Nexus Clinic Kuala Lumpur - Mesotherapy Hair Loss Treatment"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">Customised Cocktail</p>
+                <p className="font-inter text-sm text-taupe">Vitamins • Minerals • Growth Factors</p>
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* How Does Scalp Mesotherapy Work - Pages 2-3 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              How does scalp mesotherapy work?
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-6">
-              Think of it as targeted scalp support.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Hair mesotherapy may help by:
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-3 mb-6">
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Droplets className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Delivering nutrients closer to the follicles
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Wind className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Supporting scalp circulation and follicle environment
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Flame className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Helping reduce scalp inflammation in some cases
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Sparkles className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Improving hair quality and thickness over time
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="p-6 bg-rose/10 border border-rose/20 rounded-xl"
-            >
-              <p className="text-brown">
-                <span className="font-semibold">Important note:</span> research
-                is still growing. Some studies show promising results, but
-                protocols vary widely. A systematic review notes mesotherapy is
-                used in alopecia, but it is not FDA-approved, and local
-                reactions can happen. So we keep expectations realistic and
-                plans personalised.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Competitor Review - Page 3 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              What top Kuala Lumpur clinics usually highlight (competitor
-              review)
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-6">
-              When you look at leading KL and Malaysia pages for hair
-              mesotherapy, you will see the same themes repeated:
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-4 mb-6">
-              <div className="p-5 bg-light rounded-xl border-l-4 border-wine">
-                <h3 className="font-semibold text-brown mb-2">
-                  1. "Vitamin cocktail" messaging
-                </h3>
-                <p className="text-taupe">
-                  Many clinics describe a blend of vitamins, minerals, amino
-                  acids, and nutrients injected into the scalp.
-                </p>
-              </div>
-
-              <div className="p-5 bg-light rounded-xl border-l-4 border-wine">
-                <h3 className="font-semibold text-brown mb-2">
-                  2. A session-based plan, not a one-time fix
-                </h3>
-                <p className="text-taupe">
-                  A common recommendation is multiple sessions, often around 4
-                  sessions or more, then maintenance.
-                </p>
-              </div>
-
-              <div className="p-5 bg-light rounded-xl border-l-4 border-wine">
-                <h3 className="font-semibold text-brown mb-2">
-                  3. Minimal downtime
-                </h3>
-                <p className="text-taupe">
-                  Many clinics advise simple aftercare like avoiding shampoo for
-                  about 24 hours.
-                </p>
-              </div>
-
-              <div className="p-5 bg-light rounded-xl border-l-4 border-wine">
-                <h3 className="font-semibold text-brown mb-2">
-                  4. Price ranges vary a lot in KL
-                </h3>
-                <p className="text-taupe">
-                  Some KL guides list scalp mesotherapy around RM 600-RM 2,000
-                  per session.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown font-semibold"
-            >
-              At Nexus Clinic Kuala Lumpur, we follow the same core truth, but
-              with a stronger emphasis on doctor-led planning and suitability
-              checks.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Who Is Hair Mesotherapy Best For - Pages 3-4 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Who is hair mesotherapy best for?
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-6">
-              Hair mesotherapy in Malaysia is commonly chosen by people who:
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6"
-            >
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Have early to moderate thinning
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">Want a non-surgical approach</span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Are seeing more shedding than usual
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Want to improve overall hair quality and scalp condition
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg md:col-span-2">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Have a family history of hair loss and want prevention support
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe">
-              It can also support people combining treatments, like PRP or
-              medical hair loss plans, depending on diagnosis.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Who Should Avoid It - Page 4 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Who should avoid it, or get medical clearance first?
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Not everyone is a good candidate.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              You should tell your doctor if you have:
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-3 mb-6">
-              <div className="flex items-start gap-3 p-4 bg-light rounded-lg border-l-4 border-rose">
-                <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                <span className="text-brown">
-                  Scalp infection, active inflammation, or open wounds
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-light rounded-lg border-l-4 border-rose">
-                <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                <span className="text-brown">
-                  A history of allergy to injectable ingredients
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-light rounded-lg border-l-4 border-rose">
-                <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                <span className="text-brown">
-                  Bleeding disorders or you are on blood thinners
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-light rounded-lg border-l-4 border-rose">
-                <XCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                <span className="text-brown">
-                  Uncontrolled diabetes or major medical conditions
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Some clinics specifically warn that anticoagulants and certain
-              health issues may not be suitable for mesotherapy.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown font-semibold"
-            >
-              At Nexus Clinic KL, your plan should start with assessment, not
-              assumptions.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* What Happens During Treatment - Pages 4-5 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              What happens during hair mesotherapy at Nexus Clinic KL?
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-6">
-              A typical visit is simple.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-6 mb-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-wine rounded-full flex items-center justify-center text-light font-bold shrink-0">
-                  1
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-brown mb-2">
-                    Scalp and hair assessment
-                  </h3>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-wine rounded-full flex items-center justify-center text-light font-bold shrink-0">
-                  2
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-brown mb-2">
-                    Comfort steps
-                  </h3>
-                  <p className="text-taupe">
-                    A local anaesthetic or numbing approach may be used. Nexus
-                    notes discomfort is usually minimal and tolerable.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-wine rounded-full flex items-center justify-center text-light font-bold shrink-0">
-                  3
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-brown mb-2">
-                    Micro-injections across targeted areas
-                  </h3>
-                  <p className="text-taupe">
-                    Small injections are placed across thinning zones.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-wine rounded-full flex items-center justify-center text-light font-bold shrink-0">
-                  4
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-brown mb-2">
-                    Aftercare guidance
-                  </h3>
-                  <p className="text-taupe">
-                    You will receive simple do and don't instructions.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* How Many Sessions - Page 5 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              How many sessions do you need?
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              There is no single number for everyone.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Nexus Clinic's general guidance:
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="bg-light p-6 rounded-xl mb-4"
-            >
-              <p className="text-xl text-brown mb-2">
-                Initial series: often 4-6 sessions
-              </p>
-              <p className="text-xl text-brown">
-                Maintenance: every 1-3 months
-              </p>
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe">
-              This depends on whether your hair loss is:
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="mt-4 space-y-2">
-              <div className="flex items-center gap-3 p-3 bg-light rounded-lg">
-                <Minus className="w-4 h-4 text-wine" />
-                <span className="text-brown">Mostly shedding</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-light rounded-lg">
-                <Minus className="w-4 h-4 text-wine" />
-                <span className="text-brown">Mostly pattern thinning</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-light rounded-lg">
-                <Minus className="w-4 h-4 text-wine" />
-                <span className="text-brown">
-                  Mixed with scalp irritation or inflammation
-                </span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* When Will You See Results - Pages 5-6 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              When will you see results?
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-6">
-              Hair growth moves slowly. That is normal.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <div className="flex items-center gap-4 p-4 bg-cream rounded-lg">
-                <span className="w-8 h-8 bg-wine rounded-full flex items-center justify-center text-light font-bold">
-                  1
-                </span>
-                <span className="text-brown">Less shedding</span>
-              </div>
-              <div className="flex items-center gap-4 p-4 bg-cream rounded-lg">
-                <span className="w-8 h-8 bg-wine rounded-full flex items-center justify-center text-light font-bold">
-                  2
-                </span>
-                <span className="text-brown">
-                  Better texture and thickness feel
-                </span>
-              </div>
-              <div className="flex items-center gap-4 p-4 bg-cream rounded-lg">
-                <span className="w-8 h-8 bg-wine rounded-full flex items-center justify-center text-light font-bold">
-                  3
-                </span>
-                <span className="text-brown">
-                  Denser look in photos and styling
-                </span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <SectionBeforeAfter transformations={transformations} />
-
-      {/* Benefits - Page 6 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Benefits of hair mesotherapy
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              People often choose it because it can:
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
-            >
-              <div className="flex items-start gap-3 p-4 bg-light rounded-lg">
-                <Heart className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Support healthier scalp environment
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-light rounded-lg">
-                <Sparkles className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Improve hair quality and thickness gradually
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-light rounded-lg">
-                <Clock className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Fit into a busy KL schedule (no surgery, short sessions)
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-light rounded-lg">
-                <Zap className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Combine well with PRP or medical plans when needed
-                </span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Downsides and Limitations - Pages 6-7 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Downsides and limitations (honest talk)
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-6">
-              Hair mesotherapy is not magic.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Possible limitations:
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-3 mb-6">
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg border-l-4 border-rose">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                <span className="text-brown">
-                  It needs consistency (sessions matter)
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg border-l-4 border-rose">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                <span className="text-brown">
-                  It works best when follicles are still active
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg border-l-4 border-rose">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                <span className="text-brown">
-                  It may not fix fully bald, shiny areas
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg border-l-4 border-rose">
-                <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                <span className="text-brown">
-                  Results vary by genetics, hormones, and scalp health
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe">
-              Also, medical literature notes mesotherapy for alopecia has mixed
-              evidence, and local side effects can occur.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Side Effects and Safety - Page 7 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Side effects and safety
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Most side effects are mild and short.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Nexus lists possible effects like:
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6"
-            >
-              <div className="p-3 bg-light rounded-lg text-brown">Redness</div>
-              <div className="p-3 bg-light rounded-lg text-brown">Swelling</div>
-              <div className="p-3 bg-light rounded-lg text-brown">
-                Tenderness at injection sites
-              </div>
-              <div className="p-3 bg-light rounded-lg text-brown">
-                These typically settle within a few days.
-              </div>
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Like any injection-based procedure, risks can include infection or
-              allergic reaction. Nexus also highlights this, and stresses
-              choosing a reputable provider.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe">
-              A clinical review also notes possible local reactions such as
-              pain, itching, edema, hematoma, folliculitis, and rare
-              inflammatory complications.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown font-semibold mt-4"
-            >
-              This is why sterile technique and medical oversight matter.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Aftercare - Page 7 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Aftercare: what to do and avoid
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Keep it easy for the first day.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Common guidance includes:
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-3 mb-4">
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Avoid shampoo or chemical products for about 24 hours
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Skip saunas and very hot showers for 24 hours
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Avoid heavy sweating for the rest of the day
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Do not scratch injection sites
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Check className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Follow any clinic-specific scalp products plan
-                </span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Cost - Page 8 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Cost of hair mesotherapy in Kuala Lumpur and Malaysia
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Prices vary based on:
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-2 mb-4">
-              <div className="flex items-start gap-3 p-3 bg-light rounded-lg">
-                <Minus className="w-4 h-4 text-wine shrink-0 mt-1" />
-                <span className="text-brown">Clinic location in KL</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-light rounded-lg">
-                <Minus className="w-4 h-4 text-wine shrink-0 mt-1" />
-                <span className="text-brown">Ingredients used</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-light rounded-lg">
-                <Minus className="w-4 h-4 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Number of sessions in your package
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-light rounded-lg">
-                <Minus className="w-4 h-4 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Whether you combine with PRP or medications
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              A Kuala Lumpur clinic guide lists scalp mesotherapy around RM
-              600-RM 2,000 per session. Another KL listing mentions mesotherapy
-              pricing can start around RM 750 and up, depending on the plan.
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown font-semibold"
-            >
-              At Nexus Clinic Kuala Lumpur, the most accurate pricing comes
-              after assessment, because your plan should match your cause of
-              hair loss.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Hair Mesotherapy vs PRP vs Other Treatments - Page 8 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Hair mesotherapy vs PRP vs other hair loss treatments
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Here is a simple comparison.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-6 mb-6">
-              <div className="p-6 bg-cream rounded-xl">
-                <h3 className="text-xl font-semibold text-brown mb-3">
-                  Mesotherapy vs PRP
-                </h3>
-                <p className="text-taupe mb-2">
-                  Mesotherapy: nutrients or active agents injected into the
-                  scalp
-                </p>
-                <p className="text-taupe mb-2">
-                  PRP: uses your own platelet-rich plasma and growth factors,
-                  injected into the scalp
-                </p>
-                <p className="text-taupe">
-                  Some reviews discuss both as multi-session injection
-                  approaches and note research quality varies.
-                </p>
-              </div>
-
-              <div className="p-6 bg-cream rounded-xl">
-                <h3 className="text-xl font-semibold text-brown mb-3">
-                  Mesotherapy vs Minoxidil
-                </h3>
-                <p className="text-taupe mb-2">
-                  Minoxidil: widely used topical treatment; FDA-approved for
-                  female pattern hair loss in published dermatology literature
-                </p>
-                <p className="text-taupe">
-                  Mesotherapy: aims for local delivery, but evidence and
-                  protocols vary, and it is not FDA-approved for alopecia
-                </p>
-              </div>
-
-              <div className="p-6 bg-cream rounded-xl">
-                <h3 className="text-xl font-semibold text-brown mb-3">
-                  Mesotherapy vs hair transplant
-                </h3>
-                <p className="text-taupe">
-                  If you have large bald areas, a transplant may be the better
-                  option. Mesotherapy is often for thinning and early loss, not
-                  full restoration.
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Areas We Can Target - Page 9 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Areas we can target
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              Hair mesotherapy can be planned around your pattern, such as:
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"
-            >
-              <div className="p-4 bg-light rounded-lg text-brown">
-                Hairline thinning
-              </div>
-              <div className="p-4 bg-light rounded-lg text-brown">
-                Temple recession
-              </div>
-              <div className="p-4 bg-light rounded-lg text-brown">
-                Crown thinning
-              </div>
-              <div className="p-4 bg-light rounded-lg text-brown">
-                Diffuse thinning across the scalp
-              </div>
-              <div className="p-4 bg-light rounded-lg md:col-span-2 text-brown">
-                Overall scalp quality support
-              </div>
-            </motion.div>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-brown font-semibold"
-            >
-              Your plan should match what your scalp is actually doing.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Choose Nexus Clinic - Pages 9-10 */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-            >
-              Why choose Nexus Clinic Kuala Lumpur for hair mesotherapy?
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-6">
-              Because hair loss is not just cosmetic. It is medical and
-              personal.
-            </motion.p>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-4">
-              At Nexus Clinic KL, you get:
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="space-y-3 mb-6">
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Shield className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  MOH registered and compliant clinic, with doctor-led care
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <FileText className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Evidence-based planning, including risks and alternatives
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <Users className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Hair restoration options like PRP and mesotherapy under one
-                  roof
-                </span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-cream rounded-lg">
-                <MapPin className="w-5 h-5 text-wine shrink-0 mt-1" />
-                <span className="text-brown">
-                  Central KL location at Wisma UOA II, Jalan Pinang
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              className="mt-8 p-6 bg-wine text-light rounded-xl"
-            >
-              <p className="text-xl mb-2">Visit Nexus Clinic Kuala Lumpur</p>
-              <p className="mb-2">
-                LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450
-                Kuala Lumpur
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone className="w-4 h-4" /> 016-702 5699 / 03-2163 5699
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ Section - Pages 10-12 */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-georgia text-brown mb-8"
-            >
-              FAQs (People Also Ask style)
-            </motion.h2>
-
-            <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
-              These are the questions people most commonly search before
-              booking.
-            </motion.p>
-
-            <div className="space-y-6">
-              {/* FAQ 1 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> Does hair
-                  mesotherapy really work for hair loss?
-                </h3>
-                <p className="text-taupe">
-                  It can help, especially for early thinning. It delivers
-                  nutrients directly to the scalp and may support follicle
-                  function. Results are usually gradual. Many people notice
-                  changes within weeks to a few months, but most need multiple
-                  sessions. Evidence in studies is mixed because formulas and
-                  techniques differ. A clinical review notes promising outcomes
-                  in some trials, but also highlights limitations and
-                  variability.
-                </p>
-              </motion.div>
-
-              {/* FAQ 2 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> How many hair
-                  mesotherapy sessions do I need?
-                </h3>
-                <p className="text-taupe">
-                  Most plans start with a short series. Nexus Clinic notes an
-                  initial series of around 4-6 sessions, followed by maintenance
-                  every 1-3 months depending on your case. If hair loss is
-                  active, you may need more structured follow-ups. If it is
-                  stable, maintenance can be less frequent.
-                </p>
-              </motion.div>
-
-              {/* FAQ 3 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> Is hair
-                  mesotherapy painful?
-                </h3>
-                <p className="text-taupe">
-                  Most people describe it as mild pinching or pressure. Nexus
-                  Clinic notes discomfort is typically minimal because a local
-                  anaesthetic is applied, and the procedure is usually
-                  tolerable. If you are sensitive, tell the doctor so comfort
-                  steps can be adjusted.
-                </p>
-              </motion.div>
-
-              {/* FAQ 4 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> What are the side
-                  effects of scalp mesotherapy?
-                </h3>
-                <p className="text-taupe">
-                  Most side effects are mild, like redness, swelling, or
-                  tenderness at injection sites. These usually settle within a
-                  few days. Like any injection procedure, there is a small risk
-                  of infection or allergic reaction. Medical literature also
-                  lists possible local reactions such as pain, itching, edema,
-                  or folliculitis, and rare inflammatory issues.
-                </p>
-              </motion.div>
-
-              {/* FAQ 5 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> How long does it
-                  take to see results?
-                </h3>
-                <p className="text-taupe">
-                  Expect gradual change, not overnight growth. Nexus Clinic
-                  states you may notice better quality and thickness within
-                  weeks to a few months, and results often need multiple
-                  sessions. Some clinics also note results may take around 2–3
-                  months to become noticeable.
-                </p>
-              </motion.div>
-
-              {/* FAQ 6 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> Can I wash my
-                  hair after mesotherapy?
-                </h3>
-                <p className="text-taupe">
-                  Many clinics advise waiting about 24 hours before shampooing.
-                  This helps keep the scalp calm and reduces irritation. Your
-                  doctor will also advise on products to use or avoid,
-                  especially if your scalp is sensitive.
-                </p>
-              </motion.div>
-
-              {/* FAQ 7 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> Is hair
-                  mesotherapy safe in Malaysia?
-                </h3>
-                <p className="text-taupe">
-                  When done by qualified medical professionals in a reputable
-                  clinic, it is generally considered safe. Nexus Clinic also
-                  notes safety depends on proper administration and choosing a
-                  licensed provider. Still, like any procedure, there are risks
-                  such as infection or allergy.
-                </p>
-              </motion.div>
-
-              {/* FAQ 8 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> Who is a good
-                  candidate for hair mesotherapy?
-                </h3>
-                <p className="text-taupe">
-                  Nexus Clinic notes it can suit people with hair thinning, hair
-                  loss, or scalp conditions like alopecia, and it can also be
-                  used as a preventive measure for those with a family history.
-                  It is usually best when follicles are still alive and
-                  producing hair, even if thinner.
-                </p>
-              </motion.div>
-
-              {/* FAQ 9 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> Is mesotherapy
-                  better than PRP for hair?
-                </h3>
-                <p className="text-taupe">
-                  It depends on your scalp and your goal. PRP uses your own
-                  platelet-rich plasma and is often chosen for regenerative
-                  support. Mesotherapy focuses on delivering nutrients or
-                  actives into the scalp. Some people do best with a combined
-                  plan, guided by diagnosis.
-                </p>
-              </motion.div>
-
-              {/* FAQ 10 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> How much does
-                  scalp mesotherapy cost in Kuala Lumpur?
-                </h3>
-                <p className="text-taupe">
-                  Costs vary by clinic and session plan. One KL guide lists
-                  scalp mesotherapy around RM 600-RM 2,000 per session. Other KL
-                  listings suggest pricing may start around RM 750 and up
-                  depending on package and needs. The best estimate comes after
-                  an assessment.
-                </p>
-              </motion.div>
-
-              {/* FAQ 11 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> Is mesotherapy
-                  approved for hair loss?
-                </h3>
-                <p className="text-taupe">
-                  Mesotherapy is used in many clinics for hair loss, but medical
-                  literature notes it is not FDA-approved for alopecia, and
-                  research results vary. That does not mean it cannot help. It
-                  means you should choose it with informed expectations and
-                  proper medical oversight.
-                </p>
-              </motion.div>
-
-              {/* FAQ 12 */}
-              <motion.div
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-brown mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-wine" /> Can hair
-                  mesotherapy help with dandruff or scalp issues?
-                </h3>
-                <p className="text-taupe">
-                  Some clinic explanations mention improved scalp health and
-                  circulation, which can support a healthier scalp environment.
-                  If dandruff is driven by dermatitis or inflammation, you may
-                  need a targeted scalp treatment plan as well.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Final CTA - Page 12 */}
-      <section className="py-20 bg-wine">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
-          className="container mx-auto px-4 text-center"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-light mb-6"
-          >
-            Ready to treat hair loss in Kuala Lumpur?
-          </motion.h2>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-cream mb-8 max-w-3xl mx-auto"
-          >
-            If you are searching for hair mesotherapy in Malaysia, the first
-            step is a proper assessment. At Nexus Clinic Kuala Lumpur, you get
-            doctor-led planning, clear expectations, and a treatment plan that
-            fits your scalp and your lifestyle.
-          </motion.p>
-
-          <motion.button
-            variants={scaleIn}
-            className="px-10 py-5 bg-light text-wine rounded-full font-semibold text-lg hover:bg-cream transition-colors duration-300 shadow-2xl"
-          >
-            Book Your Assessment Today
-          </motion.button>
         </motion.div>
       </section>
-    </main>
-  );
-};
 
-export default HairMesotherapyLanding;
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
+              </div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Founded 2001</p>
+                  <p className="font-inter text-taupe text-xs">Over two decades of service</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Shield className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Credentials</p>
+                  <p className="font-georgia text-brown font-bold text-sm">MOH Licensed</p>
+                  <p className="font-inter text-taupe text-xs">Doctor-administered treatments</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Syringe className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Non-Surgical</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Microinjections into scalp only</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <FlaskRound className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Customised Cocktail</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Personalised to your hair loss type</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Clock className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Minimal Downtime</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Return to daily activities immediately</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">6-10 Sessions Initial Course</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Results Visible Month 3-6</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Monthly Maintenance</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Quick Answer Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Quick Answer</h2>
+            <p className="text-taupe font-inter">What you need to know about hair mesotherapy</p>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="bg-light p-8 rounded-2xl border border-taupe/10 shadow-md">
+            <p className="text-taupe font-inter text-lg leading-relaxed">
+              Hair mesotherapy uses tiny scalp injections of a nutrient <span className="font-semibold text-brown">"cocktail"</span> to support hair follicles. 
+              At Nexus Clinic KL, a common plan is <span className="font-semibold text-brown">6-10 sessions</span>, then maintenance every 1-3 months, 
+              based on your hair loss pattern and goals. Most people see changes gradually, often over weeks to a few months. 
+              In Kuala Lumpur, scalp mesotherapy can cost roughly <span className="font-semibold text-brown">RM 400 - RM 900 per session</span>, 
+              depending on the cocktail formulation and clinic.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Treatment at a Glance */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mesotherapy Hair Loss Treatment at a Glance</h2>
+            <p className="text-taupe font-inter">What to expect from your mesotherapy journey</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {treatmentOverview.map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="bg-cream p-6 rounded-xl border border-taupe/10 shadow-sm hover:shadow-md transition-all">
+                <item.icon className="w-10 h-10 text-wine mb-4" />
+                <p className="font-inter text-sm text-taupe mb-1">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Doctor About Hair Mesotherapy | Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* What Is Mesotherapy Section with Image */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-6">
+              <h2 className="font-georgia text-3xl md:text-4xl text-brown">What Is Mesotherapy and How Does It Combat Hair Loss?</h2>
+              <p className="text-taupe font-inter">Mesotherapy is a procedure in aesthetic medicine that involves injecting active substances directly into the mesoderm, the middle layer of the skin, using fine-gauge needles.</p>
+              <p className="text-taupe font-inter">For hair loss treatment, hair mesotherapy delivers a customized cocktail of vitamins, minerals, amino acids, and growth factors directly into the scalp at the level of the dermal papilla and hair follicle base.</p>
+              <p className="text-taupe font-inter">Because the active ingredients are delivered directly to their target zone rather than absorbed through the gut or diffusing through the skin, mesotherapy achieves follicle-level concentrations that neither oral nor topical treatments can consistently replicate.</p>
+              <div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm">Citation:</p>
+                <p className="text-taupe font-inter text-sm mt-1">Azar RP, Bdeir N, Dagher K. Mesotherapy in the Treatment of Androgenetic Alopecia. Journal of Cosmetic Dermatology. 2017;16(1):e16-e22.</p>
+              </div>
+            </motion.div>
+            <motion.div variants={fadeInRight} className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+                <Image
+                  src="/images/hair/hair-transpalnt.jpeg"
+                  alt="Mesotherapy treatment at Nexus Clinic KL"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 bg-wine text-light p-3 rounded-xl shadow-lg">
+                <p className="font-inter text-sm font-semibold">Micro-injections at 2-4mm depth</p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Formulation by Hair Loss Type Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Customized Cocktail Formulations by Hair Loss Type</h2>
+            <p className="text-taupe font-inter">The single most important clinical differentiator between results and no results</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Hair Loss Type</th>
+                  <th className="p-4 text-left font-georgia">Primary Active Substances</th>
+                  <th className="p-4 text-left font-georgia">Key Ingredients in Customized Cocktail</th>
+                </tr>
+              </thead>
+              <tbody>
+                {formulationTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.type}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.activeSubstances}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.ingredients}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm">
+              Generic mesotherapy that applies the same formulation to every patient regardless of their diagnosis produces inconsistent results. 
+              At Nexus Clinic KL, the doctor designs a customized cocktail matched to the specific mechanisms driving your hair loss.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Mesotherapy vs PRP vs Exosome Comparison Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mesotherapy vs PRP vs Exosome Therapy Compared</h2>
+            <p className="text-taupe font-inter">Understanding the differences helps you choose the right treatment</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Factor</th>
+                  <th className="p-4 text-left font-georgia">Mesotherapy</th>
+                  <th className="p-4 text-left font-georgia">PRP (Platelet-Rich Plasma)</th>
+                  <th className="p-4 text-left font-georgia">Exosome Hair Therapy</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonTable.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.factor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.mesotherapy}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.prp}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.exosome}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Mesotherapy Process Steps */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Mesotherapy Hair Treatment Process at Nexus Clinic KL</h2>
+            <p className="text-taupe font-inter">Step by step from assessment to aftercare</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Scalp Assessment & Formulation", desc: "Doctor assesses scalp condition, reviews hair loss pattern, and confirms the customized cocktail formulation for your specific needs." },
+              { step: "02", title: "Numbing Cream Application", desc: "Medical-grade topical numbing cream applied to scalp for 20 minutes. Makes microinjections essentially painless." },
+              { step: "03", title: "Mesotherapy Injection", desc: "Doctor injects customized cocktail using fine-gauge needles at appropriate depth to reach mesoderm layer. Takes 10-20 minutes." },
+              { step: "04", title: "Post-Session Scalp Care", desc: "Scalp cleaned after session. Avoid washing hair for 24 hours. No bandaging or rest required." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Skin Applications Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mesotherapy for Skin Rejuvenation</h2>
+            <p className="text-taupe font-inter">Aesthetic applications beyond hair treatment</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Skin Application</th>
+                  <th className="p-4 text-left font-georgia">Active Substances Used</th>
+                  <th className="p-4 text-left font-georgia">Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                {skinApplications.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown text-sm">{item.application}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.substances}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.result}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInLeft} className="bg-cream p-8 rounded-2xl border border-taupe/20 shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Heart className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">Benefits of Hair Mesotherapy</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Supports healthier scalp environment</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Improves hair quality and thickness gradually</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Fits into a busy KL schedule (no surgery, short sessions)</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Combines well with PRP or medical plans when needed</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Fully customisable to your specific hair loss type</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="bg-wine p-8 rounded-2xl text-white shadow-xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Who Should Avoid Mesotherapy?</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-white/90 font-inter text-sm">
+                  <AlertCircle className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                  <span>Scalp infection, active inflammation, or open wounds</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/90 font-inter text-sm">
+                  <AlertCircle className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                  <span>History of allergy to injectable ingredients</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/90 font-inter text-sm">
+                  <AlertCircle className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                  <span>Bleeding disorders or on blood thinners</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/90 font-inter text-sm">
+                  <AlertCircle className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                  <span>Uncontrolled diabetes or major medical conditions</span>
+                </li>
+              </ul>
+              <div className="mt-6 pt-4 border-t border-white/20">
+                <p className="text-white/80 text-sm">At Nexus Clinic KL, your plan starts with assessment, not assumptions.</p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Results Timeline Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">When Will You See Results?</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Hair growth moves slowly. That is normal.</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-light p-8 rounded-2xl border border-taupe/20 shadow-lg"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">What to Expect</h3>
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-brown">Less Shedding</span>
+                    <span className="font-georgia text-xl font-bold text-wine">Session 3-4</span>
+                  </div>
+                  <div className="w-full bg-taupe/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "30%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="bg-wine h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-brown">Better Texture & Thickness</span>
+                    <span className="font-georgia text-xl font-bold text-wine">Month 2-3</span>
+                  </div>
+                  <div className="w-full bg-taupe/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "60%" }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                      className="bg-wine h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-brown">Denser Look</span>
+                    <span className="font-georgia text-xl font-bold text-wine">Month 6</span>
+                  </div>
+                  <div className="w-full bg-taupe/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "85%" }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="bg-wine h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInRight}
+              className="bg-wine p-8 rounded-2xl text-white shadow-xl"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Treatment Timeline</h3>
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <p className="font-inter text-white/80 text-sm mb-1">Initial Series</p>
+                  <p className="font-georgia text-2xl font-bold">6-10 sessions</p>
+                  <p className="text-white/70 text-xs">Spaced 2-4 weeks apart</p>
+                </div>
+                <div>
+                  <p className="font-inter text-white/80 text-sm mb-1">Maintenance</p>
+                  <p className="font-georgia text-2xl font-bold">Every 1-3 months</p>
+                  <p className="text-white/70 text-xs">Depending on your response</p>
+                </div>
+                <div className="pt-4 border-t border-white/20">
+                  <p className="text-white/80 text-sm">Results vary by genetics, hormones, and scalp health. Consistency is key.</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Mesotherapy Hair Loss Treatment Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Service / Treatment</th>
+                  <th className="p-4 text-left font-georgia">Details</th>
+                  <th className="p-4 text-left font-georgia">Price Range (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.service}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{tier.details}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    All consultations are complimentary at Nexus Clinic KL. Final pricing confirmed after scalp assessment. Package rates available for full treatment courses.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Aftercare Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Aftercare: What to Do and Avoid</h2>
+            <p className="text-taupe font-inter">Simple guidance for optimal results</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div variants={fadeInLeft} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-md">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-wine" /> Do's
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Keep scalp clean and dry for 24 hours</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Use gentle, sulphate-free shampoo after 24 hours</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Follow your doctor's scalp product recommendations</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-4 h-4 text-wine shrink-0 mt-0.5" />
+                  <span>Stay consistent with your scheduled sessions</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeInRight} className="bg-light p-6 rounded-xl border border-taupe/10 shadow-md">
+              <h3 className="font-georgia text-xl text-brown mb-4 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-rose" /> Don'ts
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <AlertCircle className="w-4 h-4 text-rose shrink-0 mt-0.5" />
+                  <span>Avoid shampoo or chemical products for 24 hours</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <AlertCircle className="w-4 h-4 text-rose shrink-0 mt-0.5" />
+                  <span>Skip saunas, steam rooms, and very hot showers for 24 hours</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <AlertCircle className="w-4 h-4 text-rose shrink-0 mt-0.5" />
+                  <span>Avoid heavy sweating for the rest of the day</span>
+                </li>
+                <li className="flex items-start gap-2 text-taupe font-inter text-sm">
+                  <AlertCircle className="w-4 h-4 text-rose shrink-0 mt-0.5" />
+                  <span>Do not scratch injection sites</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Before After Section */}
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Ready to Treat Hair Thinning at Nexus Clinic KL?
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              If you are searching for hair mesotherapy in Malaysia, the first step is a proper assessment. At Nexus Clinic Kuala Lumpur, you get doctor-led planning, clear expectations, and a treatment plan that fits your scalp and your lifestyle.
+            </p>
+            <p className="text-cream/90 font-inter">
+              Serving patients from Kuala Lumpur, Bangsar, Petaling Jaya, and the broader Klang Valley. International patients and those travelling from Johor Bahru and southern Malaysia regularly attend the clinic for mesotherapy hair loss treatment.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Book Your Free Assessment
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a consultation for mesotherapy hair loss treatment at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Phone className="w-4 h-4" /> Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Mail className="w-4 h-4" /> Email: info@nexusclinic.my</a>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+    </div>
+  );
+}

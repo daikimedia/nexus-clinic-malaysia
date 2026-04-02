@@ -39,7 +39,7 @@ interface KeloidTreatmentProps {
   locale: string;
 }
 
-export default function KeloidTreatment({ locale }: KeloidTreatmentProps) {
+export default function KeloidLandingPage({ locale }: KeloidTreatmentProps) {
   const keloidVsHypertrophic = [
     { feature: "Growth Pattern", keloid: "Extends BEYOND the original wound margin into surrounding healthy skin", hypertrophic: "Remains WITHIN the original wound boundary; does not invade surrounding tissue", significance: "The defining clinical distinction; patients who describe their scar as 'growing' beyond original injury site likely have a keloid" },
     { feature: "Spontaneous Regression", keloid: "Does not resolve on its own; typically continues to grow slowly for months to years", hypertrophic: "May flatten and reduce spontaneously over 12 to 24 months, especially in younger patients", significance: "Hypertrophic scars can be observed before committing to treatment; keloids should be treated as soon as practical" },

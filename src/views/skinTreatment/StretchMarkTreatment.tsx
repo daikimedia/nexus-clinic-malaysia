@@ -42,7 +42,7 @@ interface StretchMarkRemovalProps {
   locale: string;
 }
 
-export default function StretchMarkRemoval({ locale }: StretchMarkRemovalProps) {
+export default function StretchMarkLanding({ locale }: StretchMarkRemovalProps) {
   const stretchMarkStages = [
     { stage: "Striae Rubrae (Red or Pink)", appearance: "Active red or pink stretch marks; may feel slightly raised or itchy; skin has been stretched recently", mechanism: "Active inflammation in the middle layer of the skin (dermis); blood vessels are dilated; fibroblasts are still active; collagen and elastin disruption is recent", treatment: "Pulsed Dye Laser (PDL) targets blood vessels in active layer of skin; reduces redness while stimulating collagen production | Fractional CO2 laser or microneedling with PRP" },
     { stage: "Striae Albae (White or Silver)", appearance: "Mature white or silver stretch marks; flat or slightly depressed into skin; skin texture is permanently altered", mechanism: "Blood vessels have regressed in the middle layer of the skin; fibrosis replacing torn collagen and elastin; melanocytes are depleted; dermis is thinned and atrophic", treatment: "Fractional CO2 laser treatment is most effective option | Radiofrequency microneedling | PRP combined with microneedling" },

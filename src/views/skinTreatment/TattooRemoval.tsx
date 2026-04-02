@@ -36,7 +36,7 @@ interface LaserTattooRemovalProps {
   locale: string;
 }
 
-export default function LaserTattooRemoval({ locale }: LaserTattooRemovalProps) {
+export default function TattooRemovalLanding({ locale }: LaserTattooRemovalProps) {
   const inkColourData = [
     { colour: "Black Ink", challenge: "Black tattoo ink absorbs laser energy across all wavelengths; the easiest colour to break down", wavelength: "1064nm Nd:YAG (safest for darker Malaysian skin); 755nm alexandrite for lighter skin tones", response: "Fastest response of all tattoo ink colours; visible fading often apparent from session 2 or 3", sessions: "4 to 8 sessions for professional black ink tattoo; 3 to 5 for amateur black" },
     { colour: "Dark Blue and Navy Ink", challenge: "Dark blue tattoo ink responds similarly to black ink; absorbs well at 1064nm; a very common colour in Malaysian tattoos", wavelength: "1064nm Nd:YAG primary; 755nm alexandrite alternative on lighter skin", response: "Very good response; dark blue ink is among the easier colours for the laser to break down", sessions: "5 to 9 sessions for professional dark blue ink tattoo" },

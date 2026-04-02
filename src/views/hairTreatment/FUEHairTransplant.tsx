@@ -1,42 +1,84 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
-  CheckCircle2,
-  Shield,
   Sparkles,
-  TrendingUp,
-  Users,
-  Calendar,
+  Award,
   MapPin,
-  ChevronRight,
-  Star,
+  Calendar,
+  CheckCircle,
+  Clock,
   Heart,
-  Target,
-  Droplets,
-  Scissors,
-  Wind,
-  Leaf,
-  Zap,
-  Activity,
-  Thermometer,
+  Shield,
+  ArrowRight,
   AlertCircle,
+  Activity,
+  Zap,
+  Eye,
+  AlertTriangle,
+  Scissors,
+  TrendingUp,
+  DollarSign,
+  Layers,
+  Users,
+  Target,
+  Droplet,
+  Leaf,
 } from "lucide-react";
-
 import {
-  fadeInUp,
   staggerContainer,
   fadeInLeft,
   fadeInRight,
+  fadeInUp,
   scaleIn,
 } from "../../lib/animations";
-import { useTranslation } from "@/src/i18n/client";
-import { fallbackLng } from "@/src/i18n/settings";
-import FAQ from "@/src/components/FAQ";
+import FAQ from "../../components/FAQ";
+import Whatsapp from "../../components/Whatsapp";
 import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import Image from "next/image";
 
-const FUEHairTransplant = ({ locale = fallbackLng }: { locale?: string }) => {
-  const { t } = useTranslation(locale, "hair/fueHairTransplant");
+interface FUEHairTransplantProps {
+  locale: string;
+}
+
+export default function FUEHairTransplant({ locale }: FUEHairTransplantProps) {
+  const extractionComparison = [
+    { factor: "Hair Follicles Extracted", fue: "Individual hair follicles extracted one by one using punch tool", fut: "Strip of skin removed; dissected into individual grafts", dhi: "Individual follicles extracted and immediately implanted using Choi pen" },
+    { factor: "Scarring", fue: "Tiny dot scars only. Not visible at normal length.", fut: "Linear scar at donor area. Visible with very short hair.", dhi: "Similar to FUE. Fewer recipient site incisions." },
+    { factor: "Graft Survival", fue: "90 to 95%", fut: "95 to 98%", dhi: "95 to 99%" },
+    { factor: "Recovery Time", fue: "5 to 10 days", fut: "10 to 14 days", dhi: "5 to 7 days" },
+    { factor: "Max Grafts (Single Session)", fue: "Up to 4,000", fut: "Up to 4,500+", dhi: "Up to 4,000" },
+    { factor: "Best For", fue: "Most patients. Versatile for all areas.", fut: "Large graft count in one session, maximum coverage.", dhi: "Dense packing, hairline precision, no-shave option." },
+    { factor: "Cost per Graft (Malaysia)", fue: "RM 8 to RM 12", fut: "RM 5 to RM 10", dhi: "RM 10 to RM 15" },
+  ];
+
+  const donorDensityCategories = [
+    { category: "Dense Donor Area", density: "80 to 100+ follicles per cm²", maxGrafts: "3,500 to 4,500+ grafts possible", approach: "FUE alone sufficient for most cases. Excellent candidate for multiple sessions." },
+    { category: "Average Donor Area", density: "60 to 80 follicles per cm²", maxGrafts: "2,500 to 3,500 grafts safely harvestable", approach: "FUE typically adequate. Strategic graft planning essential." },
+    { category: "Low-to-Moderate Donor Area", density: "40 to 60 follicles per cm²", maxGrafts: "1,500 to 2,500 grafts maximum without overharvesting", approach: "FUE with conservative extraction. May require staged sessions." },
+    { category: "Depleted or Limited Donor", density: "Below 40 follicles per cm²", maxGrafts: "Below 1,500 safely harvestable", approach: "FUE supplemented by body hair transplant or beard hair. FUT may not be viable." },
+  ];
+
+  const pricingTiers = [
+    { package: "Hairline Restoration (FUE)", grafts: "1,000 to 1,500 grafts", price: "RM 8,000 to RM 18,000" },
+    { package: "Crown and Top Restoration (FUE)", grafts: "1,500 to 2,500 grafts", price: "RM 12,000 to RM 30,000" },
+    { package: "Moderate to Significant Loss (FUE)", grafts: "2,500 to 3,500 grafts", price: "RM 20,000 to RM 42,000" },
+    { package: "Large Session FUE", grafts: "3,500 to 4,000 grafts", price: "RM 28,000 to RM 48,000" },
+    { package: "FUE Beard / Eyebrow Transplant", grafts: "500 to 1,500 grafts", price: "RM 6,000 to RM 22,500" },
+    { package: "DHI Programme (Advanced FUE)", grafts: "1,000 to 3,000 grafts", price: "RM 10,000 to RM 45,000" },
+  ];
+
+  const faqData = [
+    { q: "What makes FUE different from FUT hair transplant?", a: "FUE extracts individual hair follicles one by one using a circular punch, leaving only tiny circular dot scars that are invisible at normal hair length. FUT removes a strip of skin from the donor area, which is then dissected into grafts. FUT leaves a linear scar that is visible if the hair is cut very short. FUE offers faster recovery, no linear scar, and more versatile donor site options. FUT can harvest more grafts per session for patients with advanced baldness and costs less per graft. The best approach depends on the patient's specific hair loss stage, donor density, and cosmetic preferences." },
+    { q: "Is FUE hair transplant in Malaysia permanent?", a: "Yes. The transplanted hair follicles come from the DHT-resistant zone at the back and sides of the scalp. Because these follicles are genetically immune to the hormone that causes pattern hair loss, they continue growing permanently after transplantation to the recipient site. The transplanted hair grows, cycles, sheds, and regrows just like natural hair for the patient's lifetime. However, the patient's existing non-transplanted hair may continue to thin over time without additional medication, which is why many hair transplant surgeons recommend concurrent use of finasteride or minoxidil to preserve the surrounding hair." },
+    { q: "How many grafts will I need for my FUE hair transplant?", a: "Graft count depends on the extent of your hair loss, the density of your donor area, and the density you want to achieve at the recipient site. As a general guide: hairline restoration requires 1,000 to 2,000 grafts, crown area treatment needs 1,500 to 3,000 grafts, and moderate to advanced pattern hair loss may require 3,000 to 4,000 grafts. The definitive number is determined at a scalp assessment by the surgeon at Nexus Clinic KL, who maps the donor area under magnification and calculates the safe extractable number of grafts specific to your anatomy." },
+    { q: "How do I choose the best hair transplant clinic in Malaysia for FUE?", a: "The right hair transplant clinic is one where the surgeon performs every step of the procedure directly, from design through extraction and implantation, rather than delegating surgical steps to nurses or technicians. Confirm the surgeon is registered with the Malaysian Medical Council and ideally holds training credentials from international bodies such as the ISHRS. Ask to see before-and-after photographs of real patients treated at the clinic with similar hair types and loss stages. A reputable clinic provides a transparent graft count and cost breakdown, offers realistic outcome expectations rather than guaranteed results, and includes structured aftercare in the programme." },
+    { q: "What is the recovery like after FUE hair transplant in Malaysia?", a: "Recovery from FUE is typically five to ten days for the visible healing stages. Most patients return to desk work within three to five days. The donor area shows tiny pink dots that fade within a week. Scabbing at the recipient site resolves within ten to fourteen days. Patients avoid strenuous physical activity for two to three weeks. The shock loss phase where transplanted hair falls out occurs at two to four weeks and resolves as new hair growth begins from month three. Full results are visible at month twelve to fifteen and are reviewed by the surgeon at scheduled follow-up appointments." },
+    { q: "Is FUE hair transplant suitable for women?", a: "Yes. FUE hair transplant is performed for women with localised hair loss patterns including traction alopecia, hairline recession, thinning around the part, and post-surgical scar coverage. Women with diffuse hair loss across the entire scalp require individual assessment because diffuse patterns may not have a stable donor area free from miniaturisation. The no-shave FUE option, where only small sections of the donor area are trimmed rather than the entire head, is available and is particularly suitable for female patients who prefer not to shave during their procedure." },
+    { q: "Can I combine FUE with other hair loss treatments?", a: "Yes, and combination approaches produce the best long-term outcomes. FUE transplants the hair follicles that are already lost, while medical treatments like finasteride and minoxidil protect the existing hair that has not yet been lost. PRP and exosome therapy support graft integration, scalp health, and the vitality of surrounding follicles. A comprehensive hair treatment plan addressing both surgical restoration and medical preservation delivers fuller, more sustained results than FUE alone." },
+    { q: "How much does FUE hair transplant cost in Malaysia?", a: "FUE hair transplant cost in Malaysia is calculated per graft, with most clinics charging between RM 8 and RM 12 per graft depending on surgeon credentials, clinic infrastructure, and the technique used. A hairline restoration session of 1,200 to 1,500 grafts typically costs between RM 10,000 and RM 18,000 at a reputable clinic in Kuala Lumpur. A moderate-loss session of 2,500 grafts costs approximately RM 20,000 to RM 30,000. Malaysia offers significant cost advantages over equivalent procedures in Australia, the UK, or Singapore without compromising clinical standards." },
+    { q: "What is advanced FUE and how does DHI relate to it?", a: "Advanced FUE refers to techniques that go beyond standard motorised extraction to improve graft survival, precision, or patient experience. DHI (Direct Hair Implantation) is the most clinically significant advancement: it uses a specialised Choi implanter pen to combine extraction and implantation in a single continuous step, minimising the time each graft spends outside the body and eliminating the need for pre-made incisions at the recipient site. This improves graft survival rates to 95 to 99 percent and allows more precise control over angle, depth, and direction of each individual hair. DHI is particularly valuable for hairline design and dense packing applications." },
+    { q: "How do I know if I am ready for FUE hair transplant?", a: "The ideal candidate for FUE hair transplant has stabilised hair loss, a sufficient donor area density, and realistic expectations about coverage goals. Hair loss should be stable for at least twelve months before surgery so the transplanted grafts are not placed into an area that will continue receding. Patients should be in good general health, not taking medications that increase bleeding risk, and prepared for the shock loss phase that occurs in the weeks after surgery. A thorough pre-operative assessment confirms all of these factors and ensures that the procedure is appropriate before any session is planned." },
+  ];
 
   const transformations = [
     {
@@ -56,1036 +98,679 @@ const FUEHairTransplant = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
 
-  const faqs = [
-    {
-      q: "How much does FUE hair transplant cost in Malaysia?",
-      a: "Prices vary mainly by graft count and clinic. Many Malaysia guides show FUE often sitting in the mid thousands RM and going higher for larger sessions. Always ask what is included.",
-    },
-    {
-      q: "Is FUE hair transplant painful?",
-      a: "Local anaesthesia is used, so sharp pain is usually controlled. Afterward, it is common to feel tightness, soreness, and mild swelling for a few days.",
-    },
-    {
-      q: "How long is recovery after FUE?",
-      a: "Many people return to desk work within a few days, but visible healing can take one to two weeks. The grafts need protection early on.",
-    },
-    {
-      q: "When can I wash my hair after FUE?",
-      a: "Many guides suggest waiting at least 24 hours, and washing gently within 48 hours, using the method you are taught. Avoid strong water pressure.",
-    },
-    {
-      q: "Why does transplanted hair shed after surgery?",
-      a: "Shedding can happen weeks after treatment. It often reflects the hair cycle and 'shock' to follicles. New growth usually returns gradually.",
-    },
-    {
-      q: "How long does an FUE hair transplant last?",
-      a: "Transplanted follicles are usually taken from areas that resist typical pattern hair loss. Many experts describe this as long-lasting, but maintenance matters.",
-    },
-    {
-      q: "Does FUE leave scars?",
-      a: "Yes, but they are usually tiny scars rather than one long scar. The NHS notes scarring can occur, and FUE commonly creates very small scars.",
-    },
-    {
-      q: "How many grafts do I need for my hairline?",
-      a: "It depends on your hairline shape, donor density, and the look you want. Donor hair is limited and must be used wisely.",
-    },
-    {
-      q: "Is FUE better than FUT?",
-      a: "FUE is often chosen to avoid a strip scar and support flexible hairstyles. FUT can still be useful. Your best option depends on donor area, budget, and goals.",
-    },
-    {
-      q: "Can an FUE hair transplant fail?",
-      a: "FUE is considered established when performed by trained professionals, but results can drop with poor donor selection, poor graft handling, smoking, or weak aftercare.",
-    },
-    {
-      q: "Is Malaysia a good place for FUE hair transplant?",
-      a: "Malaysia, especially Kuala Lumpur, has many hair restoration clinics. Your outcome depends more on planning and standards than the country alone.",
-    },
-    {
-      q: "What should I avoid after FUE?",
-      a: "Sleep with your head elevated and avoid rubbing or strong pressure on the grafts early on. Follow the washing method exactly.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-light font-inter">
+    <div className="w-full bg-light overflow-hidden">
       {/* Hero Section */}
-      <motion.section
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="relative overflow-hidden bg-linear-to-br from-cream via-light to-rose/5"
-      >
-        <div className="absolute inset-0 bg-glass backdrop-blur-3xl" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <motion.div variants={staggerContainer} className="max-w-3xl">
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-flex items-center gap-2 bg-wine/10 text-wine px-4 py-2 rounded-full text-sm font-medium">
-                <Sparkles className="w-4 h-4" />
-                FUE Hair Transplant Kuala Lumpur
-              </span>
-            </motion.div>
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
+        
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container mx-auto max-w-6xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div variants={fadeInLeft} className="space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4 text-wine" />
+                <span className="text-sm font-inter text-wine font-medium">FUE • DHI • FUT • Doctor-Performed</span>
+              </motion.div>
+              
+              <motion.h1
+                variants={fadeInUp}
+                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
+              >
+                FUE Hair Transplant in Malaysia for{" "}
+                <span className="text-wine italic">Natural, Permanent Results</span>
+              </motion.h1>
 
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-georgia text-brown mb-6 leading-tight"
-            >
-              Your new hairline should look like{" "}
-              <span className="text-wine italic">it always belonged</span> to
-              you
-            </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
+              >
+                FUE eliminated the linear scar constraint entirely. By extracting individual hair follicles one at a time using a precision punch, FUE delivers permanent, natural-looking results with no visible scar.
+              </motion.p>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg text-taupe mb-8 max-w-2xl"
-            >
-              If your hair is thinning, you may feel older overnight. With FUE
-              hair transplant in Kuala Lumpur, you can rebuild a natural look,
-              step by step.
-            </motion.p>
+              <motion.p
+                variants={fadeInUp}
+                className="text-brown font-inter"
+              >
+                Nexus Clinic KL is one of the best hair transplant clinic options in Malaysia for patients seeking FUE hair transplant treatment performed by a qualified hair transplant surgeon under full medical supervision. Every procedure is performed by a licensed doctor rather than a technician or nurse.
+              </motion.p>
 
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-              <button className="group bg-wine hover:bg-rose text-white px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl">
-                Book Confidential Consultation
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="border-2 border-wine/30 text-brown hover:bg-cream px-8 py-4 rounded-full font-medium transition-all duration-300">
-                View Gallery
-              </button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Trust At A Glance */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="bg-white py-16 border-y border-taupe/10"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8"
-          >
-            <motion.div variants={fadeInUp} className="flex items-center gap-4">
-              <div className="bg-wine/10 p-4 rounded-2xl">
-                <Calendar className="w-6 h-6 text-wine" />
-              </div>
-              <div>
-                <h3 className="font-georgia text-brown text-lg">
-                  Founded 2001
-                </h3>
-                <p className="text-taupe">
-                  Focus on confidential, professional care
+              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
+                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  Important Clinical Information
                 </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="flex items-center gap-4">
-              <div className="bg-wine/10 p-4 rounded-2xl">
-                <MapPin className="w-6 h-6 text-wine" />
-              </div>
-              <div>
-                <h3 className="font-georgia text-brown text-lg">
-                  Kuala Lumpur
-                </h3>
-                <p className="text-taupe">Wisma UOA II, Jalan Pinang</p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="flex items-center gap-4">
-              <div className="bg-wine/10 p-4 rounded-2xl">
-                <Scissors className="w-6 h-6 text-wine" />
-              </div>
-              <div>
-                <h3 className="font-georgia text-brown text-lg">
-                  Hair Services
-                </h3>
-                <p className="text-taupe">
-                  Transplant & loss treatment options
+                <p className="text-taupe font-inter text-sm mt-1">
+                  Transplanted hair is permanent. Hair follicles from the donor area are genetically resistant to DHT, the hormone responsible for pattern hair loss, and continue growing for the patient's lifetime.
                 </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
+              </motion.div>
 
-      {/* Quick Answers */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-cream/30"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
-          >
-            Quick Answers{" "}
-            <span className="text-wine">(People Want These First)</span>
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 gap-6"
-          >
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-georgia text-brown text-lg mb-2">
-                What is FUE?
-              </h3>
-              <p className="text-taupe">
-                It removes follicular units one by one using tiny punches, then
-                places them in thinning areas.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-georgia text-brown text-lg mb-2">
-                Is it painful?
-              </h3>
-              <p className="text-taupe">
-                Local anaesthesia is used. You may feel pressure, then mild
-                soreness later.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-georgia text-brown text-lg mb-2">
-                When will I see results?
-              </h3>
-              <p className="text-taupe">
-                Most visible change builds over months. Full results around 9 to
-                12 months or longer.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={scaleIn}
-              className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-georgia text-brown text-lg mb-2">
-                Will there be scars?
-              </h3>
-              <p className="text-taupe">
-                FUE usually leaves many very tiny scars, not a long strip scar.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Why FUE with Image */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft}>
-              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
-                Why FUE is the most searched hair transplant option in Malaysia
-              </h2>
-              <p className="text-taupe mb-6">
-                People in Kuala Lumpur want results that look normal in real
-                life. Not just in before and after photos.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "It avoids a long strip scar on the back of the head",
-                  "Healing can be quicker for many patients",
-                  "It suits hairline work and detail areas, like temples",
-                  "Malaysia is known for strong medical services",
-                  "Kuala Lumpur has many established clinics for careful comparison",
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    variants={fadeInUp}
-                    className="flex items-start gap-3"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                    <span className="text-brown">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
+              <motion.div 
+                variants={fadeInLeft} 
+                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
+              >
+                <motion.button
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Free Consultation
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                <Whatsapp message="Hi, I'm interested in FUE hair transplant at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
+              </motion.div>
             </motion.div>
 
             <motion.div variants={fadeInRight} className="relative">
-              <div className="absolute inset-0 bg-linear-to-tr from-wine/20 to-rose/20 rounded-3xl transform rotate-3" />
-              <img
-                src="/images/hair/fue-hair-transplant.webp"
-                alt="FUE Hair Transplant Consultation"
-                className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
-              />
-              <div className="absolute bottom-4 left-4 bg-glass backdrop-blur-md px-4 py-2 rounded-full">
-                <span className="text-brown text-sm font-medium">
-                  FUE Procedure Consultation
-                </span>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <Image
+                  src="/images/hair/fue-hair-transplant.webp"
+                  alt="Nexus Clinic Kuala Lumpur - FUE Hair Transplant"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
+                <p className="font-inter font-bold text-brown">FUE • DHI • FUT</p>
+                <p className="font-inter text-sm text-taupe">90-99% Graft Survival</p>
               </div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* What is FUE */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-cream/30"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-          >
-            What is an FUE hair transplant{" "}
-            <span className="text-wine">(simple explanation)</span>
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
-            FUE stands for follicular unit excision. It means your surgeon
-            removes tiny natural hair groupings, usually 1 to 4 hairs.
-          </motion.p>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-6 mt-12"
-          >
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-3xl">
-              <div className="bg-wine/10 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Target className="w-6 h-6 text-wine" />
+      {/* Trust Section */}
+      <section className="py-12 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <Award className="w-6 h-6 text-wine" />
+                </div>
+                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
               </div>
-              <h3 className="font-georgia text-brown mb-2">Donor Area</h3>
-              <p className="text-taupe text-sm">
-                Grafts from back of scalp where hair is thicker longer
-              </p>
-            </motion.div>
+              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
+              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
+            </div>
 
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-3xl">
-              <div className="bg-wine/10 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Droplets className="w-6 h-6 text-wine" />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Experience</p>
+                  <p className="font-georgia text-brown font-bold text-lg">Over 15 Years</p>
+                  <p className="font-inter text-taupe text-xs">Combined clinical experience</p>
+                </div>
               </div>
-              <h3 className="font-georgia text-brown mb-2">Graft Placement</h3>
-              <p className="text-taupe text-sm">
-                Placed into thinning or bald areas with precision
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} className="bg-white p-6 rounded-3xl">
-              <div className="bg-wine/10 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Leaf className="w-6 h-6 text-wine" />
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
+                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
+                </div>
               </div>
-              <h3 className="font-georgia text-brown mb-2">Natural Growth</h3>
-              <p className="text-taupe text-sm">
-                Once healed, transplanted follicles keep growing hair
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-wine" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
+                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
+                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
+                </div>
+              </div>
+            </div>
 
-      {/* Competitor Insights */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
-          >
-            What top-ranking FUE pages in KL focus on
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {[
-              {
-                icon: <Shield className="w-6 h-6" />,
-                title: "No Linear Scar",
-                desc: "No strip scar, minimal downtime",
-              },
-              {
-                icon: <TrendingUp className="w-6 h-6" />,
-                title: "Cost Clarity",
-                desc: "Per-graft pricing explained",
-              },
-              {
-                icon: <Heart className="w-6 h-6" />,
-                title: "Aftercare Guidance",
-                desc: "Do's and don'ts for healing",
-              },
-              {
-                icon: <Sparkles className="w-6 h-6" />,
-                title: "Natural Hairline",
-                desc: "Direction, angles, long-term planning",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="bg-cream p-6 rounded-3xl text-center group hover:bg-wine transition-colors duration-300"
-              >
-                <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-wine/20">
-                  <div className="text-wine group-hover:text-white transition-colors">
-                    {item.icon}
+            <div className="mt-6 pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">MOH Licensed</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Ministry of Health Malaysia licensed clinic</p>
                   </div>
                 </div>
-                <h3 className="font-georgia text-brown mb-2 group-hover:text-white transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-taupe text-sm group-hover:text-cream transition-colors">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-taupe mt-8 italic"
-          >
-            Marketing is everywhere. Your best filter is a clear plan, realistic
-            density goals, and strong aftercare.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Who is FUE For */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-linear-to-br from-cream to-rose/5"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div variants={fadeInLeft}>
-              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
-                Who is FUE hair transplant for?
-              </h2>
-              <div className="space-y-4">
-                {[
-                  "Receding hairline",
-                  "Temple recession",
-                  "Crown thinning",
-                  "Pattern hair loss that has stabilized",
-                  "Scarring alopecia (stable)",
-                  "Hair loss after trauma or surgery",
-                  "Beard or eyebrow restoration",
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="flex items-center gap-3 bg-white/50 p-3 rounded-xl"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-wine" />
-                    <span className="text-brown">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-              <motion.p variants={fadeInUp} className="mt-6 text-taupe">
-                A key requirement is donor supply. If your donor area is weak,
-                the plan must change.
-              </motion.p>
-            </motion.div>
-
-            <motion.div variants={fadeInRight}>
-              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
-                Who should pause?
-              </h2>
-              <div className="bg-white p-8 rounded-3xl shadow-xl">
-                <div className="space-y-4">
-                  {[
-                    "You are shedding heavily right now",
-                    "Your scalp is inflamed or irritated",
-                    "Your expectations are 'full teenage density' in one session",
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="flex items-start gap-3"
-                    >
-                      <AlertCircle className="w-5 h-5 text-rose shrink-0 mt-1" />
-                      <span className="text-brown">{item}</span>
-                    </motion.div>
-                  ))}
-                </div>
-                <motion.p variants={fadeInUp} className="mt-6 text-taupe">
-                  Hair transplant is generally safe, but complications can
-                  happen. Medical screening and good technique reduce risk.
-                </motion.p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* FUE vs FUT vs DHI */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
-          >
-            FUE vs FUT vs DHI{" "}
-            <span className="text-wine">(Quick Comparison)</span>
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-6"
-          >
-            {[
-              {
-                title: "FUE",
-                features: [
-                  "Individual graft removal",
-                  "Many very tiny scars, usually hard to notice",
-                ],
-              },
-              {
-                title: "FUT (strip)",
-                features: [
-                  "A strip is removed, then grafts are separated",
-                  "Can leave a single larger scar",
-                ],
-              },
-              {
-                title: "DHI",
-                features: [
-                  "Often marketed for precise placement",
-                  "Still needs proper extraction and planning",
-                  "Aftercare rules still matter a lot",
-                ],
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="bg-cream p-6 rounded-3xl"
-              >
-                <h3 className="text-2xl font-georgia text-wine mb-4">
-                  {item.title}
-                </h3>
-                <ul className="space-y-3">
-                  {item.features.map((feature, idx) => (
-                    <li key={idx} className="text-brown flex items-start gap-2">
-                      <ChevronRight className="w-4 h-4 text-wine shrink-0 mt-1" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.p variants={fadeInUp} className="text-center text-taupe mt-8">
-            In real life, the "best" option is the one that fits your scalp,
-            donor, and goals.
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* Procedure Steps */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-cream/30"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
-          >
-            What happens during an FUE procedure{" "}
-            <span className="text-wine">(step by step)</span>
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {[
-              {
-                icon: <Users className="w-6 h-6" />,
-                title: "Consultation",
-                desc: "Scalp assessment and hairline design",
-              },
-              {
-                icon: <Scissors className="w-6 h-6" />,
-                title: "Donor Preparation",
-                desc: "Trimming and local anaesthesia",
-              },
-              {
-                icon: <Zap className="w-6 h-6" />,
-                title: "Extraction",
-                desc: "Grafts removed one by one with micro punches",
-              },
-              {
-                icon: <Target className="w-6 h-6" />,
-                title: "Placement",
-                desc: "Tiny openings made to follow natural direction",
-              },
-              {
-                icon: <Heart className="w-6 h-6" />,
-                title: "Home Care Plan",
-                desc: "Washing instructions and activity limits",
-              },
-              {
-                icon: <Calendar className="w-6 h-6" />,
-                title: "Follow-up",
-                desc: "Regular check-ins to monitor progress",
-              },
-            ].map((step, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-all"
-              >
-                <div className="bg-wine/10 w-12 h-12 rounded-2xl flex items-center justify-center mb-4">
-                  <div className="text-wine">{step.icon}</div>
-                </div>
-                <h3 className="font-georgia text-brown text-lg mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-taupe text-sm">{step.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* How to Prepare */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft}>
-              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
-                How to prepare for your FUE hair transplant
-              </h2>
-              <p className="text-taupe mb-8">
-                A safe plan starts before procedure day.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Share your medication list with the clinic",
-                  "Ask about smoking, alcohol, and supplements",
-                  "Plan 7 to 10 quiet days if possible",
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    variants={fadeInUp}
-                    className="flex items-start gap-3 bg-cream p-4 rounded-xl"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-wine shrink-0 mt-1" />
-                    <span className="text-brown">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-linear-to-br from-wine to-rose p-8 rounded-3xl text-white"
-            >
-              <h3 className="text-2xl font-georgia mb-4">
-                Preparation Checklist
-              </h3>
-              <div className="space-y-4">
-                {[
-                  "Stop blood thinners 2 weeks prior",
-                  "No alcohol 3 days before",
-                  "Arrange transportation",
-                  "Wash hair night before",
-                  "Wear button-down shirt",
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-white rounded-full" />
-                    <span>{item}</span>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <Activity className="w-4 h-4 text-wine" />
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Recovery Timeline */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-cream/30"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
-          >
-            Recovery Timeline{" "}
-            <span className="text-wine">(what most people actually feel)</span>
-          </motion.h2>
-
-          <motion.div variants={staggerContainer} className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-wine/20 hidden md:block" />
-
-            {[
-              {
-                period: "First 3 days",
-                desc: "A tight, sore scalp is common. Swelling can happen.",
-                icon: <Thermometer className="w-5 h-5" />,
-              },
-              {
-                period: "Days 4 to 10",
-                desc: "Scabbing forms, then starts to fall. You must avoid picking.",
-                icon: <Activity className="w-5 h-5" />,
-              },
-              {
-                period: "Washing",
-                desc: "Gentle washing after first day or two. Follow clinic instructions.",
-                icon: <Droplets className="w-5 h-5" />,
-              },
-              {
-                period: "Weeks 3 to 8",
-                desc: "Shedding can happen. This is often part of the cycle.",
-                icon: <Wind className="w-5 h-5" />,
-              },
-              {
-                period: "Months 3 to 6",
-                desc: "New growth starts. May look fine at first, then thickens.",
-                icon: <Leaf className="w-5 h-5" />,
-              },
-              {
-                period: "Months 9 to 12+",
-                desc: "Most people see their main result in this window.",
-                icon: <Star className="w-5 h-5" />,
-              },
-            ].map((phase, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInLeft}
-                className="relative pl-16 md:pl-24 mb-8"
-              >
-                <div className="absolute left-0 top-0 bg-wine text-white p-3 rounded-2xl">
-                  {phase.icon}
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">Doctor-Performed</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Qualified hair transplant surgeon</p>
+                  </div>
                 </div>
-                <div className="bg-white p-6 rounded-3xl shadow-sm">
-                  <h3 className="font-georgia text-brown text-lg mb-2">
-                    {phase.period}
-                  </h3>
-                  <p className="text-taupe">{phase.desc}</p>
+                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
+                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-wine" />
+                  </div>
+                  <div>
+                    <p className="font-inter font-semibold text-brown text-sm">5,000+ Procedures</p>
+                    <p className="font-inter text-taupe text-xs leading-relaxed">Extensive experience in hair restoration</p>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-taupe/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">No Linear Scar</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">90-99% Graft Survival</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-wine rounded-full" />
+                  <span className="font-inter text-xs text-taupe">Permanent, Natural Results</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Treatment Overview Section */}
+      <section className="py-16 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">FUE Hair Transplant at a Glance</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Follicular Unit Extraction by licensed doctors</p>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Clock, label: "Session Duration", value: "4 to 8 hours depending on graft count" },
+              { icon: Heart, label: "Anaesthesia", value: "Local anaesthesia. Patient remains awake." },
+              { icon: Activity, label: "Graft Survival", value: "90 to 99% depending on technique" },
+              { icon: TrendingUp, label: "Full Results", value: "Month 12 to 15 post-procedure" },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-light p-5 rounded-xl border border-taupe/10 shadow-sm">
+                <item.icon className="w-8 h-8 text-wine mb-3" />
+                <p className="font-inter text-sm text-taupe">{item.label}</p>
+                <p className="font-georgia text-md text-brown font-semibold">{item.value}</p>
+              </div>
             ))}
           </motion.div>
-        </div>
-      </motion.section>
+          
+          <motion.div variants={fadeInUp} className="mt-8 bg-wine/5 rounded-2xl p-6 border border-wine/10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <p className="font-inter text-sm text-taupe">Procedure</p>
+                <p className="font-georgia text-brown font-semibold">FUE Hair Transplant</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Scarring</p>
+                <p className="font-georgia text-brown font-semibold">Tiny dot scars. Invisible at normal length.</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Recovery</p>
+                <p className="font-georgia text-brown">5 to 10 days. Return to desk work in 3 to 5 days.</p>
+              </div>
+              <div>
+                <p className="font-inter text-sm text-taupe">Consultation</p>
+                <p className="font-georgia text-brown">Complimentary at Nexus Clinic KL</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Speak to a Hair Transplant Surgeon | Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
 
-      <SectionBeforeAfter transformations={transformations} />
-
-      {/* Side Effects */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div variants={fadeInLeft}>
-              <h2 className="text-3xl md:text-4xl font-georgia text-brown mb-6">
-                Side effects and risks{" "}
-                <span className="text-wine">(honest and clear)</span>
-              </h2>
-
-              <div className="space-y-4">
-                <h3 className="font-georgia text-lg text-brown">
-                  Common short-term effects:
-                </h3>
-                {[
-                  "Tight, achy scalp",
-                  "Temporary scabbing",
-                  "Tiny scars, especially in the donor area",
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="flex items-center gap-3 bg-cream p-3 rounded-xl"
-                  >
-                    <AlertCircle className="w-5 h-5 text-wine" />
-                    <span className="text-brown">{item}</span>
-                  </motion.div>
+      {/* FUE vs FUT vs DHI Comparison Table */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">FUE vs FUT vs DHI</h2>
+            <p className="text-taupe font-inter">Choosing the best hair transplant method for your needs</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Factor</th>
+                  <th className="p-4 text-left font-georgia">FUE</th>
+                  <th className="p-4 text-left font-georgia">FUT (Strip Method)</th>
+                  <th className="p-4 text-left font-georgia">DHI (Direct Implantation)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {extractionComparison.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.factor}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.fue}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.fut}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.dhi}</td>
+                  </tr>
                 ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-rose/5 p-8 rounded-3xl"
-            >
-              <h3 className="font-georgia text-2xl text-brown mb-4">
-                Possible complications
-              </h3>
-              <p className="text-taupe mb-4">
-                Infection and healing issues, although they are not common when
-                care is proper.
-              </p>
-              <div className="bg-white p-6 rounded-2xl border border-rose/20">
-                <p className="text-brown">
-                  <span className="font-bold text-wine">Important:</span> If
-                  pain increases after improving, or you see pus or fever,
-                  contact a clinician.
-                </p>
-              </div>
-            </motion.div>
+              </tbody>
+            </table>
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
-      {/* Cost Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-linear-to-br from-cream to-rose/5"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
-          >
-            FUE hair transplant cost in Kuala Lumpur and Malaysia
-          </motion.h2>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div variants={fadeInLeft} className="space-y-6">
-              <div className="bg-white p-6 rounded-3xl">
-                <h3 className="font-georgia text-lg text-wine mb-4">
-                  Cost depends on:
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    "Number of grafts",
-                    "Clinic reputation and credentials",
-                    "City overhead (KL can be higher)",
-                    "Add-ons like PRP and medicines",
-                  ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center gap-2 text-brown"
-                    >
-                      <ChevronRight className="w-4 h-4 text-wine" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-white p-6 rounded-3xl">
-                <h3 className="font-georgia text-lg text-wine mb-4">
-                  What you may see online:
-                </h3>
-                <ul className="space-y-3">
-                  <li className="text-brown">
-                    • FUE ranges around RM 6,500 to RM 15,000
-                  </li>
-                  <li className="text-brown">• RM 6 to RM 12 per graft</li>
-                  <li className="text-brown">
-                    • Starting from RM 5,000 style pricing
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInRight}
-              className="bg-wine text-white p-8 rounded-3xl"
-            >
-              <h3 className="text-2xl font-georgia mb-4">A useful rule:</h3>
-              <p className="text-cream text-lg mb-6">
-                Do not compare price without comparing what is included.
-              </p>
-              <p className="text-cream">
-                Ask about doctor involvement, graft handling, and follow-up
-                support.
-              </p>
-            </motion.div>
+      {/* Donor Area Assessment Table */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Donor Area Assessment</h2>
+            <p className="text-taupe font-inter">The foundation of a successful FUE hair transplant</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">Donor Density Category</th>
+                  <th className="p-4 text-left font-georgia">Hair Follicles per cm²</th>
+                  <th className="p-4 text-left font-georgia">Maximum Harvestable Grafts (FUE)</th>
+                  <th className="p-4 text-left font-georgia">Recommended Approach</th>
+                </tr>
+              </thead>
+              <tbody>
+                {donorDensityCategories.map((item, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
+                    <td className="p-4 font-inter font-semibold text-brown">{item.category}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.density}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.maxGrafts}</td>
+                    <td className="p-4 text-taupe font-inter text-sm">{item.approach}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-      </motion.section>
-
-      {/* Areas FUE Can Treat */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-12 text-center"
-          >
-            Areas FUE can treat{" "}
-            <span className="text-wine">(common requests in KL)</span>
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {[
-              { area: "Hairline", desc: "framing the face" },
-              { area: "Temples", desc: "softening recession" },
-              { area: "Crown", desc: "reducing the visible 'spot'" },
-              {
-                area: "Top and mid-scalp",
-                desc: "adding coverage where hair is thin",
-              },
-              { area: "Beard", desc: "selected cases" },
-              { area: "Brows", desc: "selected cases" },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="bg-cream p-6 rounded-3xl text-center hover:bg-wine group transition-colors cursor-pointer"
-              >
-                <h3 className="font-georgia text-lg text-brown mb-2 group-hover:text-white transition-colors">
-                  {item.area}
-                </h3>
-                <p className="text-taupe text-sm group-hover:text-cream transition-colors">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Nexus Clinic Approach */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-cream/30"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia text-brown mb-6"
-          >
-            How Nexus Clinic Kuala Lumpur approaches the experience
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-lg text-taupe mb-8">
-            At Nexus Clinic Kuala Lumpur, the goal should be simple. Make the
-            plan feel safe, private, and realistic.
-          </motion.p>
-
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 gap-6 mt-12"
-          >
-            {[
-              "A graft estimate range",
-              "A hairline design explanation",
-              "A downtime plan that fits your work life",
-              "A maintenance plan for existing hair",
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                className="bg-white p-4 rounded-2xl flex items-center gap-3"
-              >
-                <CheckCircle2 className="w-5 h-5 text-wine" />
-                <span className="text-brown text-left">{item}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* FAQ Section */}
-      <FAQ data={faqs} />
-
-      {/* CTA Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 bg-linear-to-br from-wine to-rose text-white"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-georgia mb-6"
-          >
-            Book a consultation at Nexus Clinic Kuala Lumpur
-          </motion.h2>
-
-          <motion.p variants={fadeInUp} className="text-lg text-cream mb-8">
-            If you want a natural hairline, start with a calm consult. Ask for a
-            plan that matches your face, hair type, and future loss pattern.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white/10 backdrop-blur-sm p-6 rounded-3xl inline-block"
-          >
-            <p className="flex items-center gap-4 text-cream">
-              <MapPin className="w-5 h-5" />
-              Wisma UOA II, Jalan Pinang, Kuala Lumpur
+          
+          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
+            <p className="text-brown font-inter text-sm">
+              At Nexus Clinic KL, donor area density is assessed at the initial consultation using dermoscopic magnification. The surgeon maps the safe donor zone and calculates extractable grafts without compromising donor appearance.
             </p>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
+
+      {/* FUE Hair Transplant Growth Timeline Slider Section */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown mb-4">FUE Hair Transplant Growth Timeline</h2>
+            <p className="text-taupe font-inter max-w-2xl mx-auto">Month-by-month what to expect after your procedure</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <motion.div
+              variants={fadeInLeft}
+              className="bg-cream p-8 rounded-2xl border border-taupe/20 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-wine" />
+                </div>
+                <h3 className="font-georgia text-2xl text-brown">Factors Affecting Growth</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Individual healing response varies by patient</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Surgeon skill and graft handling quality</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Extraction tool precision and transection rates</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Post-operative care compliance</span>
+                </li>
+                <li className="flex items-start gap-3 text-taupe font-inter text-sm">
+                  <CheckCircle className="w-5 h-5 text-wine shrink-0 mt-0.5" />
+                  <span>Use of finasteride or minoxidil for native hair protection</span>
+                </li>
+              </ul>
+              <div className="mt-8 p-4 bg-wine/5 rounded-xl">
+                <p className="text-brown font-inter text-sm text-center">
+                  The shock loss phase where transplanted hair falls out at two to four weeks is expected and does not indicate a problem. New growth begins from month three.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInRight}
+              className="bg-wine p-8 rounded-2xl text-white shadow-xl hover:shadow-2xl transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-georgia text-2xl font-bold">Growth Timeline</h3>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Shock Loss</span>
+                    <span className="font-georgia text-xl font-bold text-white">Weeks 2 to 4</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "15%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Transplanted hair shafts fall out. Follicle roots remain intact.</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Initial Growth</span>
+                    <span className="font-georgia text-xl font-bold text-white">Month 3 to 4</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "30%" }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Fine baby hairs become visible. Early hairline formation.</p>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Progressive Thickening</span>
+                    <span className="font-georgia text-xl font-bold text-white">Month 5 to 6</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "55%" }}
+                      transition={{ duration: 1, delay: 0.6 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Meaningful cosmetic improvement visible. Styling possible.</p>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Maturation</span>
+                    <span className="font-georgia text-xl font-bold text-white">Month 8 to 10</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "75%" }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">60 to 80% of final density achieved.</p>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-inter text-white/90">Full Results</span>
+                    <span className="font-georgia text-xl font-bold text-white">Month 12 to 15</span>
+                  </div>
+                  <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      transition={{ duration: 1, delay: 1.0 }}
+                      className="bg-white h-2.5 rounded-full"
+                    ></motion.div>
+                  </div>
+                  <p className="text-white/70 text-xs mt-2">Final result. Natural-looking, permanent hair.</p>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-4 border-t border-white/20">
+                <p className="text-white/80 text-sm text-center">
+                  Full results are not visible until month 12 to 15. Patience during the growth phase is essential for optimal outcomes.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div variants={fadeInUp} className="mt-8 text-center">
+            <p className="text-taupe font-inter text-sm">
+              ✨ Understanding the timeline from day one eliminates the most common source of post-procedure distress and helps patients trust the process.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* FUE Procedure Steps */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The FUE Hair Transplant Procedure</h2>
+            <p className="text-taupe font-inter">Step by step at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Consultation & Hairline Design", desc: "Scalp assessment under dermoscopic magnification. Personalised hairline drawing based on facial structure and age-appropriate aesthetics." },
+              { step: "02", title: "Local Anaesthesia", desc: "Donor and recipient areas numbed. Takes approximately fifteen minutes. Patient feels no pain during extraction or implantation." },
+              { step: "03", title: "Follicular Unit Extraction", desc: "Individual hair follicles extracted one by one from safe donor zone using precision punch tool. Grafts collected in chilled holding solution." },
+              { step: "04", title: "Recipient Site Creation", desc: "Tiny incisions made at appropriate angle and direction for natural-looking growth. Each graft placed individually into prepared sites." },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="w-14 h-14 bg-wine rounded-full flex items-center justify-center text-light font-georgia text-xl mx-auto mb-4 shadow-md">
+                  {item.step}
+                </div>
+                <h3 className="font-georgia text-lg text-brown mb-2 font-semibold">{item.title}</h3>
+                <p className="text-taupe font-inter text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-10">
+            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+              Book Your Free Consultation
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <p className="text-taupe text-sm mt-3">FUE • DHI • FUT — Expert hair restoration at Nexus Clinic KL</p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Beard, Eyebrow, Body Hair Transplant Applications */}
+      <section className="py-20 px-4 bg-light">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Beyond Scalp Hair Restoration</h2>
+            <p className="text-taupe font-inter">Beard, eyebrow, and body hair transplant using FUE</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border-l-4 border-wine">
+              <h3 className="font-georgia text-xl text-wine mb-3">Beard Hair Transplant</h3>
+              <p className="text-taupe font-inter text-sm">Fill patchy beard areas, create a complete beard from limited existing facial hair, or restore beard hair lost to scarring or trauma. Requires 500 to 1,500 grafts. Precise angle and direction placement essential for natural-looking results.</p>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border-l-4 border-wine">
+              <h3 className="font-georgia text-xl text-wine mb-3">Eyebrow Hair Transplant</h3>
+              <p className="text-taupe font-inter text-sm">Address thinning or absent eyebrows from over-plucking, alopecia, trauma, or scarring. Fine hair follicles extracted from nape of neck where hair calibre matches eyebrow texture. Most technically demanding FUE application requiring extreme precision.</p>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl border-l-4 border-wine">
+              <h3 className="font-georgia text-xl text-wine mb-3">Body Hair Transplant</h3>
+              <p className="text-taupe font-inter text-sm">Supplementary donor source for patients with limited scalp donor supply. Hair follicles from chest, abdomen, or beard area extracted and used to supplement scalp grafts. Body hair is finer in calibre, suitable for crown areas where finer coverage is acceptable.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-cream">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-5xl"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-10">
+            <h2 className="font-georgia text-3xl md:text-4xl text-brown">FUE Hair Transplant Cost in Malaysia 2026</h2>
+            <p className="text-taupe font-inter">Transparent pricing at Nexus Clinic KL</p>
+          </motion.div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
+              <thead className="bg-wine text-light">
+                <tr>
+                  <th className="p-4 text-left font-georgia">FUE Hair Transplant Package</th>
+                  <th className="p-4 text-left font-georgia">Graft Count</th>
+                  <th className="p-4 text-left font-georgia">Estimated Total Price (RM) 2026</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricingTiers.map((tier, idx) => (
+                  <tr key={idx} className="border-t border-taupe/10">
+                    <td className="p-4 font-inter font-semibold text-brown">{tier.package}</td>
+                    <td className="p-4 font-inter text-taupe text-sm">{tier.grafts}</td>
+                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="bg-wine/5">
+                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
+                    FUE hair transplant cost in Malaysia is calculated per graft. All consultations are complimentary at Nexus Clinic KL. Final pricing confirmed after scalp assessment.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <motion.div variants={fadeInUp} className="text-center mt-6">
+            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+              Get Your Personalised FUE Hair Transplant Quote
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Before After Section */}
+      <SectionBeforeAfter transformations={transformations} />
+
+      {/* FAQ Section */}
+      <FAQ data={faqData} />
+      
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-wine">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-4xl text-center"
+        >
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <h2 className="font-georgia text-3xl md:text-5xl text-light">
+              Begin Restoring Your Hair at Nexus Clinic KL
+            </h2>
+            <p className="text-xl text-cream font-inter max-w-2xl mx-auto">
+              A hair transplant can be life-changing, but only when it is planned well. If you want a natural hairline and a realistic timeline, start with a proper assessment at Nexus Clinic KL.
+            </p>
+            <p className="text-cream/90 font-inter">
+              Our licensed doctors bring over 15 years of combined experience, perform every procedure personally, and use only MOH-approved techniques. Malaysia offers significant cost advantages over Australia, the UK, or Singapore without compromising clinical standards.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Free Consultation
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <Whatsapp 
+                message="Hi, I'd like to book a consultation for FUE hair transplant at Nexus Clinic KL. Please let me know available slots."
+                variant="light"
+              />
+            </div>
+            <p className="text-cream/80 font-inter text-sm">
+              Limited slots available | Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
+              <a href="#" className="hover:text-cream transition-colors">Call: 016-7025699</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cream transition-colors">WhatsApp: 03-21635699</a>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
     </div>
   );
-};
-
-export default FUEHairTransplant;
+}

@@ -50,7 +50,7 @@ interface MoleRemovalProps {
   locale: string;
 }
 
-export default function MoleRemoval({ locale }: MoleRemovalProps) {
+export default function MoleRemovalLanding({ locale }: MoleRemovalProps) {
   const transformations = [
     {
       id: 1,
