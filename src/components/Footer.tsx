@@ -49,7 +49,7 @@ export const Footer = ({ locale }: { locale?: string }) => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div className="lg:col-span-2">
               <span className="text-2xl mb-6 block font-georgia text-brown">
-                NEXUS<span className="text-wine">CLINIC</span>
+                <img src="/images/logo.png" alt="Nexus Clinic Logo" className="w-[250px] h-auto"/>
               </span>
               <div className="h-20 bg-gray-100 animate-pulse rounded" />
             </div>
@@ -72,8 +72,8 @@ export const Footer = ({ locale }: { locale?: string }) => {
 
   const quickLinks = [
     { label: getText("footer.aboutUs", "About Us"), href: "/about-us" },
-    { label: getText("footer.services", "Services"), href: "/services" },
-    { label: getText("footer.treatments", "Treatments"), href: "/treatments" },
+    { label: getText("footer.services", "Doctors"), href: "/doctors" },
+    { label: getText("footer.treatments", "Gallery"), href: "/gallery" },
     { label: getText("footer.blog", "Blog"), href: "/blogs" },
     { label: getText("footer.contact", "Contact"), href: "/contact-us" },
   ];
@@ -90,7 +90,7 @@ export const Footer = ({ locale }: { locale?: string }) => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <span className="text-2xl mb-6 block font-georgia text-brown">
-              NEXUS<span className="text-wine">CLINIC</span>
+              <img src="/images/logo.png" alt="Nexus Clinic Logo" className="w-[250px] h-auto"/>
             </span>
             <p className="max-w-md mb-6 text-taupe">
               {getText("footer.description", "Advanced aesthetic and medical weight loss clinic in Kuala Lumpur. Where science meets artistry for your natural beauty.")}
@@ -119,21 +119,21 @@ export const Footer = ({ locale }: { locale?: string }) => {
           <div>
             <h4 className="font-semibold mb-6 text-brown">{getText("footer.contactTitle", "Contact")}</h4>
             <ul className="space-y-3 text-taupe">
-              <li>{getText("footer.address", "Wisma UOA II, KL")}</li>
+              <li>{getText("footer.address", "LG 10, Lower Ground Floor, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur, Malaysia.")}</li>
               <li>
                 <a 
-                  href={`tel:${getText("footer.phone", "0167025699").replace(/\s/g, '')}`} 
+                  href={`tel:${getText("footer.phone", "+016-774 5699").replace(/\s/g, '')}`} 
                   className="hover:text-wine transition-colors"
                 >
-                  {getText("footer.phone", "016-702 5699")}
+                  {getText("footer.phone", "+016‑774 5699")}
                 </a>
               </li>
               <li>
                 <a 
-                  href={`mailto:${getText("footer.email", "info@nexusclinic.com")}`} 
+                  href={`mailto:${getText("footer.email", "contact@nexus-clinic.com")}`} 
                   className="hover:text-wine transition-colors"
                 >
-                  {getText("footer.email", "info@nexusclinic.com")}
+                  {getText("footer.email", "contact@nexus-clinic.com")}
                 </a>
               </li>
             </ul>

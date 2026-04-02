@@ -1,5 +1,3 @@
-// app/[locale]/weight-loss/[slug]/page.tsx
-
 import { languages } from "@/src/i18n/settings";
 import { weightlossTreatmentsMetadata } from "@/src/config/weightlossTreatments";
 import type { Metadata } from "next";
@@ -61,8 +59,8 @@ export async function generateMetadata({
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://nexusclinic.my";
   const url =
     locale === "en"
-      ? `${baseUrl}/weightLoss/${slug}`
-      : `${baseUrl}/${locale}/weightLoss/${slug}`;
+      ? `${baseUrl}/weight-loss/${slug}`
+      : `${baseUrl}/${locale}/weight-loss/${slug}`;
 
   return {
     title: treatment.title,

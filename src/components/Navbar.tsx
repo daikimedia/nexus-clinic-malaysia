@@ -120,6 +120,8 @@ const navItems = [
     },
   },
   { label: "nav.products", fallback: "Products", href: "/products" },
+  { label: "nav.gallery", fallback: "Gallery", href: "/gallery" },
+  { label: "nav.doctors", fallback: "Doctors", href: "/doctors" },
   { label: "nav.blogs", fallback: "Blogs", href: "/blogs" },
 ];
 
