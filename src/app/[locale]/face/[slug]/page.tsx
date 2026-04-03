@@ -13,6 +13,7 @@ import NoseFiller from "@/src/views/faceTreatment/NoseFiller";
 import CheekFiller from "@/src/views/faceTreatment/CheekFiller";
 import TearTroughFiller from "@/src/views/faceTreatment/TearTroughFiller";
 import UnderEyeFiller from "@/src/views/faceTreatment/UnderEyeFiller";
+import { notFound } from "next/navigation";
 
 const components = {
   DermalFiller,
@@ -46,9 +47,17 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const treatment = faceTreatmentsMetadata.find(t => t.slug === slug);
   
-  if (!treatment) return {};
+  if (!treatment) {
+    return {
+      title: "Page Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
   
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://nexusclinic.my';
+  const baseUrl = process.env.BASE_URL;
   const url = locale === 'en' 
     ? `${baseUrl}/face/${slug}` 
     : `${baseUrl}/${locale}/face/${slug}`;
@@ -74,9 +83,9 @@ export default async function FaceTreatmentPage({
   const { locale, slug } = await params;
   
   const treatment = faceTreatmentsMetadata.find(t => t.slug === slug);
-  if (!treatment) return <div>Treatment not found</div>;
+  if (!treatment) notFound();
   
   const Component = components[treatment.component as keyof typeof components];
-  
+   if (!Component) notFound();
   return <Component locale={locale} />;
 }

@@ -22,6 +22,7 @@ import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import GalleryPage from "./SliderGallery";
 import { DoctorsSection } from "../components/DoctorSection";
+import FAQ from "../components/FAQ";
 import SectionBeforeAfter from "../components/BeforeAfterCustomize";
 const GlassCard = ({
   children,
@@ -248,7 +249,7 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
 
                 {/* Treatment Gallery Card */}
                 <GlassCard
-                  className="absolute -top-4 lg:top-80 -right-4 lg:-right-12 p-2 lg:p-5 max-w-70"
+                  className="absolute -top-4 lg:top-80 -right-4 lg:-right-12 p-2 lg:p-5 max-w-70 hidden md:block"
                   delay={1.6}
                 >
                   <div className="flex items-center justify-between mb-3">
@@ -297,7 +298,7 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hidden md:block"
       >
         <span className="text-xs tracking-widest text-taupe">
           {t("hero.scroll")}
@@ -840,6 +841,48 @@ const beforeAfterData = [
     after: "/images/B&A-skin/B&A-pigmentation-treatment1.webp",
   },
 ];
+const faqData = [
+  {
+    q: "What does Nexus Clinic specialize in?",
+    a: "Nexus Clinic specializes in aesthetic treatments for the face, skin, and medical weight loss. Our goal is to provide personalized care with natural-looking results."
+  },
+  {
+    q: "Is Nexus Clinic a doctor-led aesthetic clinic?",
+    a: "Yes, Nexus Clinic is a doctor-led aesthetic clinic. Patient safety, treatment suitability, and natural results are at the heart of our approach."
+  },
+  {
+    q: "What treatments are available at Nexus Clinic?",
+    a: "At Nexus Clinic, we offer a range of aesthetic services that may include facial rejuvenation, skin treatments, and medical weight loss support. Your recommended treatment depends on your needs and goals."
+  },
+  {
+    q: "Does Nexus Clinic focus on natural-looking results?",
+    a: "Yes. At Nexus Clinic, we believe aesthetic treatments should enhance your features in a soft and balanced way. We focus on results that look refreshed, not overdone."
+  },
+  {
+    q: "Can I visit Nexus Clinic for skin concerns?",
+    a: "Yes, Nexus Clinic offers treatments for common skin concerns such as dullness, uneven texture, acne, pigmentation, and signs of aging. A consultation helps us guide you to the right option."
+  },
+  {
+    q: "Does Nexus Clinic offer weight loss treatments?",
+    a: "Yes, Nexus Clinic provides medically guided weight loss support for patients looking for a more structured and professional approach to their journey."
+  },
+  {
+    q: "How do I know which treatment at Nexus Clinic is right for me?",
+    a: "The best way is to book a consultation at Nexus Clinic. We will assess your concerns, listen to your goals, and recommend a treatment plan that fits you."
+  },
+  {
+    q: "Is Nexus Clinic suitable for first-time aesthetic patients?",
+    a: "Yes. Many patients visit Nexus Clinic for their first aesthetic consultation. We explain everything clearly and recommend only what is suitable for you."
+  },
+  {
+    q: "Where is Nexus Clinic located?",
+    a: "Nexus Clinic is located at LG 10, Wisma UOA II, Jalan Pinang, Kuala Lumpur."
+  },
+  {
+    q: "How can I book an appointment with Nexus Clinic?",
+    a: "You can contact Nexus Clinic by phone or use the booking form on the website to arrange your consultation."
+  }
+];
 
 export default function HomePageNexus({
   locale = fallbackLng,
@@ -898,36 +941,7 @@ export default function HomePageNexus({
       <WhyChooseSection t={t} />
       <TestimonialsSection t={t} />
       <ContactSection t={t} />
-
-      <motion.a
-        href="https://wa.me/60167025699"
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ scale: 0 }}
-        animate={
-          isActive
-            ? {
-                scale: [1, 1.15, 1],
-                opacity: [1, 0.6, 1],
-              }
-            : { scale: 1, opacity: 1 }
-        }
-        transition={
-          isActive
-            ? {
-                duration: 1,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }
-            : { duration: 0.3 }
-        }
-        whileHover={{ scale: 1.2 }}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-50 bg-[#25D366]"
-      >
-        <MessageCircle className="text-white" size={24} />
-      </motion.a>
-
-
+      <FAQ data={faqData} />
     </div>
   );
 }

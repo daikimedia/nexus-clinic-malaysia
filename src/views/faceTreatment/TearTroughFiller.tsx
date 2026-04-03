@@ -1,38 +1,32 @@
 "use client";
 import { motion } from "framer-motion";
 import {
-  Sparkles,
-  Award,
-  MapPin,
-  Calendar,
   CheckCircle,
   Syringe,
   Clock,
   Heart,
-  Shield,
   ArrowRight,
   AlertCircle,
-  Activity,
   Zap,
   Eye,
   AlertTriangle,
   Droplet,
   TrendingUp,
   User,
-  Sun,
   Wind,
-  Droplets,
 } from "lucide-react";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
   fadeInUp,
-  scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
-import Image from "next/image";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
+import TableForPages from "@/src/components/TableForPages";
+import ClinicTrustSection from "@/src/components/ClinicTrustSection";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import Link from "next/link";
 
 interface TearTroughFillerProps {
   locale: string;
@@ -103,183 +97,28 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Under-Eye Rejuvenation</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Tear Trough Filler in Malaysia for{" "}
-                <span className="text-wine">Brighter, Refreshed Under-Eyes That Look Rested</span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                The under-eye area is where the face gives away how you feel before you say a word. 
-                Dark hollows, heavy shadows, and a sunken groove create the impression of tiredness, stress, and age.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Tear trough filler at Nexus Clinic Kuala Lumpur addresses the structural cause of that shadow: 
-                the hollow groove that forms as orbital volume depletes and the cheek descends away from the lower eyelid. 
-                Soft, precisely placed hyaluronic acid filler smooths the transition, reducing the shadow and restoring a brighter, more rested appearance.
-              </motion.p>
-
-              <motion.div className="bg-wine/5 p-4 rounded-xl border-l-4 border-wine">
-                <p className="text-wine font-inter font-semibold text-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  Important Clinical Note
-                </p>
-                <p className="text-taupe font-inter text-sm mt-1">
-                  Not every dark circle or eye bag responds to filler. A proper diagnostic assessment before treatment protects your result and your investment.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-2"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book Under-Eye Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in tear trough filler at Nexus Clinic KL. I'd like to book a consultation." variant="light" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/face/Tear Trough Filler.png"
-                  alt="Nexus Clinic Kuala Lumpur - Tear Trough Filler Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">✨ Refreshed Look</p>
-                <p className="font-inter text-sm text-taupe">Restored brightness • Natural results</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Trust Section */}
-      <section className="py-12 px-4 bg-light">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-5xl"
-        >
-          <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-taupe/20 shadow-xl hover:shadow-2xl transition-all duration-300">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-wine/10 rounded-full flex items-center justify-center">
-                  <Award className="w-6 h-6 text-wine" />
-                </div>
-                <h2 className="font-georgia text-2xl md:text-3xl text-brown">Trust at a glance</h2>
-              </div>
-              <div className="hidden sm:block w-px h-8 bg-taupe/20" />
-              <p className="text-taupe font-inter text-sm">Nexus Clinic Kuala Lumpur — Excellence in Aesthetic Medicine</p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-4 border-y border-taupe/10">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
-                  <Award className="w-5 h-5 text-wine" />
-                </div>
-                <div>
-                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Established</p>
-                  <p className="font-georgia text-brown font-bold text-lg">2001</p>
-                  <p className="font-inter text-taupe text-xs">Over 20 years of excellence</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-wine" />
-                </div>
-                <div>
-                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Location</p>
-                  <p className="font-georgia text-brown font-bold text-sm">Wisma UOA II, Jalan Pinang</p>
-                  <p className="font-inter text-taupe text-xs">KLCC, 50450 Kuala Lumpur</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-wine/5 rounded-full flex items-center justify-center">
-                  <Calendar className="w-5 h-5 text-wine" />
-                </div>
-                <div>
-                  <p className="font-inter text-xs text-taupe uppercase tracking-wide">Opening Hours</p>
-                  <p className="font-georgia text-brown font-bold text-sm">Monday - Saturday</p>
-                  <p className="font-inter text-taupe text-xs">9:00am – 6:00pm | Closed Sundays & PH</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-2">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
-                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                    <Shield className="w-4 h-4 text-wine" />
-                  </div>
-                  <div>
-                    <p className="font-inter font-semibold text-brown text-sm">Cannula Technique</p>
-                    <p className="font-inter text-taupe text-xs leading-relaxed">Single entry point, minimised bruising</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
-                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                    <Eye className="w-4 h-4 text-wine" />
-                  </div>
-                  <div>
-                    <p className="font-inter font-semibold text-brown text-sm">Tyndall Effect Prevention</p>
-                    <p className="font-inter text-taupe text-xs leading-relaxed">Deep placement, low-hygroscopic products</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 group hover:translate-x-1 transition-transform">
-                  <div className="w-8 h-8 bg-wine/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                    <CheckCircle className="w-4 h-4 text-wine" />
-                  </div>
-                  <div>
-                    <p className="font-inter font-semibold text-brown text-sm">Low-Volume Discipline</p>
-                    <p className="font-inter text-taupe text-xs leading-relaxed">0.3-0.8ml per side for natural results</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+          badge="Under-Eye Rejuvenation"
+          title="Tear Trough Filler in Malaysia for"
+          highlight="Brighter, Refreshed Under-Eyes That Look Rested"
+          description="The under-eye area is where the face gives away how you feel before you say a word."
+          details="Tear trough filler at Nexus Clinic Kuala Lumpur addresses the structural cause of that shadow."
+          floatingTitle = "✨ Refreshed Look"
+          floatingSubtitle = "Restored brightness • Natural results"
+          note="Not every dark circle or eye bag responds to filler."
+          image="/images/face/Tear Trough Filler.png"
+          imageAlt="Tear Trough Filler"
+          ctaText="Book Under-Eye Assessment"
+          ctaLink="/contact-us"
+          whatsappMessage="Hi, I'm interested in tear trough filler at Nexus Clinic KL."
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
+        <ClinicTrustSection 
+        fadeInUp={fadeInUp}
+        />
 
       {/* Treatment Overview Section */}
       <section className="py-16 px-4 bg-cream">
@@ -332,15 +171,31 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
+            href="/contact-us">
               Speak to a Doctor About Your Under-Eye Concern | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Four Types of Dark Circles Table */}
+      <TableForPages
+        columns={[
+          { key: "type", header: "Type" },
+          { key: "cause", header: "What Causes It" },
+          { key: "appearance", header: "What It Looks Like" },
+          { key: "treatment", header: "Best Treatment" },
+        ]}
+        data={darkCircleTypes}
+        title="The Four Types of Dark Circles in Malaysia"
+        subtitle="Only one responds well to filler"
+        variant="detailed"
+        fadeInUp={fadeInUp}
+        className="pt-20"
+      />
+
+
       <section className="py-20 px-4 bg-light">
         <motion.div
           variants={staggerContainer}
@@ -349,34 +204,6 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-6xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">The Four Types of Dark Circles in Malaysia</h2>
-            <p className="text-taupe font-inter">Only one responds well to filler</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Type</th>
-                  <th className="p-4 text-left font-georgia">What Causes It</th>
-                  <th className="p-4 text-left font-georgia">What It Looks Like</th>
-                  <th className="p-4 text-left font-georgia">Best Treatment</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {darkCircleTypes.map((type, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{type.type}</td>
-                    <td className="p-4 text-taupe font-inter">{type.cause}</td>
-                    <td className="p-4 text-taupe font-inter">{type.appearance}</td>
-                    <td className="p-4 text-taupe font-inter">{type.treatment}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter text-sm">
               Many patients have a combination of more than one type. A proper diagnostic assessment before treatment is essential.
@@ -385,10 +212,11 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
+            href="/contact-us">
               Get a Proper Under-Eye Diagnosis | Free Assessment
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -455,10 +283,10 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
                   Patients who need cheek support first are given a staged treatment recommendation.
                 </p>
               </div>
-              <button className="mt-4 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+              <Link className="mt-4 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all" href="/contact-us">
                 Get the Right Treatment Sequence for Your Eyes
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -505,10 +333,10 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all" href="/contact-us">
               Book with a Clinic That Understands Why This Treatment Is Different
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -548,10 +376,11 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"          
+            href="/contact-us">     
               Ask Which Product Is Right for Your Under-Eyes
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -588,56 +417,29 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2" href="/contact-us">
               Book Your Tear Trough Filler Appointment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Pricing Section */}
       <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Tear Trough Filler Price in Malaysia</h2>
-            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Typical Volume</th>
-                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe">{tier.volume}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="bg-wine/5">
-                  <td colSpan={3} className="p-4 text-taupe font-inter text-sm italic">
-                    * All treatments are customised based on your under-eye condition. Final pricing confirmed during consultation.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+        <div className="container mx-auto max-w-4xl">
+          <TableForPages
+            columns={[
+              { key: "treatment", header: "Treatment" },
+              { key: "volume", header: "Typical Volume" },
+              { key: "price", header: "Price Range (2026)" },
+            ]}
+            data={pricingTiers}
+            title="Tear Trough Filler Price in Malaysia"
+            subtitle="Transparent 2026 Pricing at Nexus Clinic KL"
+            variant="compact"
+            fadeInUp={fadeInUp}
+          />
           
           <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl text-center">
             <p className="text-taupe text-sm">
@@ -648,12 +450,12 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all" href="/contact-us">
               Get Your Personalised Tear Trough Quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Longevity Reality Section */}
@@ -890,14 +692,15 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
               You leave knowing exactly what is causing your under-eye concern and whether filler is the right treatment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Under-Eye Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for tear trough filler at Nexus Clinic KL. Please let me know available slots."
                 variant="light"
@@ -907,9 +710,10 @@ export default function TearTroughFiller({ locale }: TearTroughFillerProps) {
               Limited slots available this week | Located at Wisma UOA II, Jalan Pinang, KLCC — Serving Malaysia since 2001
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
-              <a href="#" className="hover:text-cream transition-colors">Explore Cheek Filler</a>
+              <a href="/cheek-filler-malaysia
+              " className="hover:text-cream transition-colors">Explore Cheek Filler</a>
               <span>•</span>
-              <a href="#" className="hover:text-cream transition-colors">Explore Skin Boosters</a>
+              <a href="/face/skin-booster-malaysia" className="hover:text-cream transition-colors">Explore Skin Boosters</a>
             </div>
           </motion.div>
         </motion.div>

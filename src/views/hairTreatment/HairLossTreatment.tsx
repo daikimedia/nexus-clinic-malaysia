@@ -888,7 +888,7 @@ export default function HairLossTreatment({ locale }: HairLossTreatmentProps) {
             <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center text-cream/70 text-sm">
               <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Phone className="w-4 h-4" /> Call: 016-7025699</a>
               <span>•</span>
-              <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Mail className="w-4 h-4" /> Email: info@nexusclinic.my</a>
+              <a href="#" className="hover:text-cream transition-colors flex items-center gap-2"><Mail className="w-4 h-4" /> Email: contact@nexus-clinic.com</a>
             </div>
           </motion.div>
         </motion.div>

@@ -1,5 +1,6 @@
 import Navbar from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
+import { FloatingWhatsapp } from "@/src/components/Whatsapp";
 
 export default async function LocaleLayout({
   children,
@@ -15,6 +16,7 @@ export default async function LocaleLayout({
       <Navbar locale={locale} />
       {children}
       <Footer locale={locale} />
+      <FloatingWhatsapp isActive={true} hideOnMobile={false} />
     </>
   );
 }

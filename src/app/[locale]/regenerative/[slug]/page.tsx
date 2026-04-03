@@ -1,10 +1,7 @@
-// app/[locale]/regenerative/[slug]/page.tsx
-
 import { languages } from "@/src/i18n/settings";
-import { regenerativeTreatmentsMetadata } from "@/src/config/regenerativeTreatments";
 import type { Metadata } from "next";
 
-// Import all components
+import { regenerativeTreatmentsMetadata } from "@/src/config/regenerativeTreatments";
 import Testosterone from "@/src/views/regenerative/Testosterone";
 import EDTreatment from "@/src/views/regenerative/EDTreatment";
 import HormoneReplacement from "@/src/views/regenerative/HormoneReplacement";
@@ -17,7 +14,8 @@ import Monopause from "@/src/views/regenerative/Monopause";
 import PShotMalaysia from "@/src/views/regenerative/PShotMalaysia";
 import OShotMalaysia from "@/src/views/regenerative/OShotMalaysia";
 import ShockwaveTheraphy from "@/src/views/regenerative/ShockwaveTheraphy";
-import Default from "@/src/views/regenerative/Default";
+import { notFound } from "next/navigation";
+
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
   Testosterone,
@@ -52,9 +50,17 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const treatment = regenerativeTreatmentsMetadata.find(t => t.slug === slug);
   
-  if (!treatment) return {};
+  if (!treatment) {
+    return {
+      title: "Page Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
   
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://nexusclinic.my';
+  const baseUrl = process.env.BASE_URL;
   const url = locale === 'en' 
     ? `${baseUrl}/regenerative/${slug}` 
     : `${baseUrl}/${locale}/regenerative/${slug}`;
@@ -85,9 +91,9 @@ export default async function RegenerativeTreatmentPage({
   const { locale, slug } = await params;
   
   const treatment = regenerativeTreatmentsMetadata.find(t => t.slug === slug);
-  if (!treatment) return <Default locale={locale} />;
+  if (!treatment) notFound();
   
-  const Component = components[treatment.component] || Default;
-  
+  const Component = components[treatment.component];
+   if (!Component) notFound();
   return <Component locale={locale} />;
 }

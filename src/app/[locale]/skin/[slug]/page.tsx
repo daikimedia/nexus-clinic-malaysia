@@ -1,5 +1,3 @@
-// app/[locale]/skin/[slug]/page.tsx
-
 import { languages } from "@/src/i18n/settings";
 import { skinTreatmentsMetadata } from "@/src/config/skinTreatments";
 import type { Metadata } from "next";
@@ -19,9 +17,9 @@ import KeloidTreatment from "@/src/views/skinTreatment/KeloidTreatment";
 import RosaceaTreatment from "@/src/views/skinTreatment/RosaceaTreatment";
 import LaserHairRemoval from "@/src/views/skinTreatment/LaserHairRemoval";
 import TattooRemoval from "@/src/views/skinTreatment/TattooRemoval";
-import Default from "@/src/views/skinTreatment/Default";
 import Hydrafacial from "@/src/views/skinTreatment/Hrdrafracial";
 import StretchMarkRemoval from "@/src/views/skinTreatment/StretchMarkTreatment";
+import { notFound } from "next/navigation";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
   AcneTreatment,
@@ -59,9 +57,17 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const treatment = skinTreatmentsMetadata.find((t) => t.slug === slug);
 
-  if (!treatment) return {};
+  if (!treatment) {
+    return {
+      title: "Page Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://nexusclinic.my";
+  const baseUrl = process.env.BASE_URL;
   const url =
     locale === "en"
       ? `${baseUrl}/skin/${slug}`
@@ -88,9 +94,9 @@ export default async function SkinTreatmentPage({
   const { locale, slug } = await params;
 
   const treatment = skinTreatmentsMetadata.find((t) => t.slug === slug);
-  if (!treatment) return <Default locale={locale} />;
+  if (!treatment) notFound();
 
-  const Component = components[treatment.component] || Default;
-
+  const Component = components[treatment.component];
+  if (!Component) notFound();
   return <Component locale={locale} />;
 }

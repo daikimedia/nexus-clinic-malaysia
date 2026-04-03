@@ -73,6 +73,33 @@ class WordPressService {
     
     return this.getPosts({ ...params, categories: [category.id] });
   }
+  //  for SEO sitemap generation
+  async getAllPosts(): Promise<WordPressPost[]> {
+  let allPosts: WordPressPost[] = [];
+  let page = 1;
+  const perPage = 100;
+
+  while (true) {
+    const response = await fetch(
+      `${API_BASE_URL}/posts?page=${page}&per_page=${perPage}`,
+      {
+        next: { revalidate: 3600 }, // cache 1 hour
+      }
+    );
+
+    if (!response.ok) break;
+
+    const data: WordPressPost[] = await response.json();
+
+    if (!data.length) break;
+
+    allPosts = [...allPosts, ...data];
+    page++;
+  }
+
+  return allPosts;
+}
+
 }
 
 export const wordpressService = new WordPressService();

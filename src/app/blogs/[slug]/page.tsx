@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { ShareButton } from "@/src/components/blog/ShareButton"; 
 
+    const baseUrl = process.env.BASE_URL;
 export async function generateMetadata({ 
   params 
 }: { 
@@ -34,7 +35,6 @@ export async function generateMetadata({
         title: "Blog Post Not Found",
       };
     }
-    
     const post = adaptWordPressPost(wordPressPost, 0);
     
     if (post.seo) {
@@ -42,7 +42,7 @@ export async function generateMetadata({
         title: post.seo.title,
         description: post.seo.description,
         alternates: {
-          canonical: post.seo.canonical || `https://nexus-clinic-malaysia.vercel.app/blogs/${slug}`,
+          canonical: post.seo.canonical || `${baseUrl}/blogs/${slug}`,
         },
         openGraph: {
           title: post.seo.ogTitle,
@@ -51,7 +51,7 @@ export async function generateMetadata({
           type: 'article',
           publishedTime: wordPressPost.date,
           modifiedTime: wordPressPost.modified,
-          url: `https://nexus-clinic-malaysia.vercel.app/blogs/${slug}`,
+          url: `${baseUrl}/blogs/${slug}`,
         },
         twitter: {
           card: 'summary_large_image',
@@ -125,7 +125,7 @@ export default async function Page({
           "text": faq.answer
         }
       })),
-      "url": `https://nexus-clinic-malaysia.vercel.app/blogs/${slug}`
+      "url": `${baseUrl}/blogs/${slug}`
     } : null;
     return (
       <>

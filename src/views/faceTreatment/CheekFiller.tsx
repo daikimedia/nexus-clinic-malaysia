@@ -1,18 +1,18 @@
 "use client";
 import { motion } from "framer-motion";
-import FAQ from "../../components/FAQ";
-import Whatsapp from "../../components/Whatsapp";
+import FAQ from "@/src/components/FAQ";
+import Whatsapp from "@/src/components/Whatsapp";
+import AllPagesHero from "@/src/components/AllPagesHero";
+import TableForPages from "@/src/components/TableForPages";
+import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Calendar, Award, ArrowRight, CheckCircle, Clock, Syringe, Heart, Shield, Sparkles, Droplet, Gem, Zap, Eye, ArrowUp } from "lucide-react";
+import { ArrowRight, CheckCircle, Clock, Syringe, Heart, Shield, Sparkles, Droplet, Gem, Zap, Eye, ArrowUp } from "lucide-react";
 import {
   staggerContainer,
   fadeInLeft,
   fadeInRight,
   fadeInUp,
-  scaleIn,
-  containerVariants,
-  rowVariants,
-} from "../../lib/animations";
+} from "@/src/lib/animations";
 
 interface CheekFillerProps {
   locale: string;
@@ -149,84 +149,25 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
 
   return (
     <div className="w-full bg-light overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-light to-rose/15" />
-        
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container mx-auto max-w-6xl relative z-10"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-rose/10 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-wine font-medium">Non-Surgical Midface Lift</span>
-              </motion.div>
-              
-              <motion.h1
-                variants={fadeInUp}
-                className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight"
-              >
-                Sculpted Cheek Filler in Malaysia for a{" "}
-                <span className="text-wine italic">Lifted, Youthful Midface</span> Without Surgery
-              </motion.h1>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-lg md:text-xl text-taupe font-inter leading-relaxed"
-              >
-                Your cheeks are the structural foundation of your face. When they are full and well-positioned, 
-                the eyes look brighter, the nasolabial folds stay shallow and the lower face holds its definition.
-              </motion.p>
-
-              <motion.p
-                variants={fadeInUp}
-                className="text-brown font-inter"
-              >
-                Cheek filler at Nexus Clinic Kuala Lumpur works at that structural level, enhancing skin texture and volume. 
-                Using high-density hyaluronic acid products placed precisely at the cheekbone and in the midface fat compartments, 
-                our doctors restore the volume and lift that the face needs to look balanced, rested and defined.
-              </motion.p>
-
-              <motion.div 
-                variants={fadeInLeft} 
-                className="flex flex-col sm:flex-row gap-4 items-center justify-start"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-wine text-light px-8 py-4 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto"
-                >
-                  Book free consultation
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <Whatsapp message="Hi, I'm interested in cheek filler at Nexus Clinic KL. I'd like to book a consultation." />
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
-                <Image
-                  src="/images/face/Cheek Filler Treatment.png"
-                  alt="Nexus Clinic Kuala Lumpur - Cheek Filler Treatment"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/20 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-cream p-4 rounded-xl shadow-lg hidden md:block">
-                <p className="font-inter font-bold text-brown">✨ Immediate Results</p>
-                <p className="font-inter text-sm text-taupe">Minimal downtime • Natural lift</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
+      <AllPagesHero
+        badge="Non-Surgical Midface Lift"
+        title="Sculpted Cheek Filler in Malaysia for a"
+        highlight="Lifted, Youthful Midface"
+        description="Your cheeks are the structural foundation of your face. When they are full and well-positioned, the eyes look brighter, the nasolabial folds stay shallow and the lower face holds its definition."
+        details="Cheek filler at Nexus Clinic Kuala Lumpur works at that structural level, enhancing skin texture and volume. Using high-density hyaluronic acid products placed precisely at the cheekbone and in the midface fat compartments, our doctors restore the volume and lift that the face needs to look balanced, rested and defined."
+        note="Not all cheek fillers are created equal. The product choice and placement technique significantly affect your results and safety."
+        image="/images/face/Cheek Filler Treatment.png"
+        imageAlt="Nexus Clinic Kuala Lumpur - Cheek Filler Treatment"
+        ctaText="Book free consultation"
+        ctaLink="/contact-us"
+        whatsappMessage="Hi, I'm interested in cheek filler at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="✨ Immediate Results"
+        floatingSubtitle="Minimal downtime • Natural lift"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
 
       {/* Treatment Overview Section */}
       <section className="py-16 px-4 bg-cream">
@@ -279,10 +220,11 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
+              href="/contact-us">
               Speak to a Doctor About Your Midface Goals
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -328,10 +270,11 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
                   className="object-cover"
                 />
               </div>
-              <button className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+              <Link className="mt-6 text-wine font-inter font-semibold flex items-center gap-2 hover:gap-3 transition-all"
+                href="/contact-us">
                 Get a Cheek Assessment Built for Your Anatomy
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -387,10 +330,11 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
+              href="/contact-us">
               Understand Your Cascade Effect Potential
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -431,10 +375,11 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
+              href="/contact-us">
               Book a Gender-Specific Cheek Filler Plan
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -448,31 +393,24 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           viewport={{ once: true }}
           className="container mx-auto max-w-5xl"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Cheek Filler by Age Group</h2>
-            <p className="text-taupe font-inter">Sculpting in your 20s, restoring in your 30s and beyond</p>
-          </motion.div>
           
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine/10">
-                <tr>
-                  <th className="p-4 text-left font-georgia text-brown">Age Group</th>
-                  <th className="p-4 text-left font-georgia text-brown">Primary Concern</th>
-                  <th className="p-4 text-left font-georgia text-brown">Treatment Approach</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ageGroups.map((group, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/50 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{group.range}</td>
-                    <td className="p-4 text-taupe font-inter">{group.concern}</td>
-                    <td className="p-4 text-taupe font-inter">{group.approach}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TableForPages
+            columns={[
+              { key: "range", header: "Age Group", className: "font-semibold text-brown" },
+              { key: "concern", header: "Primary Concern" },
+              { key: "approach", header: "Treatment Approach" },
+            ]}
+            data={ageGroups.map(group => ({
+              range: group.range,
+              concern: group.concern,
+              approach: group.approach,
+            }))}
+            title="Cheek Filler by Age Group"
+            subtitle="Understanding how your needs change at every decade"
+            variant="detailed"
+            fadeInUp={fadeInUp}
+            className="py-20 px-4"
+          />
           
           <motion.div variants={fadeInUp} className="mt-8 p-5 bg-wine/5 rounded-xl text-center">
             <p className="text-brown font-inter">
@@ -482,10 +420,11 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
+              href="/contact-us">
               Find Out the Right Approach for Your Age and Goals
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -529,10 +468,11 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
+              href="/contact-us">
               Ask About the Right Product for Your Cheeks
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -569,10 +509,11 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           </div>
           
           <motion.div variants={fadeInUp} className="text-center mt-10">
-            <button className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2">
+            <Link className="bg-wine text-light px-8 py-3 rounded-full font-georgia text-lg hover:bg-wine/90 transition-all shadow-lg inline-flex items-center gap-2"
+              href="/contact-us">
               Book Your Cheek Filler Appointment
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
             <p className="text-taupe text-sm mt-3">Same-day results at Nexus Clinic KL</p>
           </motion.div>
         </motion.div>
@@ -586,33 +527,28 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           whileInView="visible"
           viewport={{ once: true }}
           className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-10">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Cheek Filler Price in Malaysia</h2>
-            <p className="text-taupe font-inter">Transparent 2026 Pricing at Nexus Clinic KL</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-cream rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Treatment</th>
-                  <th className="p-4 text-left font-georgia">Typical Volume</th>
-                  <th className="p-4 text-left font-georgia">Price Range (2026)</th>
-                 </tr>
-              </thead>
-              <tbody>
-                {pricingTiers.map((tier, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10">
-                    <td className="p-4 font-inter text-brown">{tier.treatment}</td>
-                    <td className="p-4 font-inter text-taupe">{tier.volume}</td>
-                    <td className="p-4 font-inter font-semibold text-wine">{tier.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        >          
+        <section className="py-20 px-4 bg-cream">
+          <div className="container mx-auto max-w-4xl">
+            <TableForPages
+              columns={[
+                { key: "treatment", header: "Treatment" },
+                { key: "volume", header: "Typical Volume" },
+                { key: "price", header: "Price Range (2026)" },
+              ]}
+              data={pricingTiers.map(tier => ({
+                treatment: tier.treatment,
+                volume: tier.volume,
+                price: tier.price,
+              }))}
+              title="Cheek Filler Price in Malaysia"
+              subtitle="Transparent 2026 Pricing at Nexus Clinic KL"
+              variant="compact"
+              fadeInUp={fadeInUp}
+            />
           </div>
-          
+        </section>
+
           <motion.div variants={fadeInUp} className="mt-8">
             <h3 className="font-georgia text-xl text-brown mb-3">What Affects Cheek Filler Price in Kuala Lumpur</h3>
             <ul className="space-y-2">
@@ -630,10 +566,11 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
           </motion.p>
           
           <motion.div variants={fadeInUp} className="text-center mt-6">
-            <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all">
+            <Link className="inline-flex items-center gap-2 text-wine font-inter font-semibold hover:gap-3 transition-all"
+              href="/contact-us">
               Get Your Personalised Cheek Filler Quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -722,14 +659,15 @@ export default function CheekFiller({ locale }: CheekFillerProps) {
               One consultation at Nexus Clinic KL is enough to understand exactly what cheek filler can achieve for your specific anatomy.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-8 py-4 rounded-full font-georgia text-lg hover:bg-cream transition-all shadow-lg flex items-center justify-center gap-2"
               >
                 Book Your Free Consultation Now
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               <Whatsapp 
                 message="Hi, I'd like to book a free consultation for cheek filler at Nexus Clinic KL. Please let me know available slots."
                 variant="light"

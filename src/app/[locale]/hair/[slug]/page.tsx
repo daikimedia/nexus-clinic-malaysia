@@ -1,10 +1,6 @@
-// app/[locale]/hair/[slug]/page.tsx
-
 import { languages } from "@/src/i18n/settings";
-import { hairTreatmentsMetadata } from "@/src/config/hairTreatments";
 import type { Metadata } from "next";
-
-// Import all components
+import { hairTreatmentsMetadata } from "@/src/config/hairTreatments";
 import HairTransplant from "@/src/views/hairTreatment/HairTransplant";
 import FUEHairTransplant from "@/src/views/hairTreatment/FUEHairTransplant";
 import PRPHair from "@/src/views/hairTreatment/PRPHair";
@@ -14,7 +10,7 @@ import HairMesotherapy from "@/src/views/hairTreatment/HairMesotherapy";
 import ExosomeHair from "@/src/views/hairTreatment/ExosomeHair";
 import MinoxidilTreatment from "@/src/views/hairTreatment/MinoxidilTreatment";
 import Finasteride from "@/src/views/hairTreatment/Finasteride";
-import Default from "@/src/views/hairTreatment/Default";
+import { notFound } from "next/navigation";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
   HairTransplant,
@@ -46,9 +42,17 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const treatment = hairTreatmentsMetadata.find(t => t.slug === slug);
   
-  if (!treatment) return {};
+  if (!treatment) {
+    return {
+      title: "Page Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
   
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://nexusclinic.my';
+  const baseUrl = process.env.BASE_URL;
   const url = locale === 'en' 
     ? `${baseUrl}/hair/${slug}` 
     : `${baseUrl}/${locale}/hair/${slug}`;
@@ -79,9 +83,9 @@ export default async function HairTreatmentPage({
   const { locale, slug } = await params;
   
   const treatment = hairTreatmentsMetadata.find(t => t.slug === slug);
-  if (!treatment) return <Default locale={locale} />;
+  if (!treatment) notFound();
   
-  const Component = components[treatment.component] || Default;
-  
+  const Component = components[treatment.component];
+   if (!Component) notFound();
   return <Component locale={locale} />;
 }

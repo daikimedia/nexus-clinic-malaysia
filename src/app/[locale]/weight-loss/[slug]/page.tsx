@@ -1,8 +1,7 @@
 import { languages } from "@/src/i18n/settings";
-import { weightlossTreatmentsMetadata } from "@/src/config/weightlossTreatments";
 import type { Metadata } from "next";
 
-// Import all components (create these files)
+import { weightlossTreatmentsMetadata } from "@/src/config/weightlossTreatments";
 import CoolSculpting from "@/src/views/weightlossTreatment/Coolsculpting";
 import FatFreezing from "@/src/views/weightlossTreatment/FatFreezing";
 import Ozempic from "@/src/views/weightlossTreatment/PageOzempicMalaysia";
@@ -13,11 +12,11 @@ import HCGWeightLoss from "@/src/views/weightlossTreatment/HCG";
 import Duromine from "@/src/views/weightlossTreatment/Duromine";
 import Zepbound from "@/src/views/weightlossTreatment/ZepBound";
 import IVDrip from "@/src/views/weightlossTreatment/IVDrip";
-import Default from "@/src/views/weightlossTreatment/Default";
 import PageOzempicMalaysia from "@/src/views/weightlossTreatment/PageOzempicMalaysia";
 import GLP1LandingPage from "@/src/views/weightlossTreatment/GLP";
 import SimaglutideLanding from "@/src/views/weightlossTreatment/SimaglutideInjection";
 import TirzepatideLanding from "@/src/views/weightlossTreatment/Tirzepatide";
+import { notFound } from "next/navigation";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
   CoolSculpting,
@@ -54,9 +53,18 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const treatment = weightlossTreatmentsMetadata.find((t) => t.slug === slug);
 
-  if (!treatment) return {};
+  if (!treatment) {
+    return {
+      title: "Page Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://nexusclinic.my";
+
+  const baseUrl = process.env.BASE_URL;
   const url =
     locale === "en"
       ? `${baseUrl}/weight-loss/${slug}`
@@ -88,9 +96,9 @@ export default async function WeightLossTreatmentPage({
   const { locale, slug } = await params;
 
   const treatment = weightlossTreatmentsMetadata.find((t) => t.slug === slug);
-  if (!treatment) return <Default locale={locale} />;
-
-  const Component = components[treatment.component] || Default;
-
+  if (!treatment) notFound();
+  const Component = components[treatment.component];
+  
+    if (!Component) notFound();
   return <Component locale={locale} />;
 }
