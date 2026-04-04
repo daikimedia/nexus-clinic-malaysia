@@ -10,7 +10,7 @@ import { weightlossTreatmentsMetadata } from "@/src/config/weightlossTreatments"
 import { wordpressService } from "@/src/services/wordpress";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com/";
 
   const staticRoutes = [
     "",

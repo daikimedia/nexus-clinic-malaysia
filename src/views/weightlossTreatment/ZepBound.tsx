@@ -18,6 +18,8 @@ import {
   Bed,
   Dumbbell,
   MapPin,
+  Sparkles,
+  ArrowRight
 } from "lucide-react";
 import {
   staggerContainer,
@@ -25,12 +27,12 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 const ZepboundLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/zepbound");
 
@@ -52,107 +54,125 @@ const ZepboundLanding = ({ locale = fallbackLng }: { locale?: string }) => {
     },
   ];
   return (
-    <div className="bg-light font-inter">
-      {/* Hero Section */}
-      <motion.section
+    <div className="bg-light overflow-hidden">
+      <AllPagesHero
+        badge="Mounjaro & Zepbound Weight Loss Programme"
+        title="Mounjaro and Zepbound Weight Loss Injection Programme in Malaysia"
+        highlight="(Kuala Lumpur)"
+        description="Clinical trial data does not lie. Tirzepatide delivered 20.2% average body weight loss versus 13.7% with semaglutide in the 72-week SURMOUNT-5 head-to-head trial."
+        details="At Nexus Clinic KL, medically supervised Mounjaro and Zepbound programmes are structured around the right dose, monthly monitoring, and lifestyle support that fits real Malaysian life. This is evidence-led weight management with proper medical assessment, dose titration oversight, and long-term planning."
+        note="Programme at a glance: Mounjaro approved in Malaysia (NPRA approval 30 Aug 2025) • Dual GIP and GLP-1 action • Structured doctor monitoring • Wisma UOA II, Jalan Pinang, Kuala Lumpur"
+        image="/images/weight-loss/ZepBound Weight Loss Treatment.png"
+        imageAlt="Mounjaro and Zepbound Weight Loss Programme at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Free Consultation"
+        whatsappMessage="Hi, I'm interested in the Mounjaro or Zepbound weight loss programme at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Tirzepatide Programme"
+        floatingSubtitle="20.2% avg weight loss • Dual GIP/GLP-1"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
+
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        className="relative min-h-screen bg-linear-to-b from-cream to-light overflow-hidden"
+        viewport={{ once: true }}
+        className="container mx-auto max-w-6xl px-4 mt-12 relative z-20"
       >
-        <div className="absolute top-20 right-0 w-96 h-96 bg-rose/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-wine/5 rounded-full blur-3xl" />
+        <div className="bg-glass backdrop-blur-sm rounded-2xl border border-cream shadow-2xl overflow-hidden">
+          {/* Header with accent line */}
+          <div className="relative">
+            <div className="absolute top-0 left-0 w-24 h-1 bg-wine rounded-full" />
+            <h2 className="font-georgia text-2xl md:text-3xl text-brown px-6 md:px-8 pt-8 pb-4">
+              Programme at a glance
+            </h2>
+          </div>
 
-        <div className="container mx-auto px-4 md:px-6 pt-20 pb-16 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <h1 className="font-georgia text-4xl md:text-5xl lg:text-6xl text-brown leading-tight">
-                Mounjaro and Zepbound Weight Loss Injection Programme in Malaysia
-                <span className="text-wine block mt-2">(Kuala Lumpur)</span>
-              </h1>
-
-              <p className="text-xl md:text-2xl text-taupe leading-relaxed">
-                Clinical trial data does not lie. Tirzepatide delivered 20.2%
-                average body weight loss versus 13.7% with semaglutide in the
-                72-week SURMOUNT-5 head-to-head trial.
-              </p>
-
-              <p className="text-lg text-brown/80 leading-relaxed">
-                At Nexus Clinic KL, medically supervised Mounjaro and Zepbound
-                programmes are structured around the right dose, monthly
-                monitoring, and lifestyle support that fits real Malaysian life.
-              </p>
-
-              <p className="text-rose font-semibold text-lg">
-                This is evidence-led weight management with proper medical
-                assessment, dose titration oversight, and long-term planning.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="bg-glass backdrop-blur-sm p-8 rounded-2xl border border-cream shadow-2xl">
-                <h2 className="font-georgia text-2xl text-brown mb-6">
-                  Programme at a glance
-                </h2>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-wine/10 p-3 rounded-full">
-                      <Shield className="w-6 h-6 text-wine" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-brown">
-                        Mounjaro approved in Malaysia
-                      </h3>
-                      <p className="text-taupe">
-                        NPRA approval dated 30 August 2025
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="bg-wine/10 p-3 rounded-full">
-                      <Activity className="w-6 h-6 text-wine" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-brown">
-                        Dual GIP and GLP-1 action
-                      </h3>
-                      <p className="text-taupe">
-                        First-in-class twincretin approach for appetite and
-                        blood sugar control
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="bg-wine/10 p-3 rounded-full">
-                      <Users className="w-6 h-6 text-wine" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-brown">
-                        Structured doctor monitoring
-                      </h3>
-                      <p className="text-taupe">
-                        Complimentary consultation, titration support, and
-                        monthly reviews
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-cream">
-                    <p className="text-taupe flex items-center gap-2">
-                      <MapPin className="w-5 h-5 text-rose" />
-                      Wisma UOA II, Jalan Pinang, Kuala Lumpur
-                    </p>
-                  </div>
-                </div>
+          {/* Features Grid - Responsive layout */}
+          <div className="grid md:grid-cols-2 gap-4 px-6 md:px-8 pb-6">
+            {/* Feature 1 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 group">
+              <div className="bg-wine/10 p-3 rounded-full group-hover:bg-wine/20 transition-all duration-300 shrink-0">
+                <Shield className="w-5 h-5 md:w-6 md:h-6 text-wine" />
               </div>
-            </motion.div>
+              <div>
+                <h3 className="font-semibold text-brown text-sm md:text-base">
+                  Mounjaro approved in Malaysia
+                </h3>
+                <p className="text-taupe text-xs md:text-sm">
+                  NPRA approval dated 30 August 2025
+                </p>
+              </div>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 group">
+              <div className="bg-wine/10 p-3 rounded-full group-hover:bg-wine/20 transition-all duration-300 shrink-0">
+                <Activity className="w-5 h-5 md:w-6 md:h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-brown text-sm md:text-base">
+                  Dual GIP and GLP-1 action
+                </h3>
+                <p className="text-taupe text-xs md:text-sm">
+                  First-in-class twincretin approach for appetite and blood sugar control
+                </p>
+              </div>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 group">
+              <div className="bg-wine/10 p-3 rounded-full group-hover:bg-wine/20 transition-all duration-300 shrink-0">
+                <Users className="w-5 h-5 md:w-6 md:h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-brown text-sm md:text-base">
+                  Structured doctor monitoring
+                </h3>
+                <p className="text-taupe text-xs md:text-sm">
+                  Complimentary consultation, titration support, and monthly reviews
+                </p>
+              </div>
+            </div>
+
+            {/* Feature 4 - Location */}
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 group">
+              <div className="bg-wine/10 p-3 rounded-full group-hover:bg-wine/20 transition-all duration-300 shrink-0">
+                <MapPin className="w-5 h-5 md:w-6 md:h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-brown text-sm md:text-base">
+                  Convenient Kuala Lumpur location
+                </h3>
+                <p className="text-taupe text-xs md:text-sm">
+                  Wisma UOA II, Jalan Pinang — easily accessible
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer with CTA */}
+          <div className="bg-wine/5 px-6 md:px-8 py-4 border-t border-cream">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-taupe text-sm flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-wine" />
+                All programmes include full medical assessment and ongoing support
+              </p>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href="/contact-us"
+                className="text-wine font-inter text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+              >
+                Learn more about our process
+                <ArrowRight className="w-4 h-4" />
+              </motion.a>
+            </div>
           </div>
         </div>
-      </motion.section>
-
+      </motion.div>
       {/* Intro Expansion Section */}
       <motion.section
         variants={staggerContainer}
@@ -1233,14 +1253,15 @@ const ZepboundLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             medically supervised plan for you.
           </motion.p>
 
-          <motion.button
+          <motion.a
             variants={scaleIn}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            href="/contact-us"
             className="bg-light text-wine px-12 py-4 rounded-full font-semibold text-lg hover:bg-cream transition-colors shadow-xl"
           >
             Book Free Consultation
-          </motion.button>
+          </motion.a>
         </div>
       </motion.section>
     </div>

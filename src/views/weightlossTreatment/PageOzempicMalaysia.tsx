@@ -22,12 +22,12 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/ozempic");
 
@@ -94,108 +94,51 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
 
   return (
     <>
-      <main className="min-h-screen bg-linear-to-b from-light to-cream">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden pt-16 pb-24 px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center"
-          >
-            <motion.div variants={fadeInLeft} className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-glass backdrop-blur-sm rounded-full border border-taupe/20">
-                <Shield className="w-4 h-4 text-wine" />
-                <span className="text-sm font-inter text-brown">
-                  Medically Supervised GLP-1 Weight Loss in Kuala Lumpur
-                </span>
-              </div>
+      <main className="min-h-screen overflow-hidden">
+        <AllPagesHero
+          badge="Medically Supervised GLP-1 Weight Loss in Kuala Lumpur"
+          title="Ozempic Weight Loss"
+          highlight="Malaysia Programme"
+          description="Ozempic is one of the most clinically validated GLP-1 injections used in Malaysia for doctor-supervised weight management. At Nexus Clinic KL, every programme is prescribed and monitored by licensed doctors."
+          details="The goal is not guesswork. It is measurable, medically guided weight reduction with a structured dosing plan, regular reviews, and an exit strategy designed to reduce rebound risk."
+          note="Treatment at a glance: Semaglutide 0.25 mg to 1 mg once weekly, prescription only, doctor-monitored, and commonly used off-label for weight management in suitable patients."
+          image="/images/weight-loss/Ozempic Weight Loss Treatment.png"
+          imageAlt="Nexus Clinic KL - Professional medical consultation for weight loss"
+          ctaText="Book Free Assessment"
+          whatsappMessage="Hi, I'm interested in the Ozempic weight loss programme at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="Ozempic Programme"
+          floatingSubtitle="10-15% Weight Loss • Weekly Injection"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
 
-              <h1 className="font-georgia text-5xl md:text-6xl text-brown leading-tight">
-                Ozempic Weight Loss
-                <span className="text-wine block">Malaysia Programme</span>
-              </h1>
-
-              <p className="text-lg text-taupe font-inter leading-relaxed max-w-xl">
-                Ozempic is one of the most clinically validated GLP-1 injections
-                used in Malaysia for doctor-supervised weight management. At
-                Nexus Clinic KL, every programme is prescribed and monitored by
-                licensed doctors.
-              </p>
-
-              <p className="text-lg text-taupe font-inter leading-relaxed max-w-xl">
-                The goal is not guesswork. It is measurable, medically guided
-                weight reduction with a structured dosing plan, regular reviews,
-                and an exit strategy designed to reduce rebound risk.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 bg-wine text-light font-inter rounded-full hover:bg-rose transition-colors flex items-center gap-2 group"
-                >
-                  Book Free Assessment
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 border-2 border-wine/30 text-wine font-inter rounded-full hover:bg-wine/5 transition-colors"
-                >
-                  View Programme Guide
-                </motion.button>
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
-                {[
-                  { icon: <TrendingDown />, text: "10-15% Weight Loss" },
-                  { icon: <Shield />, text: "Doctor Screening" },
-                  { icon: <Clock />, text: "Weekly Injection Plan" },
-                  { icon: <Heart />, text: "Monthly Reviews" },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    className="flex flex-col items-center text-center gap-2"
-                  >
-                    <div className="text-wine">{item.icon}</div>
-                    <span className="text-xs font-inter text-brown">
-                      {item.text}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInRight} className="relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="/images/treatment/hero-ozempic.webp"
-                  alt="Nexus Clinic KL - Professional medical consultation for weight loss"
-                  className="w-full h-auto object-cover"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-brown/20 to-transparent"></div>
-              </div>
-
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto max-w-6xl px-4 lg:-mt-12  -mt-8 relative z-20"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { icon: <TrendingDown className="w-6 h-6" />, text: "10-15% Weight Loss" },
+              { icon: <Shield className="w-6 h-6" />, text: "Doctor Screening" },
+              { icon: <Clock className="w-6 h-6" />, text: "Weekly Injection Plan" },
+              { icon: <Heart className="w-6 h-6" />, text: "Monthly Reviews" },
+            ].map((item, index) => (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="absolute -bottom-6 -left-6 bg-glass backdrop-blur-md p-6 rounded-2xl border border-light shadow-xl max-w-xs"
+                key={index}
+                variants={scaleIn}
+                className="flex flex-col items-center text-center gap-2 bg-glass backdrop-blur-sm p-4 rounded-xl border border-cream shadow-md"
               >
-                <p className="text-sm font-inter text-brown">
-                  <span className="font-bold">Treatment at a glance:</span>{" "}
-                  Semaglutide 0.25 mg to 1 mg once weekly, prescription only,
-                  doctor-monitored, and commonly used off-label for weight
-                  management in suitable patients.
-                </p>
+                <div className="text-wine">{item.icon}</div>
+                <span className="text-xs font-inter text-brown font-medium">{item.text}</span>
               </motion.div>
-            </motion.div>
-          </motion.div>
-        </section>
-
+            ))}
+          </div>
+        </motion.div>
         {/* Quick Answers Section */}
         <section className="py-16 px-4 bg-glass backdrop-blur-sm border-y border-taupe/10">
           <motion.div
@@ -875,14 +818,15 @@ const PageOzempicMalaysia = ({ locale = fallbackLng }: { locale?: string }) => {
               long-term planning.
             </motion.p>
 
-            <motion.button
+            <motion.a
               variants={scaleIn}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href="/contact-us"
               className="px-12 py-5 bg-wine text-light font-inter text-lg rounded-full hover:bg-rose transition-colors shadow-xl hover:shadow-2xl"
             >
               Book Free Assessment
-            </motion.button>
+            </motion.a>
           </motion.div>
         </section>
       </main>

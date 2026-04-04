@@ -78,32 +78,56 @@ export default function AboutUs() {
     },
   ];
 
-  const doctors = [
-    {
-      name: "Dr. Amirah Sofea",
-      role: "Medical Director",
-      specialty: "Medical Director & Aesthetic Physician",
-      experience: "12+ years",
-      bio: "Dr. Amirah leads the medical team at Nexus Clinic with a focus on natural-looking results and patientfety.",
-      image: "/images/main/doctor1.png",
-    },
-    {
-      name: "Dr. Harith Danial",
-      role: "Senior Aesthetic Physician",
-      specialty: "Facial Rejuvenation & Body Contouring",
-      experience: "8+ years",
-      bio: "Dr. Harith specializes in non-surgical facial treatments and body sculpting procedures.",
-      image: "/images/main/doctor2.png",
-    },
-    {
-      name: "Dr. Nurul Farhana",
-      role: "Aesthetic & Wellness Physician",
-      specialty: "Hair Transplant & PRP Therapy",
-      experience: "10+ years",
-      bio: "Dr. Nurul brings expertise in surgical and non-surgical hair restoration techniques.",
-      image: "/images/main/doctor3.png",
-    }
-  ];
+const doctors = [
+  {
+    name: "Dr. Aris Fadzillah Mazlan",
+    role: "Aesthetic & Anti-Aging Physician",
+    specialty: "Anti-Aging Treatments & Aesthetic Enhancements",
+    experience: "10+ years",
+    bio: "Dr. Aris combines medical expertise with artistic vision to deliver safe, natural-looking results. Fluent in English, Russian, and Malay.",
+    image: "/images/main/Dr.-Aris-Image.webp",
+  },
+  {
+    name: "Dr. Preetha Nair",
+    role: "Aesthetic Medical Doctor",
+    specialty: "Non-Invasive Treatments & Personalized Skincare",
+    experience: "8+ years",
+    bio: "Dr. Preetha adopts a holistic approach to aesthetic medicine with gentle techniques and meticulous attention to detail for natural-looking results.",
+    image: "/images/main/Dr.-Preetha-Image.webp",
+  },
+  {
+    name: "Dr. Ashvinia Bala",
+    role: "Aesthetic Medical Doctor",
+    specialty: "General Medicine & Aesthetic Treatments",
+    experience: "7+ years",
+    bio: "Dr. Ashvinia combines aesthetic medicine with wellness and sustainability, providing personalized care for natural, confident results.",
+    image: "/images/main/Dr-Ashvinia-bala.webp",
+  },
+  {
+    name: "Dr. Charmaine Grace",
+    role: "Expert in Advanced Laser Treatments",
+    specialty: "Advanced Laser Treatments & Skincare",
+    experience: "6+ years",
+    bio: "Dr. Charmaine specializes in advanced laser treatments including Pico Laser for pigmentation, acne scars, and uneven skin tone.",
+    image: "/images/main/Dr.-Charmaine-Image.webp",
+  },
+  {
+    name: "Dr. Sanskara Babu Gorle",
+    role: "Clinical Pharmacologist",
+    specialty: "Clinical Pharmacology & Personalized Medicine",
+    experience: "10+ years",
+    bio: "Dr. Sanskara focuses on drug safety, personalized medicine, and optimizing treatment plans with over a decade of experience.",
+    image: "/images/main/dr-sanskara-babu-gorle.webp",
+  },
+  {
+    name: "Phr. Anum Jawed",
+    role: "Clinical Pharmacist",
+    specialty: "Drug Formulation & Medication Therapy Management",
+    experience: "8+ years",
+    bio: "Phr. Anum specializes in optimizing medication formulations and ensuring safe, effective medication therapy for patients.",
+    image: "/images/main/anum-jawed.webp",
+  },
+];
 
   const stats = [
     { value: "5,000+", label: "Procedures", sublabel: "Completed safely" },

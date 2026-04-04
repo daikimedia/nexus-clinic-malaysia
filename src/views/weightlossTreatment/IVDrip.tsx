@@ -18,6 +18,8 @@ import {
   Bed,
   Dumbbell,
   MapPin,
+  Sparkles,
+  ArrowRight
 } from "lucide-react";
 import {
   staggerContainer,
@@ -51,9 +53,51 @@ const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
       after: "/images/B&A-w/B&A-ivdrip3.webp",
     },
   ];
+    const faqData = [
+      {
+        q: "Is IV drip therapy safe in a medical clinic?",
+        a: "Yes, when it is administered by trained medical professionals in a licensed setting using approved medical-grade solutions and proper clinical screening."
+      },
+      {
+        q: "How often should I get a slimming drip?",
+        a: "Weekly sessions are often used during the active phase of weight management, with frequency reduced later depending on response and treatment goals."
+      },
+      {
+        q: "Can IV drip therapy replace diet or medication?",
+        a: "No. It supports metabolic function, nutrient delivery, and wellness, but it does not replace structured lifestyle change or prescription treatment when clinically indicated."
+      },
+      {
+        q: "How soon will I feel the effects of an IV drip?",
+        a: "Many patients report energy or hydration improvement within one to two hours or by the following day, depending on the drip type and the reason for treatment."
+      },
+      {
+        q: "What is the difference between a slimming drip and a regular vitamin drip?",
+        a: "A slimming drip is built around ingredients targeted for fat metabolism and energy efficiency, while a general vitamin drip focuses more broadly on replenishment and wellness support."
+      },
+      {
+        q: "Are the IV drip ingredients KKM approved?",
+        a: "At Nexus Clinic KL, the source content states that formulations are prepared from KKM-approved, pharmaceutical-grade constituents under medical supervision."
+      },
+      {
+        q: "Can I have IV drip therapy if I have type 2 diabetes?",
+        a: "Yes, with proper assessment. The formulation should be chosen carefully to support metabolic goals while maintaining blood sugar stability."
+      },
+      {
+        q: "Is mobile IV drip available?",
+        a: "The source content notes that mobile IV service may be available for selected patients in KL and Selangor, subject to enquiry and scheduling."
+      },
+      {
+        q: "Can IV drip help with fatigue or illness recovery?",
+        a: "Yes, this is one of the most common reasons patients seek IV therapy, especially for hydration, vitamin support, and faster recovery during depleted periods."
+      },
+      {
+        q: "How does glutathione IV drip support liver health and skin?",
+        a: "Glutathione supports antioxidant defence, liver detox pathways, and skin-related wellness goals when delivered intravenously in a suitable clinical programme."
+      }
+    ];
 
   return (
-    <div className="bg-light font-inter">
+    <div className="bg-light overflow-hidden">
       <AllPagesHero
         badge="IV Drip Therapies in Kuala Lumpur"
         title="IV Drip Therapies in Malaysia for Weight Loss, Energy, Immunity"
@@ -61,10 +105,9 @@ const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         description="IV drip therapy delivers nutrients directly into the bloodstream for faster absorption, higher bioavailability, and more noticeable support than standard oral supplements."
         details="At Nexus Clinic KL, IV drip programmes are designed for weight management support, energy restoration, immunity, hydration, liver detox, and overall wellness using medical-grade formulations under licensed medical supervision. This is personalised intravenous wellness with proper clinical assessment, targeted formulations, and structured follow-up."
         note="KKM-approved medical-grade solutions • 100% direct bloodstream delivery • Goal-based drip selection: Slimming, Energy, Immunity, Liver Detox, Hydration, Skin Wellness"
-        image="/images/treatment/weight-loss.png"
+        image="/images/weight-loss/IV Drip for Weight Loss Treatment.png"
         imageAlt="IV Drip Therapy at Nexus Clinic Kuala Lumpur"
         ctaText="Book Free Consultation"
-        ctaLink="/contact-us"
         whatsappMessage="Hi, I'm interested in IV Drip Therapy at Nexus Clinic KL. I'd like to book a consultation."
         floatingTitle="IV Drip Therapy"
         floatingSubtitle="Weight Loss • Energy • Immunity • Hydration"
@@ -73,56 +116,99 @@ const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         fadeInRight={fadeInRight}
         fadeInUp={fadeInUp}
       />
-    {/* Features Card Section - can be placed as a separate section */}
-    {/* <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="container mx-auto max-w-6xl px-4 -mt-8 relative z-20"
-    >
-      <div className="bg-glass backdrop-blur-sm p-8 rounded-2xl border border-cream shadow-2xl max-w-md mx-auto lg:mx-0">
-        <h2 className="font-georgia text-2xl text-brown mb-6">IV drip therapy at a glance</h2>
-        <div className="space-y-6">
-          <div className="flex items-start gap-4">
-            <div className="bg-wine/10 p-3 rounded-full">
-              <Shield className="w-6 h-6 text-wine" />
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container mx-auto max-w-6xl px-4 mt-12 relative z-20"
+      >
+        <div className="bg-glass backdrop-blur-sm rounded-2xl border border-cream shadow-2xl overflow-hidden">
+          <div className="relative">
+            <div className="absolute top-0 left-0 w-24 h-1 bg-wine rounded-full" />
+            <h2 className="font-georgia text-2xl md:text-3xl text-brown px-6 md:px-8 pt-8 pb-4">
+              IV drip therapy at a glance
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 px-6 md:px-8 pb-6">
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 group">
+              <div className="bg-wine/10 p-3 rounded-full group-hover:bg-wine/20 transition-all duration-300 shrink-0">
+                <Shield className="w-5 h-5 md:w-6 md:h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-brown text-sm md:text-base">
+                  KKM-approved medical-grade solutions
+                </h3>
+                <p className="text-taupe text-xs md:text-sm">
+                  Administered in a licensed clinical setting
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-semibold text-brown">KKM-approved medical-grade solutions</h3>
-              <p className="text-taupe">Administered in a licensed clinical setting</p>
+
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 group">
+              <div className="bg-wine/10 p-3 rounded-full group-hover:bg-wine/20 transition-all duration-300 shrink-0">
+                <Activity className="w-5 h-5 md:w-6 md:h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-brown text-sm md:text-base">
+                  100% direct bloodstream delivery
+                </h3>
+                <p className="text-taupe text-xs md:text-sm">
+                  Faster and more efficient than oral supplement absorption
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 group">
+              <div className="bg-wine/10 p-3 rounded-full group-hover:bg-wine/20 transition-all duration-300 shrink-0">
+                <Users className="w-5 h-5 md:w-6 md:h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-brown text-sm md:text-base">
+                  Goal-based drip selection
+                </h3>
+                <p className="text-taupe text-xs md:text-sm">
+                  Slimming, energy, immunity, liver detox, hydration, and skin wellness options
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 group">
+              <div className="bg-wine/10 p-3 rounded-full group-hover:bg-wine/20 transition-all duration-300 shrink-0">
+                <MapPin className="w-5 h-5 md:w-6 md:h-6 text-wine" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-brown text-sm md:text-base">
+                  Convenient Kuala Lumpur location
+                </h3>
+                <p className="text-taupe text-xs md:text-sm">
+                  Wisma UOA II, Jalan Pinang — easily accessible
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-start gap-4">
-            <div className="bg-wine/10 p-3 rounded-full">
-              <Activity className="w-6 h-6 text-wine" />
+          {/* Footer with CTA */}
+          <div className="bg-wine/5 px-6 md:px-8 py-4 border-t border-cream">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-taupe text-sm flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-wine" />
+                Personalised formulations based on your health goals
+              </p>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href="/contact-us"
+                className="text-wine font-inter text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+              >
+                Explore all drip options
+                <ArrowRight className="w-4 h-4" />
+              </motion.a>
             </div>
-            <div>
-              <h3 className="font-semibold text-brown">100% direct bloodstream delivery</h3>
-              <p className="text-taupe">Faster and more efficient than oral supplement absorption</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-4">
-            <div className="bg-wine/10 p-3 rounded-full">
-              <Users className="w-6 h-6 text-wine" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-brown">Goal-based drip selection</h3>
-              <p className="text-taupe">Slimming, energy, immunity, liver detox, hydration, and skin wellness options</p>
-            </div>
-          </div>
-
-          <div className="pt-4 border-t border-cream">
-            <p className="text-taupe flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-rose" />
-              Wisma UOA II, Jalan Pinang, Kuala Lumpur
-            </p>
           </div>
         </div>
-      </div>
-    </motion.div> */}
+      </motion.div>
       {/* Intro Expansion Section */}
       <motion.section
         variants={staggerContainer}
@@ -899,138 +985,7 @@ const IVDripLanding = ({ locale = fallbackLng }: { locale?: string }) => {
           </motion.p>
         </div>
       </motion.section>
-
-      {/* FAQs Section */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        className="py-24 bg-light"
-      >
-        <div className="container mx-auto px-4 md:px-6">
-          <h2 className="font-georgia text-4xl text-brown text-center mb-4">
-            Frequently asked questions
-          </h2>
-          <p className="text-center text-taupe mb-12">
-            Common questions patients ask before booking IV drip therapy.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Is IV drip therapy safe in a medical clinic?
-              </h3>
-              <p className="text-taupe text-sm">
-                Yes, when it is administered by trained medical professionals in
-                a licensed setting using approved medical-grade solutions and
-                proper clinical screening.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                How often should I get a slimming drip?
-              </h3>
-              <p className="text-taupe text-sm">
-                Weekly sessions are often used during the active phase of weight
-                management, with frequency reduced later depending on response
-                and treatment goals.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Can IV drip therapy replace diet or medication?
-              </h3>
-              <p className="text-taupe text-sm">
-                No. It supports metabolic function, nutrient delivery, and
-                wellness, but it does not replace structured lifestyle change or
-                prescription treatment when clinically indicated.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                How soon will I feel the effects of an IV drip?
-              </h3>
-              <p className="text-taupe text-sm">
-                Many patients report energy or hydration improvement within one
-                to two hours or by the following day, depending on the drip type
-                and the reason for treatment.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                What is the difference between a slimming drip and a regular
-                vitamin drip?
-              </h3>
-              <p className="text-taupe text-sm">
-                A slimming drip is built around ingredients targeted for fat
-                metabolism and energy efficiency, while a general vitamin drip
-                focuses more broadly on replenishment and wellness support.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Are the IV drip ingredients KKM approved?
-              </h3>
-              <p className="text-taupe text-sm">
-                At Nexus Clinic KL, the source content states that formulations
-                are prepared from KKM-approved, pharmaceutical-grade
-                constituents under medical supervision.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Can I have IV drip therapy if I have type 2 diabetes?
-              </h3>
-              <p className="text-taupe text-sm">
-                Yes, with proper assessment. The formulation should be chosen
-                carefully to support metabolic goals while maintaining blood
-                sugar stability.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Is mobile IV drip available?
-              </h3>
-              <p className="text-taupe text-sm">
-                The source content notes that mobile IV service may be available
-                for selected patients in KL and Selangor, subject to enquiry and
-                scheduling.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                Can IV drip help with fatigue or illness recovery?
-              </h3>
-              <p className="text-taupe text-sm">
-                Yes, this is one of the most common reasons patients seek IV
-                therapy, especially for hydration, vitamin support, and faster
-                recovery during depleted periods.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="bg-cream p-6 rounded-xl">
-              <h3 className="font-georgia text-lg text-brown mb-3">
-                How does glutathione IV drip support liver health and skin?
-              </h3>
-              <p className="text-taupe text-sm">
-                Glutathione supports antioxidant defence, liver detox pathways,
-                and skin-related wellness goals when delivered intravenously in
-                a suitable clinical programme.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
+      <FAQ data={faqData} />
       {/* Differentiation Section */}
       <motion.section
         variants={staggerContainer}

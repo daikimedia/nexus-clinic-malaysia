@@ -25,12 +25,12 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 const MounjaroLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   const { t } = useTranslation(locale, "weightLoss/mounjaro");
 
@@ -96,97 +96,55 @@ const MounjaroLanding = ({ locale = fallbackLng }: { locale?: string }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-light font-inter">
-      {/* Hero Section */}
+    <div className="min-h-screen overflow-hidden">
+      <AllPagesHero
+        badge="Doctor-Supervised Tirzepatide Programme in Kuala Lumpur"
+        title="Mounjaro Malaysia Programme"
+        highlight="Tirzepatide Injections for Maximum Weight Loss"
+        description="Powerful dual-agonist support for medically supervised weight reduction."
+        details="Mounjaro is the strongest injectable weight loss option available in Malaysia in 2026, with average weight reductions of 15 to 22.5% in clinical programmes when used appropriately. At Nexus Clinic KL, every tirzepatide programme is prescribed and monitored by licensed doctors with bloodwork, dose titration, protein-first guidance and exit planning built in."
+        note="15 to 22.5% average weight loss in trials • Once-weekly subcutaneous self-injection • Prescription-only with blood panel and screening • Structured titration from 2.5 mg to 15 mg"
+        image="/images/weight-loss/Mounjaro Weight Loss Treatment.png"
+        imageAlt="Mounjaro Tirzepatide Programme at Nexus Clinic Kuala Lumpur"
+        ctaText="Book Free Assessment"
+        whatsappMessage="Hi, I'm interested in the Mounjaro/Tirzepatide weight loss programme at Nexus Clinic KL. I'd like to book a consultation."
+        floatingTitle="Mounjaro Programme"
+        floatingSubtitle="15-22.5% avg weight loss • Once-weekly"
+        staggerContainer={staggerContainer}
+        fadeInLeft={fadeInLeft}
+        fadeInRight={fadeInRight}
+        fadeInUp={fadeInUp}
+      />
+
       <motion.section
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        className="relative overflow-hidden bg-cream py-20 px-4 md:px-8 lg:px-16"
+        viewport={{ once: true }}
+        className="container mx-auto max-w-6xl px-4 -mt-20 relative z-20"
       >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-rose/20 blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-wine/20 blur-3xl"></div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div variants={fadeInUp} className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-md">
+            <TrendingDown className="w-10 h-10 text-wine mb-4" />
+            <p className="text-brown font-medium">15 to 22.5% average weight loss in trials</p>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-md">
+            <Syringe className="w-10 h-10 text-wine mb-4" />
+            <p className="text-brown font-medium">Once-weekly subcutaneous self-injection</p>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-md">
+            <ShieldCheck className="w-10 h-10 text-wine mb-4" />
+            <p className="text-brown font-medium">Prescription-only with blood panel and screening</p>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-md">
+            <Clock className="w-10 h-10 text-wine mb-4" />
+            <p className="text-brown font-medium">Structured titration from 2.5 mg to 15 mg</p>
+          </motion.div>
         </div>
-
-        <motion.div
-          variants={fadeInUp}
-          className="max-w-7xl mx-auto relative z-10"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-glass backdrop-blur-sm rounded-full border border-taupe/20 mb-6">
-            <Shield className="w-4 h-4 text-wine" />
-            <span className="text-sm font-inter text-brown">
-              Doctor-Supervised Tirzepatide Programme in Kuala Lumpur
-            </span>
-          </div>
-
-          <h1 className="text-5xl md:text-6xl lg:text-6xl font-bold text-brown mt-6 font-georgia leading-tight">
-            Mounjaro Malaysia Programme
-            <span className="block text-wine mt-2">
-              Tirzepatide Injections for Maximum Weight Loss
-            </span>
-          </h1>
-
-          <div className="mt-12 space-y-6 max-w-4xl">
-            <p className="text-2xl text-brown font-georgia italic">
-              Powerful dual-agonist support for medically supervised weight
-              reduction.
-            </p>
-            <p className="text-brown text-lg">
-              Mounjaro is the strongest injectable weight loss option available
-              in Malaysia in 2026, with average weight reductions of 15 to 22.5%
-              in clinical programmes when used appropriately.
-            </p>
-            <p className="text-brown text-lg">
-              At Nexus Clinic KL, every tirzepatide programme is prescribed and
-              monitored by licensed doctors with bloodwork, dose titration,
-              protein-first guidance and exit planning built in.
-            </p>
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 bg-wine text-white rounded-full font-semibold hover:bg-rose transition-colors inline-flex items-center gap-2"
-            >
-              Book Free Assessment
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 border-2 border-wine/30 text-wine font-semibold rounded-full hover:bg-wine/5 transition-colors"
-            >
-              View Programme Guide
-            </motion.button>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-14">
-            <motion.div variants={fadeInUp} className="p-6 bg-white/70 rounded-xl">
-              <TrendingDown className="w-10 h-10 text-wine mb-4" />
-              <p className="text-brown">15 to 22.5% average weight loss in trials</p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="p-6 bg-white/70 rounded-xl">
-              <Syringe className="w-10 h-10 text-wine mb-4" />
-              <p className="text-brown">Once-weekly subcutaneous self-injection</p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="p-6 bg-white/70 rounded-xl">
-              <ShieldCheck className="w-10 h-10 text-wine mb-4" />
-              <p className="text-brown">Prescription-only with blood panel and screening</p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="p-6 bg-white/70 rounded-xl">
-              <Clock className="w-10 h-10 text-wine mb-4" />
-              <p className="text-brown">Structured titration from 2.5 mg to 15 mg</p>
-            </motion.div>
-          </div>
-        </motion.div>
       </motion.section>
-
       {/* Trust Section */}
       <motion.section
         variants={staggerContainer}
@@ -860,13 +818,14 @@ const MounjaroLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             long-term maintenance.
           </motion.p>
 
-          <motion.button
+          <motion.a
             variants={scaleIn}
+            href="/contact-us"
             className="px-8 py-4 bg-wine text-white rounded-full font-semibold hover:bg-rose transition-colors inline-flex items-center gap-2"
           >
             Book Free Assessment
             <ArrowRight className="w-5 h-5" />
-          </motion.button>
+          </motion.a>
         </div>
       </motion.section>
     </div>

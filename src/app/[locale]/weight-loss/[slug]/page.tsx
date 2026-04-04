@@ -14,8 +14,8 @@ import Zepbound from "@/src/views/weightlossTreatment/ZepBound";
 import IVDrip from "@/src/views/weightlossTreatment/IVDrip";
 import PageOzempicMalaysia from "@/src/views/weightlossTreatment/PageOzempicMalaysia";
 import GLP1LandingPage from "@/src/views/weightlossTreatment/GLP";
-import SimaglutideLanding from "@/src/views/weightlossTreatment/SimaglutideInjection";
-import TirzepatideLanding from "@/src/views/weightlossTreatment/Tirzepatide";
+// import SimaglutideLanding from "@/src/views/weightlossTreatment/SimaglutideInjection";
+// import TirzepatideLanding from "@/src/views/weightlossTreatment/Tirzepatide";
 import { notFound } from "next/navigation";
 
 const components: Record<string, React.ComponentType<{ locale: string }>> = {
@@ -30,8 +30,8 @@ const components: Record<string, React.ComponentType<{ locale: string }>> = {
   Zepbound,
   PageOzempicMalaysia,
   GLP1LandingPage,
-  SimaglutideLanding,
-  TirzepatideLanding,
+  // SimaglutideLanding,
+  // TirzepatideLanding,
     IVDrip,
 };
 
@@ -64,7 +64,7 @@ export async function generateMetadata({
   }
 
 
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com/";
   const url =
     locale === "en"
       ? `${baseUrl}/weight-loss/${slug}`

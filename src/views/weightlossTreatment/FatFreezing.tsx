@@ -109,7 +109,6 @@ const FatFreezingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
         image="/images/main/fat-freezing.webp"
         imageAlt="Fat Freezing Treatment at Nexus Clinic Kuala Lumpur"
         ctaText="Book Free Assessment"
-        ctaLink="/contact-us"
         whatsappMessage="Hi, I'm interested in fat freezing treatment at Nexus Clinic KL. I'd like to book a consultation."
         floatingTitle="FDA-Cleared Cryolipolysis"
         floatingSubtitle="Permanent fat reduction • No downtime"
@@ -268,7 +267,7 @@ const FatFreezingLanding = ({ locale = fallbackLng }: { locale?: string }) => {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/main/fat-freezing.webp"
+                  src="/images/weight-loss/Fat Freezing Treatment.png"
                   alt="Fat freezing treatment procedure at Nexus Clinic Kuala Lumpur"
                   className="w-full h-auto object-cover"
                 />

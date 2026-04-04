@@ -109,7 +109,6 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
           image="/images/main/GLP-programme.webp"
           imageAlt="GLP-1 Injection Programme at Nexus Clinic Kuala Lumpur"
           ctaText="Book Free Consultation"
-          ctaLink="/contact-us"
           whatsappMessage="Hi, I'm interested in the GLP-1 Injection Programme at Nexus Clinic KL. I'd like to book a consultation."
           floatingTitle="GLP-1 Programme"
           floatingSubtitle="Ozempic • Wegovy • Mounjaro • Zepbound • Saxenda"
@@ -258,7 +257,7 @@ const GLP1LandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
             <motion.div variants={fadeInRight}>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/main/GLP-programme.webp"
+                  src="/images/weight-loss/GLP-1 Injection Treatment.png"
                   alt="Doctor consultation at Nexus Clinic Kuala Lumpur"
                   className="w-full h-auto object-cover"
                 />

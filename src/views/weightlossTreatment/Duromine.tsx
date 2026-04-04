@@ -98,7 +98,7 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-cream font-inter">
+    <div className="min-h-screen overflow-hidden">
       <AllPagesHero
         badge="Doctor-Supervised Phentermine at Nexus Clinic KL"
         title="Duromine Weight Loss in Kuala Lumpur, Malaysia"
@@ -106,10 +106,9 @@ const DuromineLandingPage = ({ locale = fallbackLng }: { locale?: string }) => {
         description="Hunger is not a character flaw. For many patients, appetite is the main reason every diet collapses. Duromine is used to quiet appetite long enough to help you build real momentum."
         details="At Nexus Clinic KL, Duromine is prescribed only after full medical history review, BMI assessment, cardiovascular screening, and suitability confirmation. It is a prescription medicine, and how it is prescribed matters."
         note="Duromine at a glance: 15mg, 30mg and 40mg once daily. Expected weight loss: 5-10 kg over 12 weeks. Best for BMI 27+ with weight-related conditions, or BMI 30+ without comorbidities."
-        image="/images/treatment/weight-loss.png"
+        image="/images/weight-loss/Duromine Weight Loss Treatment.png"
         imageAlt="Duromine Weight Loss Treatment at Nexus Clinic Kuala Lumpur"
         ctaText="Book Free Consultation"
-        ctaLink="/contact-us"
         whatsappMessage="Hi, I'm interested in Duromine weight loss treatment at Nexus Clinic KL. I'd like to book a consultation."
         floatingTitle="Duromine Programme"
         floatingSubtitle="15mg • 30mg • 40mg | Up to 12 weeks"

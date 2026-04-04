@@ -84,7 +84,7 @@ const HCGWeightLossLanding = ({
   ];
 
   return (
-    <div className="bg-light font-inter">
+    <div className="bg-light font-inter overflow-hidden">
       {/* Hero Section */}
       <AllPagesHero
         badge="Doctor-Guided HCG Diet for Fast, Medically Supervised Fat Loss"
@@ -93,10 +93,9 @@ const HCGWeightLossLanding = ({
         description="A structured, time-defined programme for rapid fat loss and metabolic reset."
         details="The HCG weight loss programme at Nexus Clinic KL combines medical-grade injectable HCG with a structured low-calorie phase, weekly doctor monitoring, and a clear exit into stabilisation and maintenance."
         note="Licensed doctor supervision with weekly check-ins • Fixed-cycle programme with rapid results • Located in Kuala Lumpur with discreet clinic-based medical care"
-        image="/images/main/mounjaro.webp"
+        image="/images/weight-loss/HCG Weight Loss Program Treatment.png"
         imageAlt="HCG Weight Loss Program at Nexus Clinic Kuala Lumpur"
         ctaText="Book Free Consultation"
-        ctaLink="/contact-us"
         whatsappMessage="Hi, I'm interested in the HCG Weight Loss Program at Nexus Clinic KL. I'd like to book a consultation."
         floatingTitle="HCG Programme"
         floatingSubtitle="Rapid fat loss • Metabolic reset"

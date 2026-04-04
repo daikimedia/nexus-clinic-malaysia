@@ -22,12 +22,12 @@ import {
   fadeInLeft,
   fadeInRight,
   scaleIn,
-} from "../../lib/animations";
-import FAQ from "../../components/FAQ";
-import SectionBeforeAfter from "../../components/BeforeAfterCustomize";
+} from "@/src/lib/animations";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
-
+import AllPagesHero from "@/src/components/AllPagesHero";
 export default function PageWegovyMalaysia({
   locale = fallbackLng,
 }: {
@@ -98,105 +98,63 @@ export default function PageWegovyMalaysia({
 
   return (
     <>
-      <main className="min-h-screen bg-light overflow-hidden">
-        {/* Hero Section */}
+      <main className="min-h-screen overflow-hidden">
+        <AllPagesHero
+          badge="Higher-Dose Semaglutide for Weight Management"
+          title="Wegovy Malaysia Programme"
+          highlight="Weight Loss and Heart Protection Under Doctor Supervision"
+          description="Wegovy is the only weight loss injection in Malaysia approved specifically for chronic weight management and supported by landmark cardiovascular protection data."
+          details="At Nexus Clinic KL, Wegovy is prescribed through a fully supervised doctor-led programme with screening, bloodwork, titration and monthly follow-up."
+          note="Higher-dose semaglutide with weight-management approval, structured titration, and doctor-led oversight at Nexus Clinic Kuala Lumpur."
+          image="/images/weight-loss/Wegovy Weight Loss Treatment.png"
+          imageAlt="Wegovy weight loss treatment in Kuala Lumpur"
+          ctaText="Book Free Assessment"
+          whatsappMessage="Hi, I'm interested in the Wegovy weight loss programme at Nexus Clinic KL. I'd like to book a consultation."
+          floatingTitle="Wegovy Programme"
+          floatingSubtitle="Doctor-supervised • Weekly injection • 20% CV risk reduction"
+          staggerContainer={staggerContainer}
+          fadeInLeft={fadeInLeft}
+          fadeInRight={fadeInRight}
+          fadeInUp={fadeInUp}
+        />
+
         <motion.section
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          className="relative min-h-[90vh] flex items-center"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className=" bg-cream"
         >
-          <div className="absolute inset-0 bg-linear-to-br from-cream via-light to-cream/50" />
-
-          <div className="container mx-auto px-4 md:px-6 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft} className="space-y-8">
-                <div className="inline-flex items-center gap-2 bg-wine/10 px-4 py-2 rounded-full">
-                  <Sparkles className="w-4 h-4 text-wine" />
-                  <span className="text-wine font-inter text-sm font-medium">
-                    Higher-Dose Semaglutide for Weight Management
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="container mx-auto max-w-6xl px-4 -mt-8 relative z-20"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { icon: Shield, text: "Doctor-supervised" },
+                { icon: Clock, text: "Weekly injection plan" },
+                { icon: Heart, text: "20% CV risk reduction" },
+                { icon: MapPin, text: "KLCC location" },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  whileHover={{ y: -5 }}
+                  className="flex items-center gap-3 bg-glass backdrop-blur-sm p-3 rounded-xl border border-cream shadow-md"
+                >
+                  <div className="bg-cream p-2 rounded-full">
+                    <item.icon className="w-4 h-4 text-wine" />
+                  </div>
+                  <span className="text-sm text-brown font-inter font-medium">
+                    {item.text}
                   </span>
-                </div>
-
-                <h1 className="font-['Georgia',serif] text-5xl lg:text-5xl text-brown leading-tight">
-                  Wegovy Malaysia Programme
-                  <span className="text-wine text-4xl block mt-2">
-                    Weight Loss and Heart Protection Under Doctor Supervision
-                  </span>
-                </h1>
-
-                <p className="text-taupe font-inter text-lg leading-relaxed max-w-lg">
-                  Wegovy is the only weight loss injection in Malaysia approved
-                  specifically for chronic weight management and supported by
-                  landmark cardiovascular protection data.
-                </p>
-
-                <p className="text-taupe font-inter text-lg leading-relaxed max-w-lg">
-                  At Nexus Clinic KL, Wegovy is prescribed through a fully
-                  supervised doctor-led programme with screening, bloodwork,
-                  titration and monthly follow-up.
-                </p>
-
-                <div className="flex flex-wrap gap-4">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-wine text-light px-8 py-4 rounded-full font-inter font-medium hover:bg-rose transition-colors shadow-lg shadow-wine/20"
-                  >
-                    Book Free Assessment
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border-2 border-brown/20 text-brown px-8 py-4 rounded-full font-inter font-medium hover:border-wine hover:text-wine transition-colors"
-                  >
-                    View Programme Guide
-                  </motion.button>
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
-                  {[
-                    { icon: Shield, text: "Doctor-supervised" },
-                    { icon: Clock, text: "Weekly injection plan" },
-                    { icon: Heart, text: "20% CV risk reduction" },
-                    { icon: MapPin, text: "KLCC location" },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ y: -5 }}
-                      className="flex items-center gap-2"
-                    >
-                      <div className="bg-cream p-2 rounded-full">
-                        <item.icon className="w-4 h-4 text-wine" />
-                      </div>
-                      <span className="text-sm text-brown font-inter">
-                        {item.text}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeInRight}
-                className="relative h-150 rounded-3xl overflow-hidden shadow-2xl"
-              >
-                <div className="absolute inset-0 bg-linear-to-tr from-wine/20 to-transparent z-10" />
-                <img
-                  src="/images/main/wegovy.webp"
-                  alt="Wegovy weight loss treatment in Kuala Lumpur"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-6 left-6 right-6 bg-glass backdrop-blur-md p-6 rounded-2xl z-20">
-                  <p className="text-brown font-inter text-sm">
-                    Higher-dose semaglutide with weight-management approval,
-                    structured titration, and doctor-led oversight at Nexus
-                    Clinic Kuala Lumpur.
-                  </p>
-                </div>
-              </motion.div>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </motion.section>
 
         {/* Treatment Overview */}
@@ -1049,13 +1007,14 @@ export default function PageWegovyMalaysia({
                 Lumpur, Nexus Clinic KL can guide you through screening,
                 titration, monitoring and long-term maintenance planning.
               </p>
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                href="/contact-us"
                 className="bg-light text-wine px-10 py-5 rounded-full font-inter font-medium text-lg hover:bg-cream transition-colors shadow-2xl"
               >
                 Book Free Assessment
-              </motion.button>
+              </motion.a>
             </motion.div>
           </div>
         </motion.section>

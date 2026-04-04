@@ -79,7 +79,7 @@ export default function DoctorMonitoredLanding({
   ];
 
   return (
-    <div className="min-h-screen bg-light">
+    <div className="min-h-screen overflow-hidden">
       <AllPagesHero
         badge="Expert Doctor-Led Weight Management in Malaysia"
         title="Medically Supervised Weight Loss in Malaysia"
@@ -90,7 +90,6 @@ export default function DoctorMonitoredLanding({
         image="/images/main/doctor-monitored-malaysia.webp"
         imageAlt="Doctor consultation at Nexus Clinic Kuala Lumpur"
         ctaText="Book Free Consultation"
-        ctaLink="/contact-us"
         whatsappMessage="Hi, I'm interested in weight management treatment at Nexus Clinic KL. I'd like to book a consultation."
         floatingTitle="Programmes available:"
         floatingSubtitle="GLP-1, Duromine, HCG, Wegovy, Ozempic, Mounjaro"

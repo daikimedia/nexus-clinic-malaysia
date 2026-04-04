@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { ShareButton } from "@/src/components/blog/ShareButton"; 
 
-    const baseUrl = process.env.BASE_URL;
+    const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com/";
 export async function generateMetadata({ 
   params 
 }: { 

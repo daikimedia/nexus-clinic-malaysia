@@ -219,7 +219,7 @@ const CoolSculptingLanding = ({
   return (
     <>
       <main
-        className="min-h-screen"
+        className="min-h-screen overflow-hidden"
         style={{
           backgroundColor: "var(--color-light)",
           fontFamily: "var(--font-inter)",
@@ -235,7 +235,6 @@ const CoolSculptingLanding = ({
           image="/images/main/coolsculpting.webp"
           imageAlt="CoolSculpting Treatment at Nexus Clinic Kuala Lumpur"
           ctaText="Book Free Assessment"
-          ctaLink="/contact-us"
           whatsappMessage="Hi, I'm interested in CoolSculpting treatment at Nexus Clinic KL. I'd like to book a consultation."
           floatingTitle="5000+ Procedures"
           floatingSubtitle="Trusted aesthetic care at Nexus Clinic KL"

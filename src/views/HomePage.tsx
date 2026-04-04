@@ -24,6 +24,7 @@ import GalleryPage from "./SliderGallery";
 import { DoctorsSection } from "../components/DoctorSection";
 import FAQ from "../components/FAQ";
 import SectionBeforeAfter from "../components/BeforeAfterCustomize";
+import SocialIcons from "../components/SocialIcons";
 const GlassCard = ({
   children,
   className = "",
@@ -142,27 +143,29 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
                 transition={{ delay: 0.8, duration: 0.8 }}
                 className="flex sm:flex-row items-center justify-center lg:justify-start gap-4"
               >
-                <motion.button
+                <motion.a
                   whileHover={{
                     scale: 1.02,
                     boxShadow: "0 20px 40px rgba(140, 79, 88, 0.25)",
                   }}
                   whileTap={{ scale: 0.98 }}
+                  href="/contact-us"
                   className=" px-4 py-2 lg:px-8 lg:py-4 rounded-full text-white text-sm tracking-wider flex items-center gap-3 bg-brown hover:bg-wine transition-colors"
                 >
                   {t("hero.cta1")}
-                </motion.button>
+                </motion.a>
 
-                <motion.button
+                <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  href="/contact-us"
                   className="flex items-center gap-3 text-sm tracking-wider text-brown"
                 >
                   <span className="w-12 h-12 rounded-full border-2 border-brown flex items-center justify-center hover:bg-brown hover:text-white transition-colors">
                     <Play size={16} className="fill-current" />
                   </span>
                   {t("hero.cta2")}
-                </motion.button>
+                </motion.a>
               </motion.div>
             </motion.div>
 
@@ -724,20 +727,7 @@ const ContactSection = ({ t }: { t: (key: string) => string }) => {
                 </motion.div>
               ))}
             </div>
-
-            {/* Social */}
-            <div className="flex gap-4">
-              {["Facebook", "Instagram", "TikTok"].map((social) => (
-                <motion.a
-                  key={social}
-                  href="#"
-                  whileHover={{ y: -3 }}
-                  className="px-5 py-2 rounded-full text-sm text-white border border-white/30 hover:bg-white/10 transition-colors"
-                >
-                  {social}
-                </motion.a>
-              ))}
-            </div>
+            <SocialIcons  iconSize={30}/>
           </motion.div>
 
           {/* Right - Form */}
