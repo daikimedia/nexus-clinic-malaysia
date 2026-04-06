@@ -87,87 +87,89 @@ import {
   scaleIn,
 } from "@/src/lib/animations";
 import Whatsapp from "@/src/components/Whatsapp";
+import Image from "next/image";
 import Link from "next/link";
+import FAQ from "@/src/components/FAQ";
 
 interface RegenerativeHubProps {
   locale: string;
 }
 
 export default function RegenerativeHub({ locale }: RegenerativeHubProps) {
-  const treatments = [
-    {
-      name: "Testosterone Therapy Malaysia",
-      description: "A doctor-led treatment option for suitable patients experiencing symptoms linked to low testosterone, including low energy, reduced drive, and changes in strength, focus, or mood.",
-      slug: "testosterone-therapy-malaysia",
-      icon: <Battery className="w-6 h-6" />,
-    },
-    {
-      name: "ED Treatment Malaysia",
-      description: "A professional overview of erectile dysfunction treatment options designed to improve confidence, function, and sexual wellness through medically guided care.",
-      slug: "ed-treatment-malaysia",
-      icon: <HeartPulse className="w-6 h-6" />,
-    },
-    {
-      name: "Hormone Replacement Therapy Malaysia",
-      description: "A structured treatment approach for patients with symptoms related to hormone imbalance, using clinical assessment and personalized monitoring.",
-      slug: "hormone-replacement-therapy-malaysia",
-      icon: <Recycle className="w-6 h-6" />,
-    },
-    {
-      name: "PCOS Treatment Malaysia",
-      description: "Doctor-led support for patients managing polycystic ovary syndrome, with treatment planning focused on hormonal balance, symptoms, and long-term wellness.",
-      slug: "pcos-treatment-malaysia",
-      icon: <ActivityIcon className="w-6 h-6" />,
-    },
-    {
-      name: "Hypothyroidism Treatment Malaysia",
-      description: "Medical assessment and treatment support for patients with low thyroid function, especially where fatigue, weight changes, or hormonal symptoms are present.",
-      slug: "hypothyroidism-treatment-malaysia",
-      icon: <FlaskConical className="w-6 h-6" />,
-    },
-    {
-      name: "Stem Cell Therapy Malaysia",
-      description: "An advanced regenerative treatment category considered in selected cases where tissue support and recovery are part of the treatment goal.",
-      slug: "stem-cell-therapy-malaysia",
-      icon: <Microscope className="w-6 h-6" />,
-    },
-    {
-      name: "Anti-Aging Therapy Malaysia",
-      description: "A wellness-focused approach to healthy aging that may include hormone review, regenerative support, and doctor-guided optimization plans.",
-      slug: "anti-aging-therapy-malaysia",
-      icon: <Leaf className="w-6 h-6" />,
-    },
-    {
-      name: "Hormone Test Malaysia",
-      description: "Comprehensive hormone testing to help identify imbalances and guide treatment decisions more accurately.",
-      slug: "hormone-test-malaysia",
-      icon: <TestTube className="w-6 h-6" />,
-    },
-    {
-      name: "Menopause Hormone Replacement Malaysia",
-      description: "Support for menopause-related symptoms using doctor-led hormone replacement planning for suitable patients.",
-      slug: "menopause-hormone-replacement-malaysia",
-      icon: <Heart className="w-6 h-6" />,
-    },
-    {
-      name: "P-Shot Malaysia",
-      description: "A regenerative intimate wellness treatment designed to support male sexual function and confidence in appropriate candidates.",
-      slug: "p-shot-malaysia",
-      icon: <Zap className="w-6 h-6" />,
-    },
-    {
-      name: "O-Shot Malaysia",
-      description: "A regenerative treatment option for female intimate wellness, guided by doctor assessment and individual suitability.",
-      slug: "o-shot-malaysia",
-      icon: <Sparkles className="w-6 h-6" />,
-    },
-    {
-      name: "Shockwave Therapy Malaysia",
-      description: "A non-invasive treatment option often used in sexual wellness and performance-related care as part of a broader treatment plan.",
-      slug: "shockwave-therapy-malaysia",
-      icon: <Activity className="w-6 h-6" />,
-    },
-  ];
+    const treatments = [
+      {
+        name: "Testosterone Therapy Malaysia",
+        description: "A doctor-led treatment option for suitable patients experiencing symptoms linked to low testosterone, including low energy, reduced drive, and changes in strength, focus, or mood.",
+        slug: "testosterone-therapy-malaysia",
+        imageUrl: "/images/regenerative/testosterone-therapy.webp",
+      },
+      {
+        name: "ED Treatment Malaysia",
+        description: "A professional overview of erectile dysfunction treatment options designed to improve confidence, function, and sexual wellness through medically guided care.",
+        slug: "ed-treatment-malaysia",
+        imageUrl: "/images/regenerative/ed-treatment.webp",
+      },
+      {
+        name: "Hormone Replacement Therapy Malaysia",
+        description: "A structured treatment approach for patients with symptoms related to hormone imbalance, using clinical assessment and personalized monitoring.",
+        slug: "hormone-replacement-therapy-malaysia",
+        imageUrl: "/images/regenerative/hormone-replacement.webp",
+      },
+      {
+        name: "PCOS Treatment Malaysia",
+        description: "Doctor-led support for patients managing polycystic ovary syndrome, with treatment planning focused on hormonal balance, symptoms, and long-term wellness.",
+        slug: "pcos-treatment-malaysia",
+        imageUrl: "/images/regenerative/pcos-treatment.webp",
+      },
+      {
+        name: "Hypothyroidism Treatment Malaysia",
+        description: "Medical assessment and treatment support for patients with low thyroid function, especially where fatigue, weight changes, or hormonal symptoms are present.",
+        slug: "hypothyroidism-treatment-malaysia",
+        imageUrl: "/images/regenerative/hypothyroidism-treatment.webp",
+      },
+      {
+        name: "Stem Cell Therapy Malaysia",
+        description: "An advanced regenerative treatment category considered in selected cases where tissue support and recovery are part of the treatment goal.",
+        slug: "stem-cell-therapy-malaysia",
+        imageUrl: "/images/regenerative/stem-cell-therapy.webp",
+      },
+      {
+        name: "Anti-Aging Therapy Malaysia",
+        description: "A wellness-focused approach to healthy aging that may include hormone review, regenerative support, and doctor-guided optimization plans.",
+        slug: "anti-aging-therapy-malaysia",
+        imageUrl: "/images/regenerative/anti-aging-therapy.webp",
+      },
+      {
+        name: "Hormone Test Malaysia",
+        description: "Comprehensive hormone testing to help identify imbalances and guide treatment decisions more accurately.",
+        slug: "hormone-test-malaysia",
+        imageUrl: "/images/regenerative/hormone-test.webp",
+      },
+      {
+        name: "Menopause Hormone Replacement Malaysia",
+        description: "Support for menopause-related symptoms using doctor-led hormone replacement planning for suitable patients.",
+        slug: "menopause-hormone-replacement-malaysia",
+        imageUrl: "/images/regenerative/menopause-hormone.webp",
+      },
+      {
+        name: "P-Shot Malaysia",
+        description: "A regenerative intimate wellness treatment designed to support male sexual function and confidence in appropriate candidates.",
+        slug: "p-shot-malaysia",
+        imageUrl: "/images/regenerative/p-shot.webp",
+      },
+      {
+        name: "O-Shot Malaysia",
+        description: "A regenerative treatment option for female intimate wellness, guided by doctor assessment and individual suitability.",
+        slug: "o-shot-malaysia",
+        imageUrl: "/images/regenerative/o-shot.webp",
+      },
+      {
+        name: "Shockwave Therapy Malaysia",
+        description: "A non-invasive treatment option often used in sexual wellness and performance-related care as part of a broader treatment plan.",
+        slug: "shockwave-therapy-malaysia",
+        imageUrl: "/images/regenerative/shockwave-therapy.webp",
+      },
+    ];
 
   const concernMapping = [
     { concern: "Low energy, reduced drive, symptoms of low testosterone", treatment: "Testosterone Therapy or Hormone Test", link: "/regenerative-treatments/testosterone-therapy-malaysia" },
@@ -207,13 +209,13 @@ export default function RegenerativeHub({ locale }: RegenerativeHubProps) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://nexusclinic.com.my/"
+                  "item": "https://nexus-clinic.com/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Regenerative Treatments",
-                  "item": "https://nexusclinic.com.my/regenerative-treatments/"
+                  "item": "https://nexus-clinic.com/regenerative-treatments/"
                 }
               ]
             })
@@ -262,7 +264,7 @@ export default function RegenerativeHub({ locale }: RegenerativeHubProps) {
             variants={fadeInUp} 
             className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
           >
-            <Link href="/regenerative-treatments/book-consultation">
+            <Link href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -380,15 +382,20 @@ export default function RegenerativeHub({ locale }: RegenerativeHubProps) {
                 key={idx}
                 variants={fadeInUp}
                 whileHover={{ y: -5 }}
-                className="bg-cream p-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
+                className="bg-cream pb-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-wine/10 rounded-lg flex items-center justify-center text-wine mb-4">
-                  {treatment.icon}
+                <div className="relative w-full h-60 overflow-hidden bg-wine/5 rounded-xl mb-4">
+                  <Image 
+                    src={treatment.imageUrl}
+                    alt={treatment.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="font-georgia text-xl text-brown mb-2">{treatment.name}</h3>
-                <p className="text-taupe font-inter text-sm mb-4">{treatment.description}</p>
-                <Link href={`/regenerative-treatments/${treatment.slug}`}>
-                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all">
+                <h3 className="font-georgia text-xl text-brown mb-2 px-6">{treatment.name}</h3>
+                <p className="text-taupe font-inter text-sm mb-4 px-6">{treatment.description}</p>
+                <Link href={`/regenerative/${treatment.slug}`}>
+                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all px-6">
                     View Treatment Details
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -498,33 +505,7 @@ export default function RegenerativeHub({ locale }: RegenerativeHubProps) {
         </motion.div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Common Questions About Regenerative Treatments</h2>
-          </motion.div>
-          
-          <div className="space-y-4">
-            {faqData.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl border border-taupe/10"
-              >
-                <h3 className="font-georgia text-lg text-brown mb-3">{faq.q}</h3>
-                <p className="text-taupe font-inter text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
+      <FAQ data={faqData} />
 
       {/* Final Booking Section */}
       <section className="py-20 px-4 bg-wine">
@@ -545,7 +526,7 @@ export default function RegenerativeHub({ locale }: RegenerativeHubProps) {
               wellness optimization, or intimate health treatment, our doctors are here to guide you clearly and professionally.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/regenerative-treatments/book-consultation">
+              <Link href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

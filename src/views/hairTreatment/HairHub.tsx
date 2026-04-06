@@ -4,33 +4,11 @@ import {
   Sparkles,
   Award,
   MapPin,
-  Calendar,
   CheckCircle,
   Clock,
-  Heart,
   Shield,
   ArrowRight,
-  Zap,
-  Eye,
-  Droplet,
-  Target,
-  ChevronRight,
-  Phone,
-  Users,
-  Flame,
-  HelpCircle,
-  EyeOff,
-  Gem,
-  Feather,
-  Wind,
-  Scissors,
-  Activity,
-  Syringe,
-  Pill,
-  Microscope,
-  Brain,
-  Droplets,
-  Scan,
+
 } from "lucide-react";
 import {
   staggerContainer,
@@ -38,71 +16,73 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import Whatsapp from "@/src/components/Whatsapp";
 import Link from "next/link";
+import Image from "next/image";
+import FAQ from "@/src/components/FAQ";
 
 interface HairHubProps {
   locale: string;
 }
 
 export default function HairHub({ locale }: HairHubProps) {
-  const treatments = [
-    {
-      name: "Hair Transplant Malaysia",
-      description: "A complete guide to surgical hair restoration for patients who want long-term improvement in density and hairline design. Learn who is suitable, how grafts are planned, and what results to expect.",
-      slug: "hair-transplant-malaysia",
-      icon: <Scissors className="w-6 h-6" />,
-    },
-    {
-      name: "FUE Hair Transplant Malaysia",
-      description: "Follicular Unit Extraction is one of the most popular hair transplant methods for natural-looking restoration. This treatment uses individual graft extraction for precise placement, minimal visible scarring, and a carefully designed hairline.",
-      slug: "fue-hair-transplant-malaysia",
-      icon: <Target className="w-6 h-6" />,
-    },
-    {
-      name: "PRP Hair Treatment Malaysia",
-      description: "PRP hair treatment uses your body's own growth factors to support weaker follicles, improve scalp condition, and encourage healthier hair growth. Often recommended for early thinning and maintenance.",
-      slug: "prp-hair-treatment-malaysia",
-      icon: <Droplet className="w-6 h-6" />,
-    },
-    {
-      name: "Hair Loss Treatment Malaysia",
-      description: "A doctor-led overview of hair loss solutions in Malaysia, including medications, scalp therapies, regenerative treatments, and long-term maintenance plans based on your pattern of hair loss.",
-      slug: "hair-loss-treatment-malaysia",
-      icon: <Activity className="w-6 h-6" />,
-    },
-    {
-      name: "Beard Transplant Malaysia",
-      description: "For patients with patchy beard growth, uneven density, or areas that never filled in naturally, beard transplant can restore fuller facial hair using carefully placed grafts.",
-      slug: "beard-transplant-malaysia",
-      icon: <Feather className="w-6 h-6" />,
-    },
-    {
-      name: "Mesotherapy Hair Loss Malaysia",
-      description: "Hair mesotherapy delivers active ingredients into the scalp to support circulation, nourish follicles, and improve the hair growth environment. Often used as part of a broader hair restoration plan.",
-      slug: "mesotherapy-hair-loss-malaysia",
-      icon: <Syringe className="w-6 h-6" />,
-    },
-    {
-      name: "Exosome Hair Treatment Malaysia",
-      description: "Exosome therapy is an advanced regenerative treatment designed to support scalp renewal and follicle recovery. It is often considered by patients looking for a modern non-surgical option for hair thinning.",
-      slug: "exosome-hair-treatment-malaysia",
-      icon: <Microscope className="w-6 h-6" />,
-    },
-    {
-      name: "Minoxidil Treatment Malaysia",
-      description: "Minoxidil is one of the most widely used treatments for hair loss. It is commonly recommended to help maintain hair density, support regrowth, and slow ongoing thinning when used consistently.",
-      slug: "minoxidil-treatment-malaysia",
-      icon: <Pill className="w-6 h-6" />,
-    },
-    {
-      name: "Finasteride Treatment Malaysia",
-      description: "Finasteride is a medical treatment often used in male pattern hair loss to reduce the hormonal process that drives follicle miniaturization. It is typically prescribed after doctor assessment and ongoing review.",
-      slug: "finasteride-treatment-malaysia",
-      icon: <Brain className="w-6 h-6" />,
-    },
-  ];
+    const treatments = [
+      {
+        name: "Hair Transplant Malaysia",
+        description: "A complete guide to surgical hair restoration for patients who want long-term improvement in density and hairline design. Learn who is suitable, how grafts are planned, and what results to expect.",
+        slug: "hair-transplant-malaysia",
+        imageUrl: "/images/hair/hair-transpalnt.jpeg",
+      },
+      {
+        name: "FUE Hair Transplant Malaysia",
+        description: "Follicular Unit Extraction is one of the most popular hair transplant methods for natural-looking restoration. This treatment uses individual graft extraction for precise placement, minimal visible scarring, and a carefully designed hairline.",
+        slug: "fue-hair-transplant-malaysia",
+        imageUrl: "/images/hair/fue-hair-transplant.webp",
+      },
+      {
+        name: "PRP Hair Treatment Malaysia",
+        description: "PRP hair treatment uses your body's own growth factors to support weaker follicles, improve scalp condition, and encourage healthier hair growth. Often recommended for early thinning and maintenance.",
+        slug: "prp-hair-treatment-malaysia",
+        imageUrl: "/images/hair/prp-hair-treatment.webp",
+      },
+      {
+        name: "Hair Loss Treatment Malaysia",
+        description: "A doctor-led overview of hair loss solutions in Malaysia, including medications, scalp therapies, regenerative treatments, and long-term maintenance plans based on your pattern of hair loss.",
+        slug: "hair-loss-treatment-malaysia",
+        imageUrl: "/images/hair/hair-loss-treatment.webp",
+      },
+      {
+        name: "Beard Transplant Malaysia",
+        description: "For patients with patchy beard growth, uneven density, or areas that never filled in naturally, beard transplant can restore fuller facial hair using carefully placed grafts.",
+        slug: "beard-transplant-malaysia",
+        imageUrl: "/images/hair/beard-transplant.webp",
+      },
+      {
+        name: "Mesotherapy Hair Loss Malaysia",
+        description: "Hair mesotherapy delivers active ingredients into the scalp to support circulation, nourish follicles, and improve the hair growth environment. Often used as part of a broader hair restoration plan.",
+        slug: "mesotherapy-hair-loss-malaysia",
+        imageUrl: "/images/hair/mesotherapy-hair-loss.webp",
+      },
+      {
+        name: "Exosome Hair Treatment Malaysia",
+        description: "Exosome therapy is an advanced regenerative treatment designed to support scalp renewal and follicle recovery. It is often considered by patients looking for a modern non-surgical option for hair thinning.",
+        slug: "exosome-hair-treatment-malaysia",
+        imageUrl: "/images/hair/exesome-hair-treatment.webp",
+      },
+      {
+        name: "Minoxidil Treatment Malaysia",
+        description: "Minoxidil is one of the most widely used treatments for hair loss. It is commonly recommended to help maintain hair density, support regrowth, and slow ongoing thinning when used consistently.",
+        slug: "minoxidil-treatment-malaysia",
+        imageUrl: "/images/hair/minoxidil-treatment.webp",
+      },
+      {
+        name: "Finasteride Treatment Malaysia",
+        description: "Finasteride is a medical treatment often used in male pattern hair loss to reduce the hormonal process that drives follicle miniaturization. It is typically prescribed after doctor assessment and ongoing review.",
+        slug: "finasteride-treatment-malaysia",
+        imageUrl: "/images/hair/hair-transpalnt.jpeg",
+      },
+    ];
 
   const concernMapping = [
     { concern: "Receding hairline", treatment: "FUE Hair Transplant or Medical Hair Loss Treatment", link: "/hair/fue-hair-transplant-malaysia" },
@@ -114,7 +94,7 @@ export default function HairHub({ locale }: HairHubProps) {
     { concern: "Looking for long-term hairline restoration", treatment: "Hair Transplant or FUE Hair Transplant", link: "/hair/hair-transplant-malaysia" },
     { concern: "Want a non-surgical treatment first", treatment: "PRP, Mesotherapy, Exosome, Minoxidil", link: "/hair/exosome-hair-treatment-malaysia" },
     { concern: "Ongoing male pattern hair loss", treatment: "Finasteride and Minoxidil, with doctor monitoring", link: "/hair/finasteride-treatment-malaysia" },
-    { concern: "Not sure what is causing your hair loss", treatment: "Doctor-Led Hair Loss Assessment", link: "/hair/book-consultation" },
+    { concern: "Not sure what is causing your hair loss", treatment: "Doctor-Led Hair Loss Assessment", link: "/contact-us" },
   ];
 
   const faqData = [
@@ -148,13 +128,13 @@ export default function HairHub({ locale }: HairHubProps) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://nexusclinic.com.my/"
+                  "item": "https://nexus-clinic.com/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Hair Treatments",
-                  "item": "https://nexusclinic.com.my/hair/"
+                  "item": "https://nexus-clinic.com/hair/"
                 }
               ]
             })
@@ -205,7 +185,7 @@ export default function HairHub({ locale }: HairHubProps) {
             variants={fadeInUp} 
             className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
           >
-            <Link href="/hair/book-consultation">
+            <Link  href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -325,15 +305,20 @@ export default function HairHub({ locale }: HairHubProps) {
                 key={idx}
                 variants={fadeInUp}
                 whileHover={{ y: -5 }}
-                className="bg-cream p-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
+                className="bg-cream pb-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-wine/10 rounded-lg flex items-center justify-center text-wine mb-4">
-                  {treatment.icon}
+                <div className="relative w-full h-60 overflow-hidden bg-wine/5 rounded-xl mb-4">
+                  <Image 
+                    src={treatment.imageUrl}
+                    alt={treatment.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="font-georgia text-xl text-brown mb-2">{treatment.name}</h3>
-                <p className="text-taupe font-inter text-sm mb-4">{treatment.description}</p>
+                <h3 className="font-georgia text-xl text-brown mb-2 px-6">{treatment.name}</h3>
+                <p className="text-taupe font-inter text-sm mb-4 px-6">{treatment.description}</p>
                 <Link href={`/hair/${treatment.slug}`}>
-                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all">
+                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all px-6">
                     View Treatment Details
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -514,34 +499,7 @@ export default function HairHub({ locale }: HairHubProps) {
           </motion.div>
         </motion.div>
       </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Common Questions About Hair Treatments</h2>
-          </motion.div>
-          
-          <div className="space-y-4">
-            {faqData.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl border border-taupe/10"
-              >
-                <h3 className="font-georgia text-lg text-brown mb-3">{faq.q}</h3>
-                <p className="text-taupe font-inter text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
+      <FAQ data={faqData} />
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">
@@ -565,7 +523,7 @@ export default function HairHub({ locale }: HairHubProps) {
               understand why your hair has become thinner, our doctors are here to guide you clearly and professionally.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/hair/book-consultation">
+              <Link  href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

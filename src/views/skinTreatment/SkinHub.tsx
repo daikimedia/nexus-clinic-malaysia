@@ -54,108 +54,108 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
 import Link from "next/link";
-
+import FAQ from "@/src/components/FAQ";
 interface SkinHubProps {
   locale: string;
 }
 
 export default function SkinHub({ locale }: SkinHubProps) {
-  const treatments = [
-    {
-      name: "Acne Treatment Malaysia",
-      description: "A complete guide to treating active acne with doctor led plans that may include skincare, medication, peels, laser support, and tailored maintenance for clearer skin.",
-      slug: "acne-treatment-malaysia",
-      icon: <Bug className="w-6 h-6" />,
-    },
-    {
-      name: "Acne Scar Treatment Malaysia",
-      description: "Explore treatment options for indented acne scars, textural changes, and post acne skin damage using staged treatment plans designed to improve smoothness and skin quality.",
-      slug: "acne-scar-treatment-malaysia",
-      icon: <Target className="w-6 h-6" />,
-    },
-    {
-      name: "Pigmentation Treatment Malaysia",
-      description: "Doctor led treatment for uneven skin tone, sun spots, post inflammatory marks, and stubborn pigment using a combination of targeted solutions based on the type of pigmentation.",
-      slug: "pigmentation-treatment-malaysia",
-      icon: <Sun className="w-6 h-6" />,
-    },
-    {
-      name: "Melasma Treatment Malaysia",
-      description: "Melasma needs careful management, not aggressive guesswork. Learn how Nexus Clinic KL approaches this long term pigment condition with realistic and skin safe planning.",
-      slug: "melasma-treatment-malaysia",
-      icon: <Moon className="w-6 h-6" />,
-    },
-    {
-      name: "Mole Removal Malaysia",
-      description: "A clear guide to mole removal for cosmetic concerns, skin comfort, and visible lesions that patients want assessed and removed with proper doctor evaluation.",
-      slug: "mole-removal-malaysia",
-      icon: <ScanFace className="w-6 h-6" />,
-    },
-    {
-      name: "Hydrafacial Malaysia",
-      description: "A gentle treatment that cleanses, exfoliates, hydrates, and refreshes the skin for patients who want a smoother, more radiant complexion with minimal downtime.",
-      slug: "hydrafacial-malaysia",
-      icon: <Droplets className="w-6 h-6" />,
-    },
-    {
-      name: "Pico Laser Malaysia",
-      description: "Pico laser is used for selected concerns such as pigmentation, uneven tone, tattoo fading, and textural improvement using ultra short pulses designed for precision.",
-      slug: "pico-laser-malaysia",
-      icon: <Zap className="w-6 h-6" />,
-    },
-    {
-      name: "Dark Eye Circle Treatment Malaysia",
-      description: "Understand the different causes of dark eye circles including hollowing, pigmentation, thin skin, and vascular shadows, and which treatment path may be suitable.",
-      slug: "dark-eye-circle-treatment-malaysia",
-      icon: <EyeOff className="w-6 h-6" />,
-    },
-    {
-      name: "Skin Whitening Treatment Malaysia",
-      description: "A doctor led guide to skin brightening and tone improvement focused on healthy, even looking skin rather than harsh or unrealistic promises.",
-      slug: "skin-whitening-treatment-malaysia",
-      icon: <Sparkle className="w-6 h-6" />,
-    },
-    {
-      name: "Eczema Treatment Malaysia",
-      description: "For patients dealing with dry, itchy, inflamed skin, eczema treatment begins with diagnosis, trigger control, and a plan to calm and protect the skin barrier.",
-      slug: "eczema-treatment-malaysia",
-      icon: <AlertTriangle className="w-6 h-6" />,
-    },
-    {
-      name: "Keloid Treatment Malaysia",
-      description: "Keloid scars need a careful approach based on size, location, symptoms, and recurrence risk. Learn the treatment options available at Nexus Clinic KL.",
-      slug: "keloid-treatment-malaysia",
-      icon: <Flame className="w-6 h-6" />,
-    },
-    {
-      name: "Rosacea Treatment Malaysia",
-      description: "Persistent redness, sensitivity, flushing, and breakouts may point to rosacea. This page explains how diagnosis and treatment are approached safely and clearly.",
-      slug: "rosacea-treatment-malaysia",
-      icon: <Heart className="w-6 h-6" />,
-    },
-    {
-      name: "Stretch Mark Removal Malaysia",
-      description: "A practical guide to improving the appearance of stretch marks using doctor led treatment plans based on skin type, mark age, and treatment goals.",
-      slug: "stretch-mark-removal-malaysia",
-      icon: <Wind className="w-6 h-6" />,
-    },
-    {
-      name: "Laser Hair Removal Malaysia",
-      description: "Reduce unwanted hair with a treatment plan designed around skin tone, hair thickness, treatment area, and realistic expectations for long term reduction.",
-      slug: "laser-hair-removal-malaysia",
-      icon: <Feather className="w-6 h-6" />,
-    },
-    {
-      name: "Tattoo Removal Malaysia",
-      description: "Tattoo removal in Malaysia using doctor guided laser based treatment, with planning based on ink color, depth, age of tattoo, and skin response.",
-      slug: "tattoo-removal-malaysia",
-      icon: <Ban className="w-6 h-6" />,
-    },
-  ];
+    const treatments = [
+      {
+        name: "Acne Treatment Malaysia",
+        description: "A complete guide to treating active acne with doctor led plans that may include skincare, medication, peels, laser support, and tailored maintenance for clearer skin.",
+        slug: "acne-treatment-malaysia",
+        imageUrl: "/images/skin/acne-treatment.webp",
+      },
+      {
+        name: "Acne Scar Treatment Malaysia",
+        description: "Explore treatment options for indented acne scars, textural changes, and post acne skin damage using staged treatment plans designed to improve smoothness and skin quality.",
+        slug: "acne-scar-treatment-malaysia",
+        imageUrl: "/images/skin/acne-scar-treatment.webp",
+      },
+      {
+        name: "Pigmentation Treatment Malaysia",
+        description: "Doctor led treatment for uneven skin tone, sun spots, post inflammatory marks, and stubborn pigment using a combination of targeted solutions based on the type of pigmentation.",
+        slug: "pigmentation-treatment-malaysia",
+        imageUrl: "/images/skin/pigmentation-treatment.webp",
+      },
+      {
+        name: "Melasma Treatment Malaysia",
+        description: "Melasma needs careful management, not aggressive guesswork. Learn how Nexus Clinic KL approaches this long term pigment condition with realistic and skin safe planning.",
+        slug: "melasma-treatment-malaysia",
+        imageUrl: "/images/skin/melasma-treatment.webp",
+      },
+      {
+        name: "Mole Removal Malaysia",
+        description: "A clear guide to mole removal for cosmetic concerns, skin comfort, and visible lesions that patients want assessed and removed with proper doctor evaluation.",
+        slug: "mole-removal-malaysia",
+        imageUrl: "/images/skin/mole-removal.webp",
+      },
+      {
+        name: "Hydrafacial Malaysia",
+        description: "A gentle treatment that cleanses, exfoliates, hydrates, and refreshes the skin for patients who want a smoother, more radiant complexion with minimal downtime.",
+        slug: "hydrafacial-malaysia",
+        imageUrl: "/images/skin/hydrafacial.webp",
+      },
+      {
+        name: "Pico Laser Malaysia",
+        description: "Pico laser is used for selected concerns such as pigmentation, uneven tone, tattoo fading, and textural improvement using ultra short pulses designed for precision.",
+        slug: "pico-laser-malaysia",
+        imageUrl: "/images/skin/pico-laser.webp",
+      },
+      {
+        name: "Dark Eye Circle Treatment Malaysia",
+        description: "Understand the different causes of dark eye circles including hollowing, pigmentation, thin skin, and vascular shadows, and which treatment path may be suitable.",
+        slug: "dark-eye-circle-treatment-malaysia",
+        imageUrl: "/images/skin/dark-eye-circle-treatment.webp",
+      },
+      {
+        name: "Skin Whitening Treatment Malaysia",
+        description: "A doctor led guide to skin brightening and tone improvement focused on healthy, even looking skin rather than harsh or unrealistic promises.",
+        slug: "skin-whitening-treatment-malaysia",
+        imageUrl: "/images/skin/skin-whitening-treatment.webp",
+      },
+      {
+        name: "Eczema Treatment Malaysia",
+        description: "For patients dealing with dry, itchy, inflamed skin, eczema treatment begins with diagnosis, trigger control, and a plan to calm and protect the skin barrier.",
+        slug: "eczema-treatment-malaysia",
+        imageUrl: "/images/skin/eczema-treatment.webp",
+      },
+      {
+        name: "Keloid Treatment Malaysia",
+        description: "Keloid scars need a careful approach based on size, location, symptoms, and recurrence risk. Learn the treatment options available at Nexus Clinic KL.",
+        slug: "keloid-treatment-malaysia",
+        imageUrl: "/images/skin/keloid-treatment.webp",
+      },
+      {
+        name: "Rosacea Treatment Malaysia",
+        description: "Persistent redness, sensitivity, flushing, and breakouts may point to rosacea. This page explains how diagnosis and treatment are approached safely and clearly.",
+        slug: "rosacea-treatment-malaysia",
+        imageUrl: "/images/skin/rosacea-treatment.webp",
+      },
+      {
+        name: "Stretch Mark Removal Malaysia",
+        description: "A practical guide to improving the appearance of stretch marks using doctor led treatment plans based on skin type, mark age, and treatment goals.",
+        slug: "stretch-mark-removal-malaysia",
+        imageUrl: "/images/skin/stretch-mark.webp",
+      },
+      {
+        name: "Laser Hair Removal Malaysia",
+        description: "Reduce unwanted hair with a treatment plan designed around skin tone, hair thickness, treatment area, and realistic expectations for long term reduction.",
+        slug: "laser-hair-removal-malaysia",
+        imageUrl: "/images/skin/laser-hair-removal.webp",
+      },
+      {
+        name: "Tattoo Removal Malaysia",
+        description: "Tattoo removal in Malaysia using doctor guided laser based treatment, with planning based on ink color, depth, age of tattoo, and skin response.",
+        slug: "tattoo-removal-malaysia",
+        imageUrl: "/images/skin/tattoo-removal.webp",
+      },
+    ];
 
   const concernMapping = [
     { concern: "Active acne and ongoing breakouts", treatment: "Acne Treatment", link: "/skin/acne-treatment-malaysia" },
@@ -172,7 +172,7 @@ export default function SkinHub({ locale }: SkinHubProps) {
     { concern: "Unwanted facial or body hair", treatment: "Laser Hair Removal", link: "/skin/laser-hair-removal-malaysia" },
     { concern: "Tattoo you want faded or removed", treatment: "Tattoo Removal or Pico Laser", link: "/skin/tattoo-removal-malaysia" },
     { concern: "Looking for overall brighter and clearer skin", treatment: "Skin Whitening Treatment or Hydrafacial", link: "/skin/skin-whitening-treatment-malaysia" },
-    { concern: "Not sure what your skin actually needs", treatment: "Doctor Led Skin Assessment", link: "/skin/book-consultation" },
+    { concern: "Not sure what your skin actually needs", treatment: "Doctor Led Skin Assessment", link: "/contact-us" },
   ];
 
   const faqData = [
@@ -206,13 +206,13 @@ export default function SkinHub({ locale }: SkinHubProps) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://nexusclinic.com.my/"
+                  "item": "https://nexus-clinic.com/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Skin Treatments",
-                  "item": "https://nexusclinic.com.my/skin/"
+                  "item": "https://nexus-clinic.com/skin/"
                 }
               ]
             })
@@ -262,7 +262,7 @@ export default function SkinHub({ locale }: SkinHubProps) {
             variants={fadeInUp} 
             className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
           >
-            <Link href="/skin/book-consultation">
+            <Link href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -382,15 +382,20 @@ export default function SkinHub({ locale }: SkinHubProps) {
                 key={idx}
                 variants={fadeInUp}
                 whileHover={{ y: -5 }}
-                className="bg-cream p-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
+                className="bg-cream pb-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-wine/10 rounded-lg flex items-center justify-center text-wine mb-4">
-                  {treatment.icon}
+                <div className="relative w-full h-60 overflow-hidden bg-wine/5 rounded-xl mb-4">
+                  <Image 
+                    src={treatment.imageUrl}
+                    alt={treatment.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="font-georgia text-xl text-brown mb-2">{treatment.name}</h3>
-                <p className="text-taupe font-inter text-sm mb-4">{treatment.description}</p>
+                <h3 className="font-georgia text-xl text-brown mb-2 px-6">{treatment.name}</h3>
+                <p className="text-taupe font-inter text-sm mb-4 px-6">{treatment.description}</p>
                 <Link href={`/skin/${treatment.slug}`}>
-                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all">
+                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all px-6">
                     View Treatment Details
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -568,34 +573,7 @@ export default function SkinHub({ locale }: SkinHubProps) {
         </motion.div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Common Questions About Skin Treatments</h2>
-          </motion.div>
-          
-          <div className="space-y-4">
-            {faqData.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl border border-taupe/10"
-              >
-                <h3 className="font-georgia text-lg text-brown mb-3">{faq.q}</h3>
-                <p className="text-taupe font-inter text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
+      <FAQ data={faqData} />
       {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">
         <motion.div
@@ -618,7 +596,7 @@ export default function SkinHub({ locale }: SkinHubProps) {
               healthier looking skin, our doctors are here to guide you clearly and professionally.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/skin/book-consultation">
+              <Link href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

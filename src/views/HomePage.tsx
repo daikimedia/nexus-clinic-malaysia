@@ -149,7 +149,7 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
                     boxShadow: "0 20px 40px rgba(140, 79, 88, 0.25)",
                   }}
                   whileTap={{ scale: 0.98 }}
-                  href="/contact-us"
+                  href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/"
                   className=" px-4 py-2 lg:px-8 lg:py-4 rounded-full text-white text-sm tracking-wider flex items-center gap-3 bg-brown hover:bg-wine transition-colors"
                 >
                   {t("hero.cta1")}
@@ -158,7 +158,7 @@ const HeroSection = ({ t }: { t: (key: string) => string }) => {
                 <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  href="/contact-us"
+                  href="/consultation"
                   className="flex items-center gap-3 text-sm tracking-wider text-brown"
                 >
                   <span className="w-12 h-12 rounded-full border-2 border-brown flex items-center justify-center hover:bg-brown hover:text-white transition-colors">

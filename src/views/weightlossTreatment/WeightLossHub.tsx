@@ -41,84 +41,84 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import Whatsapp from "@/src/components/Whatsapp";
 import Link from "next/link";
-
+import FAQ from "@/src/components/FAQ";
+import Image from "next/image";
 interface WeightLossHubProps {
   locale: string;
 }
 
 export default function WeightLossHub({ locale }: WeightLossHubProps) {
-  const treatments = [
-    {
-      name: "Ozempic Weight Loss Malaysia",
-      description: "A doctor-led guide to Ozempic for weight loss in Malaysia, including how it works, who it may suit, expected progress, pricing and treatment planning.",
-      slug: "ozempic-weight-loss-malaysia",
-      icon: <Syringe className="w-6 h-6" />,
-    },
-    {
-      name: "Wegovy Weight Loss Malaysia",
-      description: "Learn how Wegovy supports appetite control and structured medical weight loss, with consultation guidance, candidacy review and realistic expectations.",
-      slug: "wegovy-weight-loss-malaysia",
-      icon: <Pill className="w-6 h-6" />,
-    },
-    {
-      name: "Mounjaro Weight Loss Malaysia",
-      description: "Comprehensive information on Mounjaro weight loss treatment in Malaysia, including doctor assessment, treatment suitability and progress support.",
-      slug: "mounjaro-weight-loss-malaysia",
-      icon: <Brain className="w-6 h-6" />,
-    },
-    {
-      name: "Duromine Weight Loss Malaysia",
-      description: "Explore short term doctor monitored Duromine weight loss programmes, how they are prescribed, who they may suit and what monitoring is needed.",
-      slug: "duromine-weight-loss-malaysia",
-      icon: <AlertCircle className="w-6 h-6" />,
-    },
-    {
-      name: "Doctor Monitored Weight Loss Malaysia",
-      description: "A personalized doctor monitored approach for patients who need clinical guidance, structured follow up and a treatment plan that matches their health profile.",
-      slug: "doctor-monitored-weight-loss-malaysia",
-      icon: <Users className="w-6 h-6" />,
-    },
-    {
-      name: "HCG Weight Loss Malaysia",
-      description: "Understand the role, claims and clinical considerations around HCG related weight loss plans, with honest doctor guidance on suitability.",
-      slug: "hcg-weight-loss-malaysia",
-      icon: <Droplets className="w-6 h-6" />,
-    },
-    {
-      name: "Fat Freezing Malaysia",
-      description: "Non surgical body contouring for stubborn fat areas using controlled cooling technology. Ideal for patients looking to target specific areas.",
-      slug: "fat-freezing-malaysia",
-      icon: <Snowflake className="w-6 h-6" />,
-    },
-    {
-      name: "CoolSculpting Malaysia",
-      description: "A complete overview of CoolSculpting in Malaysia, including how the treatment works, ideal body areas and what results are realistically possible.",
-      slug: "coolsculpting-malaysia",
-      icon: <Thermometer className="w-6 h-6" />,
-    },
-    {
-      name: "GLP 1 Programme Malaysia",
-      description: "A structured GLP 1 based weight loss programme designed around assessment, treatment planning, follow up and lifestyle support.",
-      slug: "glp-1-programme-malaysia",
-      icon: <TrendingUp className="w-6 h-6" />,
-    },
-    {
-      name: "Zepbound Weight Loss Malaysia",
-      description: "Doctor-led information on Zepbound weight loss treatment, including how it compares with other options and who may benefit from medical review.",
-      slug: "zepbound-weight-loss-malaysia",
-      icon: <Target className="w-6 h-6" />,
-    },
-    {
-      name: "IV Drip Weight Loss Malaysia",
-      description: "Supportive wellness and hydration focused IV drip options that may be added to a broader weight management plan when clinically appropriate.",
-      slug: "iv-drip-weight-loss-malaysia",
-      icon: <Droplet className="w-6 h-6" />,
-    },
-  ];
-
+    const treatments = [
+      {
+        name: "Ozempic Weight Loss Malaysia",
+        description: "A doctor-led guide to Ozempic for weight loss in Malaysia, including how it works, who it may suit, expected progress, pricing and treatment planning.",
+        slug: "ozempic-weight-loss-malaysia",
+        imageUrl: "/images/weight-loss/Ozempic Weight Loss Treatment.png",
+      },
+      {
+        name: "Wegovy Weight Loss Malaysia",
+        description: "Learn how Wegovy supports appetite control and structured medical weight loss, with consultation guidance, candidacy review and realistic expectations.",
+        slug: "wegovy-weight-loss-malaysia",
+        imageUrl: "/images/weight-loss/Wegovy Weight Loss Treatment.png",
+      },
+      {
+        name: "Mounjaro Weight Loss Malaysia",
+        description: "Comprehensive information on Mounjaro weight loss treatment in Malaysia, including doctor assessment, treatment suitability and progress support.",
+        slug: "mounjaro-weight-loss-malaysia",
+        imageUrl: "/images/weight-loss/Mounjaro Weight Loss Treatment.png",
+      },
+      {
+        name: "Duromine Weight Loss Malaysia",
+        description: "Explore short term doctor monitored Duromine weight loss programmes, how they are prescribed, who they may suit and what monitoring is needed.",
+        slug: "duromine-weight-loss-malaysia",
+        imageUrl: "/images/weight-loss/Duromine Weight Loss Treatment.png",
+      },
+      {
+        name: "Doctor Monitored Weight Loss Malaysia",
+        description: "A personalized doctor monitored approach for patients who need clinical guidance, structured follow up and a treatment plan that matches their health profile.",
+        slug: "doctor-monitored-weight-loss-malaysia",
+        imageUrl: "/images/weight-loss/Nexus Doctor Monitored Weight Loss.png",
+      },
+      {
+        name: "HCG Weight Loss Malaysia",
+        description: "Understand the role, claims and clinical considerations around HCG related weight loss plans, with honest doctor guidance on suitability.",
+        slug: "hcg-weight-loss-malaysia",
+        imageUrl: "/images/weight-loss/HCG Weight Loss Program Treatment.png",
+      },
+      {
+        name: "Fat Freezing Malaysia",
+        description: "Non surgical body contouring for stubborn fat areas using controlled cooling technology. Ideal for patients looking to target specific areas.",
+        slug: "fat-freezing-malaysia",
+        imageUrl: "/images/weight-loss/Fat Freezing Treatment.png",
+      },
+      {
+        name: "CoolSculpting Malaysia",
+        description: "A complete overview of CoolSculpting in Malaysia, including how the treatment works, ideal body areas and what results are realistically possible.",
+        slug: "coolsculpting-malaysia",
+        imageUrl: "/images/weight-loss/CoolSculpting Treatment.png",
+      },
+      {
+        name: "GLP 1 Programme Malaysia",
+        description: "A structured GLP 1 based weight loss programme designed around assessment, treatment planning, follow up and lifestyle support.",
+        slug: "glp-1-programme-malaysia",
+        imageUrl: "/images/weight-loss/GLP-1 Injection Treatment.png",
+      },
+      {
+        name: "Zepbound Weight Loss Malaysia",
+        description: "Doctor-led information on Zepbound weight loss treatment, including how it compares with other options and who may benefit from medical review.",
+        slug: "zepbound-weight-loss-malaysia",
+        imageUrl: "/images/weight-loss/ZepBound Weight Loss Treatment.png",
+      },
+      {
+        name: "IV Drip Weight Loss Malaysia",
+        description: "Supportive wellness and hydration focused IV drip options that may be added to a broader weight management plan when clinically appropriate.",
+        slug: "iv-drip-weight-loss-malaysia",
+        imageUrl: "/images/weight-loss/IV Drip for Weight Loss Treatment.png",
+      },
+    ];
   const concernMapping = [
     { concern: "Need medical help to reduce appetite and control cravings", treatment: "Ozempic, Wegovy, Mounjaro or GLP 1 Programme", link: "/weight-loss/ozempic-weight-loss-malaysia" },
     { concern: "Need a structured clinical plan with regular follow up", treatment: "Doctor Monitored Weight Loss", link: "/weight-loss/doctor-monitored-weight-loss-malaysia" },
@@ -160,13 +160,13 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://nexusclinic.com.my/"
+                  "item": "https://nexus-clinic.com/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Weight Loss Treatments",
-                  "item": "https://nexusclinic.com.my/weight-loss/"
+                  "item": "https://nexus-clinic.com/weight-loss/"
                 }
               ]
             })
@@ -213,7 +213,7 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
             variants={fadeInUp} 
             className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
           >
-            <Link href="/weight-loss/book-consultation">
+            <Link href="/contact-us">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -324,29 +324,33 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
             <h2 className="font-georgia text-3xl md:text-4xl text-brown">Weight Loss Treatments Available at Nexus Clinic KL</h2>
             <p className="text-taupe font-inter mt-2">Browse our complete range of medical weight loss and body contouring options.</p>
           </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {treatments.map((treatment, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                whileHover={{ y: -5 }}
-                className="bg-cream p-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="w-12 h-12 bg-wine/10 rounded-lg flex items-center justify-center text-wine mb-4">
-                  {treatment.icon}
-                </div>
-                <h3 className="font-georgia text-xl text-brown mb-2">{treatment.name}</h3>
-                <p className="text-taupe font-inter text-sm mb-4">{treatment.description}</p>
-                <Link href={`/weight-loss/${treatment.slug}`}>
-                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all">
-                    View Treatment Details
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {treatments.map((treatment, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeInUp}
+                  whileHover={{ y: -5 }}
+                  className="bg-cream pb-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="relative w-full h-60 overflow-hidden bg-wine/5 rounded-xl mb-4">
+                    <Image 
+                      src={treatment.imageUrl}
+                      alt={treatment.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <h3 className="font-georgia text-xl text-brown mb-2 px-6">{treatment.name}</h3>
+                  <p className="text-taupe font-inter text-sm mb-4 px-6">{treatment.description}</p>
+                  <Link href={`/weight-loss/${treatment.slug}`}>
+                    <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all px-6">
+                      View Treatment Details
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
         </motion.div>
       </section>
 
@@ -481,33 +485,7 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
         </motion.div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 bg-light">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Common Questions About Weight Loss Treatments</h2>
-          </motion.div>
-          
-          <div className="space-y-4">
-            {faqData.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-cream p-6 rounded-xl border border-taupe/10"
-              >
-                <h3 className="font-georgia text-lg text-brown mb-3">{faq.q}</h3>
-                <p className="text-taupe font-inter text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
+      <FAQ data={faqData} />
 
       {/* Final Booking Section */}
       <section className="py-20 px-4 bg-wine">
@@ -527,7 +505,7 @@ export default function WeightLossHub({ locale }: WeightLossHubProps) {
               explanation of what may work for your goals, and a clear plan before you commit to anything.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/weight-loss/book-consultation">
+              <Link href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

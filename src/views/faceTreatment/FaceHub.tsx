@@ -4,44 +4,10 @@ import {
   Sparkles,
   Award,
   MapPin,
-  Calendar,
   CheckCircle,
-  Syringe,
-  Clock,
-  Heart,
-  Shield,
   ArrowRight,
-  AlertCircle,
-  Activity,
-  Zap,
-  Eye,
-  AlertTriangle,
-  Droplet,
-  Scissors,
-  TrendingUp,
-  Sun,
-  Thermometer,
-  Flower2,
-  Layers,
-  Target,
-  ChevronRight,
-  XCircle,
-  Phone,
-  MessageCircle,
-  Users,
-  FileText,
-  Flame,
-  Snowflake,
-  HelpCircle,
-  Camera,
-  Moon,
-  Lightbulb,
-  Smile,
-  Frown,
-  EyeOff,
-  Gem,
-  Feather,
-  Wind,
+  Clock,
+  Shield
 } from "lucide-react";
 import {
   staggerContainer,
@@ -49,10 +15,11 @@ import {
   fadeInRight,
   fadeInUp,
   scaleIn,
-} from "../../lib/animations";
-import Whatsapp from "../../components/Whatsapp";
+} from "@/src/lib/animations";
+import Whatsapp from "@/src/components/Whatsapp";
 import Image from "next/image";
 import Link from "next/link";
+import FAQ from "@/src/components/FAQ";
 
 interface FaceHubProps {
   locale: string;
@@ -60,72 +27,17 @@ interface FaceHubProps {
 
 export default function FaceHub({ locale }: FaceHubProps) {
   const treatments = [
-    {
-      name: "Dermal Filler Malaysia",
-      description: "The complete guide to facial filler in Malaysia. Covers all treatment areas, products, pricing and the science behind natural-looking volume restoration.",
-      slug: "dermal-filler-malaysia",
-      icon: <Sparkles className="w-6 h-6" />,
-    },
-    {
-      name: "Lip Filler Malaysia",
-      description: "Fuller lips, defined Cupid's bow, natural pout. Expert lip filler for subtle or significant enhancement, matched to your facial proportions.",
-      slug: "lip-filler-malaysia",
-      icon: <Smile className="w-6 h-6" />,
-    },
-    {
-      name: "Chin Filler Malaysia",
-      description: "A recessed chin makes the nose look bigger and the profile look softer. Precise chin filler corrects projection and restores facial balance without surgery.",
-      slug: "chin-filler-malaysia",
-      icon: <Feather className="w-6 h-6" />,
-    },
-    {
-      name: "Jawline Filler Malaysia",
-      description: "Define your jaw border, sharpen your profile and create the lower face structure you want. Different technique for men and women. Same-day results.",
-      slug: "jawline-filler-malaysia",
-      icon: <Wind className="w-6 h-6" />,
-    },
-    {
-      name: "Botox Malaysia",
-      description: "Wrinkle relaxation, jaw slimming, gummy smile, neck bands, hyperhidrosis and more. Full guide to every Botox use case available at Nexus Clinic KL.",
-      slug: "botox-malaysia",
-      icon: <Zap className="w-6 h-6" />,
-    },
-    {
-      name: "Nose Thread Lift Malaysia",
-      description: "Korean HIKO technique using MDA-registered threads. Higher bridge, sharper tip, better profile. No surgery, no scars, no general anaesthesia.",
-      slug: "nose-thread-lift-malaysia",
-      icon: <Target className="w-6 h-6" />,
-    },
-    {
-      name: "Skin Booster Malaysia",
-      description: "Profhilo, Rejuran, Juvelook, NCTF and more. The complete guide to injectable skin quality treatments for hydration, collagen and glow from within.",
-      slug: "skin-booster-malaysia",
-      icon: <Droplet className="w-6 h-6" />,
-    },
-    {
-      name: "Nose Filler Malaysia",
-      description: "Higher bridge, hump camouflage, tip definition. Non-surgical rhinoplasty performed with vascular safety protocols and precise low-volume technique.",
-      slug: "nose-filler-malaysia",
-      icon: <Eye className="w-6 h-6" />,
-    },
-    {
-      name: "Cheek Filler Malaysia",
-      description: "Restore midface volume, lift the lower face and improve nasolabial folds in one treatment. Full guide including the cascade effect and Asian anatomy.",
-      slug: "cheek-filler-malaysia",
-      icon: <Gem className="w-6 h-6" />,
-    },
-    {
-      name: "Tear Trough Filler Malaysia",
-      description: "The clinical guide to under-eye filler. Covers the four types of dark circles, the Tyndall effect, candidacy assessment and when cheek filler comes first.",
-      slug: "tear-trough-filler-malaysia",
-      icon: <EyeOff className="w-6 h-6" />,
-    },
-    {
-      name: "Under Eye Filler Malaysia",
-      description: "The patient-first guide to under-eye treatment. Why eye creams stop working, the aging timeline, filler vs skin booster vs laser for under-eyes.",
-      slug: "under-eye-filler-malaysia",
-      icon: <Heart className="w-6 h-6" />,
-    },
+    { name: "Botox Malaysia", slug: "botox-malaysia", description: "Wrinkle relaxation, jaw slimming, gummy smile & more.", imageUrl: "/images/face/botox-malaysia.jpeg" },
+    { name: "Cheek Filler Malaysia", slug: "cheek-filler-malaysia", description: "Restore midface volume & lift the lower face.", imageUrl: "/images/face/Cheek Filler Treatment.png" },
+    { name: "Chin Filler Malaysia", slug: "chin-filler-malaysia", description: "Correct projection & restore facial balance.", imageUrl: "/images/face/Chin Dermal Filler.png" },
+    { name: "Dermal Filler Malaysia", slug: "dermal-filler-malaysia", description: "Volume restoration & facial contouring.", imageUrl: "/images/face/dermal-filler.jpeg" },
+    { name: "Jawline Filler Malaysia", slug: "jawline-filler-malaysia", description: "Define jaw border & sharpen your profile.", imageUrl: "/images/face/Jawline Filler.png" },
+    { name: "Lip Filler Malaysia", slug: "lip-filler-malaysia", description: "Fuller lips & defined Cupid's bow.", imageUrl: "/images/face/Lip Filler.png" },
+    { name: "Nose Filler Malaysia", slug: "nose-filler-malaysia", description: "Higher bridge, hump camouflage & tip definition.", imageUrl: "/images/face/Nose Filler Treatment.png" },
+    { name: "Nose Thread Lift Malaysia", slug: "nose-thread-lift-malaysia", description: "Higher bridge, sharper tip & better profile.", imageUrl: "/images/face/Nose Thread Lift.png" },
+    { name: "Skin Booster Malaysia", slug: "skin-booster-malaysia", description: "Hydration, collagen & glow from within.", imageUrl: "/images/face/Skin Booster Treatment.png" },
+    { name: "Tear Trough Filler Malaysia", slug: "tear-trough-filler-malaysia", description: "Under-eye treatment for dark circles & hollows.", imageUrl: "/images/face/Tear Trough Filler.png" },
+    { name: "Under Eye Filler Malaysia", slug: "under-eye-filler-malaysia", description: "Patient-first guide to under-eye treatment.", imageUrl: "/images/face/Under Eye Filler.png" },
   ];
 
   const concernMapping = [
@@ -169,13 +81,13 @@ export default function FaceHub({ locale }: FaceHubProps) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://nexusclinic.com.my/"
+                  "item": "https://nexus-clinic.com/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Face Treatments",
-                  "item": "https://nexusclinic.com.my/face/"
+                  "item": "https://nexus-clinic.com/face/"
                 }
               ]
             })
@@ -222,7 +134,7 @@ export default function FaceHub({ locale }: FaceHubProps) {
             variants={fadeInUp} 
             className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
           >
-            <Link href="/face/book-consultation">
+            <Link href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -342,15 +254,20 @@ export default function FaceHub({ locale }: FaceHubProps) {
                 key={idx}
                 variants={fadeInUp}
                 whileHover={{ y: -5 }}
-                className="bg-cream p-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
+                className="bg-cream pb-6 rounded-xl border border-taupe/10 hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-wine/10 rounded-lg flex items-center justify-center text-wine mb-4">
-                  {treatment.icon}
+                <div className="relative w-full h-60 overflow-hidden bg-wine/5 rounded-xl mb-4">
+                  <Image 
+                    src={treatment.imageUrl}
+                    alt={treatment.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="font-georgia text-xl text-brown mb-2">{treatment.name}</h3>
-                <p className="text-taupe font-inter text-sm mb-4">{treatment.description}</p>
+                <h3 className="font-georgia text-xl text-brown mb-2 px-6">{treatment.name}</h3>
+                <p className="text-taupe font-inter text-sm mb-4 px-6">{treatment.description}</p>
                 <Link href={`/face/${treatment.slug}`}>
-                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all">
+                  <button className="inline-flex items-center gap-2 text-wine font-inter font-semibold text-sm hover:gap-3 transition-all px-6">
                     View Treatment Details
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -466,34 +383,7 @@ export default function FaceHub({ locale }: FaceHubProps) {
         </motion.div>
       </section>
 
-      {/* FAQ Section - Concise for Hub Page */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-4xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Common Questions About Face Treatments</h2>
-          </motion.div>
-          
-          <div className="space-y-4">
-            {faqData.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-light p-6 rounded-xl border border-taupe/10"
-              >
-                <h3 className="font-georgia text-lg text-brown mb-3">{faq.q}</h3>
-                <p className="text-taupe font-inter text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
+      <FAQ data={faqData} />
       {/* CTA Section */}
       <section className="py-20 px-4 bg-wine">
         <motion.div
@@ -513,7 +403,7 @@ export default function FaceHub({ locale }: FaceHubProps) {
               with transparent pricing before you commit to anything.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/face/book-consultation">
+              <Link href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
