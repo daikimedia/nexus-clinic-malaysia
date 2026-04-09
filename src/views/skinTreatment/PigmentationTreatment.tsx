@@ -422,50 +422,6 @@ export default function PigmentationLanding({ locale }: PigmentationTreatmentPro
         </motion.div>
       </section>
 
-      {/* Pigmentation Depth Classification */}
-      <section className="py-20 px-4 bg-cream">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="container mx-auto max-w-6xl"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="font-georgia text-3xl md:text-4xl text-brown">Pigmentation Depth Determines Treatment Choice</h2>
-            <p className="text-taupe font-inter">Beyond the type of pigmentation, its depth within the skin layers is the second most important factor</p>
-          </motion.div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-light rounded-xl overflow-hidden shadow-md">
-              <thead className="bg-wine text-light">
-                <tr>
-                  <th className="p-4 text-left font-georgia">Depth Classification</th>
-                  <th className="p-4 text-left font-georgia">Location in Skin</th>
-                  <th className="p-4 text-left font-georgia">How to Identify</th>
-                  <th className="p-4 text-left font-georgia">Treatment Approach</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pigmentationDepthData.map((item, idx) => (
-                  <tr key={idx} className="border-t border-taupe/10 hover:bg-cream/30 transition-colors">
-                    <td className="p-4 font-inter font-semibold text-brown">{item.depth}</td>
-                    <td className="p-4 text-taupe font-inter">{item.location}</td>
-                    <td className="p-4 text-taupe font-inter">{item.identification}</td>
-                    <td className="p-4 text-taupe font-inter">{item.approach}</td>
-                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
-          <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
-            <p className="text-brown font-inter text-sm text-center">
-              Wood's lamp examination is a standard assessment tool at Nexus Clinic KL. Epidermal pigmentation shows strongly enhanced contrast under Wood's lamp. Dermal pigmentation shows little to no enhancement. This single diagnostic step prevents treating deep dermal pigmentation with surface-only protocols.
-            </p>
-          </motion.div>
-        </motion.div>
-      </section>
 
       {/* Treatments and Technologies Section */}
       <section className="py-20 px-4 bg-light">
@@ -597,6 +553,11 @@ export default function PigmentationLanding({ locale }: PigmentationTreatmentPro
               fadeInUp={fadeInUp}
               className="py-12 px-4"
             />
+            <motion.div variants={fadeInUp} className="mt-6 p-4 bg-wine/5 rounded-xl">
+            <p className="text-brown font-inter text-sm text-center">
+              Wood's lamp examination is a standard assessment tool at Nexus Clinic KL. Epidermal pigmentation shows strongly enhanced contrast under Wood's lamp. Dermal pigmentation shows little to no enhancement. This single diagnostic step prevents treating deep dermal pigmentation with surface-only protocols.
+            </p>
+          </motion.div>
         </motion.div>
       </section>
 

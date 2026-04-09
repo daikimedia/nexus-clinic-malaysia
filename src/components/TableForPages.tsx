@@ -137,7 +137,7 @@ export default function TableForPages({
               {variant !== "detailed" && (
                 <div className="mt-3 space-y-2">
                   {secondaryColumns.map((column, colIdx) => (
-                    <div key={colIdx} className="flex justify-between border-b border-taupe/10 pb-2">
+                    <div key={colIdx} className="grid grid-cols-[140px_1fr] gap-3 border-b border-taupe/10 pb-2">
                       <span className="font-inter text-xs text-taupe">
                         {column.header}
                       </span>
