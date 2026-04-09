@@ -21,10 +21,13 @@ import {
 import { useTranslation } from "@/src/i18n/client";
 import { fallbackLng } from "@/src/i18n/settings";
 import GalleryPage from "./SliderGallery";
-import { DoctorsSection } from "../components/DoctorSection";
-import FAQ from "../components/FAQ";
-import SectionBeforeAfter from "../components/BeforeAfterCustomize";
-import SocialIcons from "../components/SocialIcons";
+import { DoctorsSection } from "@/src/components/DoctorSection";
+import FAQ from "@/src/components/FAQ";
+import SectionBeforeAfter from "@/src/components/BeforeAfterCustomize";
+import SocialIcons from "@/src/components/SocialIcons";
+import HeroSection from '@/src/components/HeroSection'
+import GoogleReviews from '@/src/components/GoogleReviews'
+
 const GlassCard = ({
   children,
   className = "",
@@ -45,96 +48,6 @@ const GlassCard = ({
   </motion.div>
 );
 
-const HeroSection = ({ t }: { t: (key: string) => string }) => {
-  const [count, setCount] = useState(23456);
-
-  useEffect(() => {
-    const today = new Date().toDateString();
-    const savedDate = localStorage.getItem("counterDate");
-    const savedCount = localStorage.getItem("counterValue");
-
-    if (savedDate === today && savedCount) {
-      setCount(parseInt(savedCount));
-    } else {
-      const base = 23000 + Math.floor(Math.random() * 1000);
-      localStorage.setItem("counterDate", today);
-      localStorage.setItem("counterValue", base.toString());
-      setCount(base);
-    }
-
-    const interval = setInterval(() => {
-      setCount((prev) => {
-        const newCount = prev + Math.floor(Math.random() * 5);
-        localStorage.setItem("counterValue", newCount.toString());
-        return newCount;
-      });
-    }, 3600000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <section className="relative h-screen w-full overflow-hidden">
-        <img
-          src="/images/treatment/nexus-team-hero.jpeg"
-          alt="Nexus Clinic Team"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-center">
-
-          <div className="max-w-xl">
-            <span className="text-6xl lg:text-7xl text-wine/30 font-georgia block"> &ldquo;</span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-georgia text-brown leading-tight mb-6">
-             {t("hero.heading1")}
-                <span className="text-wine italic"> {t("hero.heading2")} </span>
-            </h1>
-              <p className="text-base lg:text-lg text-taupe leading-relaxed mb-8">{t("hero.description")}</p>
-            <div className="flex items-center gap-6">
-              <a
-                href="https://api.leadconnectorhq.com/widget/booking/tQwUF5MSxWFBM1ymiizk/"
-                className="px-6 py-3 rounded-full bg-brown text-white text-sm tracking-wide hover:bg-wine transition shadow-lg"
-              >
-                Book Consultation
-              </a>
-
-              <a
-                href="/consultation"
-                className="flex items-center gap-3 text-brown text-sm"
-              >
-                <span className="w-10 h-10 rounded-full border border-brown flex items-center justify-center">
-                  ▶
-                </span>
-                View Treatment
-              </a>
-
-            </div>
-          </div>
-        </div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hidden md:block"
-      >
-        <span className="text-xs tracking-widest text-taupe">
-          {t("hero.scroll")}
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-taupe flex justify-center pt-2"
-        >
-          <motion.div
-            animate={{ opacity: [1, 0, 1], y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-2 rounded-full bg-taupe"
-          />
-        </motion.div>
-      </motion.div>
-    </section>
-  );
-};
 
 const ServicesSection = ({ t }: { t: (key: string) => string }) => {
   const services = [
@@ -744,6 +657,7 @@ export default function HomePageNexus({
       <ServicesSection t={t} />
       <WhyChooseSection t={t} />
       <TestimonialsSection t={t} />
+      <GoogleReviews />
       <ContactSection t={t} />
       <FAQ data={faqData} />
     </div>

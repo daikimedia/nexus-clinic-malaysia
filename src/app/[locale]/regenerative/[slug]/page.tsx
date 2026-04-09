@@ -60,7 +60,7 @@ export async function generateMetadata({
     };
   }
   
-  const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com/";
+  const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com";
   const url = locale === 'en' 
     ? `${baseUrl}/regenerative/${slug}` 
     : `${baseUrl}/${locale}/regenerative/${slug}`;

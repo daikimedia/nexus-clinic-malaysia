@@ -146,7 +146,7 @@ export const Footer = ({ locale }: { locale?: string }) => {
         {/* Bottom Bar */}
         <div className="border-t border-taupe/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-taupe">
-            {getText("footer.copyright", "© 2026 Aesthetics & Skin Care Clinic Near Me | Mozard Simforni Sdn Bhd | Powered by ")}
+            {getText("footer.copyright", "© 2026 Aesthetics & Skin Care Clinic Near Me | ⁠ ⁠⁠Mozart Simfoni Sdn Bhd | Powered by ")}
             <a href="http://daikimedia.com/"  target="_blank" >  <strong className="italic text-wine">  Daikimedia</strong></a>
           </p>
 

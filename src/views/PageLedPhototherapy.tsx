@@ -280,7 +280,7 @@ const PageLEDPhototherapy = () => {
                 <motion.div variants={fadeInRight} className="relative">
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-brown/20">
                     <img
-                      src="https://www.nexus-clinic.com/wp-content/uploads/2023/04/led-light-antiaging-mask-facial-skin-care-spa-slow-motion-woman-lies-couch-spec-1-copy.webp"
+                      src="https://www.nexus-clinic.comwp-content/uploads/2023/04/led-light-antiaging-mask-facial-skin-care-spa-slow-motion-woman-lies-couch-spec-1-copy.webp"
                       alt="LED Phototherapy Treatment"
                       className="w-full h-auto"
                     />

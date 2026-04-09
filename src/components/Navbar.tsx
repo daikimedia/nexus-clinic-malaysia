@@ -648,41 +648,50 @@ const Navbar = ({ locale }: { locale?: string }) => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="hidden lg:block bg-brown text-light/90 text-xs fixed top-0 left-0 right-0 z-50"
+              className=" bg-green text-light/90 text-xs fixed top-0 left-0 right-0 z-50"
             >
               <div className="max-w-5xl mx-auto px-6 lg:px-8">
                 <div className="flex items-center justify-between py-2">
-                  <div className="flex items-center gap-6">
-                    <a
-                      href="tel:0167025699"
-                      className="flex items-center gap-2 hover:text-cream transition-colors"
-                    >
-                      <Phone size={12} />
-                      <span>016-702 5699</span>
-                    </a>
-                    <span className="text-light/40">|</span>
-                    <span className="text-light/70">
-                      Mon - Sat: 9:00 AM - 6:00 PM
-                    </span>
-
-                    {/* <span className="text-light/40">|</span>
-                      <span className="flex items-center gap-1.5">
-                        <Sparkles size={12} className="text-rose" />
-                        <span>
-                          Doctor is {isActive ? "Available" : "Close"} Now
+                  <div className="">
+                    {isScrolled && (
+                      <motion.img
+                        key="scroll-logo"
+                        src="/images/logo_nexus_white.webp"
+                        alt="Nexus Logo"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="h-15 object-contain"
+                      />
+                    )}
+                    {!isScrolled && (
+                      <div className="hidden lg:flex items-center gap-6">
+                        <a
+                          href="tel:0167025699"
+                          className="flex items-center gap-2 hover:text-cream transition-colors"
+                        >
+                          <Phone size={12} />
+                          <span>016-702 5699</span>
+                        </a>
+                        <span className="text-light/40">|</span>
+                        <span className="text-light">
+                          Mon - Sat: 9:00 AM - 6:00 PM
                         </span>
-                      </span> */}
+                      </div>
+                    )}
                   </div>
-                  <div className="flex items-center gap-4">
-                      <a
-                        href="https://api.whatsapp.com/send?phone=60168245699&text=Any%20Dr%20Available%20%3F%20(%20HB%20)"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-white border border-brown text-wine hover:bg-transparent hover:text-white hover:border-white font-semibold text-sm px-5 py-2 rounded-full transition-all duration-300 animate-vibration-slow"
-                      >
-                        Consult with experts now
-                      </a>
+                  <div className="flex items-center justify-end w-full lg:w-auto">
+                    <a
+                      href="https://api.whatsapp.com/send?phone=60168245699&text=Any%20Dr%20Available%20%3F%20(%20HB%20)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-white border border-green text-green hover:bg-transparent hover:text-white hover:border-white font-semibold text-sm px-5 py-2 rounded-full transition-all duration-300 animate-vibration-slow"
+                    >
+                      Consult with experts
+                    </a>
                   </div>
+
                 </div>
               </div>
             </motion.div>
@@ -932,7 +941,7 @@ const Navbar = ({ locale }: { locale?: string }) => {
                   boxShadow: "0 8px 30px rgba(140, 79, 88, 0.3)",
                 }}
                 whileTap={{ scale: 0.97 }}
-                className="ml-4 bg-wine text-light px-6 py-2.5 rounded-full font-inter font-semibold text-sm shadow-lg shadow-wine/20 hover:bg-wine/90 transition-all duration-300 flex items-center gap-2"
+                className="ml-4 bg-green text-light px-6 py-2.5 rounded-full font-inter font-semibold text-sm shadow-lg shadow-green/20 hover:bg-green/90 transition-all duration-300 flex items-center gap-2"
               >
                 <Calendar size={16} />
                 <span>{getText("nav.bookNow", "Book Now")}</span>

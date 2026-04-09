@@ -22,7 +22,8 @@ export interface GalleryItem {
   afterSrc: string;
   treatment: string;
   sessions: number;
-  durationWeeks: number;
+  durationWeeks: string;
+  sessionsN: string;
   tag?: string; // e.g. "Most Popular", "New"
 }
 
@@ -41,7 +42,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 1,
     category: "Skin",
-    title: "Melasma Clearance — Cheeks",
+    title: "Melasma Reduction:  Even-Tone Cheeks",
     treatment: "PicoSure Laser + Vitamin C Drip",
     altBefore:
       "Patient before melasma treatment showing brown patches on cheeks and forehead at Nexus Clinic Malaysia",
@@ -50,13 +51,14 @@ export const galleryItems: GalleryItem[] = [
     beforeSrc: "/images/B&A-skin/B&A-melasma-treatment1.webp",
     afterSrc: "/images/B&A-skin/B&A-melasma-treatment1.webp",
     sessions: 4,
-    durationWeeks: 8,
+    sessionsN: "4-6",
+    durationWeeks: "8-10 Weeks",
     tag: "Most Popular",
   },
   {
     id: 2,
     category: "Skin",
-    title: "Freckles & Sun Spots — Full Face",
+    title: "Benign Mole Removal",
     treatment: "Q-Switch ND:YAG Laser",
     altBefore:
       "Patient before Q-Switch laser showing multiple freckles and sun spots across the full face",
@@ -64,14 +66,15 @@ export const galleryItems: GalleryItem[] = [
       "Patient after 3 sessions of Q-Switch ND:YAG laser at Nexus Clinic — significant reduction in freckles with even skin tone",
     beforeSrc: "/images/B&A-skin/B&A-mole-removal1.webp",
     afterSrc: "/images/B&A-skin/B&A-mole-removal1.webp",
-    sessions: 3,
-    durationWeeks: 6,
+    sessions: 1,
+    sessionsN: "1",
+    durationWeeks: "1-3 Weeks healing",
   },
   {
     id: 3,
     category: "Skin",
-    title: "Post-Inflammatory HyperSkin",
-    treatment: "Fractional CO₂ + Brightening Peel",
+    title: "Pigmentation & Sun Spot Reduction: Full Face",
+    treatment: " Fractional CO₂ Laser + Brightening Peel",
     altBefore:
       "Patient before treatment showing post-inflammatory hyperSkin marks from previous acne lesions",
     altAfter:
@@ -79,30 +82,32 @@ export const galleryItems: GalleryItem[] = [
     beforeSrc: "/images/B&A-skin/B&A-pico-laser1.webp",
     afterSrc: "/images/B&A-skin/B&A-pico-laser1.webp",
     sessions: 5,
-    durationWeeks: 10,
+    sessionsN: "4-6",
+    durationWeeks: "8-12 Weeks",
   },
 
   // ── Hair ─────────────────────────────────────────────
   {
     id: 4,
     category: "Hair",
-    title: "Fue Hair Transplant — Donor Area",
-    treatment: "FUE Hair Transplantation + PRP Therapy",
+    title: "FUE Hair Transplant: Natural Density Results",
+    treatment: "FUE Hair Transplant + Optional PRP Support",
     altBefore:
       "Patient before FUE hair transplant showing thinning hair and visible scalp in the donor area at the back of the head",
     altAfter:
       "Patient after FUE hair transplant at Nexus Clinic Malaysia — hair smoothed and skin texture refined",
     beforeSrc: "/images/B&A-hair/B&A-hair-transplant1.webp",
     afterSrc: "/images/B&A-hair/B&A-hair-transplant1.webp",
-    sessions: 6,
-    durationWeeks: 12,
+    sessions: 1,
     tag: "Most Popular",
+    sessionsN: "1",
+    durationWeeks: "6–12 months full results",
   },
   {
     id: 5,
     category: "Hair",
-    title: "Mesotherapy for Hair Loss — Scalp",
-    treatment: "Mesotherapy Scalp Treatment + Minoxidil Treatment",
+    title: "Hair Loss Reduction & Density Improvement: Scalp",
+    treatment: "Mesotherapy + Topical Hair Growth Therapy (Minoxidil)",
     altBefore:
       "Patient before mesotherapy showing thinning hair and visible scalp across the crown area",
     altAfter:
@@ -110,12 +115,13 @@ export const galleryItems: GalleryItem[] = [
     beforeSrc: "/images/B&A-hair/B&A-mesotherapy-hair-loss1.webp",
     afterSrc: "/images/B&A-hair/B&A-mesotherapy-hair-loss1.webp",
     sessions: 4,
-    durationWeeks: 6,
+    sessionsN: "4-6",
+    durationWeeks: "6–10 Weeks",
   },
   {
     id: 6,
     category: "Hair",
-    title: "PRP hair treatment — Crown Area",
+    title: " PRP Hair Treatment: Crown & Top Density Restoration",
     treatment: "PRP Therapy + Low-Level Laser Therapy",
     altBefore:
       "Patient before PRP hair treatment showing thinning hair and visible scalp across the crown area",
@@ -124,7 +130,8 @@ export const galleryItems: GalleryItem[] = [
     beforeSrc: "/images/B&A-hair/B&A-prp-hair-treatment1.webp",
     afterSrc: "/images/B&A-hair/B&A-prp-hair-treatment1.webp",
     sessions: 5,
-    durationWeeks: 14,
+    sessionsN: "4-6",
+    durationWeeks: "12–16 Weeks",
     tag: "New",
   },
 
@@ -132,8 +139,8 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 7,
     category: "Regenerative",
-    title: "Anti Ageing Brightening — Full Face",
-    treatment: "Nano-Infusion + Glutathione IV Drip",
+    title: "Freckles & Pigmentation Reduction: Full Face",
+    treatment: "Nano-Infusion + Advanced Skin Brightening Therapy",
     altBefore:
       "Patient before nano-infusion and glutathione drip at Nexus Clinic — dull complexion with uneven skin tone",
     altAfter:
@@ -141,12 +148,13 @@ export const galleryItems: GalleryItem[] = [
     beforeSrc: "/images/B&A-regenerative/B&A-anti-aging-therapy1.webp",
     afterSrc: "/images/B&A-regenerative/B&A-anti-aging-therapy1.webp",
     sessions: 3,
-    durationWeeks: 4,
+    sessionsN: "3-5",
+    durationWeeks: "4–8 Weeks",
   },
   {
     id: 8,
     category: "Regenerative",
-    title: "Stem Cell Therapy for Skin Rejuvenation — Full Face",
+    title: "Skin Rejuvenation & Pigmentation Reduction: Full Face",
     treatment: "Adipose-Derived Stem Cell Therapy + PRP Therapy",
     altBefore:
       "Patient before adipose-derived stem cell therapy showing fine lines and wrinkles on neck and décolletage",
@@ -154,15 +162,16 @@ export const galleryItems: GalleryItem[] = [
       " Patient after adipose-derived stem cell therapy and PRP at Nexus Clinic — rejuvenated skin with improved texture and tone on neck and décolletage",
     beforeSrc: "/images/B&A-regenerative/B&A-stem-cell-therapy1.webp",
     afterSrc: "/images/B&A-regenerative/B&A-stem-cell-therapy1.webp",
-    sessions: 4,
-    durationWeeks: 8,
+    sessions: 2,
+    sessionsN: "2-4",
+    durationWeeks: "8–12 Weeks",
   },
 
   // ── Weight Loss ────────────────────────────────────────
   {
     id: 9,
     category: "Weight Loss",
-    title: "Coolsculpting Elite — Submental Fat Reduction",
+    title: " CoolSculpting Elite: Abdominal Fat Reduction",
     treatment: "CoolSculpting Elite + RF Skin Tightening",
     altBefore:
       "Patient before CoolSculpting showing excess submental fat (double chin) and skin laxity around the jawline",
@@ -170,15 +179,16 @@ export const galleryItems: GalleryItem[] = [
       "Patient after CoolSculpting Elite at Nexus Clinic — well-defined jawline and balanced chin projection",
     beforeSrc: "/images/B&A-w/B&A-coolsculpting1.webp",
     afterSrc: "/images/B&A-w/B&A-coolsculpting1.webp",
-    sessions: 1,
-    durationWeeks: 1,
+    sessions: 2,
+    sessionsN: "1-3",
+    durationWeeks: "8–12 Weeks results",
     tag: "Most Popular",
   },
   {
     id: 10,
     category: "Weight Loss",
-    title: "Duromine Injection Therapy — Abdominal Fat Reduction",
-    treatment: "Duromine Injection Therapy + PRP Therapy",
+    title: "Medical Weight Loss Program: Full Body Fat Reduction",
+    treatment: "Appetite Control Therapy (Duromine-Based Program)",
     altBefore:
       "Patient before duromine injection showing excess abdominal fat and skin laxity around the midsection",
     altAfter:
@@ -186,7 +196,8 @@ export const galleryItems: GalleryItem[] = [
     beforeSrc: "/images/B&A-w/B&A-duromine1.webp",
     afterSrc: "/images/B&A-w/B&A-duromine1.webp",
     sessions: 1,
-    durationWeeks: 1,
+    sessionsN: "1",
+    durationWeeks: " 8–16 Weeks program",
     tag: "New",
   },
 ];

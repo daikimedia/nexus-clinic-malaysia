@@ -157,13 +157,13 @@ function GalleryCard({
           <div className="flex items-center gap-1.5 text-taupe text-xs">
             <Layers className="w-3.5 h-3.5 text-wine" />
             <span>
-              {item.sessions} session{item.sessions > 1 ? "s" : ""}
+              {item.sessionsN} session{item.sessions > 1 ? "s" : ""}
             </span>
           </div>
           <div className="flex items-center gap-1.5 text-taupe text-xs">
             <Clock className="w-3.5 h-3.5 text-wine" />
             <span>
-              {item.durationWeeks} week{item.durationWeeks > 1 ? "s" : ""}
+              {item.durationWeeks}
             </span>
           </div>
         </div>
@@ -218,18 +218,12 @@ function LightboxModal({
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="bg-cream rounded-xl p-4 text-center">
                 <p className="font-georgia text-wine text-2xl">
-                  {item.sessions}
-                </p>
-                <p className="text-taupe text-xs uppercase tracking-wider mt-0.5">
-                  {item.sessions > 1 ? "Sessions" : "Session"}
+                  {item.sessions} {item.sessions > 1 ? " Sessions" : " Session"}
                 </p>
               </div>
               <div className="bg-cream rounded-xl p-4 text-center">
                 <p className="font-georgia text-wine text-2xl">
                   {item.durationWeeks}
-                </p>
-                <p className="text-taupe text-xs uppercase tracking-wider mt-0.5">
-                  {item.durationWeeks > 1 ? "Weeks" : "Week"}
                 </p>
               </div>
             </div>
@@ -252,7 +246,7 @@ function LightboxModal({
             </div>
 
             <a
-              href="#consultation"
+              href="/consultation"
               className="mt-auto block text-center bg-wine hover:bg-brown transition-colors text-cream font-semibold text-sm py-3 rounded-full"
               onClick={onClose}
             >

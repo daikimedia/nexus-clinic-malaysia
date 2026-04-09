@@ -89,7 +89,7 @@ const FloatingWhatsapp = ({
           : { duration: 0.3 }
       }
       whileHover={{ scale: 1.2 }}
-      className={`fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-50 bg-[#25D366] hover:bg-[#20b859] transition-colors ${hideOnMobile ? "hidden md:flex" : "flex"}`}
+      className={`fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-50 bg-green hover:bg-green/90 transition-colors ${hideOnMobile ? "hidden md:flex" : "flex"}`}
     >
       <WhatsAppIcon className="text-white" size={30} />
     </motion.a>

@@ -2,7 +2,7 @@ import Products from "@/src/views/Products";
 import { languages } from "@/src/i18n/settings";
 import { Metadata } from "next";
 
-const baseurl = process.env.BASE_URL || "https://www.nexus-clinic.com/"
+const baseurl = process.env.BASE_URL || "https://www.nexus-clinic.com"
 export const metadata: Metadata = {
   title: "Medical-Grade Skincare Products in KL | Nexus Clinic",
   description: "Shop doctor-recommended medical-grade skincare products in KL. Formulated for acne, pigmentation, aging & sensitive skin. Available at Nexus Clinic.",

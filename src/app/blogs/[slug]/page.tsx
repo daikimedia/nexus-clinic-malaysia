@@ -10,7 +10,7 @@ import { ShareButton } from "@/src/components/blog/ShareButton";
 import { FloatingWhatsapp } from "@/src/components/Whatsapp";
 import Image from "next/image";
 
-    const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com/";
+    const baseUrl = process.env.BASE_URL|| "https://www.nexus-clinic.com";
 
   export async function generateMetadata({ 
       params 
