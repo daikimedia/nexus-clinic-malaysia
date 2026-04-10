@@ -67,23 +67,17 @@ export const redirectsList: [string, string][] = [
   ["/en/nerve-injury-stem-cell-malaysia/", "/regenerative/stem-cell-therapy-malaysia/"],
   ["/en/stem-cell-therapy-female-fertility/", "/regenerative/stem-cell-therapy-malaysia/"],
 
-
-    // Conditional (treated as standard redirects after validation)
-
+  // Conditional
   ["/en/wegovy-dosing-schedule-malaysia/", "/weight-loss/wegovy-malaysia/"],
   ["/en/wegovy-malaysia/cost/", "/weight-loss/wegovy-malaysia/"],
   ["/en/buy-wegovy-malaysia-0-25mg-pre-filled-pen/", "/weight-loss/wegovy-malaysia/"],
-
   ["/en/buy-ozempic-online-malaysia-1mg-dose-pre-filled-pen/", "/weight-loss/ozempic-malaysia/"],
-  ["/en/ozempic-malayisa/price/", "/weight-loss/ozempic-malaysia/"], // ⚠️ typo preserved intentionally
+  ["/en/ozempic-malayisa/price/", "/weight-loss/ozempic-malaysia/"],
   ["/en/products/ozempic/", "/weight-loss/ozempic-malaysia/"],
-
   ["/en/buy-duromine-30mg-online-malaysia/", "/weight-loss/duromine-malaysia/"],
-
   ["/en/buy-mounjaro-malaysia-2-5mg-pre-filled-pen-4s-box/", "/weight-loss/mounjaro-malaysia/"],
   ["/en/products/mounjaro/", "/weight-loss/mounjaro-malaysia/"],
   ["/en/top-10-clinics-for-mounjaro-in-malaysia/", "/weight-loss/mounjaro-malaysia/"],
-
   ["/en/saxenda-weight-loss-injections-in-malaysia/", "/weight-loss/glp-1-programme-malaysia/"],
   ["/en/buy-saxenda-flextouch-malaysia-6mg-pre-filled-pen-3ml-x3/", "/weight-loss/glp-1-programme-malaysia/"],
 
@@ -97,10 +91,8 @@ export const redirectsList: [string, string][] = [
   ["/en/botox-malaysia/botox-vs-dysport/", "/face/botox-malaysia/"],
   ["/en/botox-malaysia/botox-vs-xeomin/", "/face/botox-malaysia/"],
 
-
-    // Doctors / Author
+  // Doctors / Author
   ["/en/doctors/", "/doctors/"],
   ["/en/doctors/dr-charmaine/", "/doctors/"],
   ["/en/doctor/dr-ahmad-zulkifli/", "/doctors/"],
-
 ];
