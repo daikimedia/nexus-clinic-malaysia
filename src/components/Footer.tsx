@@ -94,7 +94,7 @@ export const Footer = ({ locale }: { locale?: string }) => {
               <img src="/images/logo.png" alt="Nexus Clinic Logo" className="w-[250px] h-auto"/>
             </span>
             <p className="max-w-md mb-6 text-taupe">
-              {getText("footer.description", "Advanced aesthetic and medical weight loss clinic in Kuala Lumpur. Where science meets artistry for your natural beauty.")}
+              {getText("footer.description", "LCP Certified and MOH Registered aesthetic and medical weight loss clinic in Kuala Lumpur, combining science-backed treatments with artistic precision for natural-looking results.")}
             </p>
           </div>
 

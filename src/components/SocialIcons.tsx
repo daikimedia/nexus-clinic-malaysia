@@ -1,6 +1,23 @@
 "use client";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
+
+// TikTok SVG Icon component
+const TikTokIcon = ({ size = 18, color = "currentColor" }: { size?: number; color?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ color }}
+  >
+    <path
+      d="M19.589 6.686a4.993 4.993 0 0 1-3.77-4.245c-.043-.53-.048-.706-.048-1.046h-3.527v11.65c0 1.48-1.202 2.68-2.682 2.68a2.685 2.685 0 0 1-2.683-2.68c0-1.48 1.202-2.68 2.683-2.68.273 0 .538.045.785.122v-3.595a6.278 6.278 0 0 0-4.53 1.116 6.278 6.278 0 0 0-2.366 4.937c0 3.463 2.813 6.277 6.277 6.277 3.464 0 6.278-2.814 6.278-6.277V7.786c1.198.858 2.63 1.355 4.17 1.37V5.66a4.96 4.96 0 0 1-1.42-.974z"
+      fill={color === "currentColor" ? "currentColor" : color}
+    />
+  </svg>
+);
 
 interface SocialIconsProps {
   className?: string;
@@ -24,7 +41,7 @@ const socialLinks = [
   },
   {
     name: "TikTok",
-    icon: MessageCircle,
+    icon: TikTokIcon,
     href: "https://www.tiktok.com/@nexusclinicklmy",
     color: "#000000",
   },
@@ -69,10 +86,17 @@ export default function SocialIcons({
           className={`relative group rounded-full p-2.5 transition-all duration-300 ${getVariantStyles()}`}
           aria-label={`Follow us on ${social.name}`}
         >
-          <social.icon 
-            size={iconSize} 
-            style={variant === "colored" ? { color: social.color } : undefined}
-          />
+          {social.name === "TikTok" ? (
+            <social.icon 
+              size={iconSize} 
+              color={variant === "colored" ? social.color : "currentColor"}
+            />
+          ) : (
+            <social.icon 
+              size={iconSize} 
+              style={variant === "colored" ? { color: social.color } : undefined}
+            />
+          )}
           
           {/* Tooltip */}
           {showTooltip && (

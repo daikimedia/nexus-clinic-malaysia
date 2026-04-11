@@ -414,105 +414,119 @@ const TestimonialsSection = ({ t }: { t: (key: string) => string }) => {
 
 const ContactSection = ({ t }: { t: (key: string) => string }) => {
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-brown">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-sm tracking-widest uppercase mb-4 block text-rose">
-              {t("contact.subtitle")}
-            </span>
-            <h2 className="text-3xl lg:text-5xl text-white mb-8 font-georgia">
-              {t("contact.title")}{" "}
-              <span className="text-rose">{t("contact.titleHighlight")}</span>
-            </h2>
-            <p className="text-white/80 mb-8">
-              {t("contact.description")}
-            </p>
-            <div className="space-y-6 mb-12">
-              {[
-                { icon: MapPin, text: t("contact.address") },
-                { icon: Phone, text: t("contact.phone") },
-                { icon: Clock, text: t("contact.hours") },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-4"
-                >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-wine">
-                    <item.icon size={20} className="text-white" />
-                  </div>
-                  <span className="text-white/80">{item.text}</span>
-                </motion.div>
-              ))}
-            </div>
-            <SocialIcons  iconSize={30}/>
-          </motion.div>
+<section
+  id="contact" className="relative py-24 lg:py-32 overflow-hidden">
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+    style={{ backgroundImage: "url('/images/nexus-clinic.jpeg')" }}
+  />
+  <div className="absolute inset-0 bg-gradient-to-r from-green  to-green/40" />
 
-          {/* Right - Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="bg-white rounded-3xl p-8 lg:p-10">
-              <h3 className="text-2xl mb-8 font-georgia text-brown">
-                {t("contact.formTitle")}
-              </h3>
+  <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+    <div className="grid lg:grid-cols-2 gap-16">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <span className="text-sm tracking-widest uppercase mb-4 block text-light/80">
+          {t("contact.subtitle")}
+        </span>
 
-              <form className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <input
-                    type="text"
-                    placeholder={t("contact.placeholderName")}
-                    className="w-full px-5 py-4 rounded-xl border border-cream bg-cream focus:outline-none focus:border-wine transition-colors text-brown placeholder:text-taupe"
-                  />
-                  <input
-                    type="email"
-                    placeholder={t("contact.placeholderEmail")}
-                    className="w-full px-5 py-4 rounded-xl border border-cream bg-cream focus:outline-none focus:border-wine transition-colors text-brown placeholder:text-taupe"
-                  />
-                </div>
-                <input
-                  type="tel"
-                  placeholder={t("contact.placeholderPhone")}
-                  className="w-full px-5 py-4 rounded-xl border border-cream bg-cream focus:outline-none focus:border-wine transition-colors text-brown placeholder:text-taupe"
-                />
-                <select className="w-full px-5 py-4 rounded-xl border border-cream bg-cream focus:outline-none focus:border-wine transition-colors text-taupe">
-                  <option>{t("contact.selectTreatment")}</option>
-                  <option>{t("contact.optionFacial")}</option>
-                  <option>{t("contact.optionWeightLoss")}</option>
-                  <option>{t("contact.optionSkin")}</option>
-                  <option>{t("contact.optionHair")}</option>
-                </select>
-                <textarea
-                  rows={4}
-                  placeholder={t("contact.placeholderMessage")}
-                  className="w-full px-5 py-4 rounded-xl border border-cream bg-cream focus:outline-none focus:border-wine resize-none transition-colors text-brown placeholder:text-taupe"
-                />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 rounded-xl text-white font-medium tracking-wide bg-wine hover:bg-rose transition-colors"
-                >
-                  {t("contact.submitButton")}
-                </motion.button>
-              </form>
-            </div>
-          </motion.div>
+        <h2 className="text-3xl lg:text-5xl text-light mb-8 font-georgia">
+          {t("contact.title")}{" "}
+          <span className="text-light/80 italic">{t("contact.titleHighlight")}</span>
+        </h2>
+
+        <p className="text-light mb-8">
+          {t("contact.description")}
+        </p>
+
+        <div className="space-y-6 mb-12">
+          {[
+            { icon: MapPin, text: t("contact.address") },
+            { icon: Phone, text: t("contact.phone") },
+            { icon: Clock, text: t("contact.hours") },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="flex items-center gap-4"
+            >
+              <div className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center bg-wine">
+                <item.icon size={20} className="text-white" />
+              </div>
+              <span className="text-white/80">{item.text}</span>
+            </motion.div>
+          ))}
         </div>
-      </div>
-    </section>
+
+        <SocialIcons iconSize={30} />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+      >
+        <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 lg:p-10 shadow-xl">
+          <h3 className="text-2xl mb-8 font-georgia text-brown">
+            {t("contact.formTitle")}
+          </h3>
+
+          <form className="space-y-6">
+            <div className="grid sm:grid-cols-2 gap-6">
+              <input
+                type="text"
+                placeholder={t("contact.placeholderName")}
+                className="w-full px-5 py-4 rounded-xl border border-cream bg-cream focus:outline-none focus:border-wine text-brown"
+              />
+              <input
+                type="email"
+                placeholder={t("contact.placeholderEmail")}
+                className="w-full px-5 py-4 rounded-xl border border-cream bg-cream focus:outline-none focus:border-wine text-brown"
+              />
+            </div>
+
+            <input
+              type="tel"
+              placeholder={t("contact.placeholderPhone")}
+              className="w-full px-5 py-4 rounded-xl border border-cream bg-cream focus:outline-none focus:border-wine text-brown"
+            />
+
+            <select className="w-full px-5 py-4 rounded-xl border border-cream bg-cream text-taupe">
+              <option>{t("contact.selectTreatment")}</option>
+              <option>{t("contact.optionFacial")}</option>
+              <option>{t("contact.optionWeightLoss")}</option>
+              <option>{t("contact.optionSkin")}</option>
+              <option>{t("contact.optionHair")}</option>
+            </select>
+
+            <textarea
+              rows={4}
+              placeholder={t("contact.placeholderMessage")}
+              className="w-full px-5 py-4 rounded-xl border border-cream bg-cream resize-none text-brown"
+            />
+
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-4 rounded-xl text-white font-medium tracking-wide bg-wine hover:bg-rose"
+            >
+              {t("contact.submitButton")}
+            </motion.button>
+          </form>
+        </div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
   );
 };
 

@@ -17,22 +17,6 @@ import Image from "next/image";
 const doctors = [
   {
     id: 1,
-    name: "Dr. Aris Fadzillah Mazlan",
-    title: "Aesthetic & Anti-Aging Physician",
-    photo: "/images/main/Dr.-Aris-Image.webp",
-    specialisation: "Anti-Aging Treatments & Aesthetic Enhancements",
-    qualifications: [
-      "MD from Moscow Medical Academy, Russian Federation",
-      "Specialized Training in Aesthetic Medicine",
-    ],
-    awards: [],
-    bio: "Dr. Aris Fadzillah Mazlan is a distinguished aesthetic and anti-aging physician based in Kuala Lumpur, Malaysia. Committed to helping patients enhance their beauty and confidence. Fluent in English, Russian, and Malay. When not practicing medicine, Dr. Aris enjoys traveling to exotic destinations and cultivating unique ferns.",
-    instagram: "https://instagram.com/arisfadz",
-    linkedin: "#",
-    rating: 5,
-  },
-  {
-    id: 2,
     name: "Dr. Preetha Nair",
     title: "Aesthetic Medical Doctor | Advocate for Natural Beauty",
     photo: "/images/main/Dr.-Preetha-Image.webp",
@@ -48,7 +32,7 @@ const doctors = [
     rating: 5,
   },
   {
-    id: 3,
+    id: 2,
     name: "Dr. Ashvinia Bala",
     title: "Aesthetic Medical Doctor | Advocate for Wellness & Sustainability",
     photo: "/images/main/Dr-Ashvinia-bala.webp",
@@ -61,6 +45,22 @@ const doctors = [
     bio: "Dr. Ashvinia Bala is a dedicated Aesthetic Medical Doctor based in Kuala Lumpur, Malaysia, affiliated with Nexus Clinic. Known for her meticulous approach, she tailors diagnostics and treatment plans to help individuals look and feel their best. Passionate about healthy living, environmental sustainability, baking cakes, and caring for dogs.",
     instagram: "https://instagram.com/ashvinia_bala",
     linkedin: "https://linkedin.com/in/dr-ashvinia-bala",
+    rating: 5,
+  },
+    {
+    id: 3,
+    name: "Dr. Aris Fadzillah Mazlan",
+    title: "Aesthetic & Anti-Aging Physician",
+    photo: "/images/main/Dr.-Aris-Image.webp",
+    specialisation: "Anti-Aging Treatments & Aesthetic Enhancements",
+    qualifications: [
+      "MD from Moscow Medical Academy, Russian Federation",
+      "Specialized Training in Aesthetic Medicine",
+    ],
+    awards: [],
+    bio: "Dr. Aris Fadzillah Mazlan is a distinguished aesthetic and anti-aging physician based in Kuala Lumpur, Malaysia. Committed to helping patients enhance their beauty and confidence. Fluent in English, Russian, and Malay. When not practicing medicine, Dr. Aris enjoys traveling to exotic destinations and cultivating unique ferns.",
+    instagram: "https://instagram.com/arisfadz",
+    linkedin: "#",
     rating: 5,
   },
   {

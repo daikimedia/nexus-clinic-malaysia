@@ -53,7 +53,7 @@ function BeforeAfterSlider({
           alt={item.altAfter}
           fill
           priority={priority}
-          className="object-cover"
+          className="object-cover object-top"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
         />
         <figcaption className="sr-only">{item.altAfter}</figcaption>
@@ -69,7 +69,7 @@ function BeforeAfterSlider({
           alt={item.altBefore}
           fill
           priority={priority}
-          className="object-cover"
+          className="object-cover object-top"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
         />
         <figcaption className="sr-only">{item.altBefore}</figcaption>
