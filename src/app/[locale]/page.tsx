@@ -1,5 +1,15 @@
 import HomePageNexus from "@/src/views/HomePage";
-import { languages } from "../../i18n/settings";
+import { languages } from "@/src/i18n/settings";
+import { Metadata } from "next";
+
+const baseurl = process.env.BASE_URL || "https://www.nexus-clinic.com"
+export const metadata: Metadata = {
+  title: " Nexus Clinic Kuala Lumpur – MOH Certified Award-Winning Aesthetic & Weight Loss Clinic",
+  description: "MOH-certified, award-winning aesthetic and weight loss clinic in Malaysia offering safe, advanced, and personalized treatments designed to help you achieve beauty and wellness goals.",
+  alternates: {
+    canonical: `${baseurl}`,
+  },
+};
 
 export function generateStaticParams() {
   return languages.map((locale: string) => ({ locale }));
