@@ -1,9 +1,8 @@
-import type { NextConfig } from "next";
-import { redirectsList, blogStandaloneRedirects } from "./redirects";
+// config.ts
 
-const isDev = process.env.NODE_ENV !== "production";
+export const isDev = process.env.NODE_ENV !== "production";
 
-const securityHeaders = [
+export const securityHeaders = [
   {
     key: "X-DNS-Prefetch-Control",
     value: "on",
@@ -29,9 +28,7 @@ const securityHeaders = [
     value: `
       default-src 'self';
       img-src 'self' https: data:;
-      script-src 'self' 'unsafe-inline' ${
-        isDev ? "'unsafe-eval'" : ""
-      } https://maps.googleapis.com;
+      script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://maps.googleapis.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       connect-src 'self'
         https://blog.nexus-clinic.com
@@ -40,8 +37,8 @@ const securityHeaders = [
         https://places.googleapis.com
         https://www.googleapis.com
         https://wa.me
-        https://api.whatsapp.com;
-        http://wp.sweetieloveb2b.com;
+        https://api.whatsapp.com
+        https://wp.sweetieloveb2b.com;  /* Allow API requests to WordPress over HTTPS */
       frame-src
         https://api.leadconnectorhq.com
         https://app.leadconnectorhq.com;
@@ -56,58 +53,3 @@ const securityHeaders = [
     `.replace(/\n/g, ""),
   },
 ];
-
-const nextConfig: NextConfig = {
-  poweredByHeader: false,
-  productionBrowserSourceMaps: false,
-  reactStrictMode: true,
-
-  // ✅ Important for your redirects
-  trailingSlash: true,
-
-  images: {
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "wp.sweetieloveb2b.com",
-      },
-    ],
-  },
-
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: securityHeaders,
-      },
-    ];
-  },
-
-    async redirects() {
-      if (!redirectsList || redirectsList.length === 0) return [];
-
-      return [
-          // Blog folder
-          {
-            source: "/en/blog/:slug*",
-            destination: "/blogs/:slug*",
-            permanent: true,
-          },
-          ...blogStandaloneRedirects.map(([source, destination]) => ({
-              source,
-              destination,
-              permanent: true,
-            })),
-
-        // ✅ Your manual redirects
-        ...redirectsList.map(([source, destination]) => ({
-          source,
-          destination,
-          permanent: true,
-        })),
-      ];
-    }
-
-};
-
-export default nextConfig;
