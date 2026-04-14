@@ -1,7 +1,7 @@
 import type { WordPressPost, WordPressCategory, WordPressTag } from '../types/wordpress';
 
 // const API_BASE_URL = 'https://blog.nexus-clinic.com/wp-json/wp/v2';
-const API_BASE_URL = 'http://wp.sweetieloveb2b.com/wp-json/wp/v2';
+const API_BASE_URL = 'https://wp.sweetieloveb2b.com/wp-json/wp/v2';
 
 class WordPressService {
   private async fetchWithEmbedded<T>(endpoint: string): Promise<{ data: T; total: number }> {
