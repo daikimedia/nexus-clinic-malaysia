@@ -41,6 +41,7 @@ const securityHeaders = [
         https://www.googleapis.com
         https://wa.me
         https://api.whatsapp.com;
+        http://wp.sweetieloveb2b.com;
       frame-src
         https://api.leadconnectorhq.com
         https://app.leadconnectorhq.com;
@@ -67,8 +68,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "blog.nexus-clinic.com",
+        protocol: "http",
+        hostname: "wp.sweetieloveb2b.com",
       },
     ],
   },
