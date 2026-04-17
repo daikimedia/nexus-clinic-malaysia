@@ -140,10 +140,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
         <main className="min-h-screen bg-cream">
           <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
-            <Image
+            <img
               src={post.image || "/default-image.jpg"}
               alt={post.title.replace(/<[^>]*>/g, "")}
-              fill
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
