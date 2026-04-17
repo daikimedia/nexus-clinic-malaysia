@@ -58,16 +58,18 @@ interface FloatingWhatsappProps {
   phoneNumber?: string;
   isActive?: boolean;
   hideOnMobile?: boolean;
+  defaultMessage?: string;
 }
 
 const FloatingWhatsapp = ({ 
   phoneNumber = "60168245699", 
   isActive = true,
-  hideOnMobile = true 
+  hideOnMobile = true,
+  defaultMessage="Hi! I’m interested in your services. Could you provide more details?" 
 }: FloatingWhatsappProps) => {
   return (
     <motion.a
-      href={`https://wa.me/${phoneNumber}`}
+       href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0 }}
@@ -91,7 +93,10 @@ const FloatingWhatsapp = ({
       whileHover={{ scale: 1.2 }}
       className={`fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-50 bg-green hover:bg-green/90 transition-colors ${hideOnMobile ? "hidden md:flex" : "flex"}`}
     >
-      <WhatsAppIcon className="text-white" size={30} />
+      <span className="fixed bottom-3 right-12 text-xs font-bold px-3 py-1.5 whitespace-nowrap z-50">
+        CLAIM RM100 VOUCHER
+      </span>
+    <WhatsAppIcon className="text-white" size={30} />
     </motion.a>
   );
 };
