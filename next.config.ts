@@ -46,20 +46,8 @@ const nextConfig: NextConfig = {
   },
 
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
-  },
-
-  async redirects() {
     return [
-      { source: "/en/blog/:slug*", destination: "/blogs/:slug*", permanent: true },
-      ...blogStandaloneRedirects.map(([src, dest]) => ({ source: src, destination: dest, permanent: true })),
-      ...redirectsList.map(([src, dest]) => ({ source: src, destination: dest, permanent: true })),
-    ];
-  },
-};
-module.exports = {
-  async headers() {
-    return [
+      { source: "/(.*)", headers: securityHeaders },
       {
         source: '/images/(.*)',
         headers: [
@@ -69,6 +57,14 @@ module.exports = {
           },
         ],
       },
+    ];
+  },
+
+  async redirects() {
+    return [
+      { source: "/en/blog/:slug*", destination: "/blogs/:slug*", permanent: true },
+      ...blogStandaloneRedirects.map(([src, dest]) => ({ source: src, destination: dest, permanent: true })),
+      ...redirectsList.map(([src, dest]) => ({ source: src, destination: dest, permanent: true })),
     ];
   },
 };
